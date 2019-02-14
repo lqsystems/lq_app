@@ -13,6 +13,7 @@ module.exports = {
     "vue/v-bind-style": "off",
     "vue/v-on-style": "off",
     "import/no-unresolved": "off",
+    "import/extensions": "off",
     "no-param-reassign": "off"
   },
   parserOptions: {
