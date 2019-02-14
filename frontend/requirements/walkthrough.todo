@@ -1,0 +1,31 @@
+##Running Locally:
+
+Clone the repo:
+git clone git@github.com:hayden7913/vue-express-example.git
+
+Install backend dependencies:
+cd vue-express-example/backend
+yarn
+
+Install fronend dependencies and start:
+cd ../frontend
+yarn
+yarn start
+
+*Maybe add an explanation for how start script works
+
+
+
+##Webapck:
+☐  
+
+Wepack:
+  ☐ webpack creates a dist folder with a bundle 
+  ☐ for deployment, this dist folder is copied to the backend folder
+    ☐ the dist folder is served from node
+
+AJAX:
+  ☐ The server sends a very minimal html skeleton 
+  ☐ The rest of the markup is added with javascript on the client side
+  ☐ 
+

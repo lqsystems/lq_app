@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "concurrently \"cd ../backend && node dosis.js\" \"vue-cli-service serve\"",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -11,6 +12,9 @@
   },
   "dependencies": {
     "register-service-worker": "^1.5.2",
+    "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "nouislider": "^13.1.0",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
