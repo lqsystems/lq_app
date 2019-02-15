@@ -1,5 +1,2 @@
-☐ make and envc view
-☐ write css to have a sidebar 
-☐ make a base sidebar component
-☐ import into envc view
-☐ add a sidebar to control page
+☐ make a nav component
+☐ import nav into App
