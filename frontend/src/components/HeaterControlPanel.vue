@@ -2,7 +2,6 @@
   <ControlPanel
     label="Heater"
   >
-    <div id="slider" />
     <ControlPanelItem label="Power">
       <PowerControl
         v-bind:power-on="heater.powerOn"

@@ -47,11 +47,11 @@ export default new Vuex.Store({
   actions: {
     // TODO: add a handler for errors
     fetchEnvironmentState({ commit }) {
-      callApi(ENVIRONMENT_URL)
-        .then((data) => {
-          const reformattedState = reformatByActuator(data);
-          commit('loadEnvironment', reformattedState);
-        });
+      // callApi(ENVIRONMENT_URL)
+      //   .then((data) => {
+      //     const reformattedState = reformatByActuator(data);
+      //     commit('loadEnvironment', reformattedState);
+      //   });
     },
   },
   getters: {

@@ -5,8 +5,16 @@
 <script>
 import noUiSlider from 'nouislider';
 
+const getConnect = level => (Array.isArray(level) ? true : [true, false]);
+
 export default {
-  name: 'BaseSlider',
+  name: 'BaseSliderNoUi',
+  props: {
+    level: {
+      type: [Number, Array],
+      required: true,
+    },
+  },
   data() {
     return {
       sliderPosition: 25,
@@ -16,8 +24,8 @@ export default {
     const { slider } = this.$refs;
 
     noUiSlider.create(slider, {
-      start: 60,
-      connect: [true, false],
+      start: this.level,
+      connect: getConnect(this.level),
       range: {
         min: 0,
         max: 100,
@@ -26,6 +34,7 @@ export default {
   },
 };
 </script>
+
 
 <style>
 /* Functional styling;
@@ -142,7 +151,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   border-radius: 3px;
 }
 .noUi-connect {
-  background: #3fb8af;
+  background: #4fc08d;
 }
 /* Handles and cursors;
   */

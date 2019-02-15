@@ -3,14 +3,8 @@
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">
-      <BaseRangeSlider
-        v-if="Array.isArray(level)"
-        v-bind:levels="level"
-        v-bind:color="color"
-        v-on:slider-move="emitSliderPosition"
-      />
       <BaseSliderNoUi
-        v-else
+        v-bind:level="level"
         v-bind:value="sliderPosition"
         v-bind:color="color"
         v-on:slider-move="emitSliderPosition"
@@ -24,14 +18,12 @@
 
 <script>
 import BaseSliderNoUi from './BaseSliderNoUi';
-import BaseRangeSlider from './BaseRangeSlider';
 import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 export default {
   name: 'SliderControl',
   components: {
     BaseSliderNoUi,
-    BaseRangeSlider,
   },
   props: {
     level: {
@@ -74,12 +66,12 @@ export default {
 }
 
 .slider-control-slider {
-  width: 300px;
+  width: 16em;
 }
 
 .slider-control-level {
-  margin-left: 20px;
-  width: 110px;
+  margin-left: 1.4em;
+  width: 8em;
   text-align: center;
 }
 </style>

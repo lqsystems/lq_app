@@ -10,6 +10,11 @@ export default new Router({
     {
       path: '/',
       name: 'reactorControls',
+      component: () => import('@/views/Reactor'),
+    },
+    {
+      path: '/rc',
+      name: 'reactorControls',
       component: () => import('@/views/ReactorControls'),
     },
     {

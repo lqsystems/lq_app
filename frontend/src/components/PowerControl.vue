@@ -49,10 +49,11 @@ export default {
 .power-control {
   display: flex;
   align-items: center;
+  padding-right: 1.1em;
 }
 
 .power-control-switch {
-  margin-left: 10px;
+  margin-left: 0.9em;
 }
 
 .power-control-state {

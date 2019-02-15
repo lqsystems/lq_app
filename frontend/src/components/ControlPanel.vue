@@ -28,7 +28,8 @@ export default {
 
 <style>
 .control-panel-wrapper {
-  width: 600px;
+  font-size: 1.5em;
+  width: 90%;
   margin: 0 auto;
 }
 .control-panel-label {

@@ -30,8 +30,9 @@ export default {
   data() {
     return {
       items: [
-        { title: 'Home', icon: 'dashboard' },
-        { title: 'About', icon: 'question_answer' },
+        { title: 'Air', icon: 'pan_tool' },
+        { title: 'Heater', icon: 'question_answer' },
+        { title: 'Light', icon: 'call_split' },
       ],
       right: null,
     };
@@ -40,4 +41,8 @@ export default {
 </script>
 
 <style>
+.v-list--dense .v-list__tile {
+    font-size: 1.5em;
+    font-weight: 400;
+}
 </style>

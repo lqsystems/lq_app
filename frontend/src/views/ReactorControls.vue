@@ -1,6 +1,7 @@
 <template>
   <div class="reactor-controls">
     <div class="rc-header">
+      <v-icon>{{ 'arrow_back' }}</v-icon>
       Zee Prime Controls
     </div>
     <div class="rc-main">
@@ -8,7 +9,7 @@
         <BaseSidebar />
       </div>
       <div class="rc-controls">
-        Main
+        <HeaterControlPanel />
       </div>
     </div>
   </div>
@@ -16,42 +17,52 @@
 
 <script>
 import BaseSidebar from '@/components/BaseSidebar';
+import HeaterControlPanel from '@/components/HeaterControlPanel';
 
 export default {
   components: {
     BaseSidebar,
+    HeaterControlPanel,
   },
 };
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables";
+
 .reactor-controls {
   height: 100%;
 }
 
 .rc-header {
-    background-color: lightgrey;
-    padding: 1.2em 2em;
-    font-size: 1.2em;
+  background-color: $light-grey;
+  padding: 1.2em 1em;
+  font-size: 1.6em;
+
+  .theme--light {
+    &.v-icon {
+      font-size: 1.3em;
+      margin-right: 1em;
+    }
+  }
 }
 
-.rc-main{
+.rc-main {
   display: grid;
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr 3fr;
-  grid-template-areas:
-    "sidebar controls";
-
-  div {
-    border: 1px solid #000;
-  }
+  grid-template-areas: "sidebar controls";
 }
+
 .rc-sidebar {
   grid-area: sidebar;
+  padding-top: 1em;
+
 }
 
 .rc-controls {
+  padding: 40px;
   grid-area: controls;
 }
 </style>
