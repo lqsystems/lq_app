@@ -1,12 +1,6 @@
 <template>
   <div class="test-wrapper">
     <HeaterControlPanel />
-    <v-card>
-      <div v-bind:style="{ marginTop: '100px'}" />
-      <v-card class="test-card">
-        <NoUiSlider />
-      </v-card>
-    </v-card>
   </div>
 </template>
 

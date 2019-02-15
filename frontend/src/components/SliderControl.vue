@@ -9,7 +9,7 @@
         v-bind:color="color"
         v-on:slider-move="emitSliderPosition"
       />
-      <BaseSlider
+      <BaseSliderNoUi
         v-else
         v-bind:value="sliderPosition"
         v-bind:color="color"
@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import BaseSlider from './BaseSlider';
+import BaseSliderNoUi from './BaseSliderNoUi';
 import BaseRangeSlider from './BaseRangeSlider';
 import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 export default {
   name: 'SliderControl',
   components: {
-    BaseSlider,
+    BaseSliderNoUi,
     BaseRangeSlider,
   },
   props: {

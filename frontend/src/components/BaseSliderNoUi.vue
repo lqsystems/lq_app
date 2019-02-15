@@ -13,12 +13,11 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$refs.slider);
-    const slider = this.$refs.slider;
+    const { slider } = this.$refs;
 
     noUiSlider.create(slider, {
-      start: [20, 80],
-      connect: true,
+      start: 60,
+      connect: [true, false],
       range: {
         min: 0,
         max: 100,

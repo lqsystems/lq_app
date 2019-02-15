@@ -1,2 +1,5 @@
-☐ rename routes 
-☐ render heater control on control route
+☐ make and envc view
+☐ write css to have a sidebar 
+☐ make a base sidebar component
+☐ import into envc view
+☐ add a sidebar to control page
