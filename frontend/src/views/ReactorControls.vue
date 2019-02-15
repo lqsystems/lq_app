@@ -1,10 +1,15 @@
 <template>
   <div class="reactor-controls">
-    <div class="rc-sidebar">
-      <BaseSidebar />
+    <div class="rc-header">
+      Zee Prime Controls
     </div>
     <div class="rc-main">
-      Main
+      <div class="rc-sidebar">
+        <BaseSidebar />
+      </div>
+      <div class="rc-controls">
+        Main
+      </div>
     </div>
   </div>
 </template>
@@ -21,13 +26,23 @@ export default {
 
 <style scoped lang="scss">
 .reactor-controls {
+  height: 100%;
+}
+
+.rc-header {
+    background-color: lightgrey;
+    padding: 1.2em 2em;
+    font-size: 1.2em;
+}
+
+.rc-main{
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-areas:
-    "sidebar main";
-  grid
+    "sidebar controls";
+
   div {
     border: 1px solid #000;
   }
@@ -36,7 +51,7 @@ export default {
   grid-area: sidebar;
 }
 
-.rc-main {
-  grid-area: main;
+.rc-controls {
+  grid-area: controls;
 }
 </style>
