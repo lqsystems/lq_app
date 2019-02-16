@@ -1,0 +1,11 @@
+Requirements:
+☐ has a get endpoint
+  ☐  endpoint sends environment data
+  ☐  pretends to fetch data from mongoose
+
+☐ allows cors
+☐ has a put endpoint
+  ☐  pretends to update state
+☐ serves client
+☐ deploys to heroku
+☐ use CI

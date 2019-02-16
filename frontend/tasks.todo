@@ -1,3 +1,12 @@
+**Deplpoy:
+☐ make backend folder and copy backend from vex 
+☐ build app and try to server
+☐ check that there is space on heroku
+☐ create a  new horoku project
+☐ try to run deployment script
+
+
+
 **Reactor View:
 Navbar:
 ☐ render navbar

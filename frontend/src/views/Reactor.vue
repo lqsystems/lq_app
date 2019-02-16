@@ -1,12 +1,18 @@
 <template>
   <div class="reactor">
-    <div class="reactor-main">
-      <div class="reactor-col-left">
-        left
+    <!-- <div class="test">
+      <div class="tchild">
+        hello
       </div>
-      <div class="reactor-col-right">
-        right
+      <div class="tchild left">
+        hello
       </div>
+    </div> -->
+    <div class="reactor-col-left">
+      left
+    </div>
+    <div class="reactor-col-right">
+      right
     </div>
     <div class="nav">
       <div>nav</div>
@@ -23,22 +29,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.reactor-main {
+.test {
   display: flex;
   height: 100%;
+  width: 100%;
+};
+
+.tchild {
+  background-color: skyblue;
+  width: 50%;
+  height: 100%;
+}
+.left {
+  background-color: tomato;
+}
+.reactor {
+  display: grid;
+  height: 100%;
+  max-width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 120px;
+  grid-template-areas:
+    "left right"
+    "nav nav";
 }
 
 .reactor-col-left {
+  grid-area: left;
   background-color: lightgrey;
-  height: 100%;
 }
 
 .reactor-col-right{
+  grid-area: right;
   background-color: skyblue;
-  height: 100%;
 }
 
 .nav {
+  grid-area: nav;
   background: tomato;
 }
 
