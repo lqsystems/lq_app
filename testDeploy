@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# To run this script enter "./deploy" in your terminal from 
+# the root directory without the quotes
+
+# NOTE: Don't forget to merge your changes into master before running
+
+rm -rf backend/dist &&
+cd frontend  &&
+npm run build &&
+cd .. &&
+cp -r frontend/dist backend &&
+git add . &&
+git commit -m "updates build for deployment" &&
+heroku config:set NODE_ENV=production
+git subtree  -f push --prefix backend heroku master:HEAD 
+
