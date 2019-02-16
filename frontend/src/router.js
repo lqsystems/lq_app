@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'reactorControls',
+      name: 'reactor',
       component: () => import('@/views/Reactor'),
     },
     {

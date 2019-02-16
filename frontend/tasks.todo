@@ -1,15 +1,10 @@
 **Deplpoy:
-☐ make backend folder and copy backend from vex 
-☐ build app and try to server
-☐ check that there is space on heroku
-☐ create a  new horoku project
 ☐ try to run deployment script
 
-
-
 **Reactor View:
+
 Navbar:
-☐ render navbar
+☐ render navbar 
 ☐ update nav names and icons
 
 Columns:
@@ -30,9 +25,5 @@ Reaction Select:
 ☐ make base select component 
 ☐ add test values
 ☐ Design a component that wraps select with a label
-
-
-
-
 ☐ make reactor view 
 ☐ make login page

@@ -1,7 +1,9 @@
 <template>
   <div class="reactor-controls">
     <div class="rc-header">
-      <v-icon>{{ 'arrow_back' }}</v-icon>
+      <v-icon v-on:click="routeHome">
+        {{ 'arrow_back' }}
+      </v-icon>
       Zee Prime Controls
     </div>
     <div class="rc-main">
@@ -23,6 +25,11 @@ export default {
   components: {
     BaseSidebar,
     HeaterControlPanel,
+  },
+  methods: {
+    routeHome() {
+      this.$router.push('/');
+    },
   },
 };
 </script>

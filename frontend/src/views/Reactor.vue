@@ -1,14 +1,9 @@
 <template>
   <div class="reactor">
-    <!-- <div class="test">
-      <div class="tchild">
-        hello
-      </div>
-      <div class="tchild left">
-        hello
-      </div>
-    </div> -->
     <div class="reactor-col-left">
+      <router-link to="/rc">
+        Controls
+      </router-link>
       left
     </div>
     <div class="reactor-col-right">
