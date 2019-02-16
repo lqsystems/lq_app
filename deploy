@@ -12,6 +12,6 @@ npm run build &&
 cd .. &&
 cp -r frontend/dist backend &&
 git add . &&
-git commit -m "Updates build for deployment" &&
+git commit -m "updates build for deployment" &&
 heroku config:set NODE_ENV=production
 git subtree push --prefix backend heroku master 

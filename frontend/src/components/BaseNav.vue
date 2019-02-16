@@ -7,6 +7,7 @@
       :active.sync="bottomNav"
       :value="true"
       absolute
+      v-bind:style="{height: '100%'}"
       color="transparent"
     >
       <v-btn
@@ -50,8 +51,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .v-item-group {
   padding: 20px;
+
+  &.v-item-nav{
+    height: 100%;
+  }
+}
+
+.v-bottom-nav {
+  .v-icon {
+    font-size: 4em;
+  }
 }
 </style>

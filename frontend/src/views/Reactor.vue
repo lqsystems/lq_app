@@ -10,15 +10,18 @@
       right
     </div>
     <div class="nav">
-      <div>nav</div>
+      <BaseNav />
     </div>
   </div>
 </template>
 
 
 <script>
+import BaseNav from '@/components/BaseNav';
+
 export default {
   components: {
+    BaseNav,
   },
 };
 </script>
@@ -61,7 +64,7 @@ export default {
 
 .nav {
   grid-area: nav;
-  background: tomato;
+  border: 1px solid #000;
 }
 
 </style>
