@@ -29,21 +29,21 @@ export default {
 <style scoped lang="scss">
 .test {
   display: flex;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 };
 
 .tchild {
   background-color: skyblue;
   width: 50%;
-  height: 100%;
+  height: 100vh;
 }
 .left {
   background-color: tomato;
 }
 .reactor {
   display: grid;
-  height: 100%;
+  height: 100vh;
   max-width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 120px;

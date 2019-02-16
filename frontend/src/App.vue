@@ -24,6 +24,6 @@ export default {
   border: 1px solid #000;
   background-color: skyblue;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 </style>

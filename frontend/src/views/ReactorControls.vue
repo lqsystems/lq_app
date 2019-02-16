@@ -38,7 +38,7 @@ export default {
 @import "../styles/variables";
 
 .reactor-controls {
-  height: 100%;
+  height: 100vh;
 }
 
 .rc-header {
@@ -56,7 +56,7 @@ export default {
 
 .rc-main {
   display: grid;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: "sidebar controls";

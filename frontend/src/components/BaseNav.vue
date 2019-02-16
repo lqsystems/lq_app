@@ -56,7 +56,7 @@ export default {
   padding: 20px;
 
   &.v-item-nav{
-    height: 100%;
+    height: 100vh;
   }
 }
 

@@ -61,7 +61,7 @@ export default {
 .noUi-base,
 .noUi-connects {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: relative;
   z-index: 1;
 }
@@ -78,7 +78,7 @@ export default {
   z-index: 1;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   -ms-transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
@@ -103,7 +103,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
   position: absolute;
 }
 .noUi-touch-area {
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 .noUi-state-tap .noUi-connect,
@@ -278,7 +278,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   */
 .noUi-pips-vertical {
   padding: 0 10px;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 100%;
 }
