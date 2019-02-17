@@ -6,7 +6,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "node dosis.js"
+    "start": "node dosis.js",
+    "deploy": "./build-scripts/deploy"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

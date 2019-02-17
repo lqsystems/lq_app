@@ -35,7 +35,7 @@ export default {
   display: grid;
   height: 100%;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 100px;
+  grid-template-rows: 80% 100px;
   grid-template-areas:
     "left right"
     "nav nav";
