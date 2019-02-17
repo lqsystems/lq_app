@@ -73,7 +73,7 @@ export default {
 
 .reactor-header {
   background-color: $light-grey;
-  padding: 1.2em 1.5em;
+  padding: 20px 30px;
   font-size: 1.5em;
 }
 
@@ -111,6 +111,7 @@ export default {
   display: block;
   margin: 0 auto;
   width: 45%;
+  height: 90%;
 };
 
 .nav {

@@ -1,9 +1,16 @@
 <template>
   <div class="reactor-controls">
     <div class="rc-header">
-      <v-icon v-on:click="routeHome">
-        {{ 'arrow_back' }}
-      </v-icon>
+      <v-btn
+        flat
+        icon
+        color=""
+        v-on:click="routeHome"
+      >
+        <v-icon>
+          arrow_back
+        </v-icon>
+      </v-btn>
       Zee Prime Controls
     </div>
     <div class="rc-main">
@@ -43,13 +50,13 @@ export default {
 
 .rc-header {
   background-color: $light-grey;
-  padding: 1.2em 1.5em;
-  font-size: 1.6em;
+  padding: 20px 20px;
+  font-size: 1.5em;
 
   .theme--light {
-    &.v-icon {
+    &.v-btn{
       font-size: 1.3em;
-      margin-right: 1em;
+      margin-right: .5em;
     }
   }
 }
