@@ -60,7 +60,7 @@ export default {
 
 .v-bottom-nav {
   .v-icon {
-    font-size: 4em;
+    font-size: 4.5vh;
   }
 }
 </style>

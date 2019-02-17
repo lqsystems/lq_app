@@ -54,7 +54,7 @@ export default {
   overflow: hidden;
   position: fixed;
   bottom: 0;
-  height: 100px;
+  height: 75px;
   width: 100%;
 }
 
