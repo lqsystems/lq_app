@@ -1,15 +1,27 @@
 <template>
   <div class="reactor">
-    <div class="reactor-col reactor-col-left">
-      <div class="reactor-status-panel">
-        <PresentValuesStatusPanel />
-      </div>
-      <div class="reactor-status-panel">
-        <EnvironmentControlsStatusPanel />
-      </div>
+    <div class="reactor-header">
+      Zee Prime
     </div>
-    <div class="reactor-col reactor-col-right">
-      right
+    <div class="reactor-main">
+      <div class="reactor-col reactor-col-left">
+        <div class="reactor-status-panel">
+          <PresentValuesStatusPanel />
+        </div>
+        <div class="reactor-status-panel">
+          <EnvironmentControlsStatusPanel />
+        </div>
+      </div>
+      <div class="reactor-col reactor-col-right">
+        <div class="reaction-select-wrapper">
+          <BaseSelect label="Reaction" />
+        </div>
+        <img
+          class="reactor-graphic"
+          src="@/assets/bioreactor-graphic.png"
+          alt="bioreactor graphic"
+        >
+      </div>
     </div>
     <div class="nav">
       <BaseNav />
@@ -20,6 +32,7 @@
 
 <script>
 import BaseNav from '@/components/BaseNav';
+import BaseSelect from '@/components/BaseSelect';
 import PresentValuesStatusPanel from '@/components/PresentValuesStatusPanel';
 import EnvironmentControlsStatusPanel from '@/components/EnvironmentControlsStatusPanel';
 
@@ -29,22 +42,16 @@ export default {
     PresentValuesStatusPanel,
     EnvironmentControlsStatusPanel,
     BaseNav,
+    BaseSelect,
   },
 };
 </script>
 
 <style lang="scss">
-.r-test {
-  width: 100%;
-  height: 300px;
-  background-color: lightgrey;
-}
+@import "../styles/variables";
 
 .reactor {
-  display: grid;
   height: 100%;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "left right";
 
   .control-panel-main {
     padding: .5em 0;
@@ -64,24 +71,50 @@ export default {
   }
 }
 
-.reactor-col {
-  padding: 4em;
+.reactor-header {
+  background-color: $light-grey;
+  padding: 1.2em 1.5em;
+  font-size: 1.5em;
+}
+
+.reactor-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "left right";
+  overflow: hidden;
+  height: calc(100% - 156px);
 }
 
 .reactor-col-left {
   grid-area: left;
 }
 
-.reactor-status-panel {
-  margin-bottom: 3em;
-}
-
 .reactor-col-right {
   grid-area: right;
-  background-color: skyblue;
 }
 
+.reactor-col {
+  padding: 2.8em 4em;
+}
+
+.reactor-status-panel {
+  margin-bottom: 5em;
+}
+
+.reaction-select-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+.reactor-graphic {
+  display: block;
+  margin: 0 auto;
+  width: 45%;
+};
+
 .nav {
+  border: 1px solid #EEEEEE;
   overflow: hidden;
   position: fixed;
   bottom: 0;

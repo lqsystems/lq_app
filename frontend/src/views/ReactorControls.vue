@@ -43,7 +43,7 @@ export default {
 
 .rc-header {
   background-color: $light-grey;
-  padding: 1.2em 1em;
+  padding: 1.2em 1.5em;
   font-size: 1.6em;
 
   .theme--light {
@@ -65,7 +65,6 @@ export default {
 .rc-sidebar {
   grid-area: sidebar;
   padding-top: 1em;
-
 }
 
 .rc-controls {

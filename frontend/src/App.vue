@@ -18,11 +18,4 @@ export default {
 html, body {
   height: 100vh;
 }
-
-// overrides vuetify's default background
-.theme--light {
- .application {
-  background: white;
- }
-}
 </style>
