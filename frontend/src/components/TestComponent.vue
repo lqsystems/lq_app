@@ -5,13 +5,11 @@
 </template>
 
 <script>
-import NoUiSlider from './NoUiSlider';
 import HeaterControlPanel from './HeaterControlPanel';
 
 export default {
   name: 'Test',
   components: {
-    NoUiSlider,
     HeaterControlPanel,
   },
 };

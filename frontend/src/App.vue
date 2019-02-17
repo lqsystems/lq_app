@@ -10,20 +10,19 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-// overrides vuetify's default background
+<style lang="scss">
 * {
   box-sizing: border-box;
 }
 
-.theme--light.application {
-  background: white;
+html, body {
+  height: 100vh;
 }
 
-.test {
-  border: 1px solid #000;
-  background-color: skyblue;
-  width: 100%;
-  height: 100vh;
+// overrides vuetify's default background
+.theme--light {
+ .application {
+  background: white;
+ }
 }
 </style>

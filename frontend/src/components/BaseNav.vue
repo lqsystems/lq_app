@@ -53,10 +53,8 @@ export default {
 
 <style scoped lang="scss">
 .v-item-group {
-  padding: 20px;
-
   &.v-item-nav{
-    height: 100vh;
+    height: 100%;
   }
 }
 
