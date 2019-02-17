@@ -1,5 +1,8 @@
 <template>
-  <div class="control-panel-wrapper">
+  <div
+    class="control-panel-wrapper"
+    v-on:click="handleClick"
+  >
     <div class="control-panel-label">
       {{ label }}
     </div>
@@ -22,16 +25,21 @@ export default {
       type: String,
       required: true,
     },
+    handleClick: {
+      type: Function,
+      default: () => {},
+    },
   },
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .control-panel-wrapper {
-  font-size: 1.5em;
+  font-size: 1.1em;
   width: 90%;
   margin: 0 auto;
 }
+
 .control-panel-label {
   font-size: 1.2em;
   padding-bottom: .7em;

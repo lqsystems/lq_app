@@ -37,8 +37,9 @@ export default {
 
 <style>
 .cp-item {
+
   display: flex;
-  padding: 1.5em 1.3em;
+  padding: 1.3em 1.2em;
   align-items: center;
 }
 

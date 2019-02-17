@@ -1,16 +1,9 @@
-**Reactor View:
-Navbar:
-☐ render navbar 
-☐ update nav names and icons
-
-Columns:
-☐ Make two evenly space flex colums in codepen
-
-Control Compnent:
-☐ make a PresentValuesPanel
-☐ import conrol panel 
-☐ import control panel item
-☐ arrange cards in column
+**Style Reactor View:
+☐ add border to bottom nav
+☐ add router link to control card 
+☐ add placeholder to right column
+☐ make a select component
+☐ render select above reactor image
 
 Reactor Image:
 ☐ add reactor image
