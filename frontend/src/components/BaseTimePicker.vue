@@ -60,5 +60,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.v-text-field__slot {
+  input {
+    text-align: center;
+  }
+}
 </style>

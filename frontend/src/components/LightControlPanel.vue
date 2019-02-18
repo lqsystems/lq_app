@@ -18,13 +18,17 @@
     <ControlPanelItem
       label="Start Time"
     >
-      <BaseTimePicker />
+      <div class="time-picker-wrapper">
+        <BaseTimePicker />
+      </div>
     </ControlPanelItem>
     <ControlPanelItem
       label="End Time"
       v-bind:include-divider="false"
     >
-      <span>8:00pm</span>
+      <div class="hi time-picker-wrapper">
+        <BaseTimePicker />
+      </div>
     </ControlPanelItem>
   </ControlPanel>
 </template>
@@ -71,3 +75,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .time-picker-wrapper {
+    width: 65%;
+    margin-left: auto;
+    padding-right: 0.5em;
+  }
+</style>
