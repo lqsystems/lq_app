@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    jest: true,
   },
   extends: [
     'plugin:vue/recommended',
@@ -14,6 +15,7 @@ module.exports = {
     "vue/v-on-style": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
+    "import/prefer-default-export": "off",
     "no-param-reassign": "off"
   },
   parserOptions: {

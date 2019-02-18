@@ -18,7 +18,7 @@
         <BaseSidebar />
       </div>
       <div class="rc-controls">
-        <HeaterControlPanel />
+        <LightControlPanel />
       </div>
     </div>
   </div>
@@ -26,12 +26,14 @@
 
 <script>
 import BaseSidebar from '@/components/BaseSidebar';
+import LightControlPanel from '@/components/LightControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 
 export default {
   components: {
     BaseSidebar,
     HeaterControlPanel,
+    LightControlPanel,
   },
   methods: {
     routeHome() {
@@ -55,7 +57,7 @@ export default {
 
   .theme--light {
     &.v-btn{
-      font-size: 1.3em;
+      font-size: 1.4em;
       margin-right: .5em;
     }
   }
