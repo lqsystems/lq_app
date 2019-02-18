@@ -41,12 +41,17 @@
 <script>
 import { convertToAmPm } from '@/utils/TimeUtils';
 
-console.log(convertToAmPm);
 export default {
   name: 'BaseTimePicker',
+  props: {
+    initialTime: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
-      time: '8:00',
+      time: this.initialTime,
       modal: false,
     };
   },

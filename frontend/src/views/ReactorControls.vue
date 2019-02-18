@@ -18,7 +18,7 @@
         <BaseSidebar />
       </div>
       <div class="rc-controls">
-        <LightControlPanel />
+        <AirControlPanel />
       </div>
     </div>
   </div>
@@ -28,12 +28,14 @@
 import BaseSidebar from '@/components/BaseSidebar';
 import LightControlPanel from '@/components/LightControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
+import AirControlPanel from '@/components/AirControlPanel';
 
 export default {
   components: {
     BaseSidebar,
     HeaterControlPanel,
     LightControlPanel,
+    AirControlPanel,
   },
   methods: {
     routeHome() {
@@ -51,7 +53,7 @@ export default {
 }
 
 .rc-header {
-  background-color: $light-grey;
+  background-color: $grey-300;
   padding: 20px 20px;
   font-size: 1.5em;
 

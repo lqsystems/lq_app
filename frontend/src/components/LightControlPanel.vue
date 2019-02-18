@@ -19,7 +19,7 @@
       label="Start Time"
     >
       <div class="time-picker-wrapper">
-        <BaseTimePicker />
+        <BaseTimePicker initial-time="8:00" />
       </div>
     </ControlPanelItem>
     <ControlPanelItem
@@ -27,7 +27,7 @@
       v-bind:include-divider="false"
     >
       <div class="hi time-picker-wrapper">
-        <BaseTimePicker />
+        <BaseTimePicker initial-time="20:00" />
       </div>
     </ControlPanelItem>
   </ControlPanel>

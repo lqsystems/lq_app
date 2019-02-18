@@ -3,21 +3,23 @@
     label="Environment Controls"
     v-bind:handle-click="routeToControls"
   >
-    <v-icon class="status-panel-icon">
-      edit
-    </v-icon>
-    <ControlPanelItem label="Air">
-      <span>ON</span>
-    </ControlPanelItem>
-    <ControlPanelItem label="Light">
-      <span>ON</span>
-    </ControlPanelItem>
-    <ControlPanelItem
-      label="Heater"
-      v-bind:include-divider="false"
-    >
-      <span>OFF</span>
-    </ControlPanelItem>
+    <div>
+      <v-icon class="status-panel-icon">
+        edit
+      </v-icon>
+      <ControlPanelItem label="Air">
+        <span>ON</span>
+      </ControlPanelItem>
+      <ControlPanelItem label="Light">
+        <span>ON</span>
+      </ControlPanelItem>
+      <ControlPanelItem
+        label="Heater"
+        v-bind:include-divider="false"
+      >
+        <span>OFF</span>
+      </ControlPanelItem>
+    </div>
   </ControlPanel>
 </template>
 

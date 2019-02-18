@@ -8,7 +8,9 @@
         <div class="reactor-status-panel">
           <PresentValuesStatusPanel />
         </div>
-        <div class="reactor-status-panel">
+        <div
+          class="reactor-status-panel"
+        >
           <EnvironmentControlsStatusPanel />
         </div>
       </div>
@@ -44,6 +46,11 @@ export default {
     BaseNav,
     BaseSelect,
   },
+  methods: {
+    routeToControls() {
+      this.$router.push('rc');
+    },
+  },
 };
 </script>
 
@@ -72,7 +79,7 @@ export default {
 }
 
 .reactor-header {
-  background-color: $light-grey;
+  background-color: $grey-300;
   padding: 20px 30px;
   font-size: 1.5em;
 }
@@ -111,11 +118,11 @@ export default {
   display: block;
   margin: 0 auto;
   width: 45%;
-  height: 90%;
+  height: 65vh;
 };
 
 .nav {
-  border: 1px solid #EEEEEE;
+  border: 1px solid $grey-200;
   overflow: hidden;
   position: fixed;
   bottom: 0;

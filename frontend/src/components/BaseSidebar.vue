@@ -2,6 +2,7 @@
   <v-navigation-drawer
     v-bind:style="{ width: '100%' }"
     permanent
+    class="sidebar"
   >
     <v-list
       dense
@@ -10,12 +11,15 @@
       <v-list-tile
         v-for="item in items"
         :key="item.title"
+        class="sb-list-tile"
         @click=""
       >
         <v-list-tile-action>
-          <v-icon>{{ item.icon }}</v-icon>
+          <span
+            class="sidebar-icon"
+            v-bind:class="item.icon"
+          />
         </v-list-tile-action>
-
         <v-list-tile-content>
           <v-list-tile-title>{{ item.title }}</v-list-tile-title>
         </v-list-tile-content>
@@ -30,9 +34,9 @@ export default {
   data() {
     return {
       items: [
-        { title: 'Air', icon: 'pan_tool' },
-        { title: 'Heater', icon: 'question_answer' },
-        { title: 'Light', icon: 'call_split' },
+        { title: 'Air', icon: 'icon-air' },
+        { title: 'Light', icon: 'icon-light' },
+        { title: 'Heater', icon: 'icon-heat' },
       ],
       right: null,
     };
@@ -40,9 +44,33 @@ export default {
 };
 </script>
 
-<style>
-.v-list--dense .v-list__tile {
-    font-size: 1.5em;
-    font-weight: 400;
+<style scoped lang="scss">
+@import '../styles/variables';
+
+// icon styles
+.v-list__tile__action {
+  font-weight: 400;
+  font-size: 1.4em;
+}
+
+.v-list__tile__title {
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.v-list {
+  div {
+    padding: 0.1em 0;
+  }
+}
+
+.sidebar-icon {
+  color: $grey-800;
+}
+
+.icon-air {
+  font-size: .9em;
+  position: relative;
+  left: 0.1em;
 }
 </style>

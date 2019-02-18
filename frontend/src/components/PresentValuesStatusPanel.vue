@@ -50,6 +50,9 @@ export default {
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
     },
+    sayHi() {
+      console.log('hello');
+    },
   },
 };
 </script>

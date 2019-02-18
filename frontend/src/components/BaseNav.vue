@@ -15,8 +15,10 @@
         flat
         value="recent"
       >
-        <span>Recent</span>
-        <v-icon>history</v-icon>
+        <div class="nav-logout-label">
+          Zee Prime
+        </div>
+        <span class="icon-reactor nav-icon" />
       </v-btn>
 
       <v-btn
@@ -24,17 +26,22 @@
         flat
         value="favorites"
       >
-        <span>Favorites</span>
-        <v-icon>favorite</v-icon>
+        <div class="nav-logout-label">
+          LQR
+        </div>
+        <span class="icon-reactor nav-icon" />
       </v-btn>
 
       <v-btn
         color="teal"
         flat
-        value="nearby"
+        value="logout"
+        class="nav-logout-button"
       >
-        <span>Nearby</span>
-        <v-icon>place</v-icon>
+        <div class="nav-logout-label">
+          Logout
+        </div>
+        <span class="icon-logout nav-icon" />
       </v-btn>
     </v-bottom-nav>
   </v-card>
@@ -45,7 +52,7 @@ export default {
   name: 'BaseNav',
   data() {
     return {
-      bottomNav: 'recent',
+      bottomNav: 'favorites',
     };
   },
 };
@@ -62,5 +69,18 @@ export default {
   .v-icon {
     font-size: 4.5vh;
   }
+}
+
+.nav-icon {
+  font-size: 4vh;
+}
+
+.nav-logout-button {
+  padding-top: 2.1vh !important;
+}
+
+.nav-logout-label {
+  position: relative;
+  top: 0.4vh;
 }
 </style>

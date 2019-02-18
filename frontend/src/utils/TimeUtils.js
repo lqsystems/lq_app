@@ -4,17 +4,17 @@ export const convertToAmPm = (timeStr) => {
   let hours = Number(splitTimeStr[0]);
 
   if (hours === 0) {
-    return `12:${minutes}am`;
+    return `12:${minutes} am`;
   }
 
   if (hours === 12) {
-    return `${hours}:${minutes}pm`;
+    return `${hours}:${minutes} pm`;
   }
 
   if (hours > 12) {
     hours -= 12;
-    return `${hours}:${minutes}pm`;
+    return `${hours}:${minutes} pm`;
   }
 
-  return `${hours}:${minutes}am`;
+  return `${hours}:${minutes} am`;
 };
