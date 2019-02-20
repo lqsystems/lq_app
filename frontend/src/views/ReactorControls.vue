@@ -18,7 +18,7 @@
         <BaseSidebar />
       </div>
       <div class="rc-controls">
-        <AirControlPanel />
+        <HeaterControlPanel />
       </div>
     </div>
   </div>

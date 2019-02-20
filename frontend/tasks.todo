@@ -1,14 +1,5 @@
-**Style Reactor View:
-
-
-☐ import anela icons 
-☐ crop reactor icon
-☐ import icon into icomoon 
-☐ download font pack into project
-☐ link icon css into main .js
-
-☐ swap nav icons
-☐ import anela icon into bla blah
-☐ swap control sidebar icons
-
-Login Page:
+Allow Switching of Evn Controls:
+☐ add appropriate ui mutations, etc
+☐ make a sidebar item component
+☐ render sidebar items in Reactor Controls
+☐ add click hanlders to sidebar items
