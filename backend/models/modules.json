@@ -1,0 +1,87 @@
+[
+    {
+        "name" : "module1",
+        "interface" : [
+            { "name" : "SensorOnOff", "label" : "Sensor Data", "states" : "On/Off", "type" : "switch", "appears" : "required" },
+            { "name" : "readTimeDelta", "label" : "Read Interval(secs)", "type" : "parameter", "appears" : "true" },
+            { "name" : "sensorA", "label" : "OD", "type" : "receiver", "appears" : "true" },
+            { "name" : "sensorB", "label" : "Temperature &#8451;", "type" : "receiver", "appears" : "true"  }
+        ],
+        "hardware" : {
+        }
+    },
+    {
+        "name" : "module2",
+        "interface" : [
+            { "name" : "SensorOnOff", "label" : "Sensor Data", "states" : "On/Off", "type" : "switch", "appears" : "required" },
+            { "name" : "readTimeDelta", "label" : "Read Interval(secs)", "type" : "parameter", "appears" : "true" },
+            { "name" : "sensorA", "label" : "OD", "type" : "receiver", "appears" : "true" },
+            { "name" : "sensorB", "label" : "Temperature &#8451;", "type" : "receiver", "appears" : "true"  }
+        ],
+        "interface" : {
+        }
+    },
+    {
+        "name" : "module3",
+        "interface" : [
+            { "name" : "SensorOnOff", "label" : "Sensor Data", "states" : "On/Off", "type" : "switch", "appears" : "required" },
+            { "name" : "readTimeDelta", "label" : "Read Interval(secs)", "type" : "parameter", "units" :"secs", "appears" : "true" },
+            { "name" : "sensorA", "label" : "OD", "type" : "receiver", "appears" : "true" },
+            { "name" : "sensorB", "label" : "Temperature &#8451;", "type" : "receiver", "appears" : "true"  }
+        ],
+        "hardware" : {
+        }
+    },
+    {
+        "name" : "module4",
+        "interface" : [
+            { "name" :  "Lamp", "group" : "Lamp", "label" : "Light",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "required", "enabler" : [ "Intensity", "start-lamp", "stop-lamp" ]},
+            { "name" : "Intensity", "group" : "Lamp", "label" : "Intensity", "type" : "slider", "range" : [0,100], "units" :"%", "appears" : "true" },
+            { "name" : "start-lamp", "group" : "Lamp", "label" : "Time On(secs)", "type" : "parameter", "units" :"secs", "appears" : "true" },
+            { "name" : "stop-lamp", "group" : "Lamp", "label" : "Time Off(secs)", "type" : "parameter", "units" :"secs", "appears" : "true" },
+
+            { "name" :  "Heater", "group" : "heater", "label" : "Heater",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true", "enabler" : [ "temperature" ]},
+            { "name" : "temperature", "group" : "heater", "label" :  "Temperature &#8451;", "type" : "slider", "range" : [0,100], "units" :"&#8451;C", "appears" : "true" },
+
+            { "name" :  "Air",  "label" : "Air",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true" },
+
+            { "name" :  "water", "group" : "pumps", "label" : "Load Water",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true" },
+
+            { "name" :  "inoculum", "group" : "pumps", "label" : "Load Inoculum",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true" },
+
+            { "name" :  "mixer", "group" : "pumps", "label" : "Recirc/Mix",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true" },
+
+            { "name" :  "extraction", "group" : "pumps", "label" : "Extraction",
+                        "states" : "On/Off",
+                        "type" : "switch",
+                        "appears" : "true" }
+        ],
+        "hardware" : {
+        }
+    },
+    {
+        "name" : "module5",
+        "interface" : [
+        ],
+        "hardware" : {
+        }
+    }
+]

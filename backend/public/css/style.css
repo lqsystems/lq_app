@@ -1,0 +1,117 @@
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+      /*color: black;*/
+      background-color: #C5B358;
+      border-bottom-color: #ffffff;
+
+  }
+
+
+
+
+
+
+
+/*@font-face {
+  font-family: pacifica;
+  src: url(/fonts/PacificaCondensed.ttf);
+}*/
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
+.page-header{
+  margin-top:0;
+}
+
+footer{
+  margin-top:40px;
+}
+
+.btn-block {
+  width:20%;
+}
+
+input {
+  display: block;
+}
+
+.procedureFields {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mediaFields {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.isDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+a[aria-disabled="true"] {
+  color: currentColor;
+  display: inline-block;  /* For IE11/ MS Edge bug */
+  pointer-events: none;
+  text-decoration: none;
+}
+.isDisabled > a {
+  color: currentColor;
+  display: inline-block;  /* For IE11/ MS Edge bug */
+  pointer-events: none;
+  text-decoration: none;
+}
+
+
+
+

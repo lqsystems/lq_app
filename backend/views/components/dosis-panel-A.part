@@ -1,0 +1,220 @@
+	<div class="table-responsive">
+	<table class="table text-left" style="width:80%">
+		<tbody>
+			<tr>
+				<td><h4>Sensor Data</h4></td>
+				<td>
+				</td>
+				<td>&nbsp</td>
+			</tr>
+			<tr>
+				<td  style="width:40%">
+					<div id="{{mod_name}}-SensorOnOff-control" class="switch switch-small" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+							<input type="checkbox"  id="{{mod_name}}-SensorOnOff" name="SensorOnOff" />
+					</div>
+				</td>
+				<td  style="width:60%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td  style="width:40%"><label>Read Interval(secs)</label></td>
+				<td><input id="{{mod_name}}-readTimeDelta" type="text" value=5 /></td>
+			</tr>
+			<tr>
+				<td  style="width:40%"><label>OD:</label></td>
+				<td><span id="{{mod_name}}-sensorA-output">0.0</span>
+				</td>
+			</tr>
+			<tr>
+				<td  style="width:60%"><label>Temperature &#8451;:</label></td>
+				<td><span id="{{mod_name}}-sensorB-output">0.0</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<br/>
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Air:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Air-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Air" name="Air" />
+			</div>
+		</div>
+
+	</div>
+	<table class="table text-left">
+		<tr>
+		<td  style="width:40%"><label>Time On(secs)</label></td>
+		<td><input id="{{mod_name}}-start-air" type="text" value=5 /></td>
+		</tr>
+
+		<tr>
+		<td  style="width:40%"><label>Time Off(secs)</label></td>
+		<td><input id="{{mod_name}}-stop-air" type="text" value=5 /></td>
+		</tr>
+	</table>
+	<br/>
+
+
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Light:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Lamp-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Lamp" name="Lamp" />
+			</div>
+		</div>
+	</div>
+	<table class="table text-left">
+		<tbody>
+		<tr>
+			<td style="width:40%"><h4>Intensity</h4></td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td  style="width:20%">
+				<div id="{{mod_name}}-Intensity-control" class="switch switch-small" data-on-label="LOCK" data-off-label="EDIT" data-on="success" data-off="info">
+					<input type="checkbox"  id="{{mod_name}}-Intensity" name="Intensity" />
+				</div>
+			</td>
+			<td  style="width:65%">
+				<input id="{{mod_name}}-slider-Intensity" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" />
+			</td>
+			<td  style="width:15%;text-align:right"><span id="{{mod_name}}-slider-Intensity-Value">0</span>%</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td  style="width:40%"><label>Time On(secs)</label></td>
+			<td><input id="{{mod_name}}-start-lamp" type="text" value=5 /></td>
+		</tr>
+
+		<tr>
+			<td  style="width:40%"><label>Time Off(secs)</label></td>
+			<td><input id="{{mod_name}}-stop-lamp" type="text" value=5 /></td>
+		</tr>
+
+		</tbody>
+	</table>
+
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Heater:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Heater-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Heater" name="Heater" />
+			</div>
+		</div>
+	</div>
+	<table class="table text-left">
+		<tbody>
+		<tr>
+			<td style="width:40%"><h4>Temperature &#8451;</h4></td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td  style="width:20%">
+				<div id="{{mod_name}}-temperature-control" class="switch switch-small" data-on-label="LOCK" data-off-label="EDIT" data-on="success" data-off="info">
+						<input type="checkbox"  id="{{mod_name}}-temperature" name="temperature"  />
+				</div>
+			</td>
+			<td  style="width:65%">
+				<input id="{{mod_name}}-slider-temperature" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" />
+			</td>
+			<td  style="width:15%;text-align:right"><span id="{{mod_name}}-slider-temperature-Value">0</span>&#8451;</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td  style="width:40%"><label>Time On(secs)</label></td>
+			<td><input id="{{mod_name}}-start-heater" type="text" value=5 /></td>
+		</tr>
+
+		<tr>
+			<td  style="width:40%"><label>Time Off(secs)</label></td>
+			<td><input id="{{mod_name}}-stop-heater" type="text" value=5 /></td>
+		</tr>
+
+
+		</tbody>
+	</table>
+
+	<br/>
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Load Water:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-water-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-water" name="pump[water]" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Load Inoculum:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-inoculum-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-inoculum" name="pump[inoculum]" />
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Recirc/Mix:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-mixer-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-mixer" name="pump[mixer]"  />
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Extraction:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-extraction-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-extraction" name="pump[extraction]" />
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Parameters:</h4>
+		</div>
+		<table class="table text-left">
+			<tbody>
+			<tr>
+				<td  style="width:30%;text-align:center"><label>Rate(ml/secs)</label></td>
+				<td><input id="{{mod_name}}-material-rate" type="text" value=0 /></td>
+				<td  style="width:30%;text-align:center"><label>Amount(L)</label></td>
+				<td><input id="{{mod_name}}-material-amount" type="text" value=0 /></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>

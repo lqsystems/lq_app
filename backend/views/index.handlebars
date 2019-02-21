@@ -1,0 +1,610 @@
+
+<script src="/controllers/prepare.js"></script>
+<script languag="javascript" >
+var gController_is_cloud = false
+
+var mms = [
+{{#modules}}
+'{{mod_name}}',
+{{/modules}}
+0
+]
+
+window.dosisApp.moduleType = mms[0]; // start with a prefered tab for the kinds of modules.
+
+</script>
+
+
+<!-- Centered Pills -->
+
+<ul class="nav nav-pills nav-justified">
+{{#modules}}
+  <li {{#if mod_active}}class="active"{{/if}} onclick="dosisApp.setModuleType('{{mod_name}}')"><a href="#{{mod_name}}" data-toggle="pill">{{title}}</a></li>
+{{/modules}}
+</ul>
+<br/>
+<div class="tab-content">
+{{#modules}}
+{{#if mod_active}}
+    <div id="{{mod_name}}" class="tab-pane active fade in " >
+{{else}}
+    <div id="{{mod_name}}" class="tab-pane fade" >
+{{/if}}
+
+
+<div id="controls-type-{{mod_name}}" >
+	<div class="table-responsive">
+	<table class="table text-left" style="width:80%">
+		<tbody>
+			<tr style="vertical-align:middle">
+				<td><h4>Module: {{mod_name}}</h4></td>
+				<td></td>
+				<td>&nbsp</td>
+			</tr>
+			<tr style="vertical-align:middle">
+				<td><h4>Reaction:</h4></td>
+<td style="border: 1px solid navy;background-color: #EFEFE9;cursor:pointer;vertical-align:middle;text-align:center">
+					<span id="{{mod_name}}-current-reactions" style="font-weight:bold;font-size:90%">select</span></td>
+				<td>&nbsp</td>
+			</tr>
+			<tr>
+				<td><h4>Sensor Data</h4></td>
+				<td>
+				</td>
+				<td>&nbsp</td>
+			</tr>
+			<tr>
+				<td  style="width:40%">
+					<div id="{{mod_name}}-SensorOnOff-control" class="switch switch-small" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+							<input type="checkbox"  id="{{mod_name}}-SensorOnOff" name="SensorOnOff" />
+					</div>
+				</td>
+				<td  style="width:60%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td  style="width:40%"><label>Read Interval(secs)</label></td>
+				<td><input id="{{mod_name}}-SensorOnOff-ctrlParam" type="text" value=5 /></td>
+			</tr>
+			<tr>
+				<td  style="width:40%"><label>OD:</label></td>
+				<td><span id="{{mod_name}}-sensorA-output">0.0</span>
+				</td>
+			</tr>
+			<tr>
+				<td  style="width:60%"><label>Temperature &#8451;:</label></td>
+				<td><span id="{{mod_name}}-sensorB-output">0.0</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<br/>
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Air:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Air-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Air" name="Air" />
+			</div>
+		</div>
+
+	</div>
+	<br/>
+
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Light:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Lamp-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Lamp" name="Lamp" />
+			</div>
+		</div>
+	</div>
+	<table class="table text-left">
+		<tbody>
+		<tr>
+			<td style="width:40%"><h4>Intensity</h4></td>
+			<td  style="width:65%">
+				<input id="{{mod_name}}-slider-Intensity" class="slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" />
+			</td>
+			<td  style="width:15%;text-align:right"><span id="{{mod_name}}-slider-Intensity-Value">0</span>%</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td  style="width:40%"><label>Start Time of Day</label></td>
+			<td >
+				<div class="input-group clockpicker">
+				<input id="{{mod_name}}-start-lamp" type="text"  class="form-control" value="09:30" />
+				<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+				</span>
+				</div>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td  style="width:40%"><label>End Time of Day</label></td>
+			<td >
+				<div class="input-group clockpicker">
+				<input id="{{mod_name}}-stop-lamp" type="text"  class="form-control" value="09:30" />
+				<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+				</span>
+				</div>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+
+	<div class="row"  style="background-color:#EEEEE6"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Heater:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-Heater-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox"  id="{{mod_name}}-Heater" name="Heater" />
+			</div>
+		</div>
+	</div>
+
+	<table class="table text-left">
+		<tbody>
+		<tr>
+			<td style="width:40%"><h4>Heater Level</h4></td>
+			<td  style="width:65%">
+				<input id="{{mod_name}}-slider-heater" class="slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" />
+			</td>
+			<td  style="width:15%;text-align:right"><span id="{{mod_name}}-slider-heater-Value">0</span>%</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+			<td>
+			</td>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td style="width:40%"><h4>Temperature &#8451;</h4></td>
+			<td  style="width:60%">
+				<input id="{{mod_name}}-slider-temperature-range" class="slider" type="text" data-slider-range="true" data-slider-min="15" data-slider-max="45" data-slider-step="1" data-slider-value="0" />
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<table class="table text-left">
+		<tbody>
+		<tr>
+			<td style="width:35%;text-align:right;vertical-align:middle"><h4>Low</h4></td>
+			<td style="width:15%;text-align:left;vertical-align:middle">
+				<span id="{{mod_name}}-slider-temperature-low-Value">15</span>&#8451;
+			</td>
+			<td style="width:35%;text-align:right;vertical-align:middle"><h4>High</h4></td>
+			<td style="width:15%;text-align:left;vertical-align:middle">
+				<span id="{{mod_name}}-slider-temperature-high-Value">45</span>&#8451;
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+
+	<br/>
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Load Water:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-water-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}PumpGroup" id="{{mod_name}}-water" name="pump[water]" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Load Inoculum:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-inoculum-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}PumpGroup"  id="{{mod_name}}-inoculum" name="pump[inoculum]" />
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Recirc/Mix:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-mixer-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}PumpGroup" id="{{mod_name}}-mixer" name="pump[mixer]"  />
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Extraction:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-extraction-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}PumpGroup" id="{{mod_name}}-extraction" name="pump[extraction]" />
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Parameters:</h4>
+		</div>
+		<table class="table text-left">
+			<tbody>
+			<tr>
+				<td  style="width:30%;text-align:right"><label>Rate(ml/secs)</label></td>
+				<td><input id="{{mod_name}}-material-rate" type="text" value=0 /></td>
+				<td  style="width:30%;text-align:center"><label>Amount(ml)</label></td>
+				<td><input id="{{mod_name}}-material-amount" type="text" value=0 /></td>
+			</tr>
+			<tr>
+				<td  style="width:30%;text-align:right"><label>Speed</label></td>
+				<td  style="width:55%">
+					<input id="{{mod_name}}-slider-Pumprate" class="slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" />
+				</td>
+				<td  style="width:15%;text-align:right"><span id="{{mod_name}}-slider-Pumprate-Value">0</span>%</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<br/>
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Raise Lid:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-forward-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}LinActGroup"  id="{{mod_name}}-forward" name="linact[forward]"  />
+			</div>
+		</div>
+	</div>
+
+	<div class="row"  style="background-color:#EEEEE6;border-bottom:1px navy solid;padding-top:8px"  >
+		<div class="col-lg-4 mr-auto">
+			<h4>Lower Lid:</h4>
+		</div>
+		<div class="col-lg-4 mr-auto">
+			<div id="{{mod_name}}-backwards-control" class="switch" data-on-label="ON" data-off-label="OFF" data-on="success" data-off="info">
+				<input type="checkbox" class="{{mod_name}}LinActGroup" id="{{mod_name}}-backwards" name="linact[backwards]"   />
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+
+	addSwitch("{{mod_name}}-SensorOnOff","{{mod_name}}")
+	addSwitch("{{mod_name}}-Air","{{mod_name}}")
+	addSwitch("{{mod_name}}-Lamp","{{mod_name}}")
+	addSwitch("{{mod_name}}-Heater","{{mod_name}}")
+	addSwitch("{{mod_name}}-water","{{mod_name}}")
+	addSwitch("{{mod_name}}-inoculum","{{mod_name}}")
+	addSwitch("{{mod_name}}-mixer","{{mod_name}}")
+	addSwitch("{{mod_name}}-extraction","{{mod_name}}")
+	//
+	addSwitch("{{mod_name}}-forward","{{mod_name}}")
+	addSwitch("{{mod_name}}-backwards","{{mod_name}}")
+	//
+	declareGroup(["{{mod_name}}-water","{{mod_name}}-inoculum","{{mod_name}}-mixer","{{mod_name}}-extraction"]);
+	declareGroup(["{{mod_name}}-forward","{{mod_name}}-backwards"]);
+	//
+	valueLink("{{mod_name}}-Lamp",["{{mod_name}}-slider-Intensity-Value","{{mod_name}}-start-lamp","{{mod_name}}-stop-lamp"])
+	valueLink("{{mod_name}}-Heater",["{{mod_name}}-slider-heater-Value","{{mod_name}}-slider-temperature-low-Value","{{mod_name}}-slider-temperature-high-Value"])
+	valueLink("{{mod_name}}-water",["{{mod_name}}-material-rate","{{mod_name}}-material-amount","{{mod_name}}-slider-Pumprate-Value"])
+	valueLink("{{mod_name}}-inoculum",["{{mod_name}}-material-rate","{{mod_name}}-material-amount","{{mod_name}}-slider-Pumprate-Value"])
+	valueLink("{{mod_name}}-mixer",["{{mod_name}}-material-rate","{{mod_name}}-material-amount","{{mod_name}}-slider-Pumprate-Value"])
+	valueLink("{{mod_name}}-extraction",["{{mod_name}}-material-rate","{{mod_name}}-material-amount","{{mod_name}}-slider-Pumprate-Value"])
+	//
+
+	valueLink("{{mod_name}}-SensorOnOff",["{{mod_name}}-SensorOnOff-ctrlParam"])
+	//
+	lockOnUse("{{mod_name}}-material-rate",disableValueField);
+	zeroOnOff("{{mod_name}}-material-rate",zeroValueField);
+	lockOnUse("{{mod_name}}-material-amount",disableValueField);
+	zeroOnOff("{{mod_name}}-material-amount",zeroValueField);
+
+	senderReceiverField("OD","{{mod_name}}-sensorA-output","{{mod_name}}-SensorOnOff-ctrlParam","{{mod_name}}");
+	senderReceiverField("Temperature","{{mod_name}}-sensorB-output","{{mod_name}}-SensorOnOff-ctrlParam","{{mod_name}}");
+
+	{{#if mod_active}}
+	prepare_active_module('{{mod_name}}');
+	{{/if}}
+
+</script>
+
+
+
+	<br />
+    </div>
+
+{{/modules}}
+</div>
+
+
+<!--
+						<br/>
+-->
+
+<div id='reaction-container' >
+
+{{#modules}}
+	<div id="{{mod_name}}-reaction-lists">
+		{{#reactions}}
+              <div id="reactDiv{{id}}" class="well"  {{#if active}}style="border: solid 2px green"{{/if}}>
+				<table  style="width:100%">
+					<tr>
+						<td style="width:35%"><h4>{{name}}</h4></td>
+						<td style="width:15%">
+							<span id="ReactionActive-{{id}}-control" class="switch" data-on-label=" ACTIVE " data-off-label=" <<->> " data-on="success" data-off="info">
+								<input type="checkbox"  id="ReactionActive-{{id}}" name="ReactionActive-{{id}}"/>
+							</span>
+						</td>
+
+						<td style="width:15%">
+											<button class="btn btn-default view-data"
+												data-toggle="modal"
+												data-target="#dataModal"
+												data-id="{{id}}"
+												data-name="{{name}}"
+											>
+												<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+											</button>
+						</td>
+
+						<td style="width:15%">
+											<button class="btn btn-default view-events"
+												data-toggle="modal"
+												data-target="#eventModal"
+												data-id="{{id}}"
+											>
+												<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+											</button>
+						</td>
+
+						<td style="width:15%">
+											<button class="btn btn-default edit-reaction"
+											data-toggle="modal"
+											data-target="#editFormModal"
+											data-id="{{id}}"
+											data-name="{{name}}"
+											data-media="{{media}}"
+											data-procedure="{{procedure}}"
+											data-notes="{{notes}}">
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											</button>
+						</td>
+
+
+						<td style="width:15%">
+							  <button class="btn btn-default pull-right" data-toggle="collapse" href="#reaction{{id}}" aria-expanded="false" aria-controls="reaction{{id}}">
+							  	<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							  </button>
+						</td>
+					</tr>
+				</table>
+<script lang="javascript">
+	var offOnDeactivate = true;
+	addActivityButton("{{id}}","ReactionActive-{{id}}","{{../mod_name}}");
+	setCurrentModule({{active}},"{{id}}","{{../mod_name}}");
+</script>
+
+	<div class="collapse" id="reaction{{id}}">
+                    <br />
+					<div style="width:100%;max-height:250px;height:250px;overflow:auto" >
+					<p><strong>Media: </strong></p>
+					  <ol>
+						  {{#each media}}
+							<li>{{this}}</li>
+						  {{/each}}
+					  </ol>
+					<p><strong>Notes:</strong></p>
+					  <ol>
+						  {{#each notes}}
+							<li>{{this}}</li>
+						  {{/each}}
+					  </ol>
+					</div>
+
+                    <hr />
+					<table style="width:100%">
+						<tr>
+							<td style="width:80%">
+							</td>
+							<td style="width:20%;text-align:right;spacing-right:10px" >
+												<button class="btn btn-default delete-reaction" data-id="{{id}}">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+							</td>
+						</tr>
+					</table>
+
+              </div>
+		</div>
+
+		{{/reactions}}
+	</div>
+
+{{/modules}}
+
+
+  <!-- Invokes ADD Form Modal -->
+<div style="margin-bottom:20px">
+<button id="createReaction" type="button" class="btn btn-info" data-toggle="modal" data-target="#formModal">
+	Create Reaction
+</button>
+</div>
+
+
+
+</div>
+
+
+  <!-- ADD Form Modal -->
+  <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <!-- action /add called in index.js -->
+          <form method="post" action="/add"  onsubmit="return validateAddReactionForm()" >
+			  <input type="hidden" id="add-form-type" name="type" value="{{mod_name}}" />
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myAddModalTitle">Add Reaction for Module: <span id="add-moduleID">modulename</span> </h4>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label id="myAddModalLabel" >Reaction Name</label>
+                    <input type="text" class="form-control" name="name" />
+                  </div>
+                  <div class="form-group">
+                    <div class="mediaAddModal">
+                      <label>Media</label>
+                      <div style="height: 50px" class="form-control mediaFields"><p style="float: left; margin-right: 10px"><b>1</b></p>
+						<textarea style="width: 90%; height: 95%" name="media[]"/></textarea>
+					  </div>
+                    </div>
+                    <div><button class="btn btn-default new_media_AddModal">+</button></div>
+                    <!-- <textarea class="form-control" name="media"></textarea> -->
+                  </div>
+                  <div class="form-group">
+                    <div class="procedureAddModal">
+                      <label>Notes</label>
+                      <div style="height: 50px" class="form-control procedureFields"><p style="float: left; margin-right: 10px"><b>1</b></p><textarea style="width: 90%; height: 95%" name="notes[]"/></textarea></div>
+                    </div>
+                    <div><button class="btn btn-default new_procedure_AddModal">+</button></div>
+                  </div>
+              </div>
+              <div class="modal-footer" style="margin-top: 0px">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save" />
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT Form Modal -->
+  <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <!-- action /edit called in index.js -->
+          <form method="post" action="/edit">
+
+              <input type="hidden" id="edit-form-id" name="id" />
+			  <input type="hidden" id="edit-form-type" name="type" />
+
+              <div class="modal-header">
+                <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myEditModalTitle">Edit Reaction for Module: <span id="edit-moduleID">modulename</span></h4>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label id="myEditModalLabel">Reaction Name</label>
+                    <input type="text" class="form-control" name="name" id="edit-form-name" />
+                  </div>
+                  <div class="form-group">
+                    <label>Media</label>
+                    <div class="mediaEditModal">
+                    </div>
+                    <div><button class="btn btn-default new_media_EditModal">+</button></div>
+                  </div>
+                  <div class="form-group">
+                      <label>Notes</label>
+                      <div class="notesEditModal">
+                      </div>
+                      <div><button class="btn btn-default new_notes_EditModal">+</button></div>
+                  </div>
+              </div>
+              <div class="modal-footer" style="margin-top:0px">
+                <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save" />
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DATA VIEW Modal -->
+  <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+    <div class="modal-dialog" role="document" style="width:90%" >
+			<div class="modal-content" style="width:90%;padding-left:30px" >
+
+			<div class="modal-header">
+				<button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myDataModalTitle">Sensor Data for Module: <span id="data-moduleID">modulename</span></h4>
+			</div>
+
+			<div id="data-log-OD" class="row" style="width:100%;max-height:400px;min-height:250px;overflow:auto" >
+
+			</div>
+			<div id="data-log-temp" class="row" style="width:100%;max-height:400px;min-height:250px;overflow:auto" >
+
+			</div>
+
+		  <div class="modal-footer" style="margin-top:0px">
+			<button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+		  </div>
+
+		</div>
+    </div>
+  </div>
+
+
+
+  <!-- EVENT VIEW Modal -->
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+    <div class="modal-dialog" role="document" style="width:90%" >
+      <div class="modal-content" style="width:100%" >
+
+		  <div class="modal-header">
+			<button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myEventModalTitle">Sensor Data for Module: <span id="event-moduleID">modulename</span></h4>
+		  </div>
+
+			<div id="data-log-temp" class="row" style="width:100%;max-height:400px;min-height:250px;overflow:auto" >
+			<table  style="width:100%;margin-bottom:4px;" >
+				<tr style="width:100%;veritcal-align:top" >
+					<td style="width:20%;text-align:right" >
+					<button class="btn" type="button" onclick="requestDataLog(-1)"> &lt; </button>
+					</td>
+					<td style="width:60%;text-align:center" >
+					Event Log - <span id="event-reactionID">modulename</span>
+					</td>
+					<td style="width:20%;text-align:left" >
+					<button class="btn" type="button" onclick="requestDataLog(1)"> &gt; </button>
+					</td>
+				</tr>
+			</table>
+			<ul id="event-log" style="width:100%;max-height:250px;height:250px;overflow:auto;border-top:1px solid darkgreen" >
+			</ul>
+
+			</div>
+
+		  <div class="modal-footer" style="margin-top:0px">
+			<button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+		  </div>
+
+		</div>
+    </div>
+  </div>
+
