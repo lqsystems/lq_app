@@ -43,7 +43,7 @@ export default {
     this.$store.dispatch('fetchEnvironmentState');
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),
+    ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },

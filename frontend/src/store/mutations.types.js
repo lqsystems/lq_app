@@ -1,0 +1,6 @@
+// Enviroment Control Mutations
+export const SET_ACTIVE_CONTROL_PANEL = 'SET_ACTIVE_CONTROL_PANEL';
+export const SET_AIR_ACTIVE = 'SET_AIR_ACTIVE';
+export const SET_HEATER_ACTIVE = 'SET_HEATER_ACTIVE';
+export const SET_HEATER_LEVEL = 'SET_HEATER_LEVEL';
+export const SET_LIGHT_ACTIVE = 'SET_LIGHT_ACTIVE';

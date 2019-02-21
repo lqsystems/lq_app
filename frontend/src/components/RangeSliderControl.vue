@@ -3,7 +3,7 @@
     <BaseRangeSlider
       v-bind:min-val="20"
       v-bind:max-val="80"
-      v-on:slider-move="updateslidersliderPosition"
+      v-on:slider-move="setslidersliderPosition"
     />
   </SliderControlTemplate>
 </template>
@@ -29,7 +29,7 @@ export default {
     },
   },
   methods: {
-    updateslidersliderPosition(pos) {
+    setslidersliderPosition(pos) {
       console.log(pos);
       this.slidersliderPosition = pos;
     },

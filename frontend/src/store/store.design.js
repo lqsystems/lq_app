@@ -17,15 +17,15 @@ const environmentControls = {
     const { powerOn } = state[type];
     state[type].powerOn = !powerOn;
   },
-  updateLevel(state, type, level) {
+  setLevel(state, type, level) {
     state[type].level = level;
   },
 
   mutations: [
     'togglePower',
-    'updateTime',
-    'updateLevel',
-    'updateLimit',
+    'setTime',
+    'setLevel',
+    'setLimit',
   ],
 };
 

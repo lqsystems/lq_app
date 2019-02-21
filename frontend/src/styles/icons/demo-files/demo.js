@@ -14,17 +14,17 @@ document.body.addEventListener("click", function(e) {
     var fontSize = document.getElementById('fontSize'),
         testDrive = document.getElementById('testDrive'),
         testText = document.getElementById('testText');
-    function updateTest() {
+    function setTest() {
         testDrive.innerHTML = testText.value || String.fromCharCode(160);
         if (window.icomoonLiga) {
             window.icomoonLiga(testDrive);
         }
     }
-    function updateSize() {
+    function setSize() {
         testDrive.style.fontSize = fontSize.value + 'px';
     }
-    fontSize.addEventListener('change', updateSize, false);
-    testText.addEventListener('input', updateTest, false);
-    testText.addEventListener('change', updateTest, false);
-    updateSize();
+    fontSize.addEventListener('change', setSize, false);
+    testText.addEventListener('input', setTest, false);
+    testText.addEventListener('change', setTest, false);
+    setSize();
 }());

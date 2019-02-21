@@ -1,5 +1,3 @@
 Allow Switching of Evn Controls:
-☐ add appropriate ui mutations, etc
-☐ make a sidebar item component
-☐ render sidebar items in Reactor Controls
 ☐ add click hanlders to sidebar items
+☐ add mutations for setting 

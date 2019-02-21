@@ -15,29 +15,66 @@
     </div>
     <div class="rc-main">
       <div class="rc-sidebar">
-        <BaseSidebar />
+        <BaseSidebar>
+          <BaseSidebarItem
+            title="Air"
+            icon-name="icon-air"
+            v-bind:handle-click="SET_AIR_ACTIVE"
+          />
+          <BaseSidebarItem
+            title="Light"
+            icon-name="icon-light"
+            v-bind:handle-click="SET_LIGHT_ACTIVE"
+          />
+          <BaseSidebarItem
+            title="Heater"
+            icon-name="icon-heat"
+            v-bind:handle-click="SET_HEATER_ACTIVE"
+          />
+        </BaseSidebar>
       </div>
       <div class="rc-controls">
-        <HeaterControlPanel />
+        {{ controlPanels[activeControlPanel] }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+import {
+  SET_AIR_ACTIVE,
+  SET_HEATER_ACTIVE,
+  SET_LIGHT_ACTIVE,
+} from '@/store/mutations.types';
+
 import BaseSidebar from '@/components/BaseSidebar';
+import BaseSidebarItem from '@/components/BaseSidebarItem';
 import LightControlPanel from '@/components/LightControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 import AirControlPanel from '@/components/AirControlPanel';
 
+
 export default {
   components: {
     BaseSidebar,
+    BaseSidebarItem,
     HeaterControlPanel,
     LightControlPanel,
     AirControlPanel,
   },
+  computed: {
+    ...mapGetters(['activeControlPanel']),
+  },
+  created() {
+    this.controlPanels = {
+      AIR: AirControlPanel,
+      LIGHT: LightControlPanel,
+      HEATER: HeaterControlPanel,
+    };
+  },
   methods: {
+    ...mapMutations([SET_AIR_ACTIVE, SET_HEATER_ACTIVE, SET_LIGHT_ACTIVE]),
     routeHome() {
       this.$router.push('/');
     },

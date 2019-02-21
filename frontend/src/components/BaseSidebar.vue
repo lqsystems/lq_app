@@ -8,22 +8,7 @@
       dense
       class="pt-0"
     >
-      <v-list-tile
-        v-for="item in items"
-        :key="item.title"
-        class="sb-list-tile"
-        @click=""
-      >
-        <v-list-tile-action>
-          <span
-            class="sidebar-icon"
-            v-bind:class="item.icon"
-          />
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+      <slot />
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -31,16 +16,6 @@
 <script>
 export default {
   name: 'BaseSidebar',
-  data() {
-    return {
-      items: [
-        { title: 'Air', icon: 'icon-air' },
-        { title: 'Light', icon: 'icon-light' },
-        { title: 'Heater', icon: 'icon-heat' },
-      ],
-      right: null,
-    };
-  },
 };
 </script>
 

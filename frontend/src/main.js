@@ -9,7 +9,6 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/icons/style.css';
 
 Vue.config.productionTip = false;
-console.log(store);
 
 new Vue({
   router,

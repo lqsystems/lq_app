@@ -1,6 +1,13 @@
 /* eslint "no-shadow": "off" */
-
 import Vue from 'vue';
+import {
+  SET_ACTIVE_CONTROL_PANEL,
+  SET_AIR_ACTIVE,
+  SET_HEATER_ACTIVE,
+  SET_HEATER_LEVEL,
+  SET_LIGHT_ACTIVE,
+  TOGGLE_HEATER_POWER,
+} from './mutations.types';
 
 const reformatByActuator = ({ state, levels, limits }) => ({
   air: {
@@ -36,17 +43,36 @@ const state = {
   },
 };
 
+
+// TODO: make constants for each control type
 const mutations = {
-  toggleHeaterPower(state) {
+  [SET_AIR_ACTIVE](state, panel) {
+    state.activeControlPanel = 'AIR';
+  },
+  [SET_LIGHT_ACTIVE](state, panel) {
+    state.activeControlPanel = 'HEATER';
+  },
+  [SET_HEATER_ACTIVE](state, panel) {
+    state.activeControlPanel = 'LIGHT';
+  },
+  [SET_HEATER_LEVEL](state, level) {
+    state.heater.level = level;
+  },
+  [TOGGLE_HEATER_POWER](state) {
     const { powerOn } = state.heater;
     state.heater.powerOn = !powerOn;
   },
-  updateHeaterLevel(state, level) {
-    state.heater.level = level;
-  },
+};
+
+const getters = {
+  air: state => state.air,
+  heater: state => state.heater,
+  lamp: state => state.lamp,
+  activeControlPanel: state => state.activeControlPanel,
 };
 
 export default {
   state,
   mutations,
+  getters,
 };

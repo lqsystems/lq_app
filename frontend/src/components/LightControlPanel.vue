@@ -12,7 +12,7 @@
       <SliderControl
         v-bind:level="heaterLevel"
         v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move="updateHeaterLevel"
+        v-on:slider-move="setHeaterLevel"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -65,7 +65,7 @@ export default {
     this.$store.dispatch('fetchEnvironmentState');
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),
+    ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },
