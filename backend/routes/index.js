@@ -194,7 +194,7 @@ function influxFIXTIMSTAMPS_statelog(tableName) {
 }
 
 influxFIXTIMSTAMPS('sensorData');
-influxFIXTIMSTAMPS_statelog('stateLog');
+// influxFIXTIMSTAMPS_statelog('stateLog');
 
 
 

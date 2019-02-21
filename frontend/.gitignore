@@ -24,5 +24,5 @@ yarn-error.log*
 *.sw*
 
 # Hayden's stuff
-tasks.todo
+*.todo
 requirements/
