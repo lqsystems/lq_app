@@ -34,7 +34,9 @@
         </BaseSidebar>
       </div>
       <div class="rc-controls">
-        {{ controlPanels[activeControlPanel] }}
+        <component
+        v-bind:is="currentControlPanel"
+        /> 
       </div>
     </div>
   </div>
@@ -65,13 +67,9 @@ export default {
   },
   computed: {
     ...mapGetters(['activeControlPanel']),
-  },
-  created() {
-    this.controlPanels = {
-      AIR: AirControlPanel,
-      LIGHT: LightControlPanel,
-      HEATER: HeaterControlPanel,
-    };
+    currentControlPanel() {
+      return `${this.activeControlPanel}ControlPanel`;
+    }
   },
   methods: {
     ...mapMutations([SET_AIR_ACTIVE, SET_HEATER_ACTIVE, SET_LIGHT_ACTIVE]),

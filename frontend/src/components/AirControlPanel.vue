@@ -38,9 +38,6 @@ export default {
       return [this.heater.minTemp, this.heater.maxTemp];
     },
   },
-  created() {
-    this.$store.dispatch('fetchEnvironmentState');
-  },
   methods: {
     ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
     getSliderLabel(sliderPos) {
