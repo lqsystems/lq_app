@@ -1,4 +1,5 @@
 var express = require('express'),
+    cors = require('cors'),
     path = require('path'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
@@ -147,6 +148,11 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true,
+  allowedHeaders: 'Content-Type',
+}));
 
 //BodyParser/CookieParser Middleware
 app.use(bodyParser.json());
