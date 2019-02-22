@@ -26,6 +26,7 @@
             primary
             large
             block
+            v-on:click="fetchData"
           >
             Login
           </v-btn>
@@ -36,10 +37,33 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const urlLogin = 'http://localhost:8888/users/login';
+const urlFetch = 'http://localhost:8888/';
+
+const creds = {
+  username: 'newuser', password: '1oneoaK!',
+};
+
 export default {
   name: 'Login',
   created() {
-    console.log('hello');
+    axios.defaults.withCredentials = true;
+    axios.post(urlLogin, creds);
+  },
+  methods: {
+    fetchData() {
+      axios.defaults.withCredentials = true;
+      console.log('fetching');
+      axios({
+        method: 'get',
+        url: urlFetch,
+      }).then((res) => {
+        console.log('fetch response');
+        console.log(res.data);
+      });
+    },
   },
 };
 

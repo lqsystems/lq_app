@@ -63,8 +63,9 @@ global.subst = (a,b,c) => {
     return(a);
 }
 
-
 global.ensureAuthenticated = (req, res, next) => {
+    console.log('Is authenticated:');
+    console.log(req.isAuthenticated());
     if ( req.isAuthenticated() ) {
         return next();
     } else {
