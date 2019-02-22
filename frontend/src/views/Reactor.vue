@@ -1,5 +1,5 @@
 <template>
-  <div class="reactor">
+  <div class="reactor view">
     <div class="reactor-header">
       Zee Prime
     </div>
@@ -45,11 +45,6 @@ export default {
     EnvironmentControlsStatusPanel,
     BaseNav,
     BaseSelect,
-  },
-  methods: {
-    routeToControls() {
-      this.$router.push('rc');
-    },
   },
 };
 </script>

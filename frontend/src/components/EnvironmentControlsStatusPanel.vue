@@ -53,7 +53,7 @@ export default {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
     },
     routeToControls() {
-      this.$router.push('rc');
+      this.$router.push('reactor-controls');
     },
   },
 };

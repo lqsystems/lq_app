@@ -193,7 +193,7 @@ function influxFIXTIMSTAMPS_statelog(tableName) {
                        });
 }
 
-influxFIXTIMSTAMPS('sensorData');
+// influxFIXTIMSTAMPS('sensorData');
 // influxFIXTIMSTAMPS_statelog('stateLog');
 
 

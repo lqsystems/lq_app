@@ -147,6 +147,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //BodyParser/CookieParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

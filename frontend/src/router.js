@@ -13,9 +13,14 @@ export default new Router({
       component: () => import('@/views/Reactor'),
     },
     {
-      path: '/rc',
+      path: '/reactor-controls',
       name: 'reactorControls',
       component: () => import('@/views/ReactorControls'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/Login'),
     },
     {
       path: '/test',

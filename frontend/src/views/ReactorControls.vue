@@ -1,5 +1,5 @@
 <template>
-  <div class="reactor-controls">
+  <div class="reactor-controls view">
     <div class="rc-header">
       <v-btn
         flat
@@ -35,8 +35,8 @@
       </div>
       <div class="rc-controls">
         <component
-        v-bind:is="currentControlPanel"
-        /> 
+          v-bind:is="currentControlPanel"
+        />
       </div>
     </div>
   </div>
@@ -69,7 +69,7 @@ export default {
     ...mapGetters(['activeControlPanel']),
     currentControlPanel() {
       return `${this.activeControlPanel}ControlPanel`;
-    }
+    },
   },
   methods: {
     ...mapMutations([SET_AIR_ACTIVE, SET_HEATER_ACTIVE, SET_LIGHT_ACTIVE]),
