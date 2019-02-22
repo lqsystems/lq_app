@@ -9,24 +9,30 @@
           LQ Systems
         </h1>
       </v-card-title>
-      <v-form>
+      <v-form
+        v-on:submit.prevent="login"
+      >
         <v-text-field
+          v-model="username"
           prepend-icon="person"
           name="Username"
           label="Username"
+          value="newuser"
         />
         <v-text-field
+          v-model="password"
           prepend-icon="lock"
           name="Password"
           label="Password"
           type="password"
+          value="1oneoaK!"
         />
         <v-card-actions>
           <v-btn
             primary
             large
             block
-            v-on:click="fetchData"
+            type="submit"
           >
             Login
           </v-btn>
@@ -48,11 +54,21 @@ const creds = {
 
 export default {
   name: 'Login',
-  created() {
-    axios.defaults.withCredentials = true;
-    axios.post(urlLogin, creds);
+  data() {
+    return {
+      username: 'newuser',
+      password: '1oneoaK!fdsa',
+    };
   },
   methods: {
+    login() {
+      axios.defaults.withCredentials = true;
+      axios.post(urlLogin, {
+        username: this.username,
+        password: this.password,
+      }).then(res => console.log(res.data))
+        .catch(err => console.log(err));
+    },
     fetchData() {
       axios.defaults.withCredentials = true;
       console.log('fetching');
@@ -63,6 +79,10 @@ export default {
         console.log('fetch response');
         console.log(res.data);
       });
+    },
+    printData() {
+      console.log(this.username);
+      console.log(this.password);
     },
   },
 };
