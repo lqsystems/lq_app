@@ -17,7 +17,6 @@
           prepend-icon="person"
           name="Username"
           label="Username"
-          value="newuser"
         />
         <v-text-field
           v-model="password"
@@ -25,7 +24,6 @@
           name="Password"
           label="Password"
           type="password"
-          value="1oneoaK!"
         />
         <v-card-actions>
           <v-btn
@@ -44,30 +42,38 @@
 
 <script>
 import axios from 'axios';
+import { mapActions } from 'vuex';
+import callApi from '@/utils/ApiUtils.js';
 
 const urlLogin = 'http://localhost:8888/users/login';
 const urlFetch = 'http://localhost:8888/';
-
-const creds = {
-  username: 'newuser', password: '1oneoaK!',
-};
 
 export default {
   name: 'Login',
   data() {
     return {
       username: 'newuser',
-      password: '1oneoaK!fdsa',
+      password: '1oneoaK!',
     };
   },
   methods: {
-    login() {
-      axios.defaults.withCredentials = true;
-      axios.post(urlLogin, {
+    ...mapActions(['fetchModules']),
+    async login() {
+      const credentials = {
         username: this.username,
         password: this.password,
-      }).then(res => console.log(res.data))
-        .catch(err => console.log(err));
+      };
+
+      const { data: error } = await callApi(urlLogin, {
+        method: 'post',
+        data: credentials,
+      });
+
+      if (error.message && error.message[0]) {
+        return alert(error.message[0]);
+      }
+
+      this.fetchModules('/');
     },
     fetchData() {
       axios.defaults.withCredentials = true;
@@ -79,10 +85,6 @@ export default {
         console.log('fetch response');
         console.log(res.data);
       });
-    },
-    printData() {
-      console.log(this.username);
-      console.log(this.password);
     },
   },
 };

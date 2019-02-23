@@ -13,7 +13,9 @@ router.get('/register', function (req, res) {
 
 //Login
 router.get('/login', function (req, res) {
-  res.render('login');
+  req.get('client') === 'newClient' 
+    ? res.json({ message: req.flashError })
+    : res.render('login');
 });
 
 //Register User
@@ -72,11 +74,8 @@ passport.use(new localStrategy(
         if (isMatch) {
           return done(null, user);
         } else {
-          return Promise.reject({
-            reason: 'LoginError',
-            message: 'Incorrect username or password'
-          });
-          return done(null, false, { message: 'Invalid password' });
+         console.log('password failure') 
+        return done(null, false, { message: 'Invalid password' });
         }
       });
     });

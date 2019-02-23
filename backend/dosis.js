@@ -69,6 +69,7 @@ global.ensureAuthenticated = (req, res, next) => {
     if ( req.isAuthenticated() ) {
         return next();
     } else {
+        req.flash('error', 'Not logged in');
         res.redirect('/users/login');
     }
 }
@@ -152,7 +153,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
   origin: 'http://localhost:8080',
   credentials: true,
-  allowedHeaders: 'Content-Type',
+  allowedHeaders: ['Content-Type', 'client'],
 }));
 
 //BodyParser/CookieParser Middleware
@@ -194,10 +195,13 @@ app.use(flash());
 
 //Global Variables
 app.use(function (req, res, next){
+  var flashError = req.flash('error');
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
+  res.locals.error = flashError;
   res.locals.user = req.user || null;
+  // Gives endpoints access to flash error
+  req.flashError = flashError;
   next();
 });
 
