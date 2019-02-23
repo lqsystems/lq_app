@@ -1,4 +1,7 @@
 // Enviroment Control Mutations
+export const FETCH_MODULES = 'FETCH_MODULES';
+export const LOAD_MODULES = 'LOAD_MODULES';
+export const LOAD_REACTIONS = 'LOAD_REACTIONS';
 export const SET_ACTIVE_CONTROL_PANEL = 'SET_ACTIVE_CONTROL_PANEL';
 export const SET_AIR_ACTIVE = 'SET_AIR_ACTIVE';
 export const SET_HEATER_ACTIVE = 'SET_HEATER_ACTIVE';

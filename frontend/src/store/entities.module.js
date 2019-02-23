@@ -1,29 +1,35 @@
 /* eslint "no-shadow": "off" */
+
 import Vue from 'vue';
 import callApi from '@/utils/ApiUtils.js';
 import router from '@/router';
 
-
 import {
+  LOAD_REACTIONS,
+  LOAD_MODULES,
+  FETCH_MODULES,
 } from './mutations.types';
 
-
 const state = {
-  modules: [],
+  modules: {},
+  reactions: {},
 };
 
-// TODO: make loadModules constant
 const mutations = {
-  loadModules(state, modules) {
+  [LOAD_MODULES](state, modules) {
     state.modules = modules;
+  },
+  [LOAD_REACTIONS](state, reactions) {
+    state.reactions = modules;
   },
 };
 
-// TODO: make fetchModules constant
 const urlFetch = 'http://localhost:8888/';
 
 const actions = {
-  async fetchModules({ commit }, successRoute) {
+  async [FETCH_MODULES]({ commit }, successRoute) {
+    // if user is logged in 'data' will contain entites
+    // otherwise 'data' will contain an error message
     const { data } = await callApi(urlFetch);
     const { message } = data;
 
@@ -31,7 +37,8 @@ const actions = {
       return router.push('/login');
     }
 
-    commit('loadModules', data);
+    // const { modules, reactions } = normalize(data)
+    commit(LOAD_MODULES, data);
 
     if (successRoute) {
       router.push(successRoute);

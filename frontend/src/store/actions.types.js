@@ -1,0 +1,3 @@
+export const LOAD_REACTIONS = 'LOAD_REACTIONS';
+export const LOAD_MODULES = 'LOAD_MODULES';
+export const FETCH_MODULES = 'FETCH_MODULES';

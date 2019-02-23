@@ -12,14 +12,84 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { normalize, schema } from 'normalizr';
+import { FETCH_MODULES } from '@/store/actions.types.js';
+
+const mockData = [
+  {
+    id: 'ZeePrime',
+    reactions: [
+      {
+        id: 1,
+        name: 'spirulina',
+        medium: 'MEA',
+      },
+      {
+        id: 2,
+        name: 'fusarium',
+        medium: 'minerals',
+      },
+    ],
+  },
+  {
+    id: 'Dosis',
+    reactions: [
+      {
+        id: 3,
+        name: 'apples',
+        medium: 'juice',
+      },
+      {
+        id: 4,
+        name: 'bread',
+        medium: 'butter',
+      },
+    ],
+  },
+];
+
+const reaction = new schema.Entity('reactions');
+const module = new schema.Entity('modules', {
+  reactions: [reaction],
+});
+
+const moduleArray = [module];
+
+const normalizedData = normalize(mockData, moduleArray);
+
+//  {
+//     id: 'Dosis',
+//     reactions: [
+//       {
+//         id: 3,
+//         name: 'brains',
+//         medium: 'silly putty',
+//       },
+//       {
+//         id: 4,
+//         name: 'fish',
+//         medium: 'sauce',
+//       },
+//     ],
+//   },
+
+// const normalized = {
+//   entities: {
+//     modules: {
+//       ZeePrime: {
+
+//       },
+//     },
+//   },
+// };
 
 export default {
   name: 'App',
   created() {
-    this.fetchModules();
+    this[FETCH_MODULES]();
   },
   methods: {
-    ...mapActions(['fetchModules']),
+    ...mapActions([FETCH_MODULES]),
   },
 };
 </script>

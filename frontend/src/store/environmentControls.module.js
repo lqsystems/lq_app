@@ -46,8 +46,8 @@ const state = {
 
 // TODO: make constants for each control type
 const mutations = {
-  [SET_AIR_ACTIVE](state) {
-    state.activeControlPanel = 'Air';
+  [set_air_active](state) {
+    state.activecontrolpanel = 'air';
   },
   [SET_LIGHT_ACTIVE](state) {
     state.activeControlPanel = 'Heater';

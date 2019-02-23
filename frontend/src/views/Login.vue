@@ -41,30 +41,28 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { mapActions } from 'vuex';
+import { FETCH_MODULES } from '@/store/actions.types.js';
+import { LOGIN_URL } from '@/constants/ApiConstants.js';
 import callApi from '@/utils/ApiUtils.js';
-
-const urlLogin = 'http://localhost:8888/users/login';
-const urlFetch = 'http://localhost:8888/';
 
 export default {
   name: 'Login',
   data() {
     return {
-      username: 'newuser',
-      password: '1oneoaK!',
+      username: 'hayden',
+      password: 'pdub',
     };
   },
   methods: {
-    ...mapActions(['fetchModules']),
+    ...mapActions([FETCH_MODULES]),
     async login() {
       const credentials = {
         username: this.username,
         password: this.password,
       };
 
-      const { data: error } = await callApi(urlLogin, {
+      const { data: error } = await callApi(LOGIN_URL, {
         method: 'post',
         data: credentials,
       });
@@ -73,18 +71,7 @@ export default {
         return alert(error.message[0]);
       }
 
-      this.fetchModules('/');
-    },
-    fetchData() {
-      axios.defaults.withCredentials = true;
-      console.log('fetching');
-      axios({
-        method: 'get',
-        url: urlFetch,
-      }).then((res) => {
-        console.log('fetch response');
-        console.log(res.data);
-      });
+      this.FETCH_MODULES('/');
     },
   },
 };
