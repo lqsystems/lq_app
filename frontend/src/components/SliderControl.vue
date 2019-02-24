@@ -3,7 +3,7 @@
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">
-      <BaseSliderNoUi
+      <BaseSlider
         v-bind:level="level"
         v-bind:value="sliderPosition"
         v-bind:color="color"
@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import BaseSliderNoUi from './BaseSliderNoUi';
+import BaseSlider from './BaseSlider';
 import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 export default {
   name: 'SliderControl',
   components: {
-    BaseSliderNoUi,
+    BaseSlider,
   },
   props: {
     level: {

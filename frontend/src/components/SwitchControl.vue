@@ -29,7 +29,7 @@ import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 // TODO: refactor name to switch control
 export default {
-  name: 'PowerControl',
+  name: 'SwitchControl',
   components: {
     BaseSwitch,
   },

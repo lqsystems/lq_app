@@ -3,7 +3,7 @@
     label="Light"
   >
     <ControlPanelItem label="Power">
-      <PowerControl
+      <SwitchControl
         v-bind:power-on="heater.powerOn"
         v-on:toggle-power="toggleHeaterPower"
       />
@@ -39,7 +39,7 @@ import { mapGetters, mapMutations } from 'vuex';
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
-import PowerControl from './PowerControl';
+import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
 
 
@@ -49,7 +49,7 @@ export default {
     BaseTimePicker,
     ControlPanel,
     ControlPanelItem,
-    PowerControl,
+    SwitchControl,
     SliderControl,
   },
   computed: {

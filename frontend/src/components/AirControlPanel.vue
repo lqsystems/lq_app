@@ -6,7 +6,7 @@
       label="Power"
       v-bind:include-divider="false"
     >
-      <PowerControl
+      <SwitchControl
         v-bind:power-on="heater.powerOn"
         v-on:toggle-power="toggleHeaterPower"
       />
@@ -19,7 +19,7 @@ import { mapGetters, mapMutations } from 'vuex';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
-import PowerControl from './PowerControl';
+import SwitchControl from './SwitchControl';
 
 
 export default {
@@ -27,7 +27,7 @@ export default {
   components: {
     ControlPanel,
     ControlPanelItem,
-    PowerControl,
+    SwitchControl,
   },
   computed: {
     ...mapGetters(['heater']),

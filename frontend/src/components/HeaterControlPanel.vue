@@ -3,7 +3,7 @@
     label="Heater"
   >
     <ControlPanelItem label="Power">
-      <PowerControl
+      <SwitchControl
         v-bind:power-on="heater.powerOn"
         v-on:toggle-power="SET_HEATER_LEVEL"
       />
@@ -37,7 +37,7 @@ import {
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
-import PowerControl from './PowerControl';
+import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
 
 export default {
@@ -45,7 +45,7 @@ export default {
   components: {
     ControlPanel,
     ControlPanelItem,
-    PowerControl,
+    SwitchControl,
     SliderControl,
   },
   computed: {
