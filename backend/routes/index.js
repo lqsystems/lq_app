@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-
+var print = require('../utility/print');
 
 const influx = require('influx');
 
@@ -1170,6 +1170,9 @@ router.post(gURL_updateState, (req,res) => {
                 var mid = data.mid; // module id
                 var id = data.activeId;
                 //
+                console.log(data);
+                print(data);
+
                 var userRAssets = gReactionsToUser[id]
                 if ( userRAssets !== undefined ) {
                     var modObj = userRAssets.getModule(mid);
