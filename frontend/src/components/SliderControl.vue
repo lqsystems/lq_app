@@ -1,5 +1,5 @@
-<!-- Returns a Range Slider if an array is supplied for the level prop  -->
-<!-- Returns a normal slider if a scalar is supplid to the level prop -->
+<!-- Returns a range slider (with two handles) if an array is supplied for the level prop  -->
+<!-- Returns a normal slider (one handle) if a scalar is supplid to the level prop -->
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">

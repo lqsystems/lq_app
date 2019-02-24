@@ -58,7 +58,6 @@ const moduleArray = [module];
 const normalizedData = normalize(mockData, moduleArray);
 
 const res = mockData;
-console.log(mockDataModules);
 
 export default {
   name: 'App',

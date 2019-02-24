@@ -40,7 +40,6 @@ import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
 
-
 export default {
   name: 'HeaterControlPanel',
   components: {
@@ -61,7 +60,7 @@ export default {
   methods: {
     ...mapMutations([SET_HEATER_LEVEL, TOGGLE_HEATER_POWER]),
     getSliderLabel(sliderPos) {
-      return `${sliderPos}%`;
+      return `${sliderPos[0]}%`;
     },
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
