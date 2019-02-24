@@ -33,13 +33,14 @@
 
 
 <script>
+
 import BaseNav from '@/components/BaseNav';
 import BaseSelect from '@/components/BaseSelect';
 import PresentValuesStatusPanel from '@/components/PresentValuesStatusPanel';
 import EnvironmentControlsStatusPanel from '@/components/EnvironmentControlsStatusPanel';
 
-
 export default {
+  name: 'Reactor',
   components: {
     PresentValuesStatusPanel,
     EnvironmentControlsStatusPanel,

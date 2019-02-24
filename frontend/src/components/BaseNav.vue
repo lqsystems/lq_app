@@ -37,6 +37,7 @@
         flat
         value="logout"
         class="nav-logout-button"
+        v-on:click="logout"
       >
         <div class="nav-logout-label">
           Logout
@@ -48,12 +49,21 @@
 </template>
 
 <script>
+import callApi from '@/utils/ApiUtils.js';
+import { LOGOUT_URL } from '@/constants/ApiConstants.js';
+
 export default {
   name: 'BaseNav',
   data() {
     return {
       bottomNav: 'favorites',
     };
+  },
+  methods: {
+    async logout() {
+      await callApi(LOGOUT_URL);
+      this.$router.push('/login');
+    },
   },
 };
 </script>

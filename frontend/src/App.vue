@@ -57,11 +57,11 @@ const module = new schema.Entity('modules', {
 const moduleArray = [module];
 const normalizedData = normalize(mockData, moduleArray);
 
-const res = mockData;
 
 export default {
   name: 'App',
-  created() {
+  async created() {
+    // TODO: fix this weird syntax
     this[FETCH_MODULES]();
   },
   methods: {

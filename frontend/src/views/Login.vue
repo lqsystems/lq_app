@@ -63,7 +63,7 @@ export default {
       };
 
       const { data: error } = await callApi(LOGIN_URL, {
-        method: 'post',
+        method: 'POST',
         data: credentials,
       });
 
