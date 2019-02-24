@@ -14,6 +14,7 @@
 import { mapActions } from 'vuex';
 import { normalize, schema } from 'normalizr';
 import { FETCH_MODULES } from '@/store/actions.types.js';
+import mockDataModules from '@/data/mockDataModules';
 
 const mockData = [
   {
@@ -54,34 +55,10 @@ const module = new schema.Entity('modules', {
 });
 
 const moduleArray = [module];
-
 const normalizedData = normalize(mockData, moduleArray);
 
-//  {
-//     id: 'Dosis',
-//     reactions: [
-//       {
-//         id: 3,
-//         name: 'brains',
-//         medium: 'silly putty',
-//       },
-//       {
-//         id: 4,
-//         name: 'fish',
-//         medium: 'sauce',
-//       },
-//     ],
-//   },
-
-// const normalized = {
-//   entities: {
-//     modules: {
-//       ZeePrime: {
-
-//       },
-//     },
-//   },
-// };
+const res = mockData;
+console.log(mockDataModules);
 
 export default {
   name: 'App',

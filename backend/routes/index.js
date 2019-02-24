@@ -802,13 +802,15 @@ global.loadRootAssets = (userId,renderPage,res) => {
             userRAssets.setUpdated("reactions")
             userRAssets.setEdited(false);
 
-            res.json(moduleList)
-            // res.render(renderPage, { "modules" : moduleList });
+            renderPage 
+              ? res.render(renderPage, { "modules" : moduleList })
+              : res.json(moduleList);
         });
 
     } else {
-            res.json(moduleList)
-        // res.render(renderPage, { "modules" : moduleList });
+        renderPage 
+            ? res.render(renderPage, { "modules" : moduleList })
+            : res.json(moduleList);
     }
 
 }
