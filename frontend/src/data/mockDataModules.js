@@ -1,3 +1,21 @@
+const reqBody = {
+  mid: 'ZeePrime',
+  allStates: {
+    Lamp: true,
+  },
+  changes: [
+    'Lamp',
+  ],
+  'ZeePrime-Lamp-parameters': {
+    level: '0',
+    start: 570,
+    stop: 570,
+  },
+  'ZeePrime-Lamp-limits': {
+
+  },
+};
+
 const modules = [
   {
     mod_name: 'ZeePrime',
