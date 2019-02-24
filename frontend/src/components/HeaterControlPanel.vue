@@ -12,7 +12,7 @@
       <SliderControl
         v-bind:level="heaterLevel"
         v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move="SET_HEATER_LEVEL"
+        v-on:slider-move-end="SET_HEATER_LEVEL"
       />
     </ControlPanelItem>
     <ControlPanelItem

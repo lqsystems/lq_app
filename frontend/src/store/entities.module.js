@@ -30,18 +30,22 @@ const actions = {
   async [FETCH_MODULES]({ commit }, successRoute) {
     // if user is logged in 'data' will contain entites
     // otherwise 'data' will contain an error message
-    const { data } = await callApi(urlFetch);
-    const { message } = data;
+    try {
+      const { data } = await callApi(urlFetch);
+      const { message } = data;
 
-    if (message && (message[0] === 'Not logged in')) {
-      return router.push('/login');
-    }
+      if (message && (message[0] === 'Not logged in')) {
+        return router.push('/login');
+      }
 
-    // const { modules, reactions } = normalize(data)
-    commit(LOAD_MODULES, data);
+      // const { modules, reactions } = normalize(data)
+      commit(LOAD_MODULES, data);
 
-    if (successRoute) {
-      router.push(successRoute);
+      if (successRoute) {
+        router.push(successRoute);
+      }
+    } catch (error) {
+      console.log(error);
     }
   },
 };

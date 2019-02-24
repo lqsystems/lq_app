@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common.client = 'newClient';
 
-const callApi = (url, options = {}) => {
+const callApi = async (url, options = {}) => {
   // default to GET if no method is supplied
   const method = options && options.method
     ? options.method
@@ -11,9 +11,19 @@ const callApi = (url, options = {}) => {
 
   options = Object.assign(options, { url, method });
 
-  return axios(options)
-    .then(response => response)
-    .catch(error => ({ error }));
+  try {
+    const response = await axios(options);
+    return response;
+  } catch (error) {
+    const networkErrorMessage = 'We encountered a network error! \n\n Is the server running?';
+    const { message } = error;
+
+    if (message === 'Network Error') {
+      alert(networkErrorMessage);
+    }
+
+    console.log(error);
+  }
 };
 
 export default callApi;

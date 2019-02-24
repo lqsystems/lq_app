@@ -47,7 +47,7 @@ const state = {
 // TODO: make constants for each control type
 const mutations = {
   [SET_AIR_ACTIVE](state) {
-    state.activecontrolpanel = 'air';
+    state.activeControlPanel = 'Air';
   },
   [SET_LIGHT_ACTIVE](state) {
     state.activeControlPanel = 'Heater';
@@ -56,7 +56,7 @@ const mutations = {
     state.activeControlPanel = 'Light';
   },
   [SET_HEATER_LEVEL](state, level) {
-    state.heater.level = level;
+    [state.heater.level] = level;
   },
   [TOGGLE_HEATER_POWER](state) {
     const { powerOn } = state.heater;

@@ -16,14 +16,14 @@
           v-model="username"
           prepend-icon="person"
           name="Username"
-          label="Username"
+          placeholder="Username"
         />
         <v-text-field
           v-model="password"
           prepend-icon="lock"
           name="Password"
-          label="Password"
           type="password"
+          placeholder="Password"
         />
         <v-card-actions>
           <v-btn
@@ -50,8 +50,8 @@ export default {
   name: 'Login',
   data() {
     return {
-      username: 'hayden',
-      password: 'pdub',
+      username: '',
+      password: '',
     };
   },
   methods: {
