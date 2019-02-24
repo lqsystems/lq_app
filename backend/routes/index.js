@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var print = require('../utility/print');
-
 const influx = require('influx');
 
 
@@ -785,7 +784,7 @@ global.loadRootAssets = (userId,renderPage,res) => {
     var userRAssets = gUserAssets[userId];
     var moduleList = userRAssets.genModuleList()
     //
-
+    
     if ( userRAssets.needsUpdate("reactions") ) {
 
         var reactionFields = [ 'id', 'name', 'module', 'media', 'procedure', 'notes', 'ModuleState', 'active' ]
@@ -802,13 +801,13 @@ global.loadRootAssets = (userId,renderPage,res) => {
             userRAssets.setUpdated("reactions")
             userRAssets.setEdited(false);
 
-            renderPage 
+            false
               ? res.render(renderPage, { "modules" : moduleList })
               : res.json(moduleList);
         });
 
     } else {
-        renderPage 
+         false
             ? res.render(renderPage, { "modules" : moduleList })
             : res.json(moduleList);
     }
@@ -1169,11 +1168,8 @@ router.post(gURL_updateState, (req,res) => {
                 var data = req.body;
                 var mid = data.mid; // module id
                 var id = data.activeId;
-                //
-                console.log(data);
-                print(data);
 
-                var userRAssets = gReactionsToUser[id]
+                var userRAssets = gReactionsToUser[id];
                 if ( userRAssets !== undefined ) {
                     var modObj = userRAssets.getModule(mid);
                     if ( modObj ) {

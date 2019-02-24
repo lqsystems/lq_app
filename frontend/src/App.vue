@@ -11,6 +11,8 @@
 </template>
 
 <script>
+// import * as stars from '@/utils/ApiTestUtils';
+
 import { mapActions } from 'vuex';
 import { normalize, schema } from 'normalizr';
 import { FETCH_MODULES } from '@/store/actions.types.js';

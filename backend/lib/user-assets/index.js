@@ -8,7 +8,6 @@ function modNameIntIndex(mid) {
 module.exports = class UserReactionsAssets {
             //
     constructor(uid,modMap) {
-
         this.allModulesActive = {}
         this.allModulesNames = []
         this.moduleSelector = 1;
