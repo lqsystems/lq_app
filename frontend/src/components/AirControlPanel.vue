@@ -7,8 +7,7 @@
       v-bind:include-divider="false"
     >
       <SwitchControl
-        v-bind:power-on="heater.powerOn"
-        v-on:toggle-power="toggleHeaterPower"
+        v-bind:initial-state="heater.powerOn"
       />
     </ControlPanelItem>
   </ControlPanel>

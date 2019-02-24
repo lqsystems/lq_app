@@ -50,10 +50,10 @@ const mutations = {
     state.activeControlPanel = 'Air';
   },
   [SET_LIGHT_ACTIVE](state) {
-    state.activeControlPanel = 'Heater';
+    state.activeControlPanel = 'Light';
   },
   [SET_HEATER_ACTIVE](state) {
-    state.activeControlPanel = 'Light';
+    state.activeControlPanel = 'Heater';
   },
   [SET_HEATER_LEVEL](state, level) {
     [state.heater.level] = level;

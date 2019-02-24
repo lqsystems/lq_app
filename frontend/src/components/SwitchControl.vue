@@ -2,10 +2,10 @@
   <div class="power-control">
     <div
       class="power-control-state"
-      v-bind:class="[powerOn ? 'is-on' : 'is-off']"
+      v-bind:class="[isOn ? 'is-on' : 'is-off']"
     >
       <span
-        v-if="powerOn"
+        v-if="isOn"
       >
         ON
       </span>
@@ -15,9 +15,9 @@
     </div>
     <div class="power-control-switch">
       <BaseSwitch
-        v-bind:switch-on="powerOn"
+        v-bind:is-on="isOn"
         v-bind:color="color"
-        v-on:handle-change="$emit('toggle-power')"
+        v-on:toggle="handleToggle"
       />
     </div>
   </div>
@@ -34,13 +34,23 @@ export default {
     BaseSwitch,
   },
   props: {
-    powerOn: {
+    initialState: {
       type: Boolean,
       required: true,
     },
   },
+  data() {
+    return {
+      isOn: this.initialState,
+    };
+  },
   created() {
     this.color = COLOR_PRIMARY;
+  },
+  methods: {
+    handleToggle() {
+      this.isOn = !this.isOn;
+    },
   },
 };
 </script>

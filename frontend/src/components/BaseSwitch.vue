@@ -1,8 +1,8 @@
 <template>
   <v-switch
-    v-model="isOn"
+    v-bind:value="isOn"
     v-bind:color="color"
-    v-on:change="$emit('handle-change')"
+    v-on:change="$emit('toggle')"
   />
 </template>
 
@@ -10,7 +10,7 @@
 export default {
   name: 'BaseSwitch',
   props: {
-    switchOn: {
+    isOn: {
       type: Boolean,
       required: true,
     },
@@ -18,11 +18,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      isOn: this.switchOn,
-    };
   },
 };
 </script>

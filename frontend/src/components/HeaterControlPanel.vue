@@ -4,8 +4,7 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        v-bind:power-on="heater.powerOn"
-        v-on:toggle-power="SET_HEATER_LEVEL"
+        v-bind:initial-state="heater.powerOn"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Heater Level">
