@@ -38,7 +38,7 @@ const actions = {
       if (message && (message[0] === 'Not logged in')) {
         return router.push('/login');
       }
-
+      console.log(data);
       const { entities } = normalize(data, moduleSchema);
       const { modules, reactions } = entities;
       commit(LOAD_MODULES, modules);

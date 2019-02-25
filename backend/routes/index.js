@@ -801,13 +801,13 @@ global.loadRootAssets = (userId,renderPage,res) => {
             userRAssets.setUpdated("reactions")
             userRAssets.setEdited(false);
 
-            true
+            renderPage
               ? res.render(renderPage, { "modules" : moduleList })
               : res.json(moduleList);
         });
 
     } else {
-         true
+         renderPage
             ? res.render(renderPage, { "modules" : moduleList })
             : res.json(moduleList);
     }
@@ -1284,4 +1284,7 @@ router.post(gURL_logStateActive, (req,res) => {  // keep this separate
             })
 
 
-module.exports = router;
+module.exports = {
+    index: router,
+    loadRootAssets,
+};

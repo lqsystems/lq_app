@@ -129,9 +129,10 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Index and Users Routes
-var index = require('./routes/index');
+var index = require('./routes/index').index;
 var cloud = require('./routes/cloud');
 var users = require('./routes/users');
+var modules = require('./routes/modules');
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
@@ -205,6 +206,7 @@ app.use(function (req, res, next){
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/modules', modules);
 
 //Server connection
 server.listen(gPortNum, () => {
