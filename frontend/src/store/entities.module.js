@@ -1,6 +1,7 @@
 /* eslint "no-shadow": "off" */
 
-import Vue from 'vue';
+import { normalize } from 'normalizr';
+import { moduleSchema } from '@/constants/Schemas';
 import callApi from '@/utils/ApiUtils.js';
 import router from '@/router';
 
@@ -20,7 +21,7 @@ const mutations = {
     state.modules = modules;
   },
   [LOAD_REACTIONS](state, reactions) {
-    state.reactions = modules;
+    state.reactions = reactions;
   },
 };
 
@@ -28,7 +29,7 @@ const urlFetch = 'http://localhost:8888/';
 
 const actions = {
   async [FETCH_MODULES]({ commit }, successRoute) {
-    // if user is logged in 'data' will contain entites
+    // if user is logged in 'data' will contain module data
     // otherwise 'data' will contain an error message
     try {
       const { data } = await callApi(urlFetch);
@@ -38,8 +39,10 @@ const actions = {
         return router.push('/login');
       }
 
-      // const { modules, reactions } = normalize(data)
-      commit(LOAD_MODULES, data);
+      const { entities } = normalize(data, moduleSchema);
+      const { modules, reactions } = entities;
+      commit(LOAD_MODULES, modules);
+      commit(LOAD_REACTIONS, reactions);
 
       if (successRoute) {
         router.push(successRoute);

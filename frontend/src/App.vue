@@ -11,60 +11,16 @@
 </template>
 
 <script>
+
 // import * as stars from '@/utils/ApiTestUtils';
-
 import { mapActions } from 'vuex';
-import { normalize, schema } from 'normalizr';
 import { FETCH_MODULES } from '@/store/actions.types.js';
-import mockDataModules from '@/data/mockDataModules';
-
-const mockData = [
-  {
-    id: 'ZeePrime',
-    reactions: [
-      {
-        id: 1,
-        name: 'spirulina',
-        medium: 'MEA',
-      },
-      {
-        id: 2,
-        name: 'fusarium',
-        medium: 'minerals',
-      },
-    ],
-  },
-  {
-    id: 'Dosis',
-    reactions: [
-      {
-        id: 3,
-        name: 'apples',
-        medium: 'juice',
-      },
-      {
-        id: 4,
-        name: 'bread',
-        medium: 'butter',
-      },
-    ],
-  },
-];
-
-const reaction = new schema.Entity('reactions');
-const module = new schema.Entity('modules', {
-  reactions: [reaction],
-});
-
-const moduleArray = [module];
-const normalizedData = normalize(mockData, moduleArray);
 
 
 export default {
   name: 'App',
   async created() {
-    // TODO: fix this weird syntax
-    this[FETCH_MODULES]();
+    this.FETCH_MODULES();
   },
   methods: {
     ...mapActions([FETCH_MODULES]),
