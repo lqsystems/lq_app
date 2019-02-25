@@ -4,14 +4,13 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        v-bind:initial-state="heater.powerOn"
+        v-bind:initial-state="true"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Intensity">
       <SliderControl
-        v-bind:level="heaterLevel"
+        v-bind:level="20"
         v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move="setHeaterLevel"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -52,21 +51,10 @@ export default {
     SliderControl,
   },
   computed: {
-    ...mapGetters(['heater']),
-    heaterLevel() {
-      return Number(this.heater.level);
-    },
-    heaterMinMax() {
-      return [this.heater.minTemp, this.heater.maxTemp];
-    },
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
-    },
-    getTempLabel(sliderPos) {
-      return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
     },
   },
 };

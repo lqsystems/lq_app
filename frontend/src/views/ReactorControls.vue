@@ -66,9 +66,9 @@ export default {
     AirControlPanel,
   },
   computed: {
-    ...mapGetters(['activeControlPanel']),
+    ...mapGetters(['selectedControlPanel']),
     currentControlPanel() {
-      return `${this.activeControlPanel}ControlPanel`;
+      return `${this.selectedControlPanel}ControlPanel`;
     },
   },
   methods: {

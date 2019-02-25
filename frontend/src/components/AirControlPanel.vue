@@ -7,7 +7,7 @@
       v-bind:include-divider="false"
     >
       <SwitchControl
-        v-bind:initial-state="heater.powerOn"
+        v-bind:initial-state="false"
       />
     </ControlPanelItem>
   </ControlPanel>
@@ -22,29 +22,13 @@ import SwitchControl from './SwitchControl';
 
 
 export default {
-  name: 'LightControlPanel',
+  name: 'AirControlPanel',
   components: {
     ControlPanel,
     ControlPanelItem,
     SwitchControl,
   },
-  computed: {
-    ...mapGetters(['heater']),
-    heaterLevel() {
-      return Number(this.heater.level);
-    },
-    heaterMinMax() {
-      return [this.heater.minTemp, this.heater.maxTemp];
-    },
-  },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
-    getSliderLabel(sliderPos) {
-      return `${sliderPos}%`;
-    },
-    getTempLabel(sliderPos) {
-      return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
-    },
   },
 };
 </script>

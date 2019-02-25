@@ -1,10 +1,9 @@
 /* eslint "no-shadow": "off" */
-
 import { normalize } from 'normalizr';
-import { moduleSchema } from '@/constants/Schemas';
-import callApi from '@/utils/ApiUtils.js';
 import router from '@/router';
-
+import callApi from '@/utils/ApiUtils.js';
+import { moduleSchema } from '@/constants/Schemas';
+import { MODULES_URL } from '@/constants/ApiConstants';
 import {
   LOAD_REACTIONS,
   LOAD_MODULES,
@@ -25,20 +24,18 @@ const mutations = {
   },
 };
 
-const urlFetch = 'http://localhost:8888/';
-
 const actions = {
   async [FETCH_MODULES]({ commit }, successRoute) {
     // if user is logged in 'data' will contain module data
     // otherwise 'data' will contain an error message
     try {
-      const { data } = await callApi(urlFetch);
+      const { data } = await callApi(MODULES_URL);
       const { message } = data;
 
       if (message && (message[0] === 'Not logged in')) {
         return router.push('/login');
       }
-      console.log(data);
+
       const { entities } = normalize(data, moduleSchema);
       const { modules, reactions } = entities;
       commit(LOAD_MODULES, modules);
@@ -53,7 +50,19 @@ const actions = {
   },
 };
 
-const getters = {
+const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
+  powerOn: activeModuleState.Heater,
+  level: activeModuleParams.Heater.level,
+  minTemp: activeModuleLimits.Heater['LOW-value'],
+  maxTemp: activeModuleLimits.Heater['HIGH-value'],
+});
+
+export const getters = {
+  activeModule: state => state.modules.ZeePrime,
+  activeModuleParams: (state, { activeModule }) => activeModule.parameters,
+  activeModuleState: (state, { activeModule }) => activeModule.moduleState,
+  activeModuleLimits: (state, { activeModule }) => activeModule.limits,
+  activeModuleHeater: getHeater,
 };
 
 export default {

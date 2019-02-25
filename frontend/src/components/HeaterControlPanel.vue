@@ -48,13 +48,17 @@ export default {
     SliderControl,
   },
   computed: {
-    ...mapGetters(['heater']),
+    ...mapGetters(['activeModule']),
     heaterLevel() {
       return Number(this.heater.level);
     },
     heaterMinMax() {
       return [this.heater.minTemp, this.heater.maxTemp];
     },
+  },
+  mounted() {
+    console.log(this.activeModule);
+    // console.log(this.$store.state);
   },
   methods: {
     ...mapMutations([SET_HEATER_LEVEL, TOGGLE_HEATER_POWER]),

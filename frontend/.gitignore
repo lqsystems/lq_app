@@ -26,4 +26,5 @@ yarn-error.log*
 # Hayden's stuff
 *.todo
 requirements/
+src/store/*.py
 **/*/*.py

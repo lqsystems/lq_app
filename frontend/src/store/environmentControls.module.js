@@ -27,7 +27,7 @@ const reformatByActuator = ({ state, levels, limits }) => ({
 
 // TODO: make constants for each panel type
 const state = {
-  activeControlPanel: 'Heater',
+  selectedControlPanel: 'Heater',
   air: {
     powerOn: false,
   },
@@ -47,13 +47,13 @@ const state = {
 // TODO: make constants for each control type
 const mutations = {
   [SET_AIR_ACTIVE](state) {
-    state.activeControlPanel = 'Air';
+    state.selectedControlPanel = 'Air';
   },
   [SET_LIGHT_ACTIVE](state) {
-    state.activeControlPanel = 'Light';
+    state.selectedControlPanel = 'Light';
   },
   [SET_HEATER_ACTIVE](state) {
-    state.activeControlPanel = 'Heater';
+    state.selectedControlPanel = 'Heater';
   },
   [SET_HEATER_LEVEL](state, level) {
     [state.heater.level] = level;
@@ -68,7 +68,7 @@ const getters = {
   air: state => state.air,
   heater: state => state.heater,
   lamp: state => state.lamp,
-  activeControlPanel: state => state.activeControlPanel,
+  selectedControlPanel: state => state.selectedControlPanel,
 };
 
 export default {

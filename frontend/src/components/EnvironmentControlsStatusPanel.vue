@@ -8,19 +8,21 @@
         edit
       </v-icon>
       <ControlPanelItem
-        v-bind:handle-click="sayHi"
+        v-bind:handle-click="SET_AIR_ACTIVE"
         ripple-on-click
         label="Air"
       >
         <span>ON</span>
       </ControlPanelItem>
       <ControlPanelItem
+        v-bind:handle-click="SET_LIGHT_ACTIVE"
         ripple-on-click
         label="Light"
       >
         <span>ON</span>
       </ControlPanelItem>
       <ControlPanelItem
+        v-bind:handle-click="SET_HEATER_ACTIVE"
         ripple-on-click
         label="Heater"
         v-bind:include-divider="false"
@@ -33,6 +35,11 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
+import {
+  SET_AIR_ACTIVE,
+  SET_LIGHT_ACTIVE,
+  SET_HEATER_ACTIVE,
+} from '@/store/mutations.types';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -44,15 +51,17 @@ export default {
     ControlPanelItem,
   },
   computed: {
-    ...mapGetters([]),
+    ...mapGetters([
+    ]),
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
+    ...mapMutations([
+      SET_AIR_ACTIVE,
+      SET_LIGHT_ACTIVE,
+      SET_HEATER_ACTIVE,
+    ]),
     routeToControls() {
       this.$router.push('reactor-controls');
-    },
-    sayHi() {
-      console.log('hello');
     },
   },
 };
