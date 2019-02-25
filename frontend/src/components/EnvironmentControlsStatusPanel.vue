@@ -7,13 +7,21 @@
       <v-icon class="status-panel-icon">
         edit
       </v-icon>
-      <ControlPanelItem label="Air">
-        <span>ON</span>
-      </ControlPanelItem>
-      <ControlPanelItem label="Light">
+      <ControlPanelItem
+        v-bind:handle-click="sayHi"
+        ripple-on-click
+        label="Air"
+      >
         <span>ON</span>
       </ControlPanelItem>
       <ControlPanelItem
+        ripple-on-click
+        label="Light"
+      >
+        <span>ON</span>
+      </ControlPanelItem>
+      <ControlPanelItem
+        ripple-on-click
         label="Heater"
         v-bind:include-divider="false"
       >
@@ -30,30 +38,21 @@ import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 
 export default {
-  name: 'HeaterControlPanel',
+  name: 'EnvironmentControlsStatusPanel',
   components: {
     ControlPanel,
     ControlPanelItem,
   },
   computed: {
-    ...mapGetters(['heater']),
-    heaterLevel() {
-      return Number(this.heater.level);
-    },
-    heaterMinMax() {
-      return [this.heater.minTemp, this.heater.maxTemp];
-    },
+    ...mapGetters([]),
   },
   methods: {
     ...mapMutations(['toggleHeaterPower', 'setHeaterLevel']),
-    getSliderLabel(sliderPos) {
-      return `${sliderPos}%`;
-    },
-    getTempLabel(sliderPos) {
-      return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
-    },
     routeToControls() {
       this.$router.push('reactor-controls');
+    },
+    sayHi() {
+      console.log('hello');
     },
   },
 };

@@ -1,5 +1,9 @@
 <template>
-  <div class="cp-item-wrapper">
+  <div
+    v-ripple="rippleOnClick"
+    class="cp-item-wrapper"
+    v-on:click="handleClick"
+  >
     <div class="cp-item">
       <div class="cp-item-col cp-item-col-left">
         <div class="cp-item-label">
@@ -30,6 +34,14 @@ export default {
     includeDivider: {
       type: Boolean,
       default: true,
+    },
+    rippleOnClick: {
+      type: Boolean,
+      default: false,
+    },
+    handleClick: {
+      type: Function,
+      default: () => {},
     },
   },
 };
