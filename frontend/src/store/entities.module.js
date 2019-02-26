@@ -2,16 +2,20 @@
 import { normalize } from 'normalizr';
 import router from '@/router';
 import callApi from '@/utils/ApiUtils.js';
+
 import { moduleSchema } from '@/constants/Schemas';
 import { MODULES_URL } from '@/constants/ApiConstants';
+import { modulesInitial } from './entities.initialState.js';
+
 import {
+  FETCH_MODULES,
   LOAD_REACTIONS,
   LOAD_MODULES,
-  FETCH_MODULES,
+  UPDATE_MODULE_STATE,
 } from './mutations.types';
 
 const state = {
-  modules: {},
+  modules: modulesInitial,
   reactions: {},
 };
 
@@ -21,6 +25,9 @@ const mutations = {
   },
   [LOAD_REACTIONS](state, reactions) {
     state.reactions = reactions;
+  },
+  [UPDATE_MODULE_STATE](state, { moduleName, actuatorKey, newState }) {
+    state.modules[moduleName].moduleState[actuatorKey] = newState;
   },
 };
 
@@ -57,12 +64,37 @@ const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleL
   maxTemp: activeModuleLimits.Heater['HIGH-value'],
 });
 
+// const getApiUpdatePayload = (state, { activeModuleState }) => console.log(state) || ({
+const getApiUpdatePayload = actuatorName => (
+  state,
+  {
+    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
+  },
+) => {
+  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
+  return {
+    mid: selectedModuleName,
+    allStates: activeModuleState,
+    activeId: activeReactionId,
+    activeSwitch: `ReactionActive-${activeReactionId}`,
+    changes: [actuatorName],
+    [paramsKey]: activeModuleParams[actuatorName],
+    'ZeePrime-Lamp-limits': {},
+  };
+};
+
+const getActiveReactionId = state => (
+  Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
+);
+
 export const getters = {
-  activeModule: state => state.modules.ZeePrime,
+  activeReactionId: getActiveReactionId,
+  activeModule: (state, { selectedModuleName }) => state.modules[selectedModuleName],
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   heater: getHeater,
+  lampUpdatePayload: getApiUpdatePayload('Lamp'),
 };
 
 export default {

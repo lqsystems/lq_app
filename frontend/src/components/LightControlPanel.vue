@@ -5,6 +5,7 @@
     <ControlPanelItem label="Power">
       <SwitchControl
         v-bind:initial-state="false"
+        v-on:toggle="toggleLight"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Intensity">
@@ -32,7 +33,11 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
+
+import {
+  UPDATE_MODULE_STATE,
+} from '@/store/mutations.types';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -53,9 +58,20 @@ export default {
   computed: {
   },
   methods: {
+    ...mapMutations([UPDATE_MODULE_STATE]),
     // TODO: this is shared with heater control panel. Extract into util function
+    toggleLight(lightState) {
+      this.UPDATE_MODULE_STATE({
+        moduleName: 'ZeePrime',
+        actuatorKey: 'Lamp',
+        newState: lightState,
+      });
+    },
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
+    },
+    sayHi() {
+      console.log('hello');
     },
   },
 };

@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     handleToggle() {
+      this.$emit('toggle', !this.isOn);
       this.isOn = !this.isOn;
     },
   },
