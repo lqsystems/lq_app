@@ -33,11 +33,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-
-import {
-  UPDATE_MODULE_STATE,
-} from '@/store/mutations.types';
+import { mapActions } from 'vuex';
+import { UPDATE_LAMP } from '@/store/actions.types';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -55,14 +52,12 @@ export default {
     SwitchControl,
     SliderControl,
   },
-  computed: {
-  },
   methods: {
-    ...mapMutations([UPDATE_MODULE_STATE]),
+    ...mapActions([UPDATE_LAMP]),
     // TODO: this is shared with heater control panel. Extract into util function
     toggleLight(lightState) {
-      this.UPDATE_MODULE_STATE({
-        moduleName: 'ZeePrime',
+      this.UPDATE_LAMP({
+        moduleName: 'ZeePrime', // TODO: this should be selected from the action
         actuatorKey: 'Lamp',
         newState: lightState,
       });

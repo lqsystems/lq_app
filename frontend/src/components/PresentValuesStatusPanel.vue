@@ -3,10 +3,13 @@
   <ControlPanel
     label="Present Values"
   >
-    <v-icon class="status-panel-icon">
+    <!-- <v-icon class="status-panel-icon">
       settings
-    </v-icon>
-    <ControlPanelItem label="Temp">
+    </v-icon> -->
+    <ControlPanelItem
+      label="Temp"
+      v-bind:include-divider="false"
+    >
       <span class="pv-temp-val">32.876</span>
     </ControlPanelItem>
     <ControlPanelItem

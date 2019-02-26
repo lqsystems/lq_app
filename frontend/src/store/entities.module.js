@@ -4,14 +4,14 @@ import router from '@/router';
 import callApi from '@/utils/ApiUtils.js';
 
 import { moduleSchema } from '@/constants/Schemas';
-import { MODULES_URL } from '@/constants/ApiConstants';
+import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/ApiConstants';
 import { modulesInitial } from './entities.initialState.js';
-
+import { UPDATE_LAMP } from './actions.types';
 import {
   FETCH_MODULES,
   LOAD_REACTIONS,
   LOAD_MODULES,
-  UPDATE_MODULE_STATE,
+  MUTATE_MODULE_STATE,
 } from './mutations.types';
 
 const state = {
@@ -26,15 +26,25 @@ const mutations = {
   [LOAD_REACTIONS](state, reactions) {
     state.reactions = reactions;
   },
-  [UPDATE_MODULE_STATE](state, { moduleName, actuatorKey, newState }) {
+  [MUTATE_MODULE_STATE](state, { moduleName, actuatorKey, newState }) {
     state.modules[moduleName].moduleState[actuatorKey] = newState;
   },
 };
 
 const actions = {
+  // TODO: refactor to handle errors
+  [UPDATE_LAMP]({ commit, state, getters }, mutationPayload) {
+    commit(MUTATE_MODULE_STATE, mutationPayload);
+    const { lampUpdatePayload } = getters;
+
+    callApi(UPDATE_STATE_URL, {
+      method: 'POST',
+      data: lampUpdatePayload,
+    });
+  },
   async [FETCH_MODULES]({ commit }, successRoute) {
-    // if user is logged in 'data' will contain module data
-    // otherwise 'data' will contain an error message
+    // If user is logged in 'data' will contain an array of module data.
+    // Otherwise 'data' will contain an error message.
     try {
       const { data } = await callApi(MODULES_URL);
       const { message } = data;
@@ -64,7 +74,6 @@ const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleL
   maxTemp: activeModuleLimits.Heater['HIGH-value'],
 });
 
-// const getApiUpdatePayload = (state, { activeModuleState }) => console.log(state) || ({
 const getApiUpdatePayload = actuatorName => (
   state,
   {
@@ -72,6 +81,7 @@ const getApiUpdatePayload = actuatorName => (
   },
 ) => {
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
+  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
   return {
     mid: selectedModuleName,
     allStates: activeModuleState,
@@ -79,7 +89,7 @@ const getApiUpdatePayload = actuatorName => (
     activeSwitch: `ReactionActive-${activeReactionId}`,
     changes: [actuatorName],
     [paramsKey]: activeModuleParams[actuatorName],
-    'ZeePrime-Lamp-limits': {},
+    [limitsKey]: activeModuleLimits[actuatorName] || {},
   };
 };
 

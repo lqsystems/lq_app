@@ -78,19 +78,19 @@ describe('UPDATE_MODULE_PARAMS mutation', () => {
   });
 });
 
-const UPDATE_MODULE_STATE = (state, reactorId, stateType, newState) => {
+const MUTATE_MODULE_STATE = (state, reactorId, stateType, newState) => {
   state[reactorId].moduleState[stateType] = newState;
 };
 
-describe('UPDATE_MODULE_STATE mutation', () => {
+describe('MUTATE_MODULE_STATE mutation', () => {
   test('sets Air state to true', () => {
-    UPDATE_MODULE_STATE(state, 'ZeePrime', 'Air', true);
+    MUTATE_MODULE_STATE(state, 'ZeePrime', 'Air', true);
     const actual = state.ZeePrime.moduleState.Air;
     const expected = true;
     expect(actual).toBe(expected);
   });
   test('sets Lamp state to false', () => {
-    UPDATE_MODULE_STATE(state, 'Dosis1', 'Lamp', false);
+    MUTATE_MODULE_STATE(state, 'Dosis1', 'Lamp', false);
     const actual = state.Dosis1.moduleState.Lamp;
     const expected = false;
     expect(actual).toBe(expected);

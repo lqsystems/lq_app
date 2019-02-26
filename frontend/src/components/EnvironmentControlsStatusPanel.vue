@@ -4,9 +4,9 @@
     v-bind:handle-click="routeToControls"
   >
     <div>
-      <v-icon class="status-panel-icon">
+      <!-- <v-icon class="status-panel-icon">
         edit
-      </v-icon>
+      </v-icon> -->
       <ControlPanelItem
         v-bind:handle-click="SET_AIR_ACTIVE"
         ripple-on-click

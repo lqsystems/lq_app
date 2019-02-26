@@ -109,10 +109,6 @@ export default {
   font-size: 4vh;
 }
 
-.nav-logout-button {
-  padding-top: 2.1vh !important;
-}
-
 .nav-logout-label {
   position: relative;
   top: 0.4vh;
