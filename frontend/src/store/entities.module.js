@@ -62,7 +62,7 @@ export const getters = {
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
-  activeModuleHeater: getHeater,
+  heater: getHeater,
 };
 
 export default {

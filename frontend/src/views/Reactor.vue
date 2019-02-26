@@ -1,7 +1,7 @@
 <template>
   <div class="reactor view">
     <div class="reactor-header">
-      Zee Prime
+      {{ selectedModuleName }}
     </div>
     <div class="reactor-main">
       <div class="reactor-col reactor-col-left">
@@ -31,8 +31,8 @@
   </div>
 </template>
 
-
 <script>
+import { mapGetters } from 'vuex';
 
 import BaseNav from '@/components/BaseNav';
 import BaseSelect from '@/components/BaseSelect';
@@ -46,6 +46,10 @@ export default {
     EnvironmentControlsStatusPanel,
     BaseNav,
     BaseSelect,
+  },
+
+  computed: {
+    ...mapGetters(['selectedModuleName']),
   },
 };
 </script>

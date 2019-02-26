@@ -15,7 +15,7 @@
 // import * as stars from '@/utils/ApiTestUtils';
 import { mapActions } from 'vuex';
 import { FETCH_MODULES } from '@/store/actions.types.js';
-
+import callApi from '@/utils/ApiUtils.js';
 
 export default {
   name: 'App',

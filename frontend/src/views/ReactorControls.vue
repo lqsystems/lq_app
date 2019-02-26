@@ -11,7 +11,7 @@
           arrow_back
         </v-icon>
       </v-btn>
-      Zee Prime Controls
+      {{ `${selectedModuleName} Controls` }}
     </div>
     <div class="rc-main">
       <div class="rc-sidebar">
@@ -66,7 +66,7 @@ export default {
     AirControlPanel,
   },
   computed: {
-    ...mapGetters(['selectedControlPanel']),
+    ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
     },

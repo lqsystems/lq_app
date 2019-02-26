@@ -7,7 +7,8 @@ import {
 } from './mutations.types';
 
 const state = {
-  selectedModuleName: null,
+  // TODO: import module name as a constant
+  selectedModuleName: 'ZeePrime',
   isFetching: true,
 };
 
@@ -26,7 +27,13 @@ const mutations = {
   },
 };
 
+
+const getters = {
+  selectedModuleName: state => (state.selectedModuleName === 'Dosis1' ? 'LQR' : state.selectedModuleName),
+};
+
 export default {
   state,
   mutations,
+  getters,
 };

@@ -4,7 +4,7 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        v-bind:initial-state="true"
+        v-bind:initial-state="false"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Intensity">
@@ -53,6 +53,7 @@ export default {
   computed: {
   },
   methods: {
+    // TODO: this is shared with heater control panel. Extract into util function
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },

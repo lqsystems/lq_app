@@ -10,8 +10,8 @@
     <ControlPanelItem label="Heater Level">
       <SliderControl
         v-bind:level="heaterLevel"
-        v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move-end="SET_HEATER_LEVEL"
+        v-bind:level-label-func="getPercentLabel"
+        v-on:slider-move-end="() => {}"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -48,7 +48,7 @@ export default {
     SliderControl,
   },
   computed: {
-    ...mapGetters(['activeModule']),
+    ...mapGetters(['heater']),
     heaterLevel() {
       return Number(this.heater.level);
     },
@@ -56,20 +56,13 @@ export default {
       return [this.heater.minTemp, this.heater.maxTemp];
     },
   },
-  mounted() {
-    console.log(this.activeModule);
-    // console.log(this.$store.state);
-  },
   methods: {
     ...mapMutations([SET_HEATER_LEVEL, TOGGLE_HEATER_POWER]),
-    getSliderLabel(sliderPos) {
+    getPercentLabel(sliderPos) {
       return `${sliderPos[0]}%`;
     },
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
-    },
-    sayHi() {
-      console.log('hello');
     },
   },
 };
