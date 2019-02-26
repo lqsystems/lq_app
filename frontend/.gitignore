@@ -27,4 +27,5 @@ yarn-error.log*
 *.todo
 requirements/
 src/store/*.py
+src/store/store.design.js
 **/*/*.py

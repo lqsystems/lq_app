@@ -9,7 +9,7 @@ const callApi = async (url, options = {}) => {
     ? options.method
     : 'get';
 
-  options = Object.assign(options, { url, method });
+  options = Object.assign({}, options, { url, method });
 
   try {
     const response = await axios(options);
@@ -19,7 +19,7 @@ const callApi = async (url, options = {}) => {
     const { message } = error;
 
     if (message === 'Network Error') {
-      alert(networkErrorMessage);
+      alert(error);
     }
 
     console.log(error);
