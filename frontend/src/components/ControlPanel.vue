@@ -33,15 +33,20 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.reactor-main {
+  .control-panel-wrapper {
+    font-size: 1.2em;
+  }
+}
 .control-panel-wrapper {
-  font-size: 1.1em;
-  width: 90%;
+  font-size: 1.3em;
+  width: 100%;
   margin: 0 auto;
 }
 
 .control-panel-label {
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding-bottom: .7em;
 }
 </style>

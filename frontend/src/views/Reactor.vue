@@ -6,9 +6,7 @@
         <div class="reactor-status-panel">
           <PresentValuesStatusPanel />
         </div>
-        <div
-          class="reactor-status-panel"
-        >
+        <div class="reactor-status-panel">
           <EnvironmentControlsStatusPanel />
         </div>
       </div>
@@ -59,23 +57,14 @@ export default {
 
 .reactor {
   height: 100%;
+}
 
-  .control-panel-main {
-    padding: .5em 0;
-  }
-
-  .cp-item {
-    padding-left: 2.3em;
-    padding-right: 3.8em;
-  }
-
-  .status-panel-icon {
-    font-size: 1.4em;
-    position: absolute;
-    right: 0.6em;
-    top: 0.3em;
-    color: silver;
-  }
+.status-panel-icon {
+  font-size: 1.4em;
+  position: absolute;
+  right: 0.6em;
+  top: 0.3em;
+  color: silver;
 }
 
 .reactor-header {
@@ -89,7 +78,12 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "left right";
   overflow: hidden;
-  height: calc(100% - 156px);
+  height: calc(100% - 130px);
+}
+
+
+.reactor-col {
+  padding: 2.8em 5.7em;
 }
 
 .reactor-col-left {
@@ -98,28 +92,25 @@ export default {
 
 .reactor-col-right {
   grid-area: right;
-}
-
-.reactor-col {
-  padding: 2.8em 4em;
+  padding-top: 1.5em;
 }
 
 .reactor-status-panel {
-  margin-bottom: 5em;
+  margin-bottom: 3.5em;
 }
 
 .reaction-select-wrapper {
   width: 50%;
   margin: 0 auto;
-  margin-bottom: 2em;
+  margin-bottom: .7em;
 }
 
 .reactor-graphic {
   display: block;
   margin: 0 auto;
   width: 45%;
-  height: 65vh;
-};
+  height: 52.5vh;
+}
 
 .nav {
   border: 1px solid $grey-200;

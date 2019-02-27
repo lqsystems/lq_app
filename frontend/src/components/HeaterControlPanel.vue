@@ -7,7 +7,7 @@
         v-bind:initial-state="heater.powerOn"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Heater Level">
+    <ControlPanelItem label="Level">
       <SliderControl
         v-bind:level="heaterLevel"
         v-bind:level-label-func="getPercentLabel"
@@ -15,7 +15,7 @@
       />
     </ControlPanelItem>
     <ControlPanelItem
-      label="Temp Range"
+      label="Range"
       v-bind:include-divider="false"
     >
       <!-- Returns a range slider since an array is suplied to the level prop -->
