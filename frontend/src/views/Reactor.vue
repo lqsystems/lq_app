@@ -1,8 +1,6 @@
 <template>
   <div class="reactor view">
-    <div class="reactor-header">
-      {{ selectedModuleName }}
-    </div>
+    <BaseHeader v-bind:title="selectedModuleName" />
     <div class="reactor-main">
       <div class="reactor-col reactor-col-left">
         <div class="reactor-status-panel">
@@ -35,6 +33,7 @@
 import { mapGetters } from 'vuex';
 
 import BaseNav from '@/components/BaseNav';
+import BaseHeader from '@/components/BaseHeader';
 import BaseSelect from '@/components/BaseSelect';
 import PresentValuesStatusPanel from '@/components/PresentValuesStatusPanel';
 import EnvironmentControlsStatusPanel from '@/components/EnvironmentControlsStatusPanel';
@@ -44,6 +43,7 @@ export default {
   components: {
     PresentValuesStatusPanel,
     EnvironmentControlsStatusPanel,
+    BaseHeader,
     BaseNav,
     BaseSelect,
   },

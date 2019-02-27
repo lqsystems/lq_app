@@ -1,28 +1,32 @@
 <template>
   <v-toolbar>
-    <v-toolbar-side-icon />
-    <v-toolbar-title>Title</v-toolbar-title>
-    <v-spacer />
-    <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat>
-        Link One
-      </v-btn>
-      <v-btn flat>
-        Link Two
-      </v-btn>
-      <v-btn flat>
-        Link Three
-      </v-btn>
-    </v-toolbar-items>
+    <v-btn
+      v-if="backIcon"
+      icon
+      v-on:click="handleIconClick"
+    >
+      <v-icon>arrow_back</v-icon>
+    </v-btn>
+    <v-toolbar-title>{{ title }}</v-toolbar-title>
   </v-toolbar>
 </template>
 
 <script>
 export default {
   name: 'BaseHeader',
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    backIcon: {
+      type: Boolean,
+      default: false,
+    },
+    handleIconClick: {
+      type: Function,
+      default: () => {},
+    },
+  },
 };
-
 </script>
-
-<style>
-</style>

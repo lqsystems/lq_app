@@ -1,18 +1,10 @@
 <template>
   <div class="reactor-controls view">
-    <div class="rc-header">
-      <v-btn
-        flat
-        icon
-        color=""
-        v-on:click="routeHome"
-      >
-        <v-icon>
-          arrow_back
-        </v-icon>
-      </v-btn>
-      {{ `${selectedModuleName} Controls` }}
-    </div>
+    <BaseHeader
+      back-icon
+      v-bind:title="headerTitle"
+      v-bind:handle-icon-click="routeHome"
+    />
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
@@ -50,6 +42,7 @@ import {
   SET_LIGHT_ACTIVE,
 } from '@/store/mutations.types';
 
+import BaseHeader from '@/components/BaseHeader';
 import BaseSidebar from '@/components/BaseSidebar';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
 import LightControlPanel from '@/components/LightControlPanel';
@@ -59,6 +52,7 @@ import AirControlPanel from '@/components/AirControlPanel';
 
 export default {
   components: {
+    BaseHeader,
     BaseSidebar,
     BaseSidebarItem,
     HeaterControlPanel,
@@ -69,6 +63,9 @@ export default {
     ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
+    },
+    headerTitle() {
+      return `${this.selectedModuleName} Controls`;
     },
   },
   methods: {
