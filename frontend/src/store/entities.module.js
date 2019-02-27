@@ -55,6 +55,7 @@ const actions = {
 
       const { entities } = normalize(data, moduleSchema);
       const { modules, reactions } = entities;
+      console.log(reactions);
       commit(LOAD_MODULES, modules);
       commit(LOAD_REACTIONS, reactions);
 

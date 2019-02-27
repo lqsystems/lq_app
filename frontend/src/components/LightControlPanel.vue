@@ -56,6 +56,7 @@ export default {
     ...mapActions([UPDATE_LAMP]),
     // TODO: this is shared with heater control panel. Extract into util function
     toggleLight(lightState) {
+      console.log('hello');
       this.UPDATE_LAMP({
         moduleName: 'ZeePrime', // TODO: this should be selected from the action
         actuatorKey: 'Lamp',

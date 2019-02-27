@@ -17,10 +17,7 @@ const callApi = async (url, options = {}) => {
   } catch (error) {
     const networkErrorMessage = 'We encountered a network error! \n\n Is the server running?';
     const { message } = error;
-
-    if (message === 'Network Error') {
-      alert(error);
-    }
+    alert(error);
 
     console.log(error);
   }
