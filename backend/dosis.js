@@ -150,7 +150,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://192.168.1.110:8080'],
+  origin: ['http://localhost:8080', 'http://192.168.1.99:8080'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'client'],
 }));
