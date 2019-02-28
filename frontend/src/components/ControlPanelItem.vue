@@ -47,11 +47,18 @@ export default {
 };
 </script>
 
-<style>
-.cp-item {
+<style lang="scss">
+.reactor-main {
+  .cp-item {
+    display: flex;
+    padding: 1.0em 1.5em;
+    align-items: center;
+  }
+}
 
+.cp-item {
   display: flex;
-  padding: 1.3em 1.2em;
+  padding: 1.9em 1.2em;
   align-items: center;
 }
 

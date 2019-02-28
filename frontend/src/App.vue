@@ -39,7 +39,7 @@ export default {
 
 html, body {
   height: 100vh;
-  padding-bottom: 85px;
+  padding-bottom: 65px;
 }
 
 .view {

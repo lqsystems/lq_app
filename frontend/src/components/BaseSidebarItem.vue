@@ -36,5 +36,24 @@ export default {
 
 </script>
 
-<style>
+<style scoped lang="scss">
+@import '../styles/variables';
+
+$font-size: 1.5;
+
+.v-list__tile__action {
+  font-weight: 400;
+  font-size: $font-size + em;
+}
+
+.v-list__tile__title {
+  font-weight: 400;
+  font-size: $font-size - .1 + em;
+}
+
+.sidebar-icon {
+  color: $grey-800;
+}
+
+
 </style>

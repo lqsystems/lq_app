@@ -114,4 +114,11 @@ export default {
   padding: 40px;
   grid-area: controls;
 }
+
+.icon-air {
+  font-size: .7em;
+  position: relative;
+  left: 0.1em;
+}
+
 </style>

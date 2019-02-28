@@ -73,7 +73,7 @@ export default {
 }
 
 .slider-control-level {
-  margin-left: 1.4em;
+  margin-left: 1.8em;
   width: 8em;
   text-align: center;
 }
