@@ -784,7 +784,7 @@ global.loadRootAssets = (userId,renderPage,res) => {
     var userRAssets = gUserAssets[userId];
     var moduleList = userRAssets.genModuleList()
     //
-    
+
     if ( userRAssets.needsUpdate("reactions") ) {
 
         var reactionFields = [ 'id', 'name', 'module', 'media', 'procedure', 'notes', 'ModuleState', 'active' ]

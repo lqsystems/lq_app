@@ -67,7 +67,7 @@ global.ensureAuthenticated = (req, res, next) => {
     if ( req.isAuthenticated() ) {
         return next();
     } else {
-        req.flash('error', 'Not logged in');
+        // req.flash('error', 'Not logged in');
         res.redirect('/users/login');
     }
 }
