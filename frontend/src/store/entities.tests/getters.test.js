@@ -1,4 +1,4 @@
-import mockModules from '@/data/mockDataModules';
+import mockState from '@/data/mockState';
 import { getters } from '@/store/entities.module';
 import * as modulesGetters from '@/store/modules.module';
 import { lampToggle } from '@/data/apiRequests.js';
@@ -7,8 +7,17 @@ const print = obj => (
   console.log(require('util').inspect(obj, false, null, true))
 );
 
-const state = mockModules;
+print(mockState);
+const state = mockState;
 
+
+describe('example', () => {
+  test('true to be true', () => {
+    const actual = true;
+    const expected = true;
+    expect(actual).toBe(expected);
+  });
+});
 const {
   activeModule,
   activeModuleState,

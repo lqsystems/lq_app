@@ -1,6 +1,6 @@
-export const API_BASE_URL = false // process.env.NODE_ENV === 'tablet'
-  ? 'http://10.0.0.86:8888'
-  : 'http://192.168.1.99:8888';
+export const API_BASE_URL = process.env.NODE_ENV === 'la_warehouse'
+  ? 'http://192.168.1.99:8888'
+  : 'http://localhost:8888';
 
 export const LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const LOGOUT_URL = `${API_BASE_URL}/users/logout`;
