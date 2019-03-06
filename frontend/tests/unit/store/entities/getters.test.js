@@ -1,4 +1,4 @@
-import mockState from '@/data/mockState';
+import mockState from '../mockData/mockState';
 import { getters } from '@/store/entities.module';
 
 describe('example', () => {

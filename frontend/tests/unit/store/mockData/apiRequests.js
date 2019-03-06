@@ -1,0 +1,88 @@
+export const compare = {
+  mid: 'ZeePrime',
+  allStates: {
+    SensorOnOff: false,
+    Air: false,
+    Lamp: false,
+    Heater: false,
+    water: false,
+    inoculum: false,
+    mixer: false,
+    extraction: false,
+    forward: false,
+    backwards: false,
+  },
+  activeId: '5c536562d0e2ce03f1524c9c',
+  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
+  changes: [
+    'Lamp',
+  ],
+  'ZeePrime-Lamp-parameters': {
+    start: 0,
+    stop: 0,
+    level: '0',
+  },
+  'ZeePrime-Lamp-limits': {},
+};
+export const lampToggle = {
+  mid: 'ZeePrime',
+  allStates: {
+    SensorOnOff: false,
+    Air: false,
+    Lamp: false,
+    Heater: false,
+    water: false,
+    inoculum: false,
+    mixer: false,
+    extraction: false,
+    forward: false,
+    backwards: false,
+  },
+  changes: ['Lamp'],
+  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
+  activeId: '5c536562d0e2ce03f1524c9c',
+  'ZeePrime-Lamp-parameters': { level: '0', start: 0, stop: 0 },
+  'ZeePrime-Lamp-limits': {},
+};
+
+export const heaterToggle = {
+  mid: 'ZeePrime',
+  allStates: {
+    SensorOnOff: false,
+    Air: false,
+    Lamp: false,
+    Heater: true,
+    water: false,
+    inoculum: false,
+    mixer: false,
+    extraction: false,
+    forward: false,
+    backwards: false,
+  },
+  changes: ['Heater'],
+  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
+  activeId: '5c536562d0e2ce03f1524c9c',
+  'ZeePrime-Heater-parameters': { level: '0' },
+  'ZeePrime-Heater-limits': { 'LOW-value': '26', 'HIGH-value': '37' },
+};
+
+export const airToggle = {
+  mid: 'ZeePrime',
+  allStates: {
+    SensorOnOff: false,
+    Air: true,
+    Lamp: false,
+    Heater: true,
+    water: false,
+    inoculum: false,
+    mixer: false,
+    extraction: false,
+    forward: false,
+    backwards: false,
+  },
+  changes: ['Air'],
+  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
+  activeId: '5c536562d0e2ce03f1524c9c',
+  'ZeePrime-Heater-parameters': { level: '0' },
+  'ZeePrime-Heater-limits': { 'LOW-value': '26', 'HIGH-value': '37' },
+};

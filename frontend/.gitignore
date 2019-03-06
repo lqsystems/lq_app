@@ -23,8 +23,9 @@ yarn-error.log*
 *.sw*
 
 # Hayden's stuff
-*.todo
+ignore/
 requirements/
 src/store/*.py
 src/store/store.design.js
+*.todo
 **/*/*.py
