@@ -7,10 +7,6 @@ const print = obj => (
   console.log(require('util').inspect(obj, false, null, true))
 );
 
-print(mockState);
-const state = mockState;
-
-
 describe('example', () => {
   test('true to be true', () => {
     const actual = true;
@@ -18,21 +14,24 @@ describe('example', () => {
     expect(actual).toBe(expected);
   });
 });
+
+const state = mockState.entities;
+
 const {
   activeModule,
   activeModuleState,
   activeModuleParams,
   activeModuleLimits,
   heater,
-  apiUpdatePayload,
+  getApiUpdatePayload,
 } = getters;
 
-const activeModuleVal = state.ZeePrime;
+const activeModuleVal = activeModule(state, { selectedModuleName: 'ZeePrime' });
 const activeModuleStateVal = activeModuleState(state, { activeModule: activeModuleVal });
 const activeModuleParamsVal = activeModuleParams(state, { activeModule: activeModuleVal });
 const activeModuleLimitsVal = activeModuleLimits(state, { activeModule: activeModuleVal });
 
-const testGetters = {
+const mockGetters = {
   activeModule: activeModuleVal,
   activeModuleState: activeModuleStateVal,
   activeModuleParams: activeModuleParamsVal,
@@ -56,33 +55,33 @@ const testPayload = {
 };
 
 describe('entities getters', () => {
-  test('apiUpdatePayload', () => {
+  test('getApiUpdatePayload', () => {
     const expected = testPayload;
-    const actual = apiUpdatePayload(state, testGetters);
+    const actual = getApiUpdatePayload(state, mockGetters);
     expect(true).toEqual(true);
   });
 
   test('module state', () => {
-    const actual = activeModuleState(state, testGetters);
+    const actual = activeModuleState(state, mockGetters);
     expect(actual).toHaveProperty('Air', false);
     expect(actual).toHaveProperty('Lamp', false);
     expect(actual).toHaveProperty('Heater', false);
   });
 
   test('module params', () => {
-    const actual = activeModuleParams(state, testGetters);
+    const actual = activeModuleParams(state, mockGetters);
     expect(actual).toHaveProperty('Air', expect.objectContaining({ start: 0 }));
     expect(actual).toHaveProperty('Lamp', expect.objectContaining({ stop: 0 }));
     expect(actual).toHaveProperty('Heater', expect.objectContaining({ level: 0 }));
   });
 
   test('module limits', () => {
-    const actual = activeModuleLimits(state, testGetters);
+    const actual = activeModuleLimits(state, mockGetters);
     expect(actual).toHaveProperty('Heater', expect.objectContaining({ 'HIGH-value': 100 }));
   });
 
   test('module heater', () => {
-    const actual = heater(state, testGetters);
+    const actual = heater(state, mockGetters);
     expect(actual).toHaveProperty('level', 0);
     expect(actual).toHaveProperty('powerOn', false);
     expect(actual).toHaveProperty('minTemp', 0);

@@ -20,9 +20,12 @@ const state = {
 };
 
 const mutations = {
+  // TODO: refactor to generic LOAD_ENTITY
   [LOAD_MODULES](state, modules) {
     state.modules = modules;
   },
+
+  // TODO: refactor to generic LOAD_ENTITY
   [LOAD_REACTIONS](state, reactions) {
     state.reactions = reactions;
   },
@@ -33,6 +36,7 @@ const mutations = {
 
 const actions = {
   // TODO: refactor to handle errors
+  // TODO: refactor to be generic
   [UPDATE_LAMP]({ commit, state, getters }, mutationPayload) {
     commit(MUTATE_MODULE_STATE, mutationPayload);
     const { lampUpdatePayload } = getters;
@@ -104,6 +108,7 @@ export const getters = {
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   heater: getHeater,
+  getApiUpdatePayload,
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
 };
 

@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "NODE_ENV='la_warehouse' vue-cli-service serve",
-    "serve:offsite": "FOO='bar' vue-cli-service serve", 
+    "serve:offsite": "vue-cli-service serve", 
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "concurrently \"cd ../backend && node dosis.js\" \"vue-cli-service serve\"",
     "test": "yarn test:unit",
-    "test:unit": "vue-cli-service test:unit  --watch --verbose=false || true",
+    "test:unit": "vue-cli-service test:unit --watch --verbose=false || true",
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
