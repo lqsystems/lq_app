@@ -1,11 +1,5 @@
 import mockState from '@/data/mockState';
 import { getters } from '@/store/entities.module';
-import * as modulesGetters from '@/store/modules.module';
-import { lampToggle } from '@/data/apiRequests.js';
-
-const print = obj => (
-  console.log(require('util').inspect(obj, false, null, true))
-);
 
 describe('example', () => {
   test('true to be true', () => {
