@@ -34,7 +34,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { UPDATE_LAMP } from '@/store/actions.types';
+import { UPDATE_MODULE_STATE } from '@/store/actions.types';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -53,22 +53,17 @@ export default {
     SliderControl,
   },
   methods: {
-    ...mapActions([UPDATE_LAMP]),
+    ...mapActions([UPDATE_MODULE_STATE]),
     // TODO: this is shared with heater control panel. Extract into util function
     toggleLight(lightState) {
-      console.log('hello');
       // TODO: change to update module state
-      this.UPDATE_LAMP({
-        moduleName: 'ZeePrime', // TODO: this should be selected from the action
+      this.UPDATE_MODULE_STATE({
         actuatorType: 'Lamp',
         newState: lightState,
       });
     },
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
-    },
-    sayHi() {
-      console.log('hello');
     },
   },
 };

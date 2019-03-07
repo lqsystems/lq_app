@@ -36,7 +36,7 @@ export const mutations = {
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
-    // the api requires that level is a string. Ensure that that is the case
+    // the api requires level to be a string. Ensure that that is the case
     newParams = level && (typeof level === 'number')
       ? Object.assign({}, newParams, { level: String(level) })
       : newParams;
@@ -52,19 +52,38 @@ export const mutations = {
   },
 };
 
+export const getApiUpdatePayload = actuatorName => (
+  state,
+  {
+    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
+  },
+) => {
+  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
+  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
+
+  return {
+    mid: selectedModuleName,
+    allStates: activeModuleState,
+    activeId: activeReactionId,
+    activeSwitch: `ReactionActive-${activeReactionId}`,
+    changes: [actuatorName],
+    [paramsKey]: activeModuleParams[actuatorName],
+    [limitsKey]: activeModuleLimits[actuatorName] || {},
+  };
+};
 
 // TODO: refactor to handle errors
 export const getModuleUpdateAction = (mutationType, callApi, requestUrl) => (
   { commit, state, getters },
   mutationPayload,
 ) => {
-  const { getApiUpdatePayload, selectedModuledName } = getters;
-  mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuledName });
-
+  const { selectedModuleName } = getters;
+  mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuleName });
   commit(mutationType, mutationPayload);
 
   const { actuatorKey } = mutationPayload;
-  const requestPayload = getApiUpdatePayload(actuatorKey);
+
+  const requestPayload = getApiUpdatePayload(actuatorKey)(state, getters);
 
   callApi(requestUrl, {
     method: 'POST',
@@ -107,26 +126,6 @@ const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleL
   maxTemp: activeModuleLimits.Heater['HIGH-value'],
 });
 
-const getApiUpdatePayload = actuatorName => (
-  state,
-  {
-    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
-  },
-) => {
-  const { level } = activeModuleParams;
-
-  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
-  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
-  return {
-    mid: selectedModuleName,
-    allStates: activeModuleState,
-    activeId: activeReactionId,
-    activeSwitch: `ReactionActive-${activeReactionId}`,
-    changes: [actuatorName],
-    [paramsKey]: activeModuleParams[actuatorName],
-    [limitsKey]: activeModuleLimits[actuatorName] || {},
-  };
-};
 
 export const getActiveReactionId = state => (
   Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
@@ -139,7 +138,6 @@ export const getters = {
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   heater: getHeater,
-  getApiUpdatePayload, // TODO: move this out of getters object and export
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
 };
 

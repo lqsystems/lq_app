@@ -1,5 +1,5 @@
 import mockState from '../../mockState';
-import { getters, getActiveReactionId } from '@/store/entities.module';
+import { getters, getActiveReactionId, getApiUpdatePayload } from '@/store/entities.module';
 
 const state = mockState.entities;
 
@@ -9,7 +9,6 @@ const {
   activeModuleParams,
   activeModuleLimits,
   heater,
-  getApiUpdatePayload,
 } = getters;
 
 const activeModuleVal = activeModule(state, { selectedModuleName: 'ZeePrime' });
