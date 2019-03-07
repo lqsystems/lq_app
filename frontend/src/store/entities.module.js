@@ -6,7 +6,7 @@ import callApi from '@/utils/api.utils.js';
 import { moduleSchema } from '@/constants/schemas';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 import { modulesInitial } from './entities.initialState.js';
-import { UPDATE_LAMP } from './actions.types';
+import { UPDATE_MODULE_STATE } from './actions.types';
 import {
   FETCH_MODULES,
   LOAD_REACTIONS,
@@ -52,18 +52,28 @@ export const mutations = {
   },
 };
 
-export const actions = {
-  // TODO: refactor to handle errors
-  // TODO: refactor to be generic
-  [UPDATE_LAMP]({ commit, state, getters }, mutationPayload) {
-    commit(MUTATE_MODULE_STATE, mutationPayload);
-    const { lampUpdatePayload } = getters;
 
-    callApi(UPDATE_STATE_URL, {
-      method: 'POST',
-      data: lampUpdatePayload,
-    });
-  },
+// TODO: refactor to handle errors
+export const getModuleUpdateAction = (mutationType, callApi, requestUrl) => (
+  { commit, state, getters },
+  mutationPayload,
+) => {
+  const { getApiUpdatePayload, selectedModuledName } = getters;
+  mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuledName });
+
+  commit(mutationType, mutationPayload);
+
+  const { actuatorKey } = mutationPayload;
+  const requestPayload = getApiUpdatePayload(actuatorKey);
+
+  callApi(requestUrl, {
+    method: 'POST',
+    data: requestPayload,
+  });
+};
+
+
+export const actions = {
   async [FETCH_MODULES]({ commit }, successRoute) {
     // If user is logged in 'data' will contain an array of module data.
     // Otherwise 'data' will contain an error message.
@@ -87,6 +97,7 @@ export const actions = {
       console.log(error);
     }
   },
+  [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE, callApi, UPDATE_STATE_URL),
 };
 
 const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({

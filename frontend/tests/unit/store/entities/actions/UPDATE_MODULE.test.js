@@ -1,5 +1,9 @@
 /* eslint "no-shadow": "off" */
 
+import { getModuleUpdateAction } from '@/store/entities.module';
+
+// const { UPDATE_MODULE_STATE } = actions;
+
 const MUTATE_MODULE_STATE = 'MUTATE_MODULE_STATE';
 const UPDATE_STATE_URL = 'UPDATE_STATE_URL';
 
@@ -16,28 +20,21 @@ const getters = {
   getApiUpdatePayload: () => ({ foo: 'bar' }),
 };
 
-function UPDATE_MOUDLE({ commit, state, getters }, mutationPayload) {
-  const { getApiUpdatePayload, selectedModuledName } = getters;
-  mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuledName });
-  commit(MUTATE_MODULE_STATE, mutationPayload);
-
-  const { actuatorKey } = mutationPayload;
-  const requestPayload = getApiUpdatePayload(actuatorKey);
-
-  callApi(UPDATE_STATE_URL, {
-    method: 'POST',
-    data: requestPayload,
-  });
-}
 
 describe('UPDATE_MOUDLE actions', () => {
   test('commit and callApi are called with correct values', () => {
-    UPDATE_MOUDLE({ commit, getters }, mockMuationPayload);
+    const UPDATE_MODULE_STATE = (
+      getModuleUpdateAction(MUTATE_MODULE_STATE, callApi, UPDATE_STATE_URL)
+    );
+
+    UPDATE_MODULE_STATE({ commit, getters }, mockMuationPayload);
+
     expect(commit).toHaveBeenCalledWith(MUTATE_MODULE_STATE, {
       moduleName: 'ZeePrime',
       actuatorkey: 'lamp',
       newstate: true,
     });
+
     expect(callApi).toHaveBeenCalledWith(UPDATE_STATE_URL, {
       method: 'POST',
       data: { foo: 'bar' },
