@@ -36,7 +36,7 @@ export const mutations = {
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
-    // as per api requirement, ensure that level is a string
+    // the api requires that level is a string. Ensure that that is the case
     newParams = level && (typeof level === 'number')
       ? Object.assign({}, newParams, { level: String(level) })
       : newParams;
