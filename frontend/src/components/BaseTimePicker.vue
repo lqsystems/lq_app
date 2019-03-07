@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { convertToAmPm } from '@/utils/TimeUtils';
+import { convertToAmPm } from '@/utils/time.utils';
 
 export default {
   name: 'BaseTimePicker',

@@ -1,6 +1,6 @@
 /* eslint "no-shadow": "off" */
 import Vue from 'vue';
-import callApi from '@/utils/ApiUtils.js';
+import callApi from '@/utils/api.utils.js';
 
 import {
 } from './mutations.types';

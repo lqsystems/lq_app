@@ -44,7 +44,7 @@
 import { mapActions } from 'vuex';
 import { FETCH_MODULES } from '@/store/actions.types.js';
 import { LOGIN_URL } from '@/constants/ApiConstants.js';
-import callApi from '@/utils/ApiUtils.js';
+import callApi from '@/utils/api.utils.js';
 
 export default {
   name: 'Login',

@@ -50,7 +50,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-import callApi from '@/utils/ApiUtils.js';
+import callApi from '@/utils/api.utils.js';
 import { LOGOUT_URL } from '@/constants/ApiConstants.js';
 import {
   UPDATE_SELECTED_MODULE,
