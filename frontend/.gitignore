@@ -23,7 +23,7 @@ yarn-error.log*
 *.sw*
 
 # Hayden's stuff
-/Users/hayden/MEGA/lq_app/frontend/tests/unit/store/genModTsts
+tests/unit/store/genModTsts
 ignore/
 requirements/
 src/store/*.py

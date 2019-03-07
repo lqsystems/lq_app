@@ -60,7 +60,7 @@ export default {
       // TODO: change to update module state
       this.UPDATE_LAMP({
         moduleName: 'ZeePrime', // TODO: this should be selected from the action
-        actuatorKey: 'Lamp',
+        actuatorType: 'Lamp',
         newState: lightState,
       });
     },

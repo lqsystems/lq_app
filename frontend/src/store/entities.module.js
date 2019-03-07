@@ -12,6 +12,8 @@ import {
   LOAD_REACTIONS,
   LOAD_MODULES,
   MUTATE_MODULE_STATE,
+  MUTATE_MODULE_PARAMS,
+  MUTATE_MODULE_LIMITS,
 } from './mutations.types';
 
 const state = {
@@ -19,7 +21,7 @@ const state = {
   reactions: {},
 };
 
-const mutations = {
+export const mutations = {
   // TODO: refactor to generic LOAD_ENTITY
   [LOAD_MODULES](state, modules) {
     state.modules = modules;
@@ -29,12 +31,22 @@ const mutations = {
   [LOAD_REACTIONS](state, reactions) {
     state.reactions = reactions;
   },
-  [MUTATE_MODULE_STATE](state, { moduleName, actuatorKey, newState }) {
-    state.modules[moduleName].moduleState[actuatorKey] = newState;
+  [MUTATE_MODULE_STATE](state, { moduleName, actuatorType, newState }) {
+    state.modules[moduleName].moduleState[actuatorType] = newState;
+  },
+  [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
+    const currentParams = state.modules[moduleName].parameters;
+    const currentParamsValues = currentParams[actuatorType];
+    currentParams[actuatorType] = Object.assign({}, currentParamsValues, newParams);
+  },
+  [MUTATE_MODULE_LIMITS](state, moduleName, actuatorType, newLimits) {
+    const currentLimits = state.modules[moduleName].limits;
+    const currentLimitsValues = currentLimits[actuatorType];
+    currentLimits[actuatorType] = Object.assign({}, currentLimitsValues, newLimits);
   },
 };
 
-const actions = {
+export const actions = {
   // TODO: refactor to handle errors
   // TODO: refactor to be generic
   [UPDATE_LAMP]({ commit, state, getters }, mutationPayload) {
