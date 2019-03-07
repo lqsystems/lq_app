@@ -25,7 +25,7 @@
 
 <script>
 import BaseSwitch from './BaseSwitch';
-import { COLOR_PRIMARY } from '../constants/StyleConstants';
+import { COLOR_PRIMARY } from '../constants/style.constants';
 
 // TODO: refactor name to switch control
 export default {

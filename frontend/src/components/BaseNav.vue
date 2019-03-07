@@ -51,7 +51,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex';
 import callApi from '@/utils/api.utils.js';
-import { LOGOUT_URL } from '@/constants/ApiConstants.js';
+import { LOGOUT_URL } from '@/constants/api.constants.js';
 import {
   UPDATE_SELECTED_MODULE,
 } from '@/store/mutations.types';

@@ -19,7 +19,7 @@
 
 <script>
 import BaseSlider from './BaseSlider';
-import { COLOR_PRIMARY } from '../constants/StyleConstants';
+import { COLOR_PRIMARY } from '../constants/style.constants';
 
 export default {
   name: 'SliderControl',

@@ -43,7 +43,7 @@
 <script>
 import { mapActions } from 'vuex';
 import { FETCH_MODULES } from '@/store/actions.types.js';
-import { LOGIN_URL } from '@/constants/ApiConstants.js';
+import { LOGIN_URL } from '@/constants/api.constants.js';
 import callApi from '@/utils/api.utils.js';
 
 export default {
