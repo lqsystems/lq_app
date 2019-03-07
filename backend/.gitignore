@@ -1,5 +1,6 @@
 node_modules/
 
 # Hayden's stuff
+build-scripts/
 .vscode
 *.todo
