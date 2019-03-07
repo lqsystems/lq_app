@@ -13,7 +13,7 @@ describe('MUTATE_MODULE_PARAMS mutation', () => {
       newParams,
     });
     const actual = state.modules.MV1.parameters.Lamp;
-    const expected = { start: 0, stop: 0, level: 40 };
+    const expected = { start: 0, stop: 0, level: '40' };
     expect(actual).toEqual(expected);
   });
 });

@@ -35,6 +35,12 @@ export const mutations = {
     state.modules[moduleName].moduleState[actuatorType] = newState;
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
+    const { level } = newParams;
+    // as per api requirement, ensure that level is a string
+    newParams = level && (typeof level === 'number')
+      ? Object.assign({}, newParams, { level: String(level) })
+      : newParams;
+
     const currentParams = state.modules[moduleName].parameters;
     const currentParamsValues = currentParams[actuatorType];
     currentParams[actuatorType] = Object.assign({}, currentParamsValues, newParams);
@@ -96,6 +102,8 @@ const getApiUpdatePayload = actuatorName => (
     activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
   },
 ) => {
+  const { level } = activeModuleParams;
+
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
   const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
   return {

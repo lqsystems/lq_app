@@ -1,4 +1,4 @@
-import mockState from '../mockData/mockState';
+import mockState from '../../mockState';
 import { getters, getActiveReactionId } from '@/store/entities.module';
 
 const state = mockState.entities;
@@ -42,14 +42,23 @@ const testPayload = {
     backwards: false,
   },
   activeId: '5c536562d0e2ce03f1524c9c',
+  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
+  changes: [
+    'Lamp',
+  ],
+  'ZeePrime-Lamp-parameters': {
+    start: 0,
+    stop: 0,
+    level: 0,
+  },
+  'ZeePrime-Lamp-limits': {},
 };
 
 describe('entities getters', () => {
   test('getApiUpdatePayload', () => {
     const expected = testPayload;
     const actual = getApiUpdatePayload('Lamp')(state, mockGetters);
-    console.log(actual);
-    expect(true).toEqual(false);
+    expect(expected).toEqual(actual);
   });
 
   test('module state', () => {
