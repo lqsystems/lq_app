@@ -97,7 +97,7 @@ const getApiUpdatePayload = actuatorName => (
   };
 };
 
-const getActiveReactionId = state => (
+export const getActiveReactionId = state => (
   Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
 );
 
@@ -108,7 +108,7 @@ export const getters = {
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   heater: getHeater,
-  getApiUpdatePayload,
+  getApiUpdatePayload, // TODO: move this out of getters object and export
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
 };
 

@@ -1,13 +1,5 @@
 import mockState from '../mockData/mockState';
-import { getters } from '@/store/entities.module';
-
-describe('example', () => {
-  test('true to be true', () => {
-    const actual = true;
-    const expected = true;
-    expect(actual).toBe(expected);
-  });
-});
+import { getters, getActiveReactionId } from '@/store/entities.module';
 
 const state = mockState.entities;
 
@@ -24,12 +16,15 @@ const activeModuleVal = activeModule(state, { selectedModuleName: 'ZeePrime' });
 const activeModuleStateVal = activeModuleState(state, { activeModule: activeModuleVal });
 const activeModuleParamsVal = activeModuleParams(state, { activeModule: activeModuleVal });
 const activeModuleLimitsVal = activeModuleLimits(state, { activeModule: activeModuleVal });
+const activeReactionIdVal = getActiveReactionId(state);
 
 const mockGetters = {
+  selectedModuleName: 'ZeePrime',
   activeModule: activeModuleVal,
   activeModuleState: activeModuleStateVal,
   activeModuleParams: activeModuleParamsVal,
   activeModuleLimits: activeModuleLimitsVal,
+  activeReactionId: activeReactionIdVal,
 };
 
 const testPayload = {
@@ -46,13 +41,15 @@ const testPayload = {
     forward: false,
     backwards: false,
   },
+  activeId: '5c536562d0e2ce03f1524c9c',
 };
 
 describe('entities getters', () => {
   test('getApiUpdatePayload', () => {
     const expected = testPayload;
-    const actual = getApiUpdatePayload(state, mockGetters);
-    expect(true).toEqual(true);
+    const actual = getApiUpdatePayload('Lamp')(state, mockGetters);
+    console.log(actual);
+    expect(true).toEqual(false);
   });
 
   test('module state', () => {
