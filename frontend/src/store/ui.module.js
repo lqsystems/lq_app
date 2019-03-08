@@ -7,7 +7,7 @@ import {
 
 const state = {
   environmentControls: {
-    selectedControl: 'Light',
+    selectedControl: 'Air',
   },
 };
 

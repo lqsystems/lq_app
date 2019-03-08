@@ -8,13 +8,15 @@
     >
       <SwitchControl
         :initial-state="false"
+        @toggle="toggleAir"
       />
     </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import { UPDATE_MODULE_STATE } from '@/store/actions.types';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -29,6 +31,13 @@ export default {
     SwitchControl,
   },
   methods: {
+    ...mapActions([UPDATE_MODULE_STATE]),
+    toggleAir(airState) {
+      this.UPDATE_MODULE_STATE({
+        actuatorType: 'Air',
+        newState: airState,
+      });
+    },
   },
 };
 </script>

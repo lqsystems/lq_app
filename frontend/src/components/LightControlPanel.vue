@@ -4,15 +4,15 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        :initial-state="false"
-        @toggle="toggleLight"
+        v-bind:initial-state="false"
+        v-on:toggle="toggleLight"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Intensity">
       <SliderControl
-        :level="20"
-        :level-label-func="getSliderLabel"
-        @slider-move-end="updateIntensity"
+        v-bind:level="20"
+        v-bind:level-label-func="getSliderLabel"
+        v-on:slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -24,7 +24,7 @@
     </ControlPanelItem>
     <ControlPanelItem
       label="End Time"
-      :include-divider="false"
+      v-bind:include-divider="false"
     >
       <div class="hi time-picker-wrapper">
         <BaseTimePicker initial-time="20:00" />
