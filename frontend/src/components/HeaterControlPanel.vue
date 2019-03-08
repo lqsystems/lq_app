@@ -5,34 +5,34 @@
     <ControlPanelItem label="Power">
       <SwitchControl
         :initial-state="heater.powerOn"
+        @toggle="toggleHeater"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Level">
       <SliderControl
         :level="heaterLevel"
         :level-label-func="getPercentLabel"
-        @slider-move-end="() => {}"
+        @slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
     <ControlPanelItem
       label="Range"
       :include-divider="false"
     >
-      <!-- Returns a range slider since an array is suplied to the level prop -->
+      <!-- Returns a slider with two handles since an array is suplied to the level prop -->
       <SliderControl
         :level="heaterMinMax"
         :level-label-func="getTempLabel"
+        @slider-move-end="updateLimits"
       />
     </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import {
-  SET_HEATER_LEVEL,
-  TOGGLE_HEATER_POWER,
-} from '@/store/mutations.types';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS } from '@/store/actions.types';
+import { SET_HEATER_LEVEL, TOGGLE_HEATER_POWER } from '@/store/mutations.types';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -57,7 +57,30 @@ export default {
     },
   },
   methods: {
+    ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS]),
     ...mapMutations([SET_HEATER_LEVEL, TOGGLE_HEATER_POWER]),
+    toggleHeater(heaterState) {
+      this.UPDATE_MODULE_STATE({
+        actuatorType: 'Heater',
+        newState: heaterState,
+      });
+    },
+    updateIntensity([level]) {
+      this.UPDATE_MODULE_PARAMS({
+        actuatorType: 'Heater',
+        newParams: { level },
+      });
+    },
+    updateLimits(limits) {
+      const newLimits = {
+        'LOW-value': String(limits[0]),
+        'HIGH-value': String(limits[1]),
+      };
+      this.UPDATE_MODULE_LIMITS({
+        actuatorType: 'Heater',
+        newLimits,
+      });
+    },
     getPercentLabel(sliderPos) {
       return `${sliderPos[0]}%`;
     },

@@ -6,7 +6,7 @@ import callApi from '@/utils/api.utils.js';
 import { moduleSchema } from '@/constants/schemas';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 import { modulesInitial } from './entities.initialState.js';
-import { UPDATE_MODULE_PARAMS, UPDATE_MODULE_STATE } from './actions.types';
+import { UPDATE_MODULE_PARAMS, UPDATE_MODULE_STATE, UPDATE_MODULE_LIMITS } from './actions.types';
 import {
   FETCH_MODULES,
   LOAD_REACTIONS,
@@ -47,7 +47,7 @@ export const mutations = {
     const currentParamsValues = currentParams[actuatorType];
     currentParams[actuatorType] = Object.assign({}, currentParamsValues, newParams);
   },
-  [MUTATE_MODULE_LIMITS](state, moduleName, actuatorType, newLimits) {
+  [MUTATE_MODULE_LIMITS](state, { moduleName, actuatorType, newLimits }) {
     const currentLimits = state.modules[moduleName].limits;
     const currentLimitsValues = currentLimits[actuatorType];
     currentLimits[actuatorType] = Object.assign({}, currentLimitsValues, newLimits);
@@ -110,6 +110,7 @@ export const actions = {
   },
   [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE),
   [UPDATE_MODULE_PARAMS]: getModuleUpdateAction(MUTATE_MODULE_PARAMS),
+  [UPDATE_MODULE_LIMITS]: getModuleUpdateAction(MUTATE_MODULE_LIMITS),
 };
 
 const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
@@ -132,7 +133,8 @@ export const getApiUpdatePayload = actuatorName => (
 ) => {
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
   const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
-
+  console.log('!! activeModule Limits');
+  console.log(activeModuleLimits);
   return {
     mid: selectedModuleName,
     allStates: activeModuleState,
