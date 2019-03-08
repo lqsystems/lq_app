@@ -11,7 +11,7 @@ const commit = jest.fn();
 const callApi = jest.fn();
 
 const mockMuationPayload = {
-  actuatorkey: 'lamp',
+  actuatorType: 'lamp',
   newstate: true,
 };
 
@@ -31,7 +31,7 @@ describe('UPDATE_MOUDLE actions', () => {
 
     expect(commit).toHaveBeenCalledWith(MUTATE_MODULE_STATE, {
       moduleName: 'ZeePrime',
-      actuatorkey: 'lamp',
+      actuatorType: 'lamp',
       newstate: true,
     });
 

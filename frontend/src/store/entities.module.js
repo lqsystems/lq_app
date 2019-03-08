@@ -73,7 +73,7 @@ export const getApiUpdatePayload = actuatorName => (
 };
 
 // TODO: refactor to handle errors
-export const getModuleUpdateAction = (mutationType, callApi, requestUrl) => (
+export const getModuleUpdateAction = mutationType => (
   { commit, state, getters },
   mutationPayload,
 ) => {
@@ -81,11 +81,11 @@ export const getModuleUpdateAction = (mutationType, callApi, requestUrl) => (
   mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuleName });
   commit(mutationType, mutationPayload);
 
-  const { actuatorKey } = mutationPayload;
+  const { actuatorType } = mutationPayload;
 
-  const requestPayload = getApiUpdatePayload(actuatorKey)(state, getters);
+  const requestPayload = getters[`${actuatorType.toLowerCase()}UpdatePayload`];
 
-  callApi(requestUrl, {
+  callApi(UPDATE_STATE_URL, {
     method: 'POST',
     data: requestPayload,
   });
@@ -116,7 +116,7 @@ export const actions = {
       console.log(error);
     }
   },
-  [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE, callApi, UPDATE_STATE_URL),
+  [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE),
 };
 
 const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
@@ -138,7 +138,9 @@ export const getters = {
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   heater: getHeater,
+  airUpdatePayload: getApiUpdatePayload('Air'),
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
+  heaterUpdatePayload: getApiUpdatePayload('Heater'),
 };
 
 export default {

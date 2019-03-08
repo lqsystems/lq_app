@@ -8,7 +8,7 @@ describe('MUTATE_MODULE_STATE mutation', () => {
   test('sets Air state to true', () => {
     MUTATE_MODULE_STATE(state, {
       moduleName: 'ZeePrime',
-      actuatorKey: 'Air',
+      actuatorType: 'Air',
       newState: true,
     });
     const actual = state.modules.ZeePrime.moduleState.Air;
