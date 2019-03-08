@@ -150,6 +150,7 @@ export const getters = {
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
+  air: (state, { activeModuleState }) => activeModuleState.Air,
   heater: getHeater,
   airUpdatePayload: getApiUpdatePayload('Air'),
   lampUpdatePayload: getApiUpdatePayload('Lamp'),

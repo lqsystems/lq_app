@@ -7,7 +7,7 @@
       :include-divider="false"
     >
       <SwitchControl
-        :initial-state="false"
+        :initial-state="air"
         @toggle="toggleAir"
       />
     </ControlPanelItem>
@@ -29,6 +29,9 @@ export default {
     ControlPanel,
     ControlPanelItem,
     SwitchControl,
+  },
+  computed: {
+    ...mapGetters(['air']),
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE]),
