@@ -33,7 +33,7 @@ export default {
       this.$emit('slider-move', roundedValues);
     });
 
-    slider.noUiSlider.on('end', (values) => {
+    slider.noUiSlider.on('change', (values) => {
       const roundedValues = getRoundedValues(values);
       this.$emit('slider-move-end', roundedValues);
     });
