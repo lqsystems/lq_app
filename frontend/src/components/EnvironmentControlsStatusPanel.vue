@@ -1,31 +1,31 @@
 <template>
   <ControlPanel
     label="Environment Controls"
-    v-bind:handle-click="routeToControls"
+    :handle-click="routeToControls"
   >
     <div>
       <!-- <v-icon class="status-panel-icon">
         edit
       </v-icon> -->
       <ControlPanelItem
-        v-bind:handle-click="SET_AIR_ACTIVE"
+        :handle-click="SET_AIR_ACTIVE"
         ripple-on-click
         label="Air"
       >
         <span>ON</span>
       </ControlPanelItem>
       <ControlPanelItem
-        v-bind:handle-click="SET_LIGHT_ACTIVE"
+        :handle-click="SET_LIGHT_ACTIVE"
         ripple-on-click
         label="Light"
       >
         <span>ON</span>
       </ControlPanelItem>
       <ControlPanelItem
-        v-bind:handle-click="SET_HEATER_ACTIVE"
+        :handle-click="SET_HEATER_ACTIVE"
         ripple-on-click
         label="Heater"
-        v-bind:include-divider="false"
+        :include-divider="false"
       >
         <span>OFF</span>
       </ControlPanelItem>

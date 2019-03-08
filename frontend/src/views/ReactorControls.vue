@@ -2,8 +2,8 @@
   <div class="reactor-controls view">
     <BaseHeader
       back-icon
-      v-bind:title="headerTitle"
-      v-bind:handle-icon-click="routeHome"
+      :title="headerTitle"
+      :handle-icon-click="routeHome"
     />
     <div class="rc-main">
       <div class="rc-sidebar">
@@ -11,23 +11,23 @@
           <BaseSidebarItem
             title="Air"
             icon-name="icon-air"
-            v-bind:handle-click="SET_AIR_ACTIVE"
+            :handle-click="SET_AIR_ACTIVE"
           />
           <BaseSidebarItem
             title="Light"
             icon-name="icon-light"
-            v-bind:handle-click="SET_LIGHT_ACTIVE"
+            :handle-click="SET_LIGHT_ACTIVE"
           />
           <BaseSidebarItem
             title="Heater"
             icon-name="icon-heat"
-            v-bind:handle-click="SET_HEATER_ACTIVE"
+            :handle-click="SET_HEATER_ACTIVE"
           />
         </BaseSidebar>
       </div>
       <div class="rc-controls">
         <component
-          v-bind:is="currentControlPanel"
+          :is="currentControlPanel"
         />
       </div>
     </div>

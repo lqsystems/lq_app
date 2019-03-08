@@ -8,13 +8,13 @@
     </v-icon> -->
     <ControlPanelItem
       label="Temp"
-      v-bind:include-divider="false"
+      :include-divider="false"
     >
       <span class="pv-temp-val">32.876</span>
     </ControlPanelItem>
     <ControlPanelItem
       label="OD"
-      v-bind:include-divider="false"
+      :include-divider="false"
     >
       <span class="pv-temp-val">3.394</span>
     </ControlPanelItem>

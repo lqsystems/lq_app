@@ -3,7 +3,7 @@
     <v-btn
       v-if="backIcon"
       icon
-      v-on:click="handleIconClick"
+      @click="handleIconClick"
     >
       <v-icon>arrow_back</v-icon>
     </v-btn>

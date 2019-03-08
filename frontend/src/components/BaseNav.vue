@@ -7,7 +7,7 @@
       :active.sync="activeNavButton"
       :value="true"
       absolute
-      v-bind:style="{height: '100%'}"
+      :style="{height: '100%'}"
       color="transparent"
     >
       <v-btn
@@ -37,7 +37,7 @@
         flat
         value="logout"
         class="nav-logout-button"
-        v-on:click="logout"
+        @click="logout"
       >
         <div class="nav-logout-label">
           Logout

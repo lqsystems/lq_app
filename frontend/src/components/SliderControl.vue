@@ -4,11 +4,11 @@
   <div class="slider-control">
     <div class="slider-control-slider">
       <BaseSlider
-        v-bind:level="level"
-        v-bind:value="sliderPosition"
-        v-bind:color="color"
-        v-on:slider-move="handleSliderMove"
-        v-on:slider-move-end="handleSliderMoveEnd"
+        :level="level"
+        :value="sliderPosition"
+        :color="color"
+        @slider-move="handleSliderMove"
+        @slider-move-end="handleSliderMoveEnd"
       />
     </div>
     <div class="slider-control-level">

@@ -1,12 +1,12 @@
 <template>
   <v-list-tile
     class="sb-list-tile"
-    v-on:click="handleClick"
+    @click="handleClick"
   >
     <v-list-tile-action>
       <span
         class="sidebar-icon"
-        v-bind:class="iconName"
+        :class="iconName"
       />
     </v-list-tile-action>
     <v-list-tile-content>

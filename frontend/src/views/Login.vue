@@ -10,7 +10,7 @@
         </h1>
       </v-card-title>
       <v-form
-        v-on:submit.prevent="login"
+        @submit.prevent="login"
       >
         <v-text-field
           v-model="username"

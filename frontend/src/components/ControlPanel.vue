@@ -1,7 +1,7 @@
 <template>
   <div
     class="control-panel-wrapper"
-    v-on:click="handleClick"
+    @click="handleClick"
   >
     <div class="control-panel-label">
       {{ label }}

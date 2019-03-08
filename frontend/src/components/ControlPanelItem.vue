@@ -2,7 +2,7 @@
   <div
     v-ripple="rippleOnClick"
     class="cp-item-wrapper"
-    v-on:click="handleClick"
+    @click="handleClick"
   >
     <div class="cp-item">
       <div class="cp-item-col cp-item-col-left">

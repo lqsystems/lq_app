@@ -1,8 +1,8 @@
 <template>
   <v-switch
-    v-bind:value="isOn"
-    v-bind:color="color"
-    v-on:change="$emit('toggle')"
+    :value="isOn"
+    :color="color"
+    @change="$emit('toggle')"
   />
 </template>
 

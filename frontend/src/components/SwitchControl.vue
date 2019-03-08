@@ -2,7 +2,7 @@
   <div class="power-control">
     <div
       class="power-control-state"
-      v-bind:class="[isOn ? 'is-on' : 'is-off']"
+      :class="[isOn ? 'is-on' : 'is-off']"
     >
       <span
         v-if="isOn"
@@ -15,9 +15,9 @@
     </div>
     <div class="power-control-switch">
       <BaseSwitch
-        v-bind:is-on="isOn"
-        v-bind:color="color"
-        v-on:toggle="handleToggle"
+        :is-on="isOn"
+        :color="color"
+        @toggle="handleToggle"
       />
     </div>
   </div>

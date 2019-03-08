@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    v-bind:style="{ width: '100%' }"
+    :style="{ width: '100%' }"
     permanent
     class="sidebar"
   >

@@ -1,6 +1,6 @@
 <template>
   <div class="reactor view">
-    <BaseHeader v-bind:title="selectedModuleName" />
+    <BaseHeader :title="selectedModuleName" />
     <div class="reactor-main">
       <div class="reactor-col reactor-col-left">
         <div class="reactor-status-panel">

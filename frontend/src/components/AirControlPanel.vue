@@ -4,10 +4,10 @@
   >
     <ControlPanelItem
       label="Power"
-      v-bind:include-divider="false"
+      :include-divider="false"
     >
       <SwitchControl
-        v-bind:initial-state="false"
+        :initial-state="false"
       />
     </ControlPanelItem>
   </ControlPanel>

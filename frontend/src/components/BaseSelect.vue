@@ -1,7 +1,7 @@
 <template>
   <v-select
-    v-bind:items="items"
-    v-bind:label="label"
+    :items="items"
+    :label="label"
     color="darkgrey"
   />
 </template>
