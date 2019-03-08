@@ -12,6 +12,7 @@
       <SliderControl
         v-bind:level="20"
         v-bind:level-label-func="getSliderLabel"
+        v-on:slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -34,7 +35,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { UPDATE_MODULE_STATE } from '@/store/actions.types';
+import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -53,13 +54,18 @@ export default {
     SliderControl,
   },
   methods: {
-    ...mapActions([UPDATE_MODULE_STATE]),
+    ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
     // TODO: this is shared with heater control panel. Extract into util function
     toggleLight(lightState) {
-      // TODO: change to update module state
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Lamp',
         newState: lightState,
+      });
+    },
+    updateIntensity([level]) {
+      this.UPDATE_MODULE_PARAMS({
+        actuatorType: 'Lamp',
+        newParams: { level },
       });
     },
     getSliderLabel(sliderPos) {

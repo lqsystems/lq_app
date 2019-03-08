@@ -6,7 +6,7 @@ import callApi from '@/utils/api.utils.js';
 import { moduleSchema } from '@/constants/schemas';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 import { modulesInitial } from './entities.initialState.js';
-import { UPDATE_MODULE_STATE } from './actions.types';
+import { UPDATE_MODULE_PARAMS, UPDATE_MODULE_STATE } from './actions.types';
 import {
   FETCH_MODULES,
   LOAD_REACTIONS,
@@ -36,6 +36,8 @@ export const mutations = {
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
+    console.log('** Mutation **');
+    console.log(moduleName, actuatorType, newParams);
     // the api requires level to be a string. Ensure that that is the case
     newParams = level && (typeof level === 'number')
       ? Object.assign({}, newParams, { level: String(level) })
@@ -52,25 +54,6 @@ export const mutations = {
   },
 };
 
-export const getApiUpdatePayload = actuatorName => (
-  state,
-  {
-    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
-  },
-) => {
-  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
-  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
-
-  return {
-    mid: selectedModuleName,
-    allStates: activeModuleState,
-    activeId: activeReactionId,
-    activeSwitch: `ReactionActive-${activeReactionId}`,
-    changes: [actuatorName],
-    [paramsKey]: activeModuleParams[actuatorName],
-    [limitsKey]: activeModuleLimits[actuatorName] || {},
-  };
-};
 
 // TODO: refactor to handle errors
 export const getModuleUpdateAction = mutationType => (
@@ -79,11 +62,20 @@ export const getModuleUpdateAction = mutationType => (
 ) => {
   const { selectedModuleName } = getters;
   mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuleName });
+  console.log();
+  console.log('** Mutation Payload **');
+  console.log(mutationPayload);
+  console.log();
   commit(mutationType, mutationPayload);
 
   const { actuatorType } = mutationPayload;
 
   const requestPayload = getters[`${actuatorType.toLowerCase()}UpdatePayload`];
+
+  console.log();
+  console.log('** Request Payload**');
+  console.log(requestPayload);
+  console.log();
 
   callApi(UPDATE_STATE_URL, {
     method: 'POST',
@@ -117,6 +109,7 @@ export const actions = {
     }
   },
   [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE),
+  [UPDATE_MODULE_PARAMS]: getModuleUpdateAction(MUTATE_MODULE_PARAMS),
 };
 
 const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
@@ -130,6 +123,26 @@ const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleL
 export const getActiveReactionId = state => (
   Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
 );
+
+export const getApiUpdatePayload = actuatorName => (
+  state,
+  {
+    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
+  },
+) => {
+  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
+  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
+
+  return {
+    mid: selectedModuleName,
+    allStates: activeModuleState,
+    activeId: activeReactionId,
+    activeSwitch: `ReactionActive-${activeReactionId}`,
+    changes: [actuatorName],
+    [paramsKey]: activeModuleParams[actuatorName],
+    [limitsKey]: activeModuleLimits[actuatorName] || {},
+  };
+};
 
 export const getters = {
   activeReactionId: getActiveReactionId,
