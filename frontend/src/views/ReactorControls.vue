@@ -31,6 +31,9 @@
         />
       </div>
     </div>
+    <div class="nav">
+      <BaseNav />
+    </div>
   </div>
 </template>
 
@@ -43,6 +46,7 @@ import {
 } from '@/store/mutations.types';
 
 import BaseHeader from '@/components/BaseHeader';
+import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
 import LightControlPanel from '@/components/LightControlPanel';
@@ -53,6 +57,7 @@ import AirControlPanel from '@/components/AirControlPanel';
 export default {
   components: {
     BaseHeader,
+    BaseNav,
     BaseSidebar,
     BaseSidebarItem,
     HeaterControlPanel,
@@ -121,4 +126,10 @@ export default {
   left: 0.1em;
 }
 
+.nav {
+  position: fixed;
+  bottom: 0;
+  height: 75px;
+  width: 100%;
+}
 </style>

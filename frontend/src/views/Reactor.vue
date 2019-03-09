@@ -21,9 +21,6 @@
         >
       </div>
     </div>
-    <div class="nav">
-      <BaseNav />
-    </div>
   </div>
 </template>
 
@@ -112,12 +109,4 @@ export default {
   height: 52.5vh;
 }
 
-.nav {
-  border: 1px solid $grey-200;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  height: 75px;
-  width: 100%;
-}
 </style>
