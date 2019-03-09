@@ -138,10 +138,9 @@ export const getApiUpdatePayload = actuatorName => (
   const targetLimits = activeModuleLimits[actuatorName];
 
   const params = { level: targetParams.level };
-  const limits = {
-    'HIGH-value': targetLimits['HIGH-value'],
-    'LOW-value': targetLimits['LOW-value'],
-  };
+  const limits = targetLimits
+    ? { 'HIGH-value': targetLimits['HIGH-value'], 'LOW-value': targetLimits['LOW-value'] }
+    : {};
 
   return {
     mid: selectedModuleName,
