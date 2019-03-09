@@ -1,9 +1,7 @@
 <template>
   <div class="reactor-controls view">
     <BaseHeader
-      back-icon
       :title="headerTitle"
-      :handle-icon-click="routeHome"
     />
     <div class="rc-main">
       <div class="rc-sidebar">
