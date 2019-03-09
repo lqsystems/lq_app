@@ -4,13 +4,13 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        :initial-state="false"
+        :initial-state="lamp.powerOn"
         @toggle="toggleLight"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Intensity">
       <SliderControl
-        :level="20"
+        :level="lampLevel"
         :level-label-func="getSliderLabel"
         @slider-move-end="updateIntensity"
       />
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
 
 import BaseTimePicker from './BaseTimePicker';
@@ -52,6 +52,12 @@ export default {
     ControlPanelItem,
     SwitchControl,
     SliderControl,
+  },
+  computed: {
+    ...mapGetters(['lamp']),
+    lampLevel() {
+      return Number(this.lamp.level);
+    },
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),

@@ -113,14 +113,6 @@ export const actions = {
   [UPDATE_MODULE_LIMITS]: getModuleUpdateAction(MUTATE_MODULE_LIMITS),
 };
 
-const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
-  powerOn: activeModuleState.Heater,
-  level: activeModuleParams.Heater.level,
-  minTemp: activeModuleLimits.Heater['LOW-value'],
-  maxTemp: activeModuleLimits.Heater['HIGH-value'],
-});
-
-
 export const getActiveReactionId = state => (
   Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
 );
@@ -153,6 +145,21 @@ export const getApiUpdatePayload = actuatorName => (
   };
 };
 
+const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
+  powerOn: activeModuleState.Heater,
+  level: activeModuleParams.Heater.level,
+  minTemp: activeModuleLimits.Heater['LOW-value'],
+  maxTemp: activeModuleLimits.Heater['HIGH-value'],
+});
+
+const getLamp = (state, { activeModuleState, activeModuleParams }) => ({
+  powerOn: activeModuleState.Lamp,
+  level: activeModuleParams.Lamp.level,
+  start: activeModuleParams.Lamp.start,
+  stop: activeModuleParams.Lamp.stop,
+});
+
+
 export const getters = {
   activeReactionId: getActiveReactionId,
   activeModule: (state, { selectedModuleName }) => state.modules[selectedModuleName],
@@ -161,6 +168,7 @@ export const getters = {
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   air: (state, { activeModuleState }) => activeModuleState.Air,
   heater: getHeater,
+  lamp: getLamp,
   airUpdatePayload: getApiUpdatePayload('Air'),
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
   heaterUpdatePayload: getApiUpdatePayload('Heater'),
