@@ -19,6 +19,20 @@ export default {
   created() {
     this.FETCH_MODULES();
   },
+  sockets: {
+    connect() {
+      // Fired when the socket connects.
+      console.log('connected');
+    },
+
+    disconnect() {
+    },
+
+    // Fired when the server sends something on the "messageChannel" channel.
+    module(data) {
+      console.log(data);
+    },
+  },
   methods: {
     ...mapActions([FETCH_MODULES]),
   },
