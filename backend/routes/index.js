@@ -670,7 +670,7 @@ HWProc.on('message', (message) => {
                                       if ( (modObj.parameters !== undefined) && (modObj.parameters[swtch] !== undefined) ) {
                                           var pars = modObj.parameters[swtch];
                                           for ( var pkey in pars ) {
-                                              msg.data[pkey] = pars[pars];
+                                              msg.data[pkey] = pars[pkey];
                                           }
                                           if ( msg.data.stop !== undefined ) {
                                               msg.data.start = msg.data.stop;
