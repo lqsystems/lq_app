@@ -126,10 +126,7 @@ export const getApiUpdatePayload = actuatorName => (
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
   const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
 
-  const targetParams = activeModuleParams[actuatorName];
   const targetLimits = activeModuleLimits[actuatorName];
-
-  const params = { level: targetParams.level };
   const limits = targetLimits
     ? { 'HIGH-value': targetLimits['HIGH-value'], 'LOW-value': targetLimits['LOW-value'] }
     : {};
@@ -140,7 +137,7 @@ export const getApiUpdatePayload = actuatorName => (
     activeId: activeReactionId,
     activeSwitch: `ReactionActive-${activeReactionId}`,
     changes: [actuatorName],
-    [paramsKey]: params,
+    [paramsKey]: activeModuleParams[actuatorName],
     [limitsKey]: limits || {},
   };
 };
