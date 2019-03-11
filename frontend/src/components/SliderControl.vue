@@ -3,11 +3,11 @@
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">
-      <!-- Do I need the value prop belo0w -->
+      <!-- Do I need the value prop belo0w ? -->
       <BaseSlider
         v-if="!isFetching"
         :initial-value="level"
-        :value="level"
+        :limits="limits"
         :color="color"
         @slider-move="handleSliderMove"
         @slider-move-end="handleSliderMoveEnd"
@@ -33,6 +33,10 @@ export default {
     level: {
       type: [Number, Array],
       required: true,
+    },
+    limits: {
+      type: Array,
+      default: () => [0, 100],
     },
     levelLabelFunc: {
       type: Function,

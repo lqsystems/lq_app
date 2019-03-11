@@ -16,6 +16,10 @@ export default {
       type: [Number, Array],
       required: true,
     },
+    limits: {
+      type: Array,
+      default: () => [0, 100],
+    },
   },
   mounted() {
     const { slider } = this.$refs;
@@ -23,8 +27,8 @@ export default {
       start: this.initialValue,
       connect: getConnect(this.initialValue),
       range: {
-        min: 0,
-        max: 100,
+        min: this.limits[0],
+        max: this.limits[1],
       },
     });
 
