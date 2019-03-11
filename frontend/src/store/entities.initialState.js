@@ -17,7 +17,7 @@ export const modulesInitial = {
       },
     },
   },
-  Dosis1: {
+  MV1: {
     mod_name: 'Dosis1',
     mod_active: false,
     title: 'Dosis1',

@@ -5,6 +5,7 @@ import callApi from '@/utils/api.utils.js';
 
 import { moduleSchema } from '@/constants/schemas';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
+// TODO: refactor so that this comes from back end configuration
 import { modulesInitial } from './entities.initialState.js';
 import { UPDATE_MODULE_PARAMS, UPDATE_MODULE_STATE, UPDATE_MODULE_LIMITS } from './actions.types';
 import {
@@ -163,7 +164,7 @@ const getLamp = (state, { activeModuleState, activeModuleParams }) => ({
 
 export const getters = {
   activeReactionId: getActiveReactionId,
-  activeModule: (state, { selectedModuleName }) => state.modules[selectedModuleName],
+  activeModule: (state, { selectedModuleName }) => console.log('LOGGED', state.modules) || state.modules[selectedModuleName],
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,

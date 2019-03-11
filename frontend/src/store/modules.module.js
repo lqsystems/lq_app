@@ -8,13 +8,14 @@ import {
 
 const state = {
   // TODO: import module name as a constant
-  selectedModuleName: 'ZeePrime',
+  selectedModuleName: localStorage.selectedModuleName || 'ZeePrime',
   isFetching: true,
 };
 
 const mutations = {
   [UPDATE_SELECTED_MODULE](state, name) {
     state.selectedModuleName = name;
+    localStorage.selectedModuleName = name;
   },
   [FETCH_MODULES_REQUEST](state) {
     state.isFetching = true;
