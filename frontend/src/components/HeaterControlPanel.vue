@@ -48,7 +48,7 @@ export default {
     SliderControl,
   },
   computed: {
-    // TODO: refactor to be more explicit about which properties heater has
+    // TODO: refactor to be more explicit about which properties heater has (use mapState)
     ...mapGetters(['heater']),
     heaterLevel() {
       return Number(this.heater.level);

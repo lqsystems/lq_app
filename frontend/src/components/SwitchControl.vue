@@ -36,7 +36,7 @@ export default {
   props: {
     isOn: {
       type: Boolean,
-      required: true,
+      default: false,
     },
   },
   created() {

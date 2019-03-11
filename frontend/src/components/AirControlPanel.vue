@@ -7,7 +7,7 @@
       :include-divider="false"
     >
       <SwitchControl
-        :initial-state="air"
+        :is-on="air"
         @toggle="toggleAir"
       />
     </ControlPanelItem>

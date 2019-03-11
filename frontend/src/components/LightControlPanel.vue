@@ -4,7 +4,7 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        :initial-state="lamp.powerOn"
+        :is-on="lamp.powerOn"
         @toggle="toggleLight"
       />
     </ControlPanelItem>
