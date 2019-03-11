@@ -11,16 +11,11 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions } from 'vuex';
 import { FETCH_MODULES } from '@/store/actions.types.js';
 
 export default {
   name: 'App',
-  computed: {
-    ...mapState({
-      isFetching: state => state.modules.isFetching,
-    }),
-  },
   created() {
     this.FETCH_MODULES();
   },

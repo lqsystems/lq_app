@@ -5,6 +5,7 @@
     <div class="slider-control-slider">
       <!-- Do I need the value prop belo0w -->
       <BaseSlider
+        v-if="!isFetching"
         :initial-value="level"
         :value="level"
         :color="color"
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import BaseSlider from './BaseSlider';
 import { COLOR_PRIMARY } from '../constants/style.constants';
 
@@ -37,6 +39,10 @@ export default {
     },
   },
   computed: {
+    // TODO: refactor so that this is supplied as a prop
+    ...mapState({
+      isFetching: state => state.modules.isFetching,
+    }),
     levelLabel() {
       return this.levelLabelFunc(this.level);
     },
