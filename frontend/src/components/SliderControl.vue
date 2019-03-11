@@ -3,11 +3,11 @@
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">
+      <!-- Do I need the value prop belo0w -->
       <BaseSlider
-        :level="level"
-        :value="sliderPosition"
+        :initial-value="level"
+        :value="level"
         :color="color"
-        @slider-move="handleSliderMove"
         @slider-move-end="handleSliderMoveEnd"
       />
     </div>
@@ -36,24 +36,15 @@ export default {
       required: true,
     },
   },
-  // TODO: consider if there is a better design that allows this component not to have state
-  data() {
-    return {
-      sliderPosition: this.level,
-    };
-  },
   computed: {
     levelLabel() {
-      return this.levelLabelFunc(this.sliderPosition);
+      return this.levelLabelFunc(this.level);
     },
   },
   created() {
     this.color = COLOR_PRIMARY;
   },
   methods: {
-    handleSliderMove(pos) {
-      this.sliderPosition = pos;
-    },
     handleSliderMoveEnd(pos) {
       this.$emit('slider-move-end', pos);
     },

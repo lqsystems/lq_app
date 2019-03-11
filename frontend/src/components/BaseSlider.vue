@@ -6,13 +6,13 @@
 /* eslint "func-names": "off" */
 import noUiSlider from 'nouislider';
 
-const getConnect = level => (Array.isArray(level) ? true : [true, false]);
+const getConnect = initialValue => (Array.isArray(initialValue) ? true : [true, false]);
 const getRoundedValues = values => values.map(val => Math.ceil(Number(val)));
 
 export default {
   name: 'BaseSlider',
   props: {
-    level: {
+    initialValue: {
       type: [Number, Array],
       required: true,
     },
@@ -20,8 +20,8 @@ export default {
   mounted() {
     const { slider } = this.$refs;
     noUiSlider.create(slider, {
-      start: this.level,
-      connect: getConnect(this.level),
+      start: this.initialValue,
+      connect: getConnect(this.initialValue),
       range: {
         min: 0,
         max: 100,
