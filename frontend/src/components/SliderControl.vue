@@ -9,6 +9,7 @@
         :initial-value="level"
         :value="level"
         :color="color"
+        @slider-move="handleSliderMove"
         @slider-move-end="handleSliderMoveEnd"
       />
     </div>
@@ -38,19 +39,27 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      sliderPosition: this.level,
+    };
+  },
   computed: {
     // TODO: refactor so that this is supplied as a prop
     ...mapState({
       isFetching: state => state.modules.isFetching,
     }),
     levelLabel() {
-      return this.levelLabelFunc(this.level);
+      return this.levelLabelFunc(this.sliderPosition);
     },
   },
   created() {
     this.color = COLOR_PRIMARY;
   },
   methods: {
+    handleSliderMove(pos) {
+      this.sliderPosition = pos;
+    },
     handleSliderMoveEnd(pos) {
       this.$emit('slider-move-end', pos);
     },

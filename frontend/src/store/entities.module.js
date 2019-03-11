@@ -164,7 +164,7 @@ const getLamp = (state, { activeModuleState, activeModuleParams }) => ({
 
 export const getters = {
   activeReactionId: getActiveReactionId,
-  activeModule: (state, { selectedModuleName }) => console.log('LOGGED', state.modules) || state.modules[selectedModuleName],
+  activeModule: (state, { selectedModuleName }) => state.modules[selectedModuleName],
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
