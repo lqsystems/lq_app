@@ -4,7 +4,7 @@
   >
     <ControlPanelItem label="Power">
       <SwitchControl
-        :initial-state="heater.powerOn"
+        :is-on="heater.powerOn"
         @toggle="toggleHeater"
       />
     </ControlPanelItem>
@@ -48,6 +48,7 @@ export default {
     SliderControl,
   },
   computed: {
+    // TODO: refactor to be more explicit about which properties heater has
     ...mapGetters(['heater']),
     heaterLevel() {
       return Number(this.heater.level);

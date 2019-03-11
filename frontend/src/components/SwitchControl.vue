@@ -34,15 +34,10 @@ export default {
     BaseSwitch,
   },
   props: {
-    initialState: {
+    isOn: {
       type: Boolean,
       required: true,
     },
-  },
-  data() {
-    return {
-      isOn: this.initialState,
-    };
   },
   created() {
     this.color = COLOR_PRIMARY;
@@ -50,7 +45,6 @@ export default {
   methods: {
     handleToggle() {
       this.$emit('toggle', !this.isOn);
-      this.isOn = !this.isOn;
     },
   },
 };
