@@ -1,6 +1,6 @@
 <template>
   <v-switch
-    :value="isOn"
+    :input-value="isOn"
     :color="color"
     @change="$emit('toggle')"
   />

@@ -1,4 +1,6 @@
-export const API_BASE_URL = process.env.NODE_ENV === 'la_warehouse'
+console.log('Vue app served from:', process.env.VUE_APP_SERVER_LOCATION);
+
+export const API_BASE_URL = process.env.VUE_APP_SERVER_LOCATION === 'la_warehouse'
   ? 'http://192.168.1.99:8888'
   : 'http://localhost:8888';
 

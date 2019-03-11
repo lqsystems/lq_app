@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "NODE_ENV='la_warehouse' vue-cli-service serve",
-    "serve:offsite": "vue-cli-service serve", 
+    "serve": "vue-cli-service serve",
+    "serve:offsite": "vue-cli-service serve --mode offsite", 
     "build": "vue-cli-service build",
+    "build:offsite": "vue-cli-service build --mode offsite",
     "lint": "vue-cli-service lint",
     "start": "concurrently \"cd ../backend && node dosis.js\" \"vue-cli-service serve\"",
     "test": "yarn test:unit",
