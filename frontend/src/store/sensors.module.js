@@ -8,8 +8,6 @@ const state = {
 
 const mutations = {
   SOCKET_DATUM(state, message) {
-    console.log('** from mutation **');
-    console.log(message);
     state.OD = message.message.OD;
     state.temperature = message.message.Temperature;
   },

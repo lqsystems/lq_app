@@ -20,17 +20,8 @@ export default {
     this.FETCH_MODULES();
   },
   sockets: {
-    connect() {
-      // Fired when the socket connects.
-      console.log('connected');
-    },
-
-    disconnect() {
-    },
-
-    // Fired when the server sends something on the "messageChannel" channel.
-    module(data) {
-      console.log(data);
+    datum(data) {
+      this.$store.commit('SOCKET_DATUM', data);
     },
   },
   methods: {
