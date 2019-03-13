@@ -12,7 +12,6 @@ const getRoundedValues = values => values.map(val => Math.ceil(Number(val)));
 export default {
   name: 'BaseSlider',
   props: {
-    // TODO : rename this to something like 'currentValue'
     sliderPosition: {
       type: [Number, Array],
       required: true,
