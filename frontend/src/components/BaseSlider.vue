@@ -6,14 +6,14 @@
 /* eslint "func-names": "off" */
 import noUiSlider from 'nouislider';
 
-const getConnect = initialValue => (Array.isArray(initialValue) ? true : [true, false]);
+const getConnect = sliderPosition => (Array.isArray(sliderPosition) ? true : [true, false]);
 const getRoundedValues = values => values.map(val => Math.ceil(Number(val)));
 
 export default {
   name: 'BaseSlider',
   props: {
     // TODO : rename this to something like 'currentValue'
-    initialValue: {
+    sliderPosition: {
       type: [Number, Array],
       required: true,
     },
@@ -23,7 +23,7 @@ export default {
     },
   },
   watch: {
-    initialValue(newVal) {
+    sliderPosition(newVal) {
       const { slider } = this.$refs;
 
       slider.noUiSlider.set(newVal);
@@ -32,8 +32,8 @@ export default {
   mounted() {
     const { slider } = this.$refs;
     noUiSlider.create(slider, {
-      start: this.initialValue,
-      connect: getConnect(this.initialValue),
+      start: this.sliderPosition,
+      connect: getConnect(this.sliderPosition),
       range: {
         min: this.limits[0],
         max: this.limits[1],

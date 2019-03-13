@@ -6,7 +6,7 @@
       <!-- Do I need the value prop belo0w ? -->
       <BaseSlider
         v-if="!isFetching"
-        :initial-value="level"
+        :slider-position="level"
         :limits="limits"
         :color="color"
         @slider-move="handleSliderMove"
