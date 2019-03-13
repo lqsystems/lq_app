@@ -38,8 +38,6 @@ export const mutations = {
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
-    console.log('** Mutation **');
-    console.log(moduleName, actuatorType, newParams);
     // the api requires level to be a string. Ensure that that is the case
     newParams = level && (typeof level === 'number')
       ? Object.assign({}, newParams, { level: String(level) })
@@ -58,11 +56,7 @@ export const mutations = {
 
 
 // TODO: refactor to handle errors
-<<<<<<< HEAD
 export const getModuleUpdateAction = (mutationType, validatePayload, callApi, updateUrl) => (
-=======
-export const getModuleUpdateAction = mutationType => (
->>>>>>> fixes lint errors
   { commit, getters },
   mutationPayload,
 ) => {
