@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueSocketIO from 'vue-socket.io';
-import SocketIO from 'socket.io-client';
 
 import store from '@/store';
 import router from './router';

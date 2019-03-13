@@ -31,9 +31,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS } from '@/store/actions.types';
-import { SET_HEATER_LEVEL, TOGGLE_HEATER_POWER } from '@/store/mutations.types';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
 
 import ControlPanel from './ControlPanel';
@@ -61,7 +60,6 @@ export default {
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS]),
-    ...mapMutations([SET_HEATER_LEVEL, TOGGLE_HEATER_POWER]),
     toggleHeater(heaterState) {
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Heater',

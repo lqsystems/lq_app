@@ -58,7 +58,11 @@ export const mutations = {
 
 
 // TODO: refactor to handle errors
+<<<<<<< HEAD
 export const getModuleUpdateAction = (mutationType, validatePayload, callApi, updateUrl) => (
+=======
+export const getModuleUpdateAction = mutationType => (
+>>>>>>> fixes lint errors
   { commit, getters },
   mutationPayload,
 ) => {
