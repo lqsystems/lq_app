@@ -1,5 +1,4 @@
-import {
-} from './mutations.types';
+import { SOCKET_DATUM } from './mutations.types';
 
 const state = {
   OD: '_',
@@ -7,7 +6,7 @@ const state = {
 };
 
 const mutations = {
-  SOCKET_DATUM(state, message) {
+  [SOCKET_DATUM](state, message) {
     state.OD = message.message.OD;
     state.temperature = message.message.Temperature;
   },

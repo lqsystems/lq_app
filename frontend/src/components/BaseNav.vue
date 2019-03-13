@@ -52,9 +52,7 @@
 import { mapGetters, mapMutations } from 'vuex';
 import callApi from '@/utils/api.utils.js';
 import { LOGOUT_URL } from '@/constants/api.constants.js';
-import {
-  UPDATE_SELECTED_MODULE,
-} from '@/store/mutations.types';
+import { UPDATE_SELECTED_MODULE } from '@/store/mutations.types';
 
 export default {
   name: 'BaseNav',
@@ -73,9 +71,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([
-      UPDATE_SELECTED_MODULE,
-    ]),
+    ...mapMutations([UPDATE_SELECTED_MODULE]),
     async logout() {
       await callApi(LOGOUT_URL);
       this.$router.push('/login');
