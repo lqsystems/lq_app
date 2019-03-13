@@ -11,7 +11,7 @@
     <ControlPanelItem label="Intensity">
       <SliderControl
         :level="lampLevel"
-        :level-label-func="getSliderLabel"
+        :level-label-func="getPercentLabel"
         @slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
@@ -36,6 +36,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
+import { getPercentLabel } from '@/utils/controlPanel.utils';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -74,9 +75,7 @@ export default {
         newParams: { level },
       });
     },
-    getSliderLabel(sliderPos) {
-      return `${sliderPos}%`;
-    },
+    getPercentLabel,
   },
 };
 </script>

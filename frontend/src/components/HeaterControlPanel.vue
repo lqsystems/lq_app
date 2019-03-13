@@ -34,6 +34,7 @@
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS } from '@/store/actions.types';
 import { SET_HEATER_LEVEL, TOGGLE_HEATER_POWER } from '@/store/mutations.types';
+import { getPercentLabel } from '@/utils/controlPanel.utils';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -83,12 +84,10 @@ export default {
         newLimits,
       });
     },
-    getPercentLabel(sliderPos) {
-      return `${sliderPos[0]}%`;
-    },
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
     },
+    getPercentLabel,
   },
 };
 </script>
