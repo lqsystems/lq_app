@@ -1,32 +1,54 @@
 <template>
   <div class="reactor-controls view">
-    <BaseHeader
-      :title="headerTitle"
-    />
+    <BaseHeader :title="headerTitle" />
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <BaseSidebarItem
-            title="Air"
-            icon-name="icon-air"
-            :handle-click="SET_AIR_ACTIVE"
-          />
-          <BaseSidebarItem
-            title="Light"
-            icon-name="icon-light"
-            :handle-click="SET_LIGHT_ACTIVE"
-          />
-          <BaseSidebarItem
-            title="Heater"
-            icon-name="icon-heat"
-            :handle-click="SET_HEATER_ACTIVE"
-          />
+          <div class="rc-sidebar-heading">
+            Controls
+          </div>
+          <v-divider />
+          <div class="rc-sidebar-items">
+            <BaseSidebarItem
+              title="Air"
+              icon-name="icon-air"
+              :handle-click="SET_AIR_ACTIVE"
+            />
+            <BaseSidebarItem
+              title="Light"
+              icon-name="icon-light"
+              :handle-click="SET_LIGHT_ACTIVE"
+            />
+            <BaseSidebarItem
+              title="Heater"
+              icon-name="icon-heat"
+              :handle-click="SET_HEATER_ACTIVE"
+            />
+          </div>
+          <div class="rc-sidebar-heading sensor-header">
+            Sensors
+          </div>
+          <v-divider />
+          <div class="rc-sensor-item">
+            <div class="rc-sensor-label">
+              OD:
+            </div>
+            <div class="rc-sensor-val">
+              {{ OD }}
+            </div>
+          </div>
+          <div class="rc-sensor-item">
+            <div class="rc-sensor-label">
+              Temp:
+            </div>
+            <div class="rc-sensor-val">
+              {{ tempC }}
+            </div>
+          </div>
         </BaseSidebar>
       </div>
       <div class="rc-controls">
-        <component
-          :is="currentControlPanel"
-        />
+        <component :is="currentControlPanel" />
       </div>
     </div>
     <div class="nav">
@@ -36,7 +58,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations, mapState } from 'vuex';
 import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
@@ -64,11 +86,15 @@ export default {
   },
   computed: {
     ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
+    ...mapState({
+      OD: state => state.sensors.OD,
+      tempC: state => `${state.sensors.temperature} °C`,
+    }),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
     },
     headerTitle() {
-      return `${this.selectedModuleName} Controls`;
+      return `${this.selectedModuleName}`;
     },
   },
   methods: {
@@ -93,9 +119,9 @@ export default {
   font-size: 1.5em;
 
   .theme--light {
-    &.v-btn{
+    &.v-btn {
       font-size: 1.4em;
-      margin-right: .5em;
+      margin-right: 0.5em;
     }
   }
 }
@@ -113,13 +139,40 @@ export default {
   padding-top: 1em;
 }
 
+.rc-sidebar-heading {
+  font-size: 1.35em;
+  font-weight: 500;
+  background-color: $grey-200;
+  padding: 0.5em 0.7em;
+}
+
+.sensor-header {
+  margin-top: 1em;
+}
+
+.rc-sensor-item {
+  display: flex;
+  font-size: 18.2px;
+  font-weight: 400;
+  padding: 1em 1.3em;
+}
+
+.rc-sensor-label {
+  width: 40%;
+  // margin-left: auto;
+}
+
+.rc-sensor-val {
+  // margin-left: auto;
+}
+
 .rc-controls {
   padding: 40px;
   grid-area: controls;
 }
 
 .icon-air {
-  font-size: .7em;
+  font-size: 0.7em;
   position: relative;
   left: 0.1em;
 }
