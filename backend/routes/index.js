@@ -728,13 +728,6 @@ router.setSocketIo = (io) => {
     HWProc.io = io;
 
     HWProc.dataEvents = io.of('/data').on('connection', function (socket) {
-        // DEL
-        let count = 0;
-        setInterval(() => {
-        console.log(count);
-          emitModuleUpdate(count++)
-        }, 1000);
-
         socket.on('message', function (data) {
             console.log(data);
         });
