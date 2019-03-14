@@ -1,4 +1,3 @@
-
 import { schema } from 'normalizr';
 
 const reaction = new schema.Entity('reactions');

@@ -1,4 +1,3 @@
-/* eslint "no-shadow": "off" */
 import { normalize } from 'normalizr';
 import router from '@/router';
 import callApi from '@/utils/api.utils.js';
@@ -19,7 +18,7 @@ import {
   MUTATE_MODULE_LIMITS,
 } from './mutations.types';
 
-const state = {
+const initialState = {
   modules: modulesInitial,
   reactions: {},
 };
@@ -205,7 +204,7 @@ export const getters = {
 };
 
 export default {
-  state,
+  state: initialState,
   mutations,
   actions,
   getters,
