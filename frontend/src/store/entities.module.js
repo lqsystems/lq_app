@@ -2,7 +2,8 @@
 import { normalize } from 'normalizr';
 import router from '@/router';
 import callApi from '@/utils/api.utils.js';
-
+import { prettyPrint } from '@/utils/debug.utils.js';
+import { validatePayload } from '@/utils/entities.utils';
 import { moduleSchema } from '@/constants/schemas';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 // TODO: refactor so that this comes from back end configuration
@@ -58,28 +59,27 @@ export const mutations = {
 
 
 // TODO: refactor to handle errors
-export const getModuleUpdateAction = mutationType => (
-  { commit, state, getters },
+export const getModuleUpdateAction = (mutationType, validatePayload, callApi, updateUrl) => (
+  { commit, getters },
   mutationPayload,
 ) => {
   const { selectedModuleName } = getters;
   mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuleName });
-  console.log();
-  console.log('** Mutation Payload **');
-  console.log(mutationPayload);
-  console.log();
+  validatePayload(mutationPayload);
+
+  console.log('\n', '** Mutation Payload **');
+  console.log(mutationPayload, '\n');
+
   commit(mutationType, mutationPayload);
 
   const { actuatorType } = mutationPayload;
-
   const requestPayload = getters[`${actuatorType.toLowerCase()}UpdatePayload`];
+  validatePayload(requestPayload);
 
-  console.log();
-  console.log('** Request Payload**');
-  console.log(requestPayload);
-  console.log();
+  console.log('\n', '** Request Payload**');
+  console.log(requestPayload, '\n');
 
-  callApi(UPDATE_STATE_URL, {
+  callApi(updateUrl, {
     method: 'POST',
     data: requestPayload,
   });
@@ -95,7 +95,7 @@ export const actions = {
       const { data } = await callApi(MODULES_URL);
       const { message } = data;
 
-      if (message && (message[0] === 'Not logged in')) {
+      if (message && message[0] === 'Not logged in') {
         return router.push('/login');
       }
 
@@ -113,10 +113,28 @@ export const actions = {
       console.log(error);
     }
   },
-  [UPDATE_MODULE_STATE]: getModuleUpdateAction(MUTATE_MODULE_STATE),
-  [UPDATE_MODULE_PARAMS]: getModuleUpdateAction(MUTATE_MODULE_PARAMS),
-  [UPDATE_MODULE_LIMITS]: getModuleUpdateAction(MUTATE_MODULE_LIMITS),
+  // TODO: refactor to be more DRY
+  [UPDATE_MODULE_STATE]: getModuleUpdateAction(
+    MUTATE_MODULE_STATE,
+    validatePayload,
+    callApi,
+    UPDATE_STATE_URL,
+  ),
+  [UPDATE_MODULE_PARAMS]: getModuleUpdateAction(
+    MUTATE_MODULE_PARAMS,
+    validatePayload,
+    callApi,
+    UPDATE_STATE_URL,
+  ),
+  [UPDATE_MODULE_LIMITS]: getModuleUpdateAction(
+    MUTATE_MODULE_LIMITS,
+    validatePayload,
+    callApi,
+    UPDATE_STATE_URL,
+  ),
 };
+
+// Getters
 
 export const getActiveReactionId = state => (
   Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
@@ -161,10 +179,20 @@ const getLamp = (state, { activeModuleState, activeModuleParams }) => ({
   stop: activeModuleParams.Lamp.stop,
 });
 
+const getActiveModule = (state, { selectedModuleName }) => {
+  const activeModule = state.modules[selectedModuleName];
+  if (!activeModule) {
+    console.log('Selected Module Name:', selectedModuleName, '\n\n');
+    prettyPrint('Modules State:', state.modules);
+    throw new Error('active module is undefined');
+  }
+
+  return activeModule;
+};
 
 export const getters = {
   activeReactionId: getActiveReactionId,
-  activeModule: (state, { selectedModuleName }) => state.modules[selectedModuleName],
+  activeModule: getActiveModule,
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,

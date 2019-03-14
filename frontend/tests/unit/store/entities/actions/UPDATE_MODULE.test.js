@@ -1,6 +1,6 @@
 /* eslint "no-shadow": "off" */
-
 import { getModuleUpdateAction } from '@/store/entities.module';
+import { validatePayload } from '@/utils/entities.utils';
 
 // const { UPDATE_MODULE_STATE } = actions;
 
@@ -24,7 +24,7 @@ const getters = {
 describe('UPDATE_MOUDLE actions', () => {
   test('commit and callApi are called with correct values', () => {
     const UPDATE_MODULE_STATE = (
-      getModuleUpdateAction(MUTATE_MODULE_STATE, callApi, UPDATE_STATE_URL)
+      getModuleUpdateAction(MUTATE_MODULE_STATE, validatePayload, callApi, UPDATE_STATE_URL)
     );
 
     UPDATE_MODULE_STATE({ commit, getters }, mockMuationPayload);
@@ -39,5 +39,15 @@ describe('UPDATE_MOUDLE actions', () => {
       method: 'POST',
       data: { foo: 'bar' },
     });
+  });
+
+  test('throws error if undefined values are supplied in payload', () => {
+    const UPDATE_MODULE_STATE = (
+      getModuleUpdateAction(MUTATE_MODULE_STATE, validatePayload, callApi, UPDATE_STATE_URL)
+    );
+
+    const testPayload = { moduleName: 'foo', actuatorType: undefined, newState: { biz: 'bang' } };
+    const testFunc = () => UPDATE_MODULE_STATE({ commit, getters }, testPayload);
+    expect(testFunc).toThrow();
   });
 });

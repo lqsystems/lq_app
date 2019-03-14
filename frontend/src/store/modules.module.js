@@ -30,8 +30,7 @@ const mutations = {
 
 
 export const getters = {
-  // TODO: change name of Dosis1 in backend config
-  selectedModuleName: state => (state.selectedModuleName === 'Dosis1' ? 'LQR' : state.selectedModuleName),
+  selectedModuleName: state => state.selectedModuleName,
 };
 
 export default {

@@ -52,6 +52,35 @@ const testPayload = {
   },
   'ZeePrime-Lamp-limits': {},
 };
+// takes state and selectedModuleName
+describe('activeModule getter', () => {
+  test('returns a module when valid arguments are supplied', () => {
+    const actual = activeModule(state, { selectedModuleName: 'ZeePrime' });
+    expect(actual).toEqual(expect.objectContaining({
+      moduleState: expect.any(Object),
+    }));
+  });
+  test('throws an error if activeModule is undefined', () => {
+    console.log = jest.fn();
+    const callWithUndefinedState = () => { activeModule({ modules: {} }, 'MV1'); };
+    expect(callWithUndefinedState).toThrowError('active module is undefined');
+  });
+  test('throws an error if selectedModuleName is undefined', () => {
+    console.log = jest.fn();
+    const callWithUndefinedState = () => {
+      activeModule(state, { selectedModuleName: undefined });
+    };
+    expect(callWithUndefinedState).toThrowError('active module is undefined');
+  });
+  test('throws an error if selectedModuleName does not exist in state', () => {
+    console.log = jest.fn();
+    const callWithUndefinedState = () => {
+      activeModule(state, { selectedModuleName: 'notAValidModuleName' });
+    };
+    expect(callWithUndefinedState).toThrowError('active module is undefined');
+  });
+});
+
 
 describe('entities getters', () => {
   test('getApiUpdatePayload', () => {

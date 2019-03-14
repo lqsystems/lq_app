@@ -18,9 +18,9 @@ export const modulesInitial = {
     },
   },
   MV1: {
-    mod_name: 'Dosis1',
+    mod_name: 'MV1',
     mod_active: false,
-    title: 'Dosis1',
+    title: 'MV1',
     reactions: [],
     'reaction-id': 0,
     moduleState: {

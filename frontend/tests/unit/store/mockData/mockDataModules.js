@@ -17,10 +17,10 @@ const modules = {
       },
     },
   },
-  Dosis1: {
-    mod_name: 'Dosis1',
+  MV1: {
+    mod_name: 'MV1',
     mod_active: false,
-    title: 'Dosis1',
+    title: 'MV1',
     reactions: ['5c4acf72cab072313a1f7ad6'],
     'reaction-id': 0,
     moduleState: {
