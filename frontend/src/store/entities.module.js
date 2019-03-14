@@ -3,11 +3,7 @@ import router from '@/router';
 import callApi from '@/utils/api.utils.js';
 import { prettyPrint } from '@/utils/debug.utils.js';
 import { validatePayload } from '@/utils/entities.utils';
-<<<<<<< HEAD
 import { moduleSchema } from '@/constants/schemas.constants';
-=======
-import { moduleSchema } from '@/constants/schemas';
->>>>>>> add validation logic to make entities actions and getters more robust
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 // TODO: refactor so that this comes from back end configuration
 import { modulesInitial } from './entities.initialState.js';
@@ -202,11 +198,7 @@ const getActiveModule = (state, { selectedModuleName }) => {
 };
 
 export const getters = {
-<<<<<<< HEAD
   activeReactionId: getActiveReactionId(window.alert),
-=======
-  activeReactionId: getActiveReactionId,
->>>>>>> add validation logic to make entities actions and getters more robust
   activeModule: getActiveModule,
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
