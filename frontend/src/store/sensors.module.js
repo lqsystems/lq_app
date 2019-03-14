@@ -1,4 +1,5 @@
 import { SOCKET_DATUM } from './mutations.types';
+import { dosisMods } from '@/shared_config/dosisMods';
 
 const state = {
   OD: '_',
