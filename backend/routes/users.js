@@ -13,7 +13,7 @@ router.get('/register', function (req, res) {
 
 //Login
 router.get('/login', function (req, res) {
-  req.get('client') === 'newClient' 
+  req.get('client') === 'vue-client' 
     ? res.json({ message: req.flashError })
     : res.render('login');
 });

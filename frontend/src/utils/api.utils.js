@@ -1,7 +1,8 @@
 import axios from 'axios';
+import router from '@/router';
 
 axios.defaults.withCredentials = true;
-axios.defaults.headers.common.client = 'newClient';
+axios.defaults.headers.common.client = 'vue-client';
 
 const callApi = async (url, options = {}) => {
   // default to GET if no method is supplied
@@ -15,11 +16,14 @@ const callApi = async (url, options = {}) => {
     const response = await axios(options);
     return response;
   } catch (error) {
-    const networkErrorMessage = 'We encountered a network error! \n\n Is the server running?';
-    const { message } = error;
-    alert(error);
-
-    console.log(error);
+    if (error.response && error.response.status === 401) {
+      router.push('/login');
+      alert('Please log in before making any requests');
+    } else {
+      const message = 'Please make sure the server is running';
+      alert(`${error}\n${message}`);
+      throw new Error(error);
+    }
   }
 };
 

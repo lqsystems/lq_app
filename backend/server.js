@@ -65,9 +65,11 @@ global.subst = (a,b,c) => {
 
 global.ensureAuthenticated = (req, res, next) => {
     if ( req.isAuthenticated() ) {
-        return next();
+      return next();
+    } else if (req.get('client') === 'vue-client') {
+        res.sendStatus(401)//.json({ error:'Please login before making your request'}); 
     } else {
-        req.flash('error', 'Not logged in');
+        // req.flash('error', 'Not logged in');
         res.redirect('/users/login');
     }
 }

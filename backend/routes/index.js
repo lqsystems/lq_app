@@ -1162,9 +1162,8 @@ function changeLimits(limits,limitSet) {
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ----
-
-router.post(gURL_updateState, (req,res) => {
-                //
+router.post(gURL_updateState, ensureAuthenticated, (req,res) => {
+                   //
                 var data = req.body;
                 var mid = data.mid; // module id
                 var id = data.activeId;

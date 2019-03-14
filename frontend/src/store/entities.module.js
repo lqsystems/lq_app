@@ -3,7 +3,7 @@ import router from '@/router';
 import callApi from '@/utils/api.utils.js';
 import { prettyPrint } from '@/utils/debug.utils.js';
 import { validatePayload } from '@/utils/entities.utils';
-import { moduleSchema } from '@/constants/schemas';
+import { moduleSchema } from '@/constants/schemas.constants';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 // TODO: refactor so that this comes from back end configuration
 import { modulesInitial } from './entities.initialState.js';
@@ -135,9 +135,19 @@ export const actions = {
 
 // Getters
 
-export const getActiveReactionId = state => (
-  Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)[0]
-);
+export const getActiveReactionId = alert => (state) => {
+  const [activeReaction] = (
+    Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)
+  );
+
+  if (!activeReaction) {
+    const message = 'No active reactions were found. Make sure that you are logged in and that a reaction is active';
+    alert(message);
+    throw new Error(message);
+  }
+
+  return activeReaction;
+};
 
 export const getApiUpdatePayload = actuatorName => (
   state,
@@ -190,7 +200,7 @@ const getActiveModule = (state, { selectedModuleName }) => {
 };
 
 export const getters = {
-  activeReactionId: getActiveReactionId,
+  activeReactionId: getActiveReactionId(window.alert),
   activeModule: getActiveModule,
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
