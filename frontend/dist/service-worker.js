@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.c005576617e15e686aed8cf63b4dbdff.js"
+  "/vue/precache-manifest.7875f572a9a253319ce95863de579b7f.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "frontemd"});
+workbox.core.setCacheNameDetails({prefix: "LQ_Vue_Client"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to

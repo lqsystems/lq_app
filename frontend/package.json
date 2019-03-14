@@ -1,12 +1,12 @@
 {
-  "name": "frontemd",
+  "name": "LQ_Vue_Client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": " copyBackendConfig && vue-cli-service serve",
+    "serve": "yarn copyBackendConfig && vue-cli-service serve",
     "serve:offsite": " copyBackendConfig && vue-cli-service serve --mode offsite",
-    "build": " copyBackendConfig && vue-cli-service build",
-    "build:offsite": " copyBackendConfig && vue-cli-service build --mode offsite",
+    "build": "scripts/copyDist.sh",
+    "build:offsite": "yarn copyBackendConfig && vue-cli-service build --mode offsite",
     "lint": "vue-cli-service lint",
     "start": "concurrently \"cd ../backend && node server.js\" \"vue-cli-service serve\"",
     "test": "yarn test:unit",

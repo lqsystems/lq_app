@@ -8,19 +8,24 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'reactorControls',
-      component: () => import('@/views/ReactorControls'),
-    },
-    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/Login'),
     },
     {
+      path: '/',
+      name: 'reactorControls',
+      component: () => import('@/views/ReactorControls'),
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('@/views/Test'),
+    },
+    {
+      path: '*',
+      name: 'reroute',
+      component: () => import('@/views/Login'),
     },
   ],
 });

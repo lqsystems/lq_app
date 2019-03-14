@@ -150,6 +150,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/vue', express.static('dist'));
 
 app.use(cors({
   origin: [
@@ -220,6 +221,10 @@ app.use(function (req, res, next){
 app.use('/', index);
 app.use('/users', users);
 app.use('/modules', modules);
+
+app.get('/vue/*', (req, res) => {
+  res.redirect('/vue');
+});
 
 //Server connection
 server.listen(gPortNum, () => {

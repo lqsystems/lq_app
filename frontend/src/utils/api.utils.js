@@ -18,7 +18,7 @@ const callApi = async (url, options = {}) => {
   } catch (error) {
     if (error.response && error.response.status === 401) {
       router.push('/login');
-      alert('Please log in before making any requests');
+      // alert('Please log in before making any requests');
     } else {
       const message = 'Please make sure the server is running';
       alert(`${error}\n${message}`);
