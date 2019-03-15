@@ -67,7 +67,7 @@ global.ensureAuthenticated = (req, res, next) => {
     if ( req.isAuthenticated() ) {
       return next();
     } else if (req.get('client') === 'vue-client') {
-        res.sendStatus(401);
+        res.json({ message: 'NOT_AUTHORIZED'});
     } else {
         // req.flash('error', 'Not logged in');
         res.redirect('/users/login');

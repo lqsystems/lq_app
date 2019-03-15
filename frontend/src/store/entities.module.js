@@ -39,7 +39,7 @@ export const mutations = {
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
     // the api requires level to be a string. Ensure that that is the case
-    newParams = level && (typeof level === 'number')
+    newParams = level && typeof level === 'number'
       ? Object.assign({}, newParams, { level: String(level) })
       : newParams;
 
@@ -53,7 +53,6 @@ export const mutations = {
     currentLimits[actuatorType] = Object.assign({}, currentLimitsValues, newLimits);
   },
 };
-
 
 // TODO: refactor to handle errors
 export const getModuleUpdateAction = (mutationType, validatePayload, callApi, updateUrl) => (
@@ -82,7 +81,6 @@ export const getModuleUpdateAction = (mutationType, validatePayload, callApi, up
   });
 };
 
-
 export const actions = {
   // TODO: add logic to handle fetch failure
   async [FETCH_MODULES]({ commit }, successRoute) {
@@ -92,8 +90,9 @@ export const actions = {
       const { data } = await callApi(MODULES_URL);
       const { message } = data;
 
-      if (message && message[0] === 'Not logged in') {
-        return router.push('/login');
+      if (message === 'NOT_AUTHORIZED') {
+        router.push('/login');
+        return;
       }
 
       const { entities } = normalize(data, moduleSchema);
@@ -134,8 +133,8 @@ export const actions = {
 // Getters
 
 export const getActiveReactionId = alert => (state) => {
-  const [activeReaction] = (
-    Object.keys(state.reactions).filter(reactionId => state.reactions[reactionId].active)
+  const [activeReaction] = Object.keys(state.reactions).filter(
+    reactionId => state.reactions[reactionId].active,
   );
 
   if (!activeReaction && process.env.NODE_ENV === 'production') {
@@ -150,7 +149,11 @@ export const getActiveReactionId = alert => (state) => {
 export const getApiUpdatePayload = actuatorName => (
   state,
   {
-    activeModuleState, activeReactionId, selectedModuleName, activeModuleParams, activeModuleLimits,
+    activeModuleState,
+    activeReactionId,
+    selectedModuleName,
+    activeModuleParams,
+    activeModuleLimits,
   },
 ) => {
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
