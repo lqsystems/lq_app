@@ -81,7 +81,6 @@ describe('activeModule getter', () => {
   });
 });
 
-<<<<<<< HEAD
 
 describe('getActiveReactionId', () => {
   test('returns an id when valid arguments are supplied', () => {
@@ -110,8 +109,6 @@ describe('getActiveReactionId', () => {
     expect(alert).toBeCalled();
   });
 });
-=======
->>>>>>> add validation logic to make entities actions and getters more robust
 
 describe('entities getters', () => {
   test('getApiUpdatePayload', () => {

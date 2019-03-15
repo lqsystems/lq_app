@@ -31,7 +31,7 @@
           <v-divider />
           <div class="rc-sensor-item">
             <div class="rc-sensor-label">
-              OD:
+              OD
             </div>
             <div class="rc-sensor-val">
               {{ OD }}
@@ -39,10 +39,10 @@
           </div>
           <div class="rc-sensor-item">
             <div class="rc-sensor-label">
-              Temp:
+              Temp °C
             </div>
             <div class="rc-sensor-val">
-              {{ tempC }}
+              {{ temp }}
             </div>
           </div>
         </BaseSidebar>
@@ -85,10 +85,11 @@ export default {
     AirControlPanel,
   },
   computed: {
+    // TODO: use map state for these
     ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
     ...mapState({
-      OD: state => state.sensors.OD,
-      tempC: state => `${state.sensors.temperature} °C`,
+      OD: state => state.sensors[state.modules.selectedModuleName].OD,
+      temp: state => state.sensors[state.modules.selectedModuleName].temperature,
     }),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
@@ -158,7 +159,7 @@ export default {
 }
 
 .rc-sensor-label {
-  width: 40%;
+  width: 66%;
   // margin-left: auto;
 }
 

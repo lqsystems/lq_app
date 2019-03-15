@@ -1,15 +1,13 @@
 import { SOCKET_DATUM } from './mutations.types';
 import { dosisMods } from '@/shared_config/dosisMods';
 
-const state = {
-  OD: '_',
-  temperature: '_',
-};
+const initialState = dosisMods;
 
-const mutations = {
-  [SOCKET_DATUM](state, message) {
-    state.OD = message.message.OD;
-    state.temperature = message.message.Temperature;
+export const mutations = {
+  [SOCKET_DATUM](state, { message }) {
+    const { module, OD, Temperature } = message;
+    state[module].OD = OD;
+    state[module].temperature = Temperature;
   },
 };
 
@@ -20,7 +18,7 @@ const getters = {
 };
 
 export default {
-  state,
+  state: initialState,
   mutations,
   actions,
   getters,
