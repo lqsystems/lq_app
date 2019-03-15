@@ -11,8 +11,7 @@ const state = {
   },
 };
 
-// TODO: refactor to compose these mutations with a HOF
-
+// TODO: use function composition to make these mutations DRY
 const mutations = {
   [SET_AIR_ACTIVE](state) {
     state.environmentControls.selectedControl = 'Air';
