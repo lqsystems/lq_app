@@ -15,8 +15,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 Vue.use(
-  // new VueSocketIO({ connection: 'http://25.72.227.165:8888/data' }),
-  new VueSocketIO({ connection: `${window.location.hostname}:8888/data` }),
+  new VueSocketIO({ connection: 'http://25.72.227.165:8888/data' }),
+  // new VueSocketIO({ connection: `${window.location.hostname}:8888/data` }),
 );
 
 

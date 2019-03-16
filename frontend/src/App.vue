@@ -25,7 +25,7 @@ export default {
 
   sockets: {
     module(message) {
-      console.log(' Limit Crossover Detected ');
+      console.log('Limit Crossover Detected');
       console.log('incoming message', message);
 
       this.HANDLE_UPDATE_STATE_MESSAGE({

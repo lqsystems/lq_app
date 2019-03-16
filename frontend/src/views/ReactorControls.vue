@@ -25,7 +25,7 @@
               :handle-click="SET_HEATER_ACTIVE"
             />
           </div>
-          <div class="rc-sidebar-heading sensor-header">
+          <div class="rc-sidebar-heading">
             Sensors
           </div>
           <v-divider />
@@ -144,10 +144,6 @@ export default {
   font-weight: 500;
   background-color: $grey-200;
   padding: 0.5em 0.7em;
-}
-
-.sensor-header {
-  margin-top: 1em;
 }
 
 .rc-sensor-item {

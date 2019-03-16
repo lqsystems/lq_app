@@ -51,7 +51,7 @@ $font-size: 1.5;
   font-size: $font-size - .1 + em;
 }
 .sidebar-list-tile {
-  padding:.5em;
+  padding: 0.8em 0em;
 }
 
 .sidebar-icon {
