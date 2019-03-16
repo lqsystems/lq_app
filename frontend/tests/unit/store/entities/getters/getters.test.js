@@ -15,7 +15,7 @@ const activeModuleVal = activeModule(state, { selectedModuleName: 'ZeePrime' });
 const activeModuleStateVal = activeModuleState(state, { activeModule: activeModuleVal });
 const activeModuleParamsVal = activeModuleParams(state, { activeModule: activeModuleVal });
 const activeModuleLimitsVal = activeModuleLimits(state, { activeModule: activeModuleVal });
-const activeReactionIdVal = getActiveReactionId(state);
+const activeReactionIdVal = getActiveReactionId(() => {})(state);
 
 const mockGetters = {
   selectedModuleName: 'ZeePrime',
@@ -97,7 +97,7 @@ describe('getActiveReactionId', () => {
     expect(testFunc).toThrow(message);
     expect(alert).toBeCalled();
   });
-  test('triggers an alert and throws an error if no active reactions object is empty', () => {
+  test('triggers an alert and throws an error if no active reactions are found', () => {
     const alert = jest.fn();
     const message = 'No active reactions were found. Make sure that you are logged in and that a reaction is active';
     const testState = {
@@ -111,10 +111,11 @@ describe('getActiveReactionId', () => {
 });
 
 describe('entities getters', () => {
+  // add tests for Heater and Air
   test('getApiUpdatePayload', () => {
     const expected = testPayload;
     const actual = getApiUpdatePayload('Lamp')(state, mockGetters);
-    expect(expected).toEqual(actual);
+    expect(actual).toEqual(expected);
   });
 
   test('module state', () => {

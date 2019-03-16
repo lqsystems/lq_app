@@ -1,6 +1,7 @@
 import { validatePayload } from '@/utils/entities.utils';
 
-describe('example', () => {
+
+describe('validate payload', () => {
   test('throws an error if props have undefined values', () => {
     const testObj = { foo: null, bang: 'baz', biz: undefined };
     const testFunc = () => { validatePayload(testObj); };

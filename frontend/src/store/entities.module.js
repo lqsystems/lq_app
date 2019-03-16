@@ -132,12 +132,14 @@ export const actions = {
 
 // Getters
 
+
 export const getActiveReactionId = alert => (state) => {
   const [activeReaction] = Object.keys(state.reactions).filter(
     reactionId => state.reactions[reactionId].active,
   );
 
-  if (!activeReaction && process.env.NODE_ENV === 'production') {
+  const { NODE_ENV } = process.env;
+  if (!activeReaction && (NODE_ENV === 'production' || NODE_ENV === 'test')) {
     const message = 'No active reactions were found. Make sure that you are logged in and that a reaction is active';
     alert(message);
     throw new Error(message);
