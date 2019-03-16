@@ -20,9 +20,15 @@ export default {
   created() {
     this.FETCH_MODULES();
   },
+
   sockets: {
-    // receives sensor data  for OD and Temp
+    module(data) {
+      console.log(data);
+    },
+
+    // receives sensor data for OD and Temp
     datum(data) {
+      console.log(data);
       this.SOCKET_DATUM(data);
     },
   },
