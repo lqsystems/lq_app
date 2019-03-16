@@ -12,8 +12,10 @@
 
 <script>
 import { mapActions, mapMutations } from 'vuex';
-import { FETCH_MODULES } from '@/store/actions.types.js';
-import { SOCKET_DATUM } from '@/store/mutations.types';
+import { diff } from 'deep-object-diff';
+import { diffStatesOnUpdateMessage, getModuleByReactionId } from '@/utils/entities.utils';
+import { FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE } from '@/store/actions.types.js';
+import { MUTATE_MODULE_STATE, SOCKET_DATUM } from '@/store/mutations.types';
 
 export default {
   name: 'App',
@@ -22,19 +24,27 @@ export default {
   },
 
   sockets: {
-    module(data) {
-      console.log(data);
+    module(message) {
+      console.log(' Limit Crossover Detected ');
+      console.log('incoming message', message);
+
+      this.HANDLE_UPDATE_STATE_MESSAGE({
+        message,
+        moduleGetter: getModuleByReactionId,
+        stateDiffGetter: diffStatesOnUpdateMessage,
+        objectDiffGetter: diff,
+        mutationType: MUTATE_MODULE_STATE,
+      });
     },
 
     // receives sensor data for OD and Temp
-    datum(data) {
-      console.log(data);
-      this.SOCKET_DATUM(data);
+    datum(message) {
+      this.SOCKET_DATUM(message);
     },
   },
   methods: {
     ...mapMutations([SOCKET_DATUM]),
-    ...mapActions([FETCH_MODULES]),
+    ...mapActions([FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE]),
   },
 };
 </script>

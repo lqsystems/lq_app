@@ -7,7 +7,13 @@ import { moduleSchema } from '@/constants/schemas.constants';
 import { MODULES_URL, UPDATE_STATE_URL } from '@/constants/api.constants';
 // TODO: refactor so that this comes from back end configuration
 import { modulesInitial } from './entities.initialState.js';
-import { UPDATE_MODULE_PARAMS, UPDATE_MODULE_STATE, UPDATE_MODULE_LIMITS } from './actions.types';
+import {
+  HANDLE_UPDATE_STATE_MESSAGE,
+  UPDATE_MODULE_PARAMS,
+  UPDATE_MODULE_STATE,
+  UPDATE_MODULE_LIMITS,
+} from './actions.types';
+
 import {
   FETCH_MODULES_SUCCESS,
   FETCH_MODULES,
@@ -28,7 +34,6 @@ export const mutations = {
   [LOAD_MODULES](state, modules) {
     state.modules = modules;
   },
-
   // TODO: refactor to generic LOAD_ENTITY
   [LOAD_REACTIONS](state, reactions) {
     state.reactions = reactions;
@@ -63,8 +68,8 @@ export const getModuleUpdateAction = (mutationType, validatePayload, callApi, up
   mutationPayload = Object.assign({}, mutationPayload, { moduleName: selectedModuleName });
   validatePayload(mutationPayload);
 
-  console.log('\n', '** Mutation Payload **');
-  console.log(mutationPayload, '\n');
+  // console.log('\n', '** Mutation Payload **');
+  // console.log(mutationPayload, '\n');
 
   commit(mutationType, mutationPayload);
 
@@ -72,8 +77,8 @@ export const getModuleUpdateAction = (mutationType, validatePayload, callApi, up
   const requestPayload = getters[`${actuatorType.toLowerCase()}UpdatePayload`];
   validatePayload(requestPayload);
 
-  console.log('\n', '** Request Payload**');
-  console.log(requestPayload, '\n');
+  // console.log('\n', '** Api Request Payload **');
+  // console.log(requestPayload, '\n');
 
   callApi(updateUrl, {
     method: 'POST',
@@ -82,6 +87,21 @@ export const getModuleUpdateAction = (mutationType, validatePayload, callApi, up
 };
 
 export const actions = {
+  [HANDLE_UPDATE_STATE_MESSAGE](
+    { commit, state },
+    {
+      message, stateDiffGetter, moduleGetter, objectDiffGetter, mutationType,
+    },
+  ) {
+    const diff = stateDiffGetter(message, state, moduleGetter, objectDiffGetter);
+
+    if (diff.length > 0) {
+      console.log(' Diff Detected, Committing State Change ');
+      console.log(diff[0]);
+
+      commit(mutationType, diff[0]);
+    }
+  },
   // TODO: add logic to handle fetch failure
   async [FETCH_MODULES]({ commit }, successRoute) {
     // If user is logged in 'data' will contain an array of module data.
@@ -201,6 +221,7 @@ const getActiveModule = (state, { selectedModuleName }) => {
 
   return activeModule;
 };
+
 
 export const getters = {
   activeReactionId: getActiveReactionId(window.alert),

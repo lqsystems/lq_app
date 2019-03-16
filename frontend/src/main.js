@@ -14,13 +14,11 @@ if (process.env.NODE_ENV === 'production') {
   console.log('location info:', window.location);
 }
 
-// Vue.use(
-//   new VueSocketIO({ connection: 'http://25.72.227.165:8888/data' }),
-// );
-
 Vue.use(
+  // new VueSocketIO({ connection: 'http://25.72.227.165:8888/data' }),
   new VueSocketIO({ connection: `${window.location.hostname}:8888/data` }),
 );
+
 
 Vue.config.productionTip = false;
 

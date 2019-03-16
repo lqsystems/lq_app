@@ -34,7 +34,7 @@
               OD
             </div>
             <div class="rc-sensor-val">
-              {{ OD }}
+              {{ sensorData.OD }}
             </div>
           </div>
           <div class="rc-sensor-item">
@@ -42,7 +42,7 @@
               Temp °C
             </div>
             <div class="rc-sensor-val">
-              {{ temp }}
+              {{ sensorData.temperature }}
             </div>
           </div>
         </BaseSidebar>
@@ -88,8 +88,7 @@ export default {
     // TODO: use map state for these
     ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
     ...mapState({
-      OD: state => state.sensors[state.modules.selectedModuleName].OD,
-      temp: state => state.sensors[state.modules.selectedModuleName].temperature,
+      sensorData: state => state.sensors[state.modules.selectedModuleName],
     }),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;

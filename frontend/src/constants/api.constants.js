@@ -1,11 +1,9 @@
-// console.log('Vue app served from:', process.env.VUE_APP_SERVER_LOCATION);
-
-export const API_BASE_URL = process.env.NODE_ENV === 'production'
+const { NODE_ENV } = process.env;
+export const API_BASE_URL = NODE_ENV === 'production'
   ? ''
   : 'http://10.0.0.86:8888';
 
-
-if (API_BASE_URL !== '') {
+if (API_BASE_URL !== '' && NODE_ENV !== 'test') {
   console.log(`Http requests will be made to: ${API_BASE_URL}`);
 }
 

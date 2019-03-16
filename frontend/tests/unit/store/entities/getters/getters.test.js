@@ -1,5 +1,6 @@
 import mockState from '../../mockState';
 import { getters, getActiveReactionId, getApiUpdatePayload } from '@/store/entities.module';
+import { getModuleByReactionId } from '@/utils/entities.utils';
 
 const state = mockState.entities;
 
@@ -52,6 +53,23 @@ const testPayload = {
   },
   'ZeePrime-Lamp-limits': {},
 };
+
+describe('getModuleByReactionId', () => {
+  test('returns an object representing ZeePrime module state given the corresponding reaction id', () => {
+    const testReactionId = '5c536562d0e2ce03f1524c9c';
+    const expected = state.modules.ZeePrime;
+    const actual = getModuleByReactionId(state)(testReactionId);
+    expect(expected).toEqual(actual);
+  });
+
+  test('returns an empty object if supplied reaction id is not found in state', () => {
+    const testReactionId = '123';
+    const expected = {};
+    const actual = getModuleByReactionId(state)(testReactionId);
+    expect(expected).toEqual(actual);
+  });
+});
+
 // takes state and selectedModuleName
 describe('activeModule getter', () => {
   test('returns a module when valid arguments are supplied', () => {
