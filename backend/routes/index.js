@@ -697,22 +697,42 @@ HWProc.on('message', (message) => {
 
                   } else {   // SEND SENSOR DATA
                       //
-                      HWProc.dataEvents.emit('datum', message);
 
+                      //console.log(message)
+                      HWProc.dataEvents.emit('datum', message);
                       var storeData = message.message;
-                      if ( storeData && storeData.OD && storeData.Temperature && storeData.id && !IamCloud ) {
+                      if ( storeData && (storeData.OD != undefined)  && (storeData.Temperature != undefined) && storeData.id ) {
                           if ( !(isNaN(storeData.OD) || isNaN(storeData.Temperature)) ) {
                               //
                               // Redis
                               writeMeasurementPoint(storeData.OD,storeData.Temperature,storeData.id)
                               //
-                              // Influx
-                              // sensor output ...  really want to cache these and send a batch...
-                              // write to local file and then batch from the file...
-                              // influxWriteSensorDatum(reactionId,module,OD,Temp,ts)
-                              influxWriteSensorDatum(storeData.id,storeData.mid,storeData.OD,storeData.Temperature)
+                              if ( !IamCloud ) {
+                                  // Influx
+                                  // sensor output ...  really want to cache these and send a batch...
+                                  // write to local file and then batch from the file...
+                                  // influxWriteSensorDatum(reactionId,module,OD,Temp,ts)
+                                  influxWriteSensorDatum(storeData.id,storeData.mid,storeData.OD,storeData.Temperature)
+                              }
                           }
                       }
+
+                      // HWProc.dataEvents.emit('datum', message);
+                      //
+                      // var storeData = message.message;
+                      // if ( storeData && storeData.OD && storeData.Temperature && storeData.id && !IamCloud ) {
+                      //     if ( !(isNaN(storeData.OD) || isNaN(storeData.Temperature)) ) {
+                      //         //
+                      //         // Redis
+                      //         writeMeasurementPoint(storeData.OD,storeData.Temperature,storeData.id)
+                      //         //
+                      //         // Influx
+                      //         // sensor output ...  really want to cache these and send a batch...
+                      //         // write to local file and then batch from the file...
+                      //         // influxWriteSensorDatum(reactionId,module,OD,Temp,ts)
+                      //         influxWriteSensorDatum(storeData.id,storeData.mid,storeData.OD,storeData.Temperature)
+                      //     }
+                      // }
 
                       if ( !IamCloud ) {
                           forwardHardwareMessage(message.message);
