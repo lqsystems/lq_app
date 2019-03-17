@@ -1,5 +1,5 @@
 import mockState from '../../mockState';
-import { getters, getActiveReactionId, getApiUpdatePayload } from '@/store/entities.module';
+import { getters, getActiveReactionId } from '@/store/entities.module';
 import { getModuleByReactionId } from '@/utils/entities.utils';
 
 const state = mockState.entities;
@@ -18,7 +18,7 @@ const activeModuleParamsVal = activeModuleParams(state, { activeModule: activeMo
 const activeModuleLimitsVal = activeModuleLimits(state, { activeModule: activeModuleVal });
 const activeReactionIdVal = getActiveReactionId(() => {})(state);
 
-const mockGetters = {
+export const mockGetters = {
   selectedModuleName: 'ZeePrime',
   activeModule: activeModuleVal,
   activeModuleState: activeModuleStateVal,
@@ -27,32 +27,6 @@ const mockGetters = {
   activeReactionId: activeReactionIdVal,
 };
 
-const testPayload = {
-  mid: 'ZeePrime',
-  allStates: {
-    SensorOnOff: false,
-    Air: false,
-    Lamp: false,
-    Heater: false,
-    water: false,
-    inoculum: false,
-    mixer: false,
-    extraction: false,
-    forward: false,
-    backwards: false,
-  },
-  activeId: '5c536562d0e2ce03f1524c9c',
-  activeSwitch: 'ReactionActive-5c536562d0e2ce03f1524c9c',
-  changes: [
-    'Lamp',
-  ],
-  'ZeePrime-Lamp-parameters': {
-    start: 0,
-    stop: 0,
-    level: 0,
-  },
-  'ZeePrime-Lamp-limits': {},
-};
 
 describe('getModuleByReactionId', () => {
   test('returns an object representing ZeePrime module state given the corresponding reaction id', () => {
@@ -128,13 +102,9 @@ describe('getActiveReactionId', () => {
   });
 });
 
+
 describe('entities getters', () => {
   // add tests for Heater and Air
-  test('getApiUpdatePayload', () => {
-    const expected = testPayload;
-    const actual = getApiUpdatePayload('Lamp')(state, mockGetters);
-    expect(actual).toEqual(expected);
-  });
 
   test('module state', () => {
     const actual = activeModuleState(state, mockGetters);

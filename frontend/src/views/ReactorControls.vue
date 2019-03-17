@@ -58,21 +58,21 @@
 </template>
 
 <script>
+
 import { mapGetters, mapMutations, mapState } from 'vuex';
+
 import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
   SET_LIGHT_ACTIVE,
 } from '@/store/mutations.types';
 
-import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
 import LightControlPanel from '@/components/LightControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 import AirControlPanel from '@/components/AirControlPanel';
-
 
 export default {
   components: {

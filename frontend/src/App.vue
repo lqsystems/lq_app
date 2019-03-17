@@ -14,7 +14,7 @@
 import { mapActions, mapMutations } from 'vuex';
 import { diff } from 'deep-object-diff';
 import { diffStatesOnUpdateMessage, getModuleByReactionId } from '@/utils/entities.utils';
-import { FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE } from '@/store/actions.types.js';
+import { FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE } from '@/store/actions.types';
 import { MUTATE_MODULE_STATE, SOCKET_DATUM } from '@/store/mutations.types';
 
 export default {
