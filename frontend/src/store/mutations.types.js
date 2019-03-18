@@ -17,6 +17,7 @@ export const MUTATE_MODULE_LIMITS = 'MUTATE_MODULE_LIMITS';
 export const SET_AIR_ACTIVE = 'SET_AIR_ACTIVE';
 export const SET_LIGHT_ACTIVE = 'SET_LIGHT_ACTIVE';
 export const SET_HEATER_ACTIVE = 'SET_HEATER_ACTIVE';
+export const SET_PUMP_ACTIVE = 'SET_PUMP_ACTIVE';
 
 // Sensors types
 export const SOCKET_DATUM = 'SOCKET_DATUM';

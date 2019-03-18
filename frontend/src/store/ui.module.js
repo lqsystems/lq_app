@@ -3,11 +3,12 @@ import {
   SET_AIR_ACTIVE,
   SET_LIGHT_ACTIVE,
   SET_HEATER_ACTIVE,
+  SET_PUMP_ACTIVE,
 } from './mutations.types';
 
 const state = {
   environmentControls: {
-    selectedControl: localStorage.selectedEnvironmentControl || 'Air',
+    selectedControl: localStorage.selectedEnvironmentControl || 'Pump',
   },
 };
 
@@ -24,6 +25,10 @@ const mutations = {
   [SET_HEATER_ACTIVE](state) {
     state.environmentControls.selectedControl = 'Heater';
     localStorage.selectedEnvironmentControl = 'Heater';
+  },
+  [SET_PUMP_ACTIVE](state) {
+    state.environmentControls.selectedControl = 'Pump';
+    localStorage.selectedEnvironmentControl = 'Pump';
   },
 };
 

@@ -13,6 +13,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     "no-param-reassign": "off",
+    "func-names": "off",
     "no-shadow": "off",
     "no-unused-expressions": ["error", {"allowTernary": true}],
     "consistent-return": "off",

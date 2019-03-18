@@ -24,6 +24,11 @@
               icon-name="icon-heat"
               :handle-click="SET_HEATER_ACTIVE"
             />
+            <BaseSidebarItem
+              title="Pump"
+              icon-name="icon-air"
+              :handle-click="SET_PUMP_ACTIVE"
+            />
           </div>
           <div class="rc-sidebar-heading">
             Sensors
@@ -58,21 +63,22 @@
 </template>
 
 <script>
-
 import { mapGetters, mapMutations, mapState } from 'vuex';
-
 import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
   SET_LIGHT_ACTIVE,
+  SET_PUMP_ACTIVE,
 } from '@/store/mutations.types';
 
+import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
-import LightControlPanel from '@/components/LightControlPanel';
-import HeaterControlPanel from '@/components/HeaterControlPanel';
 import AirControlPanel from '@/components/AirControlPanel';
+import HeaterControlPanel from '@/components/HeaterControlPanel';
+import LightControlPanel from '@/components/LightControlPanel';
+import PumpControlPanel from '@/components/PumpControlPanel';
 
 export default {
   components: {
@@ -80,9 +86,10 @@ export default {
     BaseNav,
     BaseSidebar,
     BaseSidebarItem,
+    AirControlPanel,
     HeaterControlPanel,
     LightControlPanel,
-    AirControlPanel,
+    PumpControlPanel,
   },
   computed: {
     // TODO: use map state for these
@@ -98,7 +105,12 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([SET_AIR_ACTIVE, SET_HEATER_ACTIVE, SET_LIGHT_ACTIVE]),
+    ...mapMutations([
+      SET_AIR_ACTIVE,
+      SET_HEATER_ACTIVE,
+      SET_LIGHT_ACTIVE,
+      SET_PUMP_ACTIVE,
+    ]),
     routeHome() {
       this.$router.push('/');
     },

@@ -1,5 +1,10 @@
 export const getUndefinedProps = (obj) => {
   const undefinedProps = [];
+
+  if (typeof obj === 'boolean') {
+    return [];
+  }
+
   Object.keys(obj).forEach((key) => {
     const keyVal = obj[key];
     if (keyVal === null || keyVal === undefined) {

@@ -151,8 +151,6 @@ export const actions = {
 };
 
 // Getters
-
-
 export const getActiveReactionId = alert => (state) => {
   const [activeReaction] = Object.keys(state.reactions).filter(
     reactionId => state.reactions[reactionId].active,
@@ -181,10 +179,18 @@ export const getApiUpdatePayload = actuatorName => (
   const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
   const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
 
+  const targetParams = activeModuleParams[actuatorName];
+  const params = (actuatorName === 'water' || actuatorName === 'extraction')
+    ? Object.assign({}, targetParams, { level: '100' })
+    : targetParams;
+
+  console.table(params);
+
   const targetLimits = activeModuleLimits[actuatorName];
   const limits = targetLimits
     ? { 'HIGH-value': targetLimits['HIGH-value'], 'LOW-value': targetLimits['LOW-value'] }
     : {};
+
 
   return {
     mid: selectedModuleName,
@@ -192,7 +198,7 @@ export const getApiUpdatePayload = actuatorName => (
     activeId: activeReactionId,
     activeSwitch: `ReactionActive-${activeReactionId}`,
     changes: [actuatorName],
-    [paramsKey]: activeModuleParams[actuatorName],
+    [paramsKey]: params,
     [limitsKey]: limits || {},
   };
 };
@@ -222,7 +228,6 @@ const getActiveModule = (state, { selectedModuleName }) => {
   return activeModule;
 };
 
-
 export const getters = {
   activeReactionId: getActiveReactionId(window.alert),
   activeModule: getActiveModule,
@@ -230,11 +235,15 @@ export const getters = {
   activeModuleState: (state, { activeModule }) => activeModule.moduleState,
   activeModuleLimits: (state, { activeModule }) => activeModule.limits,
   air: (state, { activeModuleState }) => activeModuleState.Air,
+  water: (state, { activeModuleState }) => activeModuleState.water,
+  extraction: (state, { activeModuleState }) => activeModuleState.extraction,
   heater: getHeater,
   lamp: getLamp,
   airUpdatePayload: getApiUpdatePayload('Air'),
   lampUpdatePayload: getApiUpdatePayload('Lamp'),
   heaterUpdatePayload: getApiUpdatePayload('Heater'),
+  waterUpdatePayload: getApiUpdatePayload('water'),
+  extractionUpdatePayload: getApiUpdatePayload('extraction'),
 };
 
 export default {
