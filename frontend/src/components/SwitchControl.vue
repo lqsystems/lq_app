@@ -15,6 +15,7 @@
     </div>
     <div class="power-control-switch">
       <BaseSwitch
+        :is-disabled="isDisabled"
         :is-on="isOn"
         :color="color"
         @toggle="handleToggle"
@@ -35,6 +36,10 @@ export default {
   },
   props: {
     isOn: {
+      type: Boolean,
+      default: false,
+    },
+    isDisabled: {
       type: Boolean,
       default: false,
     },

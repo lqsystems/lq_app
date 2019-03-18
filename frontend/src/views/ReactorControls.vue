@@ -26,7 +26,7 @@
             />
             <BaseSidebarItem
               title="Pump"
-              icon-name="icon-air"
+              icon-name="icon-pump"
               :handle-click="SET_PUMP_ACTIVE"
             />
           </div>
@@ -167,11 +167,6 @@ export default {
 
 .rc-sensor-label {
   width: 66%;
-  // margin-left: auto;
-}
-
-.rc-sensor-val {
-  // margin-left: auto;
 }
 
 .rc-controls {

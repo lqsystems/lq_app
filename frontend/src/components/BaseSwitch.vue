@@ -1,5 +1,6 @@
 <template>
   <v-switch
+    :disabled="isDisabled"
     :input-value="isOn"
     :color="color"
     @change="$emit('toggle')"
@@ -13,6 +14,10 @@ export default {
     isOn: {
       type: Boolean,
       required: true,
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false,
     },
     color: {
       type: String,

@@ -24,14 +24,10 @@ const basePayload = {
 const state = mockState.entities;
 
 describe('getApiUpdatePayload', () => {
-  test('returns payload to ', () => {
+  test('returns payload to turn off water', () => {
     const waterPayloadProps = {
       changes: ['water'],
-      'ZeePrime-water-parameters': {
-        'material-rate': 0,
-        'material-amount': 0,
-        level: 100,
-      },
+      'ZeePrime-water-parameters': { 'material-rate': '0', 'material-amount': '0', level: '100' },
       'ZeePrime-water-limits': {},
     };
 

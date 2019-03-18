@@ -166,6 +166,14 @@ export const getActiveReactionId = alert => (state) => {
   return activeReaction;
 };
 
+const getParamsKey = (selectedModuleName, actuatorName) => (
+  `${selectedModuleName}-${actuatorName}-parameters`
+);
+
+const getLimitsKey = (selectedModuleName, actuatorName) => (
+  `${selectedModuleName}-${actuatorName}-limits`
+);
+
 export const getApiUpdatePayload = actuatorName => (
   state,
   {
@@ -176,31 +184,39 @@ export const getApiUpdatePayload = actuatorName => (
     activeModuleLimits,
   },
 ) => {
-  const paramsKey = `${selectedModuleName}-${actuatorName}-parameters`;
-  const limitsKey = `${selectedModuleName}-${actuatorName}-limits`;
+  // TODO refactor to create these keys with the same function
+  const paramsKey = getParamsKey(selectedModuleName, actuatorName);
+  const limitsKey = getLimitsKey(selectedModuleName, actuatorName);
 
   const targetParams = activeModuleParams[actuatorName];
-  const params = (actuatorName === 'water' || actuatorName === 'extraction')
-    ? Object.assign({}, targetParams, { level: '100' })
-    : targetParams;
-
-  console.table(params);
-
   const targetLimits = activeModuleLimits[actuatorName];
+
+  // TODO move this logic to a separate function
   const limits = targetLimits
     ? { 'HIGH-value': targetLimits['HIGH-value'], 'LOW-value': targetLimits['LOW-value'] }
     : {};
 
-
-  return {
+  let apiPayload = {
     mid: selectedModuleName,
     allStates: activeModuleState,
     activeId: activeReactionId,
     activeSwitch: `ReactionActive-${activeReactionId}`,
     changes: [actuatorName],
-    [paramsKey]: params,
+    [paramsKey]: targetParams,
     [limitsKey]: limits || {},
   };
+
+  // TODO move this logic to a separate function
+  // TODO refactor so that both extraction and water props aren't included in the same request
+  if (actuatorName === 'water' || actuatorName === 'extraction') {
+    const specialParams = {
+      [paramsKey]: Object.assign({}, { 'material-rate': '0', 'material-amount': '0', level: '100' }),
+    };
+
+    apiPayload = Object.assign({}, apiPayload, specialParams);
+  }
+
+  return apiPayload;
 };
 
 const getHeater = (state, { activeModuleState, activeModuleParams, activeModuleLimits }) => ({
