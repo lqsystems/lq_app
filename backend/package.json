@@ -14,12 +14,14 @@
     "influx": "^5.0.7",
     "mongodb": "^3.1.13",
     "mongoose": "^5.3.16",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "redis": "^2.8.0",
     "rpio": "^1.0.11",
     "serialport": "^7.1.4",
     "socket.io": "^2.2.0",
+    "winston": "^3.2.1",
     "ws": "^6.1.2"
   },
   "devDependencies": {

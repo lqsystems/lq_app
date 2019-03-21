@@ -24,7 +24,7 @@ var express = require('express'),
     app = express();
 
 var fs = require('fs');
-
+var logger = require('./utility/logger');
 
 var gPortNum = 8888;
 
@@ -140,6 +140,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 
+
 index.setSocketIo(io)
 //
 
@@ -151,6 +152,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vue', express.static('dist'));
+
 
 app.use(cors({
   origin: [
@@ -208,6 +210,11 @@ app.use(flash());
 
 //Global Variables
 app.use(function (req, res, next){
+  logger.log({
+    level: 'info',
+    message: req.body,
+  });
+
   var flashError = req.flash('error');
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
