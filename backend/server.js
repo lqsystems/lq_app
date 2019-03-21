@@ -187,6 +187,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Logging
+app.use(require('morgan')({ 'stream': logger.stream }));
+
+const logHttpRequests = (req, res, next) => {
+  if (!req.body.password) {
+    logger.info(req.body);
+  }
+
+  next();
+};
+
+app.use(logHttpRequests);
+
 //Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
@@ -209,11 +222,8 @@ app.use(expressValidator({
 app.use(flash());
 
 //Global Variables
+
 app.use(function (req, res, next){
-  logger.log({
-    level: 'info',
-    message: req.body,
-  });
 
   var flashError = req.flash('error');
   res.locals.success_msg = req.flash('success_msg');
