@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var print = require('../utility/print');
 const influx = require('influx');
 
 
@@ -12,6 +11,8 @@ var Reaction = require('../models/reaction');
 var Measurements = require('../models/measurements');
 var Modules = require('../models/modules');
 
+var logger = require('../utility/logger');
+var print = require('../utility/print');
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 const gURL_logStateActive = '/logStateActive';
@@ -642,19 +643,41 @@ HWProc.on('message', (message) => {
 
                       var state = mobj.LEVEL;
                       var swtch = mobj.LIMIT;
+
+
                       //
                       var userRAssets = gReactionsToUser[rid];
                       var modObj = userRAssets.getModule(mid);
+
+                      logger.debug('** mobj From Index Limit Handler**');
+                      logger.debug(mobj);
+                      logger.debug('** modObj From Index Limit Handler**');
+                      logger.debug(modObj);
+
                       if ( modObj.limits !== undefined ) {
                           if ( modObj.limits[swtch] !== undefined ) {
                               // get the state that corrects the limit violation.
                               var setVal = modObj.limits[swtch][state];
                               //
+                              logger.debug('** Level One **');
+
+                              logger.debug('** Swtch **');
+                              logger.debug(swtch);
+
+                              logger.debug('** SetVal **');
+                              logger.debug(setVal);
+
+                              logger.debug('** modObj.moduleState[swtch] **');
+                              logger.debug(setVal);
+
+
                               // now look at the state as it is known in the model object
                               if ( modObj.moduleState[swtch] !== undefined ) {
                                   // make changes if this is a change.
                                   // -- it is possible to receive the limit command more than once for the same violation.
                                   if ( modObj.moduleState[swtch] !== setVal ) {
+
+                                      logger.debug('** Level Two**');
                                       // change the state
                                       modObj.moduleState[swtch] = setVal;
                                       // change the hardware, too.
@@ -681,6 +704,10 @@ HWProc.on('message', (message) => {
                                       // or other source.  Let the hardwareBroker format the command
                                       // --
                                       // turn on or off the element defined by the limit report
+
+                                      logger.debug('** Msg to HWProc**');
+                                      logger.debug(msg);
+
                                       HWProc.send(msg);   // BACK to process
                                       //
                                       var reactionSet = userRAssets.activeReactions();
@@ -689,6 +716,19 @@ HWProc.on('message', (message) => {
                                       //  TO CLIENT WEB PAGE OR OTHER SERVER
                                       var modState = {};
                                       modState[rid] = reactionSet[rid];  // return just one
+                                    //   console.log()
+                                    //   console.log()
+                                    //   console.log()
+                                    //   print('** Emitting Mod State **')
+                                    //   console.log()
+                                    //   console.log()
+                                    //   console.log()
+                                    //   print(modState);
+
+
+                                      logger.debug('** Msg to Socket **');
+                                      logger.debug(modState);
+
                                       emitModuleUpdate(modState);
                                   }
                               }
