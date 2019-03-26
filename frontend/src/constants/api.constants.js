@@ -17,6 +17,7 @@ export const DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
 
 export const LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const LOGOUT_URL = `${API_BASE_URL}/users/logout`;
+// export const DATA_POINTS_URL = `${API_BASE_URL}/logStateActive`;
 export const MODULES_URL = `${API_BASE_URL}/modules`;
 export const ENVIRONMENT_URL = `${API_BASE_URL}/environment`;
 export const UPDATE_STATE_URL = `${API_BASE_URL}/updateState`;
