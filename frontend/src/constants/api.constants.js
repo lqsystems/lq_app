@@ -1,5 +1,4 @@
 const { NODE_ENV } = process.env;
-// const DEV_BASE_URL = 'http://10.0.0.86:8888';
 const DEV_BASE_URL = 'http://localhost:8888';
 
 export const API_BASE_URL = NODE_ENV === 'production'
@@ -12,6 +11,7 @@ if (API_BASE_URL !== '' && NODE_ENV !== 'test') {
 
 export const LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const LOGOUT_URL = `${API_BASE_URL}/users/logout`;
+// export const DATA_POINTS_URL = `${API_BASE_URL}/logStateActive`;
 export const MODULES_URL = `${API_BASE_URL}/modules`;
 export const ENVIRONMENT_URL = `${API_BASE_URL}/environment`;
 export const UPDATE_STATE_URL = `${API_BASE_URL}/updateState`;
