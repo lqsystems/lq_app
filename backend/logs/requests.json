@@ -57,8 +57,7 @@
 {"message":{"mid":"MV1","allStates":{"SensorOnOff":false,"Air":false,"Lamp":false,"Heater":true,"water":false,"inoculum":false,"mixer":false,"extraction":false,"forward":false,"backwards":false},"activeId":"5c6b66b88fd25d3cd9603399","activeSwitch":"ReactionActive-5c6b66b88fd25d3cd9603399","changes":["Heater"],"MV1-Heater-parameters":{"start":0,"stop":0,"level":"50"},"MV1-Heater-limits":{"HIGH-value":100,"LOW-value":0}},"level":"info","timestamp":"2019-03-21 00:06:32"}
 {"message":"::1 - - [Thu, 21 Mar 2019 07:06:32 GMT] \"POST /updateState HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-21 00:06:32"}
 {"message":{"mid":"MV1","allStates":{"SensorOnOff":false,"Air":false,"Lamp":false,"Heater":false,"water":false,"inoculum":false,"mixer":false,"extraction":false,"forward":false,"backwards":false},"activeId":"5c6b66b88fd25d3cd9603399","activeSwitch":"ReactionActive-5c6b66b88fd25d3cd9603399","changes":["Heater"],"MV1-Heater-parameters":{"start":0,"stop":0,"level":"50"},"MV1-Heater-limits":{"HIGH-value":100,"LOW-value":0}},"level":"info","timestamp":"2019-03-21 00:06:32"}
-{"message":"::1 - - [Thu, 21 Mar 2019 07:06:32 GMT] \"POST /updateState HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-21 00:06:32"}
-<<<<<<< HEAD
+{"message":"::1 - - [Thu, 21 Mar 2019 07:06:32 GMT] \"POST /updateState HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-21 00:06:32"
 {"message":{},"level":"info","timestamp":"2019-04-02 15:23:54"}
 {"message":"::1 - - [Tue, 02 Apr 2019 22:23:54 GMT] \"GET /modules HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-04-02 15:23:54"}
 {"message":"::1 - - [Tue, 02 Apr 2019 22:23:58 GMT] \"POST /users/login HTTP/1.1\" 302 23 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-04-02 15:23:58"}
@@ -329,3 +328,81 @@
 {"message":{},"level":"info","timestamp":"2019-03-24 23:41:01"}
 {"message":"::1 - - [Mon, 25 Mar 2019 06:41:01 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-24 23:41:01"}
 >>>>>>> add test component to fetch sensor data
+=======
+{"message":{},"level":"info","timestamp":"2019-03-27 14:16:24"}
+{"message":"::1 - - [Wed, 27 Mar 2019 21:16:24 GMT] \"GET /modules HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 14:16:24"}
+{"message":{},"level":"info","timestamp":"2019-03-27 14:16:24"}
+{"message":"::1 - - [Wed, 27 Mar 2019 21:16:24 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 14:16:24"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:19:36"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:19:36 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:19:36"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:20:00 GMT] \"POST /users/login HTTP/1.1\" 302 23 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:20:00"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:20:00"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:20:00 GMT] \"GET / HTTP/1.1\" 304 - \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:20:00"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:20:00"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:20:00 GMT] \"GET /modules HTTP/1.1\" 200 3248 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:20:00"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:22:39"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:22:39 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:22:39"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:33:05"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:33:05 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:33:05"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:33:42"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:33:42 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:33:42"}
+{"message":{},"level":"info","timestamp":"2019-03-27 16:38:50"}
+{"message":"::1 - - [Wed, 27 Mar 2019 23:38:50 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 16:38:50"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:35:26"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:35:26 GMT] \"GET /modules HTTP/1.1\" 200 28 \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:35:26"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:37:10"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:37:10 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:37:10"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:37:12 GMT] \"POST /users/login HTTP/1.1\" 302 23 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:37:12"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:37:12"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:37:12 GMT] \"GET / HTTP/1.1\" 304 - \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:37:12"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:37:12"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:37:12 GMT] \"GET /modules HTTP/1.1\" 200 3248 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:37:12"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:37:24"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:37:24 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:37:24"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:38:01"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:38:01 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:38:01"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:44:06"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:44:06 GMT] \"GET /modules HTTP/1.1\" 200 28 \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:44:06"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:44:08 GMT] \"POST /users/login HTTP/1.1\" 302 23 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:44:08"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:44:09"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:44:09 GMT] \"GET / HTTP/1.1\" 304 - \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:44:09"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:44:09"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:44:09 GMT] \"GET /modules HTTP/1.1\" 200 3248 \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:44:09"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:44:16"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:44:16 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:44:16"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:46:10"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:46:10 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:46:10"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:47:21"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:47:21 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:47:21"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:48:14"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:48:14 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:48:14"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:48:23"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:48:23 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:48:23"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:48:45"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:48:45 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:48:45"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:49:14"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:49:14 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:49:14"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:49:40"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:49:40 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:49:40"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:50:10"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:50:10 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:50:10"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:50:43"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:50:43 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:50:43"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:51:09"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:51:09 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:51:09"}
+{"message":{},"level":"info","timestamp":"2019-03-27 18:52:07"}
+{"message":"::1 - - [Thu, 28 Mar 2019 01:52:07 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 18:52:07"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:03:54"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:03:54 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:03:54"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:04:49"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:04:49 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:04:49"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:07:42"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:07:42 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:07:42"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:08:38"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:08:38 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:08:38"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:09:11"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:09:11 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:09:11"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:21:52"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:21:52 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:21:52"}
+{"message":{},"level":"info","timestamp":"2019-03-27 19:22:24"}
+{"message":"::1 - - [Thu, 28 Mar 2019 02:22:24 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:22:24"}

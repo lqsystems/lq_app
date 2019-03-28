@@ -133,15 +133,19 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
 }
 /* Slider size and handle placement;
   */
+
 .noUi-horizontal {
-  height: 18px;
+  height: 4px;
 }
+
 .noUi-horizontal .noUi-handle {
-  width: 34px;
-  height: 28px;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
   left: -17px;
-  top: -6px;
+  top: -8px;
 }
+
 .noUi-vertical {
   width: 18px;
 }
@@ -159,17 +163,14 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   * Giving the connect element a border radius causes issues with using transform: scale
   */
 .noUi-target {
-  background: #fafafa;
-  border-radius: 4px;
-  border: 1px solid #d3d3d3;
-  box-shadow: inset 0 1px 1px #f0f0f0, 0 3px 6px -5px #bbb;
+  background: lightgrey;
 }
+
 .noUi-connects {
-  border-radius: 3px;
 }
 .noUi-connect {
   background: #4fc08d;
-  background: lightgrey;
+  /* background: #D52E2B; */
 }
 /* Handles and cursors;
   */
@@ -180,20 +181,21 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   cursor: ns-resize;
 }
 .noUi-handle {
-  border: 1px solid #d9d9d9;
-  border-radius: 3px;
-  background: #fff;
+  background: #4fc08d;
   cursor: default;
-  box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ebebeb, 0 3px 6px -3px #bbb;
 }
+
+.noUi-handle:focus {
+  outline: none;
+}
+
 .noUi-active {
-  box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ddd, 0 3px 6px -3px #bbb;
 }
 /* Handle stripes;
   */
 .noUi-handle:before,
 .noUi-handle:after {
-  content: "";
+  /* content: ""; */
   display: block;
   position: absolute;
   height: 14px;
