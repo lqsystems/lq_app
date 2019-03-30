@@ -789,6 +789,26 @@ router.setSocketIo = (io) => {
         });
     });
 
+    const lampDimmer = io
+    .of('/dimLamp')
+    .on('connection', function(socket){
+        socket.on('dim lamp', (value) => {
+            const message = {
+                dest: 'ZeePrime',
+                id: '5c9f1e29acdeebd5ae939709',
+                data:
+                {
+                    time: 1553931941255,
+                    switch: 'Lamp',
+                    state: true,
+                    start: 0,
+                    stop: 0,
+                    level: value,
+                }
+            }
+            HWProc.send(message);
+        });
+    });
 }
 
 
