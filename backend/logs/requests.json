@@ -327,8 +327,6 @@
 {"message":"::1 - - [Mon, 25 Mar 2019 06:40:08 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-24 23:40:08"}
 {"message":{},"level":"info","timestamp":"2019-03-24 23:41:01"}
 {"message":"::1 - - [Mon, 25 Mar 2019 06:41:01 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/test\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-24 23:41:01"}
->>>>>>> add test component to fetch sensor data
-=======
 {"message":{},"level":"info","timestamp":"2019-03-27 14:16:24"}
 {"message":"::1 - - [Wed, 27 Mar 2019 21:16:24 GMT] \"GET /modules HTTP/1.1\" 200 28 \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 14:16:24"}
 {"message":{},"level":"info","timestamp":"2019-03-27 14:16:24"}
