@@ -122,6 +122,7 @@ var gooseOptions = {
 
 //Mongo Connection
 mongoose.Promise = global.Promise;
+// mongoose.connect(`mongodb://localhost:27017/loginark`,gooseOptions);
 mongoose.connect(`mongodb://${cloudServer}/loginark`,gooseOptions);
 var db = mongoose.connection;
 

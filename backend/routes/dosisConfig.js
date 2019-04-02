@@ -99,7 +99,7 @@ module.exports = {
         testing : false,
 
         uarts : [{
-            port : "/dev/ttyACM0",
+            port : "/dev/ttyUSB0",
             baud : 9600,
             mcu : "ZeePrime"
         },
@@ -109,12 +109,12 @@ module.exports = {
             mcu : "MV1"
         },
         {
-            port : "/dev/cu.wchusbserial14110",
+            port : "/dev/ttyUSB2",
             baud : 9600,
             mcu : "MV2"
         },
         {
-            port : "/dev/cu.wchusbserial14130",
+            port : "/dev/ttyUSB3",
             baud : 9600,
             mcu : "System"
         }]
