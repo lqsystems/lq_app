@@ -170,10 +170,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-connect {
   background: #4fc08d;
-  /* background: #D52E2B; */
 }
-/* Handles and cursors;
-  */
+/* Handles and cursors; */
+
 .noUi-draggable {
   cursor: ew-resize;
 }
@@ -191,8 +190,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 .noUi-active {
 }
-/* Handle stripes;
-  */
+
+/* Handle stripes */
+
 .noUi-handle:before,
 .noUi-handle:after {
   /* content: ""; */
@@ -217,8 +217,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .noUi-vertical .noUi-handle:after {
   top: 17px;
 }
-/* Disabled state;
-  */
+
+/* Disabled state */
+
 [disabled] .noUi-connect {
   background: #b8b8b8;
 }
@@ -227,9 +228,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 [disabled] .noUi-handle {
   cursor: not-allowed;
 }
-/* Base;
-  *
-  */
+/* Base  */
+
 .noUi-pips,
 .noUi-pips * {
   -moz-box-sizing: border-box;

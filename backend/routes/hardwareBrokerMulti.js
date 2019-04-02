@@ -303,10 +303,6 @@ function lineParserHandler (str) {
 
         //
         var srvMsg = constructServerMessage(messageBackToServer, "CRX-LIMIT");
-        console.log()
-        console.log('**SrvMsg**');
-        console.log(srvMsg);
-        console.log()
 
         logger.debug('** SrvMsg **')
         logger.debug(srvMsg)

@@ -11,7 +11,6 @@ if (API_BASE_URL !== '' && NODE_ENV !== 'test') {
 
 export const LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const LOGOUT_URL = `${API_BASE_URL}/users/logout`;
-// export const DATA_POINTS_URL = `${API_BASE_URL}/logStateActive`;
 export const MODULES_URL = `${API_BASE_URL}/modules`;
 export const ENVIRONMENT_URL = `${API_BASE_URL}/environment`;
 export const UPDATE_STATE_URL = `${API_BASE_URL}/updateState`;
