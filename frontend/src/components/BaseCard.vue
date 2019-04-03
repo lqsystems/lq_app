@@ -1,7 +1,7 @@
 <template>
-  <v-card>
+  <div class="card">
     <slot />
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -12,4 +12,8 @@ export default {
 </script>
 
 <style>
+ .card {
+  border-radius: 3px;
+  box-shadow: 0 1px 20px 0 rgba(0,0,0,.1);
+ }
 </style>
