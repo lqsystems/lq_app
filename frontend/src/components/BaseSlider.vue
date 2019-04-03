@@ -120,8 +120,11 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
   position: absolute;
 }
 .noUi-touch-area {
-  height: 100%;
-  width: 100%;
+    height: 400%;
+    width: 400%;
+    position: relative;
+    left: -150%;
+    top: -150%;
 }
 .noUi-state-tap .noUi-connect,
 .noUi-state-tap .noUi-origin {
