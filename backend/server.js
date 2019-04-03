@@ -24,7 +24,7 @@ var express = require('express'),
     app = express();
 
 var fs = require('fs');
-
+var logger = require('./utility/logger');
 
 var gPortNum = 8888;
 
@@ -141,6 +141,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 
+
 index.setSocketIo(io)
 //
 
@@ -152,6 +153,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vue', express.static('dist'));
+
 
 app.use(cors({
   origin: [
@@ -186,6 +188,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Logging
+app.use(require('morgan')('default', { 'stream': logger.stream }));
+
+const logHttpRequests = (req, res, next) => {
+  if (!req.body.password) {
+    logger.info(req.body);
+  }
+
+  next();
+};
+
+app.use(logHttpRequests);
+
 //Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
@@ -208,7 +223,9 @@ app.use(expressValidator({
 app.use(flash());
 
 //Global Variables
+
 app.use(function (req, res, next){
+
   var flashError = req.flash('error');
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');

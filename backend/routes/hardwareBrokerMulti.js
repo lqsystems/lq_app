@@ -2,7 +2,8 @@
 'use strict';
 
 var fs = require('fs');
-
+var logger = require('../utility/logger');
+const print = require('../utility/print');
 
 function clonify (obj) {
     return JSON.parse(JSON.stringify(obj));
@@ -296,8 +297,16 @@ function lineParserHandler (str) {
     if (str.indexOf("CRX") == 0) {
         // handle sensor cross over response.
         var messageBackToServer = str.substr(3); // use the rest of it
+
+        logger.debug('** CRX Message Detected **');
+        logger.debug(messageBackToServer);
+
         //
         var srvMsg = constructServerMessage(messageBackToServer, "CRX-LIMIT");
+
+        logger.debug('** SrvMsg **')
+        logger.debug(srvMsg)
+
         if (srvMsg && process.send) {
             if (srvMsg.message.LIMIT === "temperature") srvMsg.message.LIMIT = "Heater";
             process.send(srvMsg);

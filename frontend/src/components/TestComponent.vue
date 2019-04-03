@@ -1,29 +1,27 @@
 <template>
   <div class="test-wrapper">
-    <HeaterControlPanel />
+    Hola Mundo
   </div>
 </template>
 
 <script>
-import HeaterControlPanel from './HeaterControlPanel';
+import callApi from '@/utils/api.utils.js';
+
+const fetchDataPoints = async () => {
+  const { data } = await callApi(url);
+  console.log(data);
+};
 
 export default {
   name: 'Test',
   components: {
-    HeaterControlPanel,
+  },
+  created() {
+    // fetchDataPoints();
   },
 };
 
 </script>
 
 <style>
-.test-wrapper {
-  padding-left: 20%;
-  margin-top: 50px;
-  width: 600px;
-}
-
-.test-card {
-  padding: 20px;
-}
 </style>
