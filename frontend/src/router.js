@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('@/views/ReactorControls'),
     },
     {
+      path: '/index',
+      name: 'index',
+      component: () => import('@/views/ReactorIndex'),
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('@/views/Test'),
