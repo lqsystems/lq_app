@@ -1,14 +1,17 @@
 <template>
-  <v-toolbar>
-    <v-btn
-      v-if="backIcon"
-      icon
-      @click="handleIconClick"
+  <div class="header">
+    <div
+      v-ripple
+      class="header-icon-wrapper"
     >
-      <v-icon>arrow_back</v-icon>
-    </v-btn>
-    <v-toolbar-title>{{ title }}</v-toolbar-title>
-  </v-toolbar>
+      <span class="icon-back" />
+    </div>
+    <img
+      class="header-logo"
+      src="@/assets/logo-small.png"
+      alt="company logo"
+    >
+  </div>
 </template>
 
 <script>
@@ -30,3 +33,28 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.header {
+  align-items: center;
+  padding: .4em 1em;
+  display: flex;
+  background-color: #1e1e2f;
+  color: white;
+}
+
+.header-icon-wrapper {
+  padding: .8em;
+  border-radius: 100%;
+}
+
+.icon-back {
+  font-size: 2em;
+}
+
+.header-logo {
+  margin-left: .4em;
+  width: 6em;
+}
+
+</style>
