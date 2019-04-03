@@ -716,15 +716,6 @@ HWProc.on('message', (message) => {
                                       //  TO CLIENT WEB PAGE OR OTHER SERVER
                                       var modState = {};
                                       modState[rid] = reactionSet[rid];  // return just one
-                                    //   console.log()
-                                    //   console.log()
-                                    //   console.log()
-                                    //   print('** Emitting Mod State **')
-                                    //   console.log()
-                                    //   console.log()
-                                    //   console.log()
-                                    //   print(modState);
-
 
                                       logger.debug('** Msg to Socket **');
                                       logger.debug(modState);
