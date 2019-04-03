@@ -79,7 +79,7 @@ export default {
 }
 
 .slider-control-slider {
-  width: 20em;
+  width: 30em;
 }
 
 .slider-control-level {
