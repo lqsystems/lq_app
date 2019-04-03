@@ -1,12 +1,13 @@
 <template>
   <div class="reactor-controls view">
-    <BaseHeader :title="headerTitle" />
+    <BaseHeader
+      back-icon
+      title=""
+    />
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <div class="rc-sidebar-heading">
-            Controls
-          </div>
+          <BaseSidebarHeader />
           <v-divider />
           <div class="rc-sidebar-items">
             <BaseSidebarItem
@@ -74,6 +75,7 @@ import {
 import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
+import BaseSidebarHeader from '@/components/BaseSidebarHeader';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
 import AirControlPanel from '@/components/AirControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
@@ -85,6 +87,7 @@ export default {
     BaseHeader,
     BaseNav,
     BaseSidebar,
+    BaseSidebarHeader,
     BaseSidebarItem,
     AirControlPanel,
     HeaterControlPanel,
