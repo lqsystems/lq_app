@@ -716,16 +716,6 @@ HWProc.on('message', (message) => {
                                       //  TO CLIENT WEB PAGE OR OTHER SERVER
                                       var modState = {};
                                       modState[rid] = reactionSet[rid];  // return just one
-                                    //   console.log()
-                                    //   console.log()
-                                    //   console.log()
-                                    //   print('** Emitting Mod State **')
-                                    //   console.log()
-                                    //   console.log()
-                                    //   console.log()
-                                    //   print(modState);
-
-
                                       logger.debug('** Msg to Socket **');
                                       logger.debug(modState);
 
@@ -1326,7 +1316,7 @@ router.post(gURL_logStateActive, (req,res) => {  // keep this separate
                 var id = data.id;   // data includes some fields needed for queries, but not needed for hardware management
                 delete data.id;
 
-                var isActive = data.active;  // whether or not the panle is enabled.
+                var isActive = data.active;  // whether or not the panel is enabled.
                 delete data.active;
                 res.send('{}');  // send a basic OK to back to the browser
 
