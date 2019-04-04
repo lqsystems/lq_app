@@ -1,5 +1,8 @@
 <template>
-  <div class="header">
+  <div
+    class="header"
+    @click="handleIconClick"
+  >
     <div
       v-ripple
       class="header-icon-wrapper"
@@ -28,7 +31,7 @@ export default {
     },
     handleIconClick: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
 };

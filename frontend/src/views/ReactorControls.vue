@@ -3,11 +3,14 @@
     <BaseHeader
       back-icon
       title=""
+      :handle-icon-click="routeHome"
     />
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <BaseSidebarHeader />
+          <BaseSidebarHeader
+            :title="selectedModuleName"
+          />
           <v-divider />
           <div class="rc-sidebar-items">
             <BaseSidebarItem
@@ -102,9 +105,6 @@ export default {
     }),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
-    },
-    headerTitle() {
-      return `${this.selectedModuleName}`;
     },
   },
   methods: {

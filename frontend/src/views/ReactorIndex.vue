@@ -73,7 +73,7 @@ export default {
 }
 
 .reactor-card-wrapper {
-  margin-top: 20vh;
+  margin-top: 25vh;
   display: flex;
   justify-content: center;
 }
