@@ -13,12 +13,12 @@ export default new Router({
       component: () => import('@/views/Login'),
     },
     {
-      path: '/',
+      path: '/controls',
       name: 'reactorControls',
       component: () => import('@/views/ReactorControls'),
     },
     {
-      path: '/index',
+      path: '/',
       name: 'index',
       component: () => import('@/views/ReactorIndex'),
     },
