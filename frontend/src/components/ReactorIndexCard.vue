@@ -1,18 +1,21 @@
 <template>
-  <BaseCard class="reactor-card">
+  <BaseCard
+    class="reactor-card"
+    :class="`reactor-card-${reactorTitle}`"
+  >
     <div class="reactor-card-data">
       <div class="reactor-card-temp">
-        <span class="reactor-card-temp-val">31.3</span>
+        <span class="reactor-card-temp-val">{{ sensorData.temperature }}</span>
         <span class="reactor-card-data-unit reactor-card-temp-unit">°C</span>
       </div>
-      <div class="divider-horiz" />
+      <div class="divider-horizontal" />
       <div class="reactor-card-od">
-        <span class="reactor-card-od-val">3.67</span>
+        <span class="reactor-card-od-val">{{ sensorData.OD }}</span>
         <span class="reactor-card-data-unit reactor-card-od-unit">OD</span>
       </div>
     </div>
     <div class="reactor-card-title">
-      MV1
+      {{ reactorTitle }}
     </div>
   </BaseCard>
 </template>
@@ -25,17 +28,48 @@ export default {
   components: {
     BaseCard,
   },
+  props: {
+    sensorData: {
+      type: Object,
+      required: true,
+    },
+    reactorTitle: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 <style lang='scss' scoped>
 @import '../styles/variables';
-$reactor-card-accent-color: lightseagreen;
+$reactor-card-accent-color-1: lightseagreen;
+$reactor-card-accent-color-2: lightcoral;
 
 .reactor-card {
+  margin: 2em;
   background-color: $color-panel-background;
   display: inline-block;
   padding: 1.5em 2em;
-  border-bottom: 3px solid $reactor-card-accent-color;
+  border-bottom: 3px solid ;
+  width: 300px;
+}
+
+.reactor-card-MV1 {
+  border-bottom-color: $reactor-card-accent-color-1;
+
+  .divider-horizontal {
+    border-right: 2px solid $reactor-card-accent-color-1;
+    margin: 0 1em;
+  }
+}
+
+.reactor-card-ZeePrime {
+  border-bottom-color: $reactor-card-accent-color-2;
+
+  .divider-horizontal {
+    border-right: 2px solid $reactor-card-accent-color-2;
+    margin: 0 1em;
+  }
 }
 
 .reactor-card-data {
@@ -54,8 +88,4 @@ $reactor-card-accent-color: lightseagreen;
   font-size: 1.9em;
 }
 
-.divider-horiz {
-  border-right: 2px solid $reactor-card-accent-color;
-  margin: 0 1em;
-}
 </style>
