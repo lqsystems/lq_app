@@ -3,19 +3,23 @@
     class="reactor-card"
     :class="`reactor-card-${reactorTitle}`"
   >
-    <div class="reactor-card-data">
-      <div class="reactor-card-temp">
-        <span class="reactor-card-temp-val">{{ sensorData.temperature }}</span>
-        <span class="reactor-card-data-unit reactor-card-temp-unit">°C</span>
+    <div @click="onClick">
+      <div
+        class="reactor-card-data"
+      >
+        <div class="reactor-card-temp">
+          <span class="reactor-card-temp-val">{{ sensorData.temperature }}</span>
+          <span class="reactor-card-data-unit reactor-card-temp-unit">°C</span>
+        </div>
+        <div class="divider-horizontal" />
+        <div class="reactor-card-od">
+          <span class="reactor-card-od-val">{{ sensorData.OD }}</span>
+          <span class="reactor-card-data-unit reactor-card-od-unit">OD</span>
+        </div>
       </div>
-      <div class="divider-horizontal" />
-      <div class="reactor-card-od">
-        <span class="reactor-card-od-val">{{ sensorData.OD }}</span>
-        <span class="reactor-card-data-unit reactor-card-od-unit">OD</span>
+      <div class="reactor-card-title">
+        {{ reactorTitle }}
       </div>
-    </div>
-    <div class="reactor-card-title">
-      {{ reactorTitle }}
     </div>
   </BaseCard>
 </template>
@@ -36,6 +40,15 @@ export default {
     reactorTitle: {
       type: String,
       required: true,
+    },
+    handleClick: {
+      type: Function,
+      default: () => {},
+    },
+  },
+  methods: {
+    onClick() {
+      this.handleClick(this.reactorTitle);
     },
   },
 };
