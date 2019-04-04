@@ -6,7 +6,7 @@
       alt="reactor icon"
     >
     <div class="sb-header-title">
-      Zee Prime
+      {{ title }}
     </div>
   </div>
 </template>
@@ -14,6 +14,12 @@
 <script>
 export default {
   name: 'BaseSidebarHeader',
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+  },
 };
 
 </script>
