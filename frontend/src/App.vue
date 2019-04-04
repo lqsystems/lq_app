@@ -61,8 +61,18 @@ html, body {
   padding-bottom: 65px;
 }
 
+.application {
+  // background-image: url('assets/bluespace.png') !important;
+  // background-size: cover !important;
+}
+
+.theme--light {
+  opactiy: 0 !important;
+}
+
 .view {
   position: fixed;
   width: 100%;
 }
+
 </style>
