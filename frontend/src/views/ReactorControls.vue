@@ -20,21 +20,21 @@
             />
             <BaseSidebarItem
               title="Light"
-              icon-name="icon-light"
+              icon-name="icon-sun"
               :handle-click="SET_LIGHT_ACTIVE"
             />
             <BaseSidebarItem
               title="Heater"
-              icon-name="icon-heat"
+              icon-name="icon-fire"
               :handle-click="SET_HEATER_ACTIVE"
             />
             <BaseSidebarItem
               title="Pump"
-              icon-name="icon-pump"
+              icon-name="icon-water"
               :handle-click="SET_PUMP_ACTIVE"
             />
           </div>
-          <div class="rc-sidebar-heading">
+          <!-- <div class="rc-sidebar-heading">
             Sensors
           </div>
           <v-divider />
@@ -53,16 +53,16 @@
             <div class="rc-sensor-val">
               {{ sensorData.temperature }}
             </div>
-          </div>
+          </div> -->
         </BaseSidebar>
       </div>
       <div class="rc-controls">
         <component :is="currentControlPanel" />
       </div>
     </div>
-    <div class="nav">
+    <!-- <div class="nav">
       <BaseNav />
-    </div>
+    </div> -->
   </div>
 </template>
 

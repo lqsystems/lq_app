@@ -1,17 +1,9 @@
 <template>
-  <v-navigation-drawer
-    :style="{ width: '100%' }"
-    permanent
-    class="sidebar"
-  >
-    <v-list
-      dense
-      class="pt-0"
-    >
-      <slot />
-    </v-list>
-  </v-navigation-drawer>
+  <div class="sidebar">
+    <slot />
+  </div>
 </template>
+
 
 <script>
 export default {
@@ -20,4 +12,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.sidebar {
+  padding-top: 1.5em;
+  height: 100%;
+}
 </style>

@@ -52,11 +52,6 @@ $font-size: 1.5;
 }
 .sidebar-list-tile {
   padding: 0.8em 0em;
+  padding-left: 1.3em;
 }
-
-.sidebar-icon {
-  color: $grey-800;
-}
-
-
 </style>

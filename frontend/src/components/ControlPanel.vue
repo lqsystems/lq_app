@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables';
+
 .reactor-main {
   .control-panel-wrapper {
     font-size: 1.2em;
@@ -48,5 +50,10 @@ export default {
 .control-panel-label {
   font-size: 1.1em;
   padding-bottom: .7em;
+}
+
+.control-panel-main {
+  background-color: $panel-background-color;
+  opacity: $panel-background-opacity;
 }
 </style>
