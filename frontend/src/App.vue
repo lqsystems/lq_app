@@ -52,6 +52,8 @@ export default {
 <style lang="scss">
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css");
 
+$font-color: white;
+
 * {
   box-sizing: border-box;
 }
@@ -62,12 +64,16 @@ html, body {
 }
 
 .application {
-  // background-image: url('assets/bluespace.png') !important;
-  // background-size: cover !important;
+  background-image: url('assets/bluespace.png') !important;
+  background-size: cover !important;
 }
 
 .theme--light {
   opactiy: 0 !important;
+
+  &.application {
+    color: $font-color !important;
+  }
 }
 
 .view {

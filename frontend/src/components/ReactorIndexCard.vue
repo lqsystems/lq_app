@@ -60,7 +60,7 @@ $reactor-card-accent-color-2: lightcoral;
 
 .reactor-card {
   margin: 2em;
-  background-color: $color-panel-background;
+  background-color: $panel-background-color;
   display: inline-block;
   padding: 1.5em 2em;
   border-bottom: 3px solid ;
