@@ -480,7 +480,7 @@ function sendLimitCommand (serverMessage) {
 }
 
 
-function messageToHardware (serverMessage) {
+function messageToHardware(serverMessage) {
 
     // The message is going to this hardware.
     //  hPins is from the configuration.
@@ -746,7 +746,15 @@ process.on('message', (message) => {
     console.dir(message, { depth: 4 });
     console.log("__");
     //
+
     haltACKTimer("" + message.dest)
+
+    // for light dimming feature only
+    if (message.bypassThrottle) {
+        messageToHardware(message);
+        return;
+    }
+
     handleMessages(message);
     //
 });

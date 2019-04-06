@@ -794,6 +794,7 @@ router.setSocketIo = (io) => {
     .on('connection', function(socket){
         socket.on('dim lamp', (value) => {
             const message = {
+                bypassThrottle: true,
                 dest: 'ZeePrime',
                 id: '5c9f1e29acdeebd5ae939709',
                 data:
