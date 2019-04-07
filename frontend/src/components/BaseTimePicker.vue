@@ -2,6 +2,7 @@
   <v-dialog
     ref="dialog"
     v-model="modal"
+    dark
     :return-value.sync="time"
     persistent
     lazy
@@ -11,12 +12,14 @@
     <v-text-field
       slot="activator"
       v-model="ampmTime"
+      dark
       prepend-icon="access_time"
       readonly
     />
     <v-time-picker
       v-if="modal"
       v-model="time"
+      dark
       full-width
     >
       <v-spacer />
