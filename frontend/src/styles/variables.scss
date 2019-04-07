@@ -10,8 +10,18 @@ $grey-800: #424242;
 $grey-900: #212121;
 
 $vue-green: #4fc08d;
-$dark-navy: #1e1e2f;
-
+$dark-navy: #1A203F;
+$indigo: #344cbd;
+$red: #D52E2B;
 $primary-color: $vue-green;
+
+// components
+$sidebar-active-item-color: $indigo;
+
 $panel-background-color: $dark-navy; 
 $panel-background-opacity: .9;
+
+$control-panel-label-color: $grey-300;
+
+$toggle-switch-color: $red;
+$slider-color: $red;

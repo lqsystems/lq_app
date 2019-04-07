@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables';
+
 .reactor-main {
   .cp-item {
     display: flex;
@@ -63,8 +65,16 @@ export default {
 }
 
 .cp-item-col-right {
+  // border: 1px solid lightgrey;
+  color: $control-panel-label-color;
+  text-transform: uppercase;
   display: flex;
   flex-direction: row;
   margin-left: auto;
+}
+
+.cp-item-label {
+  color: $control-panel-label-color;
+  text-transform: uppercase;
 }
 </style>

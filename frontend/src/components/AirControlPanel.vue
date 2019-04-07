@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    label="Air"
+    title="Air"
   >
     <ControlPanelItem
       label="Power"

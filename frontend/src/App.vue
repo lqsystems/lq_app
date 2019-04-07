@@ -66,6 +66,7 @@ html, body {
 .application {
   background-image: url('assets/bluespace.png') !important;
   background-size: cover !important;
+  font-family: 'Roboto Condensed' !important;
 }
 
 .theme--light {

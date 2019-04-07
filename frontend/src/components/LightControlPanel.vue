@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    label="Light"
+    title="Light"
   >
     <ControlPanelItem label="Power">
       <SwitchControl
@@ -8,7 +8,7 @@
         @toggle="toggleLight"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Intensity">
+    <ControlPanelItem label="Level">
       <SliderControl
         :level="lampLevel"
         :level-label-func="getPercentLabel"
@@ -16,14 +16,14 @@
       />
     </ControlPanelItem>
     <ControlPanelItem
-      label="Start Time"
+      label="Stop"
     >
       <div class="time-picker-wrapper">
         <BaseTimePicker initial-time="8:00" />
       </div>
     </ControlPanelItem>
     <ControlPanelItem
-      label="End Time"
+      label="Stop"
       :include-divider="false"
     >
       <div class="hi time-picker-wrapper">

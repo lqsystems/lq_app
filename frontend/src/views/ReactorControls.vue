@@ -16,21 +16,25 @@
             <BaseSidebarItem
               title="Air"
               icon-name="icon-air"
+              :active="selectedControlPanel=== 'Air'"
               :handle-click="SET_AIR_ACTIVE"
             />
             <BaseSidebarItem
               title="Light"
               icon-name="icon-sun"
+              :active="selectedControlPanel=== 'Light'"
               :handle-click="SET_LIGHT_ACTIVE"
             />
             <BaseSidebarItem
               title="Heater"
               icon-name="icon-fire"
+              :active="selectedControlPanel=== 'Heater'"
               :handle-click="SET_HEATER_ACTIVE"
             />
             <BaseSidebarItem
               title="Pump"
               icon-name="icon-water"
+              :active="selectedControlPanel=== 'Pump'"
               :handle-click="SET_PUMP_ACTIVE"
             />
           </div>
@@ -145,7 +149,7 @@ export default {
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 250px auto;
   grid-template-areas: "sidebar controls";
 }
 
@@ -173,7 +177,7 @@ export default {
 }
 
 .rc-controls {
-  padding: 40px;
+  padding: 40px 60px;
   grid-area: controls;
 }
 
