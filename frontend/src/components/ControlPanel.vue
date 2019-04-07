@@ -3,10 +3,10 @@
     class="control-panel-wrapper"
     @click="handleClick"
   >
-    <div class="control-panel-label">
-      {{ label }}
-    </div>
     <BaseCard class="control-panel-main">
+      <div class="control-panel-title">
+        {{ title + " Control" }}
+      </div>
       <slot />
     </BaseCard>
   </div>
@@ -21,7 +21,7 @@ export default {
     BaseCard,
   },
   props: {
-    label: {
+    title: {
       type: String,
       required: true,
     },
@@ -47,13 +47,15 @@ export default {
   margin: 0 auto;
 }
 
-.control-panel-label {
-  font-size: 1.1em;
-  padding-bottom: .7em;
-}
-
 .control-panel-main {
+  padding: 1em;
   background-color: $panel-background-color;
   opacity: $panel-background-opacity;
+}
+
+.control-panel-title{
+  font-size: 1.65em;
+  padding-bottom: .7em;
+  text-align: center;
 }
 </style>

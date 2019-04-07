@@ -42,7 +42,6 @@ export default {
   align-items: center;
   padding: .4em 1em;
   display: flex;
-  background-color: #1e1e2f;
   color: white;
 }
 

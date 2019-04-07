@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    label="Pump"
+    title="Pump"
   >
     <ControlPanelItem
       label="Load"

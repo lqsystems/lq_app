@@ -53,7 +53,9 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
+ @import '../styles/variables';
+
 /* Functional styling;
   * These styles are required for noUiSlider to function.
   * You don't need to change these rules to apply your design.
@@ -166,13 +168,13 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   * Giving the connect element a border radius causes issues with using transform: scale
   */
 .noUi-target {
-  background: lightgrey;
+  background: rgba(255,255,255,.3);
 }
 
 .noUi-connects {
 }
 .noUi-connect {
-  background: #4fc08d;
+  background: $slider-color;
 }
 /* Handles and cursors; */
 
@@ -183,7 +185,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   cursor: ns-resize;
 }
 .noUi-handle {
-  background: #4fc08d;
+  background: $slider-color;
   cursor: default;
 }
 

@@ -1,5 +1,6 @@
 <template>
   <v-switch
+    dark
     :disabled="isDisabled"
     :input-value="isOn"
     :color="color"
@@ -46,5 +47,12 @@ export default {
   }
   .v-messages {
     min-height: 0 !important;
+  }
+
+  .v-input--switch__thumb {
+    /* width: 25px; */
+    /* height: 25px; */
+  }
+  .v-input--switch__track {
   }
 </style>

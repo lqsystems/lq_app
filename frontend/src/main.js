@@ -8,6 +8,7 @@ import './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/icons/style.css';
+import './styles/fonts.scss';
 // import './registerServiceWorker';
 
 if (process.env.NODE_ENV === 'production') {
