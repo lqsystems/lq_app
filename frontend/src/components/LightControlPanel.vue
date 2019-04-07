@@ -16,7 +16,7 @@
       />
     </ControlPanelItem>
     <ControlPanelItem
-      label="Stop"
+      label="Start"
     >
       <div class="time-picker-wrapper">
         <BaseTimePicker initial-time="8:00" />

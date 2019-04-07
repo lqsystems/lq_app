@@ -1,18 +1,5 @@
 <template>
   <div class="power-control">
-    <div
-      class="power-control-state"
-      :class="[isOn ? 'is-on' : 'is-off']"
-    >
-      <span
-        v-if="isOn"
-      >
-        ON
-      </span>
-      <span v-else>
-        OFF
-      </span>
-    </div>
     <div class="power-control-switch">
       <BaseSwitch
         :is-disabled="isDisabled"
