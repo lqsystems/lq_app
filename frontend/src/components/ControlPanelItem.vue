@@ -14,7 +14,7 @@
         <slot />
       </div>
     </div>
-    <BaseDivdier v-if="includeDivider" />
+    <!-- <BaseDivdier v-if="includeDivider" /> -->
   </div>
 </template>
 
@@ -59,22 +59,17 @@ export default {
 }
 
 .cp-item {
+  color: $font-color-medium-contrast;
   display: flex;
   padding: 1.9em 1.2em;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .cp-item-col-right {
-  // border: 1px solid lightgrey;
-  color: $control-panel-label-color;
-  text-transform: uppercase;
   display: flex;
   flex-direction: row;
   margin-left: auto;
 }
 
-.cp-item-label {
-  color: $control-panel-label-color;
-  text-transform: uppercase;
-}
 </style>

@@ -69,9 +69,27 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables';
+
 .v-text-field__slot {
   input {
     text-align: center;
   }
 }
+
+.theme--dark.v-icon {
+    color: $font-color-medium-contrast;
+}
+
+.theme--dark.v-input:not(.v-input--is-disabled) {
+  input {
+    color: $font-color-medium-contrast;
+  }
+}
+
+.v-text-field {
+  padding-top: 0;
+  margin-top: 0;
+}
+
 </style>
