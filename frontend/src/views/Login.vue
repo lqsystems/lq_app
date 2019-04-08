@@ -1,53 +1,49 @@
 <template>
-  <v-container class="login-wrapper">
-    <v-card>
-      <v-card-title
-        primary-title
-        class="lq-title"
-      >
-        <h1 class="lq-title-text">
-          LQ Systems
-        </h1>
-      </v-card-title>
-      <v-form
-        @submit.prevent="login"
-      >
-        <v-text-field
-          v-model="username"
-          prepend-icon="person"
-          name="Username"
-          placeholder="Username"
-        />
-        <v-text-field
-          v-model="password"
-          prepend-icon="lock"
-          name="Password"
-          type="password"
-          placeholder="Password"
-        />
-        <v-card-actions>
-          <v-btn
-            primary
-            large
-            block
-            type="submit"
-          >
-            Login
-          </v-btn>
-        </v-card-actions>
-      </v-form>
-    </v-card>
-  </v-container>
+  <BaseCard class="login-card">
+    <v-form
+      @submit.prevent="login"
+    >
+      <v-text-field
+        v-model="username"
+        dark
+        prepend-icon="person"
+        name="Username"
+        placeholder="Username"
+      />
+      <v-text-field
+        v-model="password"
+        prepend-icon="lock"
+        name="Password"
+        type="password"
+        placeholder="Password"
+      />
+      <v-card-actions>
+        <v-btn
+          dark
+          primary
+          large
+          block
+          type="submit"
+        >
+          Login
+        </v-btn>
+      </v-card-actions>
+    </v-form>
+  </BaseCard>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import BaseCard from '@/components/BaseCard';
 import { FETCH_MODULES } from '@/store/actions.types.js';
 import { LOGIN_URL } from '@/constants/api.constants.js';
 import callApi from '@/utils/api.utils.js';
 
 export default {
   name: 'Login',
+  components: {
+    BaseCard,
+  },
   data() {
     return {
       username: '',
@@ -79,13 +75,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.login-wrapper {
+.login-card {
+  padding: 2em;
   width: 550px;
   margin: 15vh auto;
-}
-
-.v-card {
-  padding: 1.5em;
 }
 
 .lq-title {
