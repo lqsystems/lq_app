@@ -25,10 +25,13 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../styles/variables';
+
 .sb-header {
   display: flex;
   align-items: center;
   padding: 1em 1.3em;
+  font-size: 1.3em;
 }
 
 .sb-header-icon {
@@ -37,7 +40,8 @@ export default {
 }
 
 .sb-header-title {
-  font-size: 1.6em;
+  color: $font-color-medium-contrast;
+  font-size: 1.5em;
 }
 
 </style>

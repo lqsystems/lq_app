@@ -41,6 +41,7 @@ export default {
     font-size: 1.2em;
   }
 }
+
 .control-panel-wrapper {
   font-size: 1.3em;
   width: 100%;

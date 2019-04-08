@@ -42,7 +42,7 @@ export default {
   padding: 0.3em 0.4em;
   display: flex;
   color: white;
-  font-size: 3.9em;
+  font-size: 3.4em;
 }
 
 .icon-back {
