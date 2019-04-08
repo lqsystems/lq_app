@@ -2,7 +2,6 @@
   <div class="reactor-controls view">
     <BaseHeader
       back-icon
-      title=""
       :handle-icon-click="routeHome"
     />
     <div class="rc-main">
