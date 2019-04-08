@@ -46,7 +46,6 @@ export default {
 .power-control {
   display: flex;
   align-items: center;
-  padding-right: 1.1em;
 }
 
 .power-control-switch {

@@ -176,7 +176,7 @@ export default {
 }
 
 .rc-controls {
-  padding: 40px 60px;
+  padding: 34px 60px;
   grid-area: controls;
 }
 

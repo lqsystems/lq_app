@@ -22,7 +22,7 @@
       <!-- Returns a slider with two handles since an array is suplied to the level prop -->
       <SliderControl
         :level="heaterMinMax"
-        :limits="[20, 45]"
+        :limits="[25, 40]"
         :level-label-func="getTempLabel"
         @slider-move-end="updateLimits"
       />
@@ -83,7 +83,7 @@ export default {
       });
     },
     getTempLabel(sliderPos) {
-      return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
+      return `${sliderPos[0]}°C\u00A0\u00A0–\u00A0\u00A0${sliderPos[1]}°C`;
     },
     getPercentLabel,
   },

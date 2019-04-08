@@ -145,8 +145,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
 
 .noUi-horizontal .noUi-handle {
   border-radius: 100%;
-  width: 20px;
-  height: 20px;
+  width: $input-handle-width;
+  height:$input-handle-width;
   left: -17px;
   top: -8px;
 }

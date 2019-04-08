@@ -37,9 +37,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../styles/variables';
+
 .header {
   align-items: center;
-  padding: 0.3em 0.4em;
+  padding: 0.3em ($left-boundary-padding - 10) * 1px;
   display: flex;
   color: white;
   font-size: 3.4em;

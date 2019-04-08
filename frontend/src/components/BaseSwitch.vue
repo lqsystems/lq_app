@@ -6,6 +6,7 @@
     <input
       ref="toggleSwitch"
       type="checkbox"
+      :disabled="isDisabled"
       @click="handleToggle"
     >
     <span class="switcher" />
@@ -34,6 +35,11 @@ export default {
   methods: {
     handleToggle() {
       const { toggleSwitch } = this.$refs;
+
+      if (this.isDisabled) {
+        return;
+      }
+
       toggleSwitch.checked = !toggleSwitch.checked;
       this.$emit('toggle');
     },
@@ -85,8 +91,8 @@ $ios-green: #4bd964;
     &:before {
       content: "";
       display: block;
-      width: 20px;
-      height: 20px;
+      width:  $input-handle-width;
+      height: $input-handle-width;
       background-color: $red;
       // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
       border-radius: 50%;
@@ -133,15 +139,17 @@ $ios-green: #4bd964;
   }
 
   & [disabled]:not([disabled="false"]) + .switcher {
-    background: #ccc !important;
+    $disabled-color: $grey-900;
+    background: $handle-color-checked !important;
+    opacity: .3;
 
     &:active:before {
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
+      // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
     }
 
     &:before {
-      background-color: #e2e2e2 !important;
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
+      background-color: $handle-color-checked !important;
+      // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
     }
   }
 
@@ -257,25 +265,6 @@ $ios-green: #4bd964;
     .switcher:active:before {
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6),
       0 0 0 10px rgba($green-color, 0.3);
-    }
-  }
-
-  /*
-  Switch green color style
-   */
-
-  &.cl-switch-orange {
-    input[type="checkbox"]:checked + .switcher {
-      background-color: lighten($orange-color, 20);
-
-      &:before {
-        background-color: $orange-color;
-      }
-    }
-
-    .switcher:active:before {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6),
-      0 0 0 10px rgba($orange-color, 0.3);
     }
   }
 }

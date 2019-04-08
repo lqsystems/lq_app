@@ -63,7 +63,7 @@ $font-size: 1.5;
 }
 
 .sidebar-item {
-  padding-left: 1.3em;
+  padding-left: 1.5em;
 }
 
 $radius: 25px;
