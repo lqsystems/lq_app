@@ -59,9 +59,10 @@ export default {
 }
 
 .cp-item {
+  // border: 1px solid lightgrey;
   color: $font-color-medium-contrast;
   display: flex;
-  padding: 1.9em 1.2em;
+  padding: 2.4em 1.2em;
   align-items: center;
   text-transform: uppercase;
 }

@@ -30,7 +30,7 @@ export default {
 .sb-header {
   display: flex;
   align-items: center;
-  padding: 1em 1.3em;
+  padding: 1em $left-boundary-padding * 1px;
   font-size: 1.3em;
 }
 

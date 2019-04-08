@@ -92,4 +92,7 @@ export default {
   margin-top: 0;
 }
 
+.v-input__slot {
+  margin-bottom: 0;
+}
 </style>

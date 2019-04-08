@@ -10,28 +10,37 @@ $grey-700: #616161;
 $grey-800: #424242;
 $grey-900: #212121;
 
-$dark-navy: #1A203F;
+$navy-dark: #1A203F;
+$navy-dark-transparent: rgba($navy-dark, .95);
+$green-vue: #42b983;
 $indigo: #344cbd;
-$red: #D52E2B;
-$red-dark: #922e2d;
+$indigo-transparent: rgba($indigo, .8);
+
+// $red: #D52E2B;
+$red: $green-vue;
+$red-transparent: rgba($red, .6);
+$red-dark: darken($red, 10%);
+$steel-blue: #414a77;
+$steel-blue-transparent: rgba($steel-blue, .2);
 $yellow: #eaea4b;
-$yellow-transparent: rgba(234, 234, 75, 0.6);
+$yellow-transparent: rgba(234, 234, 75, .6);
 
 
-$reactor-card-accent-color-1: $indigo;
-$reactor-card-accent-color-2: $yellow-transparent;
 
 // theme colors
 $font-color-medium-contrast: $grey-300;
 
 // components
-
+$reactor-card-accent-color-1: $indigo-transparent;
+$reactor-card-accent-color-2: $red-transparent;
 
 $sidebar-active-item-color: $indigo;
 
-$panel-background-color: $dark-navy; 
-$panel-background-opacity: .9;
+$panel-background-color: $navy-dark-transparent; 
 
-
+$input-handle-width: 20px;
 $toggle-switch-color: $red;
 $slider-color: $red;
+
+// shared
+$left-boundary-padding: 15;
