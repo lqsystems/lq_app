@@ -13,7 +13,7 @@ export default {
 
 <style>
  .card {
-  border-radius: 5px;
-  box-shadow: 0 1px 20px 0 rgba(0,0,0,.1);
+    border-radius: 5px;
+    box-shadow: 0 1px 20px 0 rgba(0,0,0,.1);
  }
 </style>

@@ -45,7 +45,7 @@ export default {
 @import '../styles/variables.scss';
 
 $handle-color: $red;
-$track-color: $red-faded;
+$track-color: $red-dark;
 $handle-color-checked: $grey-700;
 
 // TODO delete these unnecessary colors

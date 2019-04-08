@@ -1,3 +1,4 @@
+// color library
 $grey-50: #FAFAFA;
 $grey-100: #F5F5F5;
 $grey-200: #EEEEEE;
@@ -9,14 +10,22 @@ $grey-700: #616161;
 $grey-800: #424242;
 $grey-900: #212121;
 
-$vue-green: #4fc08d;
 $dark-navy: #1A203F;
 $indigo: #344cbd;
 $red: #D52E2B;
-$red-faded: #922e2d;
-$primary-color: $vue-green;
+$red-dark: #922e2d;
+$yellow: #eaea4b;
+$yellow-transparent: rgba(234, 234, 75, 0.6);
+
+
+$reactor-card-accent-color-1: $indigo;
+$reactor-card-accent-color-2: $yellow-transparent;
+
+// theme colors
 
 // components
+
+
 $sidebar-active-item-color: $indigo;
 
 $panel-background-color: $dark-navy; 

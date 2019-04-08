@@ -3,12 +3,11 @@
     class="header"
     @click="handleIconClick"
   >
-    <div
+    <span
+      v-if="backIcon"
       v-ripple
-      class="header-icon-wrapper"
-    >
-      <span class="icon-back" />
-    </div>
+      class="icon-back"
+    />
     <img
       class="header-logo"
       src="@/assets/logo-small.png"
@@ -23,7 +22,7 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      default: '',
     },
     backIcon: {
       type: Boolean,
@@ -40,23 +39,20 @@ export default {
 <style lang="scss" scoped>
 .header {
   align-items: center;
-  padding: .4em 1em;
+  padding: 0.3em 0.4em;
   display: flex;
   color: white;
-}
-
-.header-icon-wrapper {
-  padding: .8em;
-  border-radius: 100%;
+  font-size: 3.9em;
 }
 
 .icon-back {
-  font-size: 2em;
+  border-radius: 50%;
+  padding: 0.2em;
+  font-size: 0.7em;
 }
 
 .header-logo {
-  margin-left: .4em;
-  width: 6em;
+  margin-left: 0.35em;
+  width: 2.2em;
 }
-
 </style>

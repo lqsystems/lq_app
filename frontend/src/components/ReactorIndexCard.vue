@@ -55,8 +55,6 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import '../styles/variables';
-$reactor-card-accent-color-1: lightseagreen;
-$reactor-card-accent-color-2: lightcoral;
 
 .reactor-card {
   margin: 2em;
@@ -65,6 +63,15 @@ $reactor-card-accent-color-2: lightcoral;
   padding: 1.5em 2em;
   border-bottom: 3px solid ;
   width: 300px;
+}
+
+.reactor-card-ZeePrime1 {
+  border-bottom-color: $reactor-card-accent-color-1;
+
+  .divider-horizontal {
+    border-right: 2px solid $reactor-card-accent-color-1;
+    margin: 0 1em;
+  }
 }
 
 .reactor-card-MV1 {
@@ -77,6 +84,15 @@ $reactor-card-accent-color-2: lightcoral;
 }
 
 .reactor-card-ZeePrime {
+  border-bottom-color: $reactor-card-accent-color-1;
+
+  .divider-horizontal {
+    border-right: 2px solid $reactor-card-accent-color-1;
+    margin: 0 1em;
+  }
+}
+
+.reactor-card-ZeePrime2 {
   border-bottom-color: $reactor-card-accent-color-2;
 
   .divider-horizontal {
@@ -84,6 +100,17 @@ $reactor-card-accent-color-2: lightcoral;
     margin: 0 1em;
   }
 }
+
+
+.reactor-card-MV2 {
+  border-bottom-color: $reactor-card-accent-color-2;
+
+  .divider-horizontal {
+    border-right: 2px solid $reactor-card-accent-color-2;
+    margin: 0 1em;
+  }
+}
+
 
 .reactor-card-data {
   display: flex;

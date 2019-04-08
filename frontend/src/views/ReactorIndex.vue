@@ -1,16 +1,35 @@
 <template>
   <div class="reactor-index">
-    <div class="reactor-card-wrapper">
-      <ReactorIndexCard
-        :sensor-data="formatSensorData(sensorData, 'ZeePrime')"
-        :handle-click="handleCardClick"
-        reactor-title="ZeePrime"
-      />
-      <ReactorIndexCard
-        :sensor-data="formatSensorData(sensorData, 'MV1')"
-        :handle-click="handleCardClick"
-        reactor-title="MV1"
-      />
+    <BaseHeader />
+    <div class="reactor-card-grid">
+      <div class="reactor-card-row">
+        <ReactorIndexCard
+          v-ripple
+          :sensor-data="formatSensorData(sensorData, 'ZeePrime')"
+          :handle-click="handleCardClick"
+          reactor-title="ZeePrime"
+        />
+        <ReactorIndexCard
+          v-ripple
+          :sensor-data="formatSensorData(sensorData, 'MV1')"
+          :handle-click="handleCardClick"
+          reactor-title="MV1"
+        />
+      </div>
+      <div class="reactor-card-row">
+        <ReactorIndexCard
+          v-ripple
+          :sensor-data="formatSensorData(sensorData, 'ZeePrime')"
+          :handle-click="handleCardClick"
+          reactor-title="ZeePrime2"
+        />
+        <ReactorIndexCard
+          v-ripple
+          :sensor-data="formatSensorData(sensorData, 'MV1')"
+          :handle-click="handleCardClick"
+          reactor-title="MV2"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -19,12 +38,14 @@
 // TODO ask greg whether it makes sense for the word 'reactor' to be renamed to 'module'
 import { mapMutations, mapState } from 'vuex';
 import ReactorIndexCard from '@/components/ReactorIndexCard';
+import BaseHeader from '@/components/BaseHeader';
 import { UPDATE_SELECTED_MODULE } from '@/store/mutations.types';
 
 export default {
   name: 'ReactorIndex',
   components: {
     ReactorIndexCard,
+    BaseHeader,
   },
   computed: {
     ...mapState({
@@ -68,12 +89,13 @@ export default {
 <style scoped lang="scss">
 .reactor-index {
   color: lightgrey;
-  display: flex;
-  justify-content: center;
 }
 
-.reactor-card-wrapper {
-  margin-top: 25vh;
+.reactor-card-grid {
+  margin-top: 3vh;
+}
+
+.reactor-card-row {
   display: flex;
   justify-content: center;
 }
