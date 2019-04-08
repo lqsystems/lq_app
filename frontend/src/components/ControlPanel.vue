@@ -49,8 +49,6 @@ export default {
 }
 
 .control-panel-main {
-  padding: 1em;
-  background-color: $panel-background-color;
 }
 
 .control-panel-title{
