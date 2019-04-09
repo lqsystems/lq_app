@@ -114,7 +114,7 @@ export default {
   input {
     border: 1px solid #2b3553;
     border-radius: 7px;
-    padding: 10px 18px;
+    padding: .75em 2em;
     width: 100%;
     &:focus {
       outline: none;
