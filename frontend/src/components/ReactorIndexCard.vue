@@ -61,7 +61,7 @@ export default {
   background-color: $panel-background-color;
   display: inline-block;
   padding: 1.5em 2em;
-  border-bottom: 3px solid ;
+  border-bottom: 3px solid !important;
   width: 300px;
 }
 // TODO write a function to reduce duplication
