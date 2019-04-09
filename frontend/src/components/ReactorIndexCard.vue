@@ -64,53 +64,51 @@ export default {
   border-bottom: 3px solid ;
   width: 300px;
 }
-
+// TODO write a function to reduce duplication
 .reactor-card-ZeePrime1 {
-  border-bottom-color: $reactor-card-accent-color-1;
+  border-bottom-color: $reactor-card-accent-color-1 !important;
 
   .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-1;
+    border-right: 2px solid $reactor-card-accent-color-1 !important;
     margin: 0 1em;
   }
 }
 
 .reactor-card-MV1 {
-  border-bottom-color: $reactor-card-accent-color-1;
+  border-bottom-color: $reactor-card-accent-color-1 !important;
 
   .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-1;
-    margin: 0 1em;
+    border-right: 2px solid $reactor-card-accent-color-1 !important;
+    margin: 0 1em ;
   }
 }
 
 .reactor-card-ZeePrime {
-  border-bottom-color: $reactor-card-accent-color-1;
+  border-bottom-color: $reactor-card-accent-color-1 !important;
 
   .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-1;
+    border-right: 2px solid $reactor-card-accent-color-1 !important;
     margin: 0 1em;
   }
 }
 
 .reactor-card-ZeePrime2 {
-  border-bottom-color: $reactor-card-accent-color-2;
+  border-bottom-color: $reactor-card-accent-color-2 !important;
 
   .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-2;
+    border-right: 2px solid $reactor-card-accent-color-2 !important;
     margin: 0 1em;
   }
 }
-
 
 .reactor-card-MV2 {
-  border-bottom-color: $reactor-card-accent-color-2;
+  border-bottom-color: $reactor-card-accent-color-2 !important;
 
   .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-2;
+    border-right: 2px solid $reactor-card-accent-color-2 !important;
     margin: 0 1em;
   }
 }
-
 
 .reactor-card-data {
   display: flex;
