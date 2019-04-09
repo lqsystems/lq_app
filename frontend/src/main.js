@@ -4,6 +4,7 @@ import store from '@/store';
 import router from './router';
 import App from './App.vue';
 import './plugins/vuetify';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/icons/style.css';
 import './styles/index.scss';
 // import './registerServiceWorker';
