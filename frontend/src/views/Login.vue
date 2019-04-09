@@ -1,34 +1,36 @@
 <template>
   <BaseCard class="login-card">
-    <v-form
+    <img
+      class="login-logo"
+      src="@/assets/logo-small.png"
+      alt="company logo"
+    >
+    <form
+      class="login-form"
       @submit.prevent="login"
     >
-      <v-text-field
-        v-model="username"
-        dark
-        prepend-icon="person"
-        name="Username"
-        placeholder="Username"
-      />
-      <v-text-field
-        v-model="password"
-        prepend-icon="lock"
-        name="Password"
-        type="password"
-        placeholder="Password"
-      />
-      <v-card-actions>
-        <v-btn
-          dark
-          primary
-          large
-          block
-          type="submit"
-        >
-          Login
-        </v-btn>
-      </v-card-actions>
-    </v-form>
+      <div class="text-input-wrapper">
+        <div class="text-input">
+          <input
+            v-model="username"
+            placeholder="Username"
+            type="text"
+          >
+        </div>
+      </div>
+      <div class="text-input-wrapper">
+        <div class="text-input">
+          <input
+            v-model="password"
+            placeholder="Password"
+            type="password"
+          >
+        </div>
+      </div>
+      <button class="login-button">
+        Sign In
+      </button>
+    </form>
   </BaseCard>
 </template>
 
@@ -71,30 +73,57 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped lang="scss">
+@import '../styles/variables';
 .login-card {
-  padding: 2em;
-  width: 550px;
-  margin: 15vh auto;
+  padding: 2.5em 1em;
+  padding-top: 1.5em;
+  width: 500px;
+  margin: 20vh auto;
+  // use a sass variable for this color
+  color: white;
 }
 
-.lq-title {
-  padding-top: 1em;
+.login-logo {
+  margin-left: 40px;
+  width: 140px;
 }
 
-.lq-title-text {
-  font-size: 1.4em;
-  padding-top: 0;
+.login-form {
+  padding: 0 4em;
 }
-.lq-title-text {
-  font-size: 1.5em;
-  padding-top: 0;
+
+.text-input-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 2em 0;
 }
-.lq-title-text {
-  font-size: 1.5em;
-  padding-top: 0;
+
+.text-input-icon {
+  margin-right: 1em;
+}
+
+.text-input {
+  width: 100%;
+
+  input {
+    border: 1px solid #2b3553;
+    border-radius: 7px;
+    padding: 10px 18px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.login-button {
+  background-color: $accent-color-high-contrast;
+  font-size: 1.1em;
+  width: 100%;
+  padding: .75em 2em;
+  border-radius: 5px;
 }
 </style>
