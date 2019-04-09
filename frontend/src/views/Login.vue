@@ -1,37 +1,39 @@
 <template>
-  <BaseCard class="login-card">
-    <img
-      class="login-logo"
-      src="@/assets/logo-small.png"
-      alt="company logo"
-    >
-    <form
-      class="login-form"
-      @submit.prevent="login"
-    >
-      <div class="text-input-wrapper">
-        <div class="text-input">
-          <input
-            v-model="username"
-            placeholder="Username"
-            type="text"
-          >
+  <div class="login view">
+    <BaseCard class="login-card">
+      <img
+        class="login-logo"
+        src="@/assets/logo-small.png"
+        alt="company logo"
+      >
+      <form
+        class="login-form"
+        @submit.prevent="login"
+      >
+        <div class="text-input-wrapper">
+          <div class="text-input">
+            <input
+              v-model="username"
+              placeholder="Username"
+              type="text"
+            >
+          </div>
         </div>
-      </div>
-      <div class="text-input-wrapper">
-        <div class="text-input">
-          <input
-            v-model="password"
-            placeholder="Password"
-            type="password"
-          >
+        <div class="text-input-wrapper">
+          <div class="text-input">
+            <input
+              v-model="password"
+              placeholder="Password"
+              type="password"
+            >
+          </div>
         </div>
-      </div>
-      <button class="login-button">
-        Sign In
-      </button>
-    </form>
-  </BaseCard>
+        <button class="login-button">
+          Sign In
+        </button>
+      </form>
+    </BaseCard>
+  </div>
 </template>
 
 <script>
@@ -77,12 +79,13 @@ export default {
 
 <style scoped lang="scss">
 @import '../styles/variables';
+
 .login-card {
   padding: 2.5em 1em;
   padding-top: 1.5em;
   width: 500px;
   margin: 20vh auto;
-  // use a sass variable for this color
+  //TODO use a sass variable for this color
   color: white;
 }
 
