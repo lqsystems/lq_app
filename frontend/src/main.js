@@ -1,14 +1,11 @@
 import Vue from 'vue';
 import VueSocketIO from 'vue-socket.io';
-
 import store from '@/store';
 import router from './router';
 import App from './App.vue';
 import './plugins/vuetify';
-import 'roboto-fontface/css/roboto/roboto-fontface.css';
-import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/icons/style.css';
-import './styles/fonts.scss';
+import './styles/index.scss';
 // import './registerServiceWorker';
 
 if (process.env.NODE_ENV === 'production') {
