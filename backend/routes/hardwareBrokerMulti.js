@@ -631,6 +631,8 @@ function messageToHardware(serverMessage) {
                     messageList.forEach(message => {  // now execute the list.
                         //
                         var opMessage = operationMessage(message);
+                        logger.debug('** Message to uart port **');
+                        logger.debug(opMessage);
                         if (opMessage.length) {
                             uartPort.write(opMessage, () => {  // write the message with a callback.
                                 console.log('Write:\t\t Complete!');
@@ -751,6 +753,7 @@ process.on('message', (message) => {
 
     // for light dimming feature only
     if (message.bypassThrottle) {
+        logger.debug('** Bypassing Throttle With Ligt Dim Message **');
         messageToHardware(message);
         return;
     }
