@@ -1,3 +1,4 @@
+
 <template>
   <v-app>
     <transition
@@ -5,7 +6,7 @@
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
     >
-      <router-view v-if="true" />
+      <router-view />
     </transition>
   </v-app>
 </template>
@@ -77,6 +78,7 @@ html, body {
   }
 }
 
+// TODO learn why this is needed
 .view {
   position: fixed;
   width: 100%;

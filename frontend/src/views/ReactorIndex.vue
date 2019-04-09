@@ -1,6 +1,6 @@
 <template>
   <div class="reactor-index">
-    <BaseHeader />
+    <BaseHeader :handle-icon-click="logout" />
     <div class="reactor-card-grid">
       <div class="reactor-card-row">
         <ReactorIndexCard
@@ -37,9 +37,12 @@
 <script>
 // TODO ask greg whether it makes sense for the word 'reactor' to be renamed to 'module'
 import { mapMutations, mapState } from 'vuex';
+import { UPDATE_SELECTED_MODULE } from '@/store/mutations.types';
+import { LOGOUT_URL } from '@/constants/api.constants.js';
+import callApi from '@/utils/api.utils.js';
+
 import ReactorIndexCard from '@/components/ReactorIndexCard';
 import BaseHeader from '@/components/BaseHeader';
-import { UPDATE_SELECTED_MODULE } from '@/store/mutations.types';
 
 export default {
   name: 'ReactorIndex',
@@ -80,6 +83,10 @@ export default {
     handleCardClick(moduleName) {
       this.UPDATE_SELECTED_MODULE(moduleName);
       this.$router.push('/controls');
+    },
+    async logout() {
+      await callApi(LOGOUT_URL);
+      this.$router.push('/login');
     },
   },
 };

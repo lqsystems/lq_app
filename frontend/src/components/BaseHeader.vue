@@ -13,12 +13,18 @@
       src="@/assets/logo-small.png"
       alt="company logo"
     >
+    <!-- <BaseSidebarUserMenu class="header-user-menu" /> -->
   </div>
 </template>
 
 <script>
+import BaseSidebarUserMenu from '@/components/BaseSidebarUserMenu';
+
 export default {
   name: 'BaseHeader',
+  components: {
+    BaseSidebarUserMenu,
+  },
   props: {
     title: {
       type: String,
@@ -56,5 +62,9 @@ export default {
 .header-logo {
   margin-left: 0.35em;
   width: 2.2em;
+}
+
+.header-user-menu {
+  margin-left: auto;
 }
 </style>
