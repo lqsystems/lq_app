@@ -5,9 +5,9 @@
       <div class="reactor-card-row">
         <ReactorIndexCard
           v-ripple
-          :sensor-data="formatSensorData(sensorData, 'ZeePrime')"
+          :sensor-data="formatSensorData(sensorData, 'Prime1')"
           :handle-click="handleCardClick"
-          reactor-title="ZeePrime"
+          reactor-title="Prime1"
         />
         <ReactorIndexCard
           v-ripple
@@ -19,9 +19,9 @@
       <div class="reactor-card-row">
         <ReactorIndexCard
           v-ripple
-          :sensor-data="formatSensorData(sensorData, 'ZeePrime')"
+          :sensor-data="formatSensorData(sensorData, 'Prime2')"
           :handle-click="handleCardClick"
-          reactor-title="ZeePrime2"
+          reactor-title="Prime2"
         />
         <ReactorIndexCard
           v-ripple

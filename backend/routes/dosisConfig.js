@@ -3,7 +3,7 @@
 
 module.exports = {
 
-    "modules-A" : [ "ZeePrime", "MV1", "MV2", "System" ],
+    "modules-A" : [ "Prime1", "MV1", "Prime2", "System" ],
     "def-modules-A" : {
         connector : "serial",
         mcu : "<template-mod-name>",
@@ -101,7 +101,7 @@ module.exports = {
         uarts : [{
             port : "/dev/ttyUSB0",
             baud : 9600,
-            mcu : "ZeePrime"
+            mcu : "Prime1"
         },
         {
             port : "/dev/ttyUSB1",
@@ -111,12 +111,12 @@ module.exports = {
         {
             port : "/dev/ttyUSB2",
             baud : 9600,
-            mcu : "MV2"
+            mcu : "Prime2"
         },
         {
             port : "/dev/ttyUSB3",
             baud : 9600,
-            mcu : "System"
+            mcu : "MV2"
         }]
 
     }

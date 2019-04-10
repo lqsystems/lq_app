@@ -65,7 +65,7 @@ export default {
   width: 300px;
 }
 // TODO write a function to reduce duplication
-.reactor-card-ZeePrime1 {
+.reactor-card-Prime1 {
   border-bottom-color: $reactor-card-accent-color-1 !important;
 
   .divider-horizontal {
@@ -83,16 +83,7 @@ export default {
   }
 }
 
-.reactor-card-ZeePrime {
-  border-bottom-color: $reactor-card-accent-color-1 !important;
-
-  .divider-horizontal {
-    border-right: 2px solid $reactor-card-accent-color-1 !important;
-    margin: 0 1em;
-  }
-}
-
-.reactor-card-ZeePrime2 {
+.reactor-card-Prime2 {
   border-bottom-color: $reactor-card-accent-color-2 !important;
 
   .divider-horizontal {

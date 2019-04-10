@@ -157,9 +157,13 @@ export const getActiveReactionId = alert => (state) => {
   );
 
   const { NODE_ENV } = process.env;
-  if (!activeReaction && (NODE_ENV === 'production' || NODE_ENV === 'test')) {
+  if (!activeReaction) {
     const message = 'No active reactions were found. Make sure that you are logged in and that a reaction is active';
-    alert(message);
+
+    if ((NODE_ENV === 'production' || NODE_ENV === 'test')) {
+      alert(message);
+    }
+
     throw new Error(message);
   }
 

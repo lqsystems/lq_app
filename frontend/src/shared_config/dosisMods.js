@@ -1,6 +1,6 @@
 export const dosisMods = {
-  "ZeePrime": {},
+  "Prime1": {},
   "MV1": {},
-  "MV2": {},
-  "System": {}
+  "Prime2": {},
+  "MV2": {}
 }

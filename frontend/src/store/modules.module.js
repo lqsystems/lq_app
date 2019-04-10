@@ -8,7 +8,7 @@ import {
 
 const state = {
   // TODO: import module name as a constant
-  selectedModuleName: localStorage.selectedModuleName || 'ZeePrime',
+  selectedModuleName: localStorage.selectedModuleName || 'Prime1',
   isFetching: true,
 };
 

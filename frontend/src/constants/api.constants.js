@@ -1,5 +1,6 @@
 const { NODE_ENV } = process.env;
-const DEV_BASE_URL = 'http://10.0.0.86:8888';
+// const DEV_BASE_URL = 'http://10.0.0.86:8888';
+const DEV_BASE_URL = 'http://localhost:8888';
 
 export const API_BASE_URL = NODE_ENV === 'production'
   ? ''

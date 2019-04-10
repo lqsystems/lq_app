@@ -13,7 +13,7 @@
       <v-btn
         color="teal"
         flat
-        value="ZeePrime"
+        value="Prime1"
       >
         <div class="nav-logout-label">
           Zee Prime
