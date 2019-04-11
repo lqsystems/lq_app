@@ -39,6 +39,7 @@ import io from 'socket.io-client';
 import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
+import { DIM_LAMP_SOCKET_URL } from '@/constants/api.constants';
 
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
@@ -46,8 +47,7 @@ import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
 
-const serverUrl = 'http://192.168.43.64:8888/dimLamp';
-const socket = io(serverUrl);
+const socket = io(DIM_LAMP_SOCKET_URL);
 
 export default {
   name: 'LightControlPanel',
@@ -65,7 +65,7 @@ export default {
     },
   },
   mounted() {
-    socket.on('connect', () => { console.log('connected!'); });
+    socket.on('connect', () => { console.log('socket connected!'); });
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
@@ -83,11 +83,15 @@ export default {
       });
     },
     dimLamp([sliderVal]) {
-      socket.emit('dim lamp', {
+      const socketMessage = {
         level: sliderVal,
         dest: this.selectedModuleName,
         id: '5c9a57c3e5e2c205fcd15903',
-      });
+      };
+
+      console.log('message to: ', DIM_LAMP_SOCKET_URL);
+      console.log(socketMessage);
+      socket.emit('dim lamp', socketMessage);
     },
     getPercentLabel,
   },
