@@ -21,13 +21,14 @@ export default {
       default: () => [0, 100],
     },
   },
-  watch: {
-    sliderPosition(newVal) {
-      const { slider } = this.$refs;
+  // TODO delete the following
+  // watch: {
+  //   sliderPosition(newVal) {
+  //     const { slider } = this.$refs;
 
-      slider.noUiSlider.set(newVal);
-    },
-  },
+  //     // slider.noUiSlider.set(newVal);
+  //   },
+  // },
   mounted() {
     const { slider } = this.$refs;
     noUiSlider.create(slider, {
@@ -39,7 +40,8 @@ export default {
       },
     });
 
-    slider.noUiSlider.on('update', (values) => {
+    slider.noUiSlider.on('slide', (values) => {
+      console.log(values);
       const roundedValues = getRoundedValues(values);
       this.$emit('slider-move', roundedValues);
     });

@@ -89,8 +89,6 @@ export default {
         id: '5c9a57c3e5e2c205fcd15903',
       };
 
-      console.log('message to: ', DIM_LAMP_SOCKET_URL);
-      console.log(socketMessage);
       socket.emit('dim lamp', socketMessage);
     },
     getPercentLabel,
