@@ -1,10 +1,21 @@
 const { NODE_ENV } = process.env;
 
-const SERVER_PORT = '8888';
 const PI_HOSTNAME = '192.168.1.221';
-export const PI_BASE_URL = `http://${PI_HOSTNAME}:${SERVER_PORT}`;
-export const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
+const SERVER_PORT = '8888';
+const IS_SERVER_RUNNING_ON_PI = NODE_ENV === 'production';
 
+const PI_BASE_URL = `http://${PI_HOSTNAME}:${SERVER_PORT}`;
+const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
+
+// SOCKET URLS
+export const SENSOR_DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
+export const DIM_LAMP_SOCKET_URL = IS_SERVER_RUNNING_ON_PI
+  ? `${PI_BASE_URL}/dimLamp`
+  : `${DEV_BASE_URL}/dimLamp`;
+
+console.log('lamp dimmer socket url:', DIM_LAMP_SOCKET_URL);
+
+// REST URLS
 export const API_BASE_URL = NODE_ENV === 'production'
   ? ''
   : DEV_BASE_URL;
@@ -12,8 +23,6 @@ export const API_BASE_URL = NODE_ENV === 'production'
 if (API_BASE_URL !== '' && NODE_ENV !== 'test') {
   console.log(`Http requests will be made to: ${API_BASE_URL}`);
 }
-
-export const DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
 
 export const LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const LOGOUT_URL = `${API_BASE_URL}/users/logout`;
