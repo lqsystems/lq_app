@@ -14,7 +14,11 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
+<<<<<<< HEAD
   "/vue/precache-manifest.bda7b6ed9d7f94bb02e781ef2b8c6c06.js"
+=======
+  "/vue/precache-manifest.e497f862432e7db42e47f02a3baf6559.js"
+>>>>>>> updates build with light dimming feature
 );
 
 workbox.core.setCacheNameDetails({prefix: "LQ_Vue_Client"});
