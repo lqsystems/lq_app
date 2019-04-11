@@ -792,21 +792,23 @@ router.setSocketIo = (io) => {
     const lampDimmer = io
     .of('/dimLamp')
     .on('connection', function(socket){
-        socket.on('dim lamp', (value) => {
+        socket.on('dim lamp', (lampData) => {
+            const { dest, id, level } = lampData
             const message = {
+                dest,
+                id,
                 bypassThrottle: true,
-                dest: 'ZeePrime',
-                id: '5c9a57c3e5e2c205fcd15903',
                 data:
                 {
+                    level,
                     time: 1553931941255,
                     switch: 'Lamp',
                     state: true,
                     start: 0,
                     stop: 0,
-                    level: value,
                 }
             }
+
             HWProc.send(message);
         });
     });

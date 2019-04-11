@@ -63,6 +63,7 @@ export default {
   methods: {
     handleSliderMove(pos) {
       this.sliderPosition = pos;
+      this.$emit('slider-move', pos);
     },
     handleSliderMoveEnd(pos) {
       this.$emit('slider-move-end', pos);

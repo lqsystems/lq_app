@@ -391,3 +391,5 @@
 {"message":{},"level":"info","timestamp":"2019-03-27 19:22:24"}
 {"message":"::1 - - [Thu, 28 Mar 2019 02:22:24 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info","timestamp":"2019-03-27 19:22:24"}
 >>>>>>> adds logs/ to .gitignore
+{"message":{},"level":"info","timestamp":"2019-04-18 17:36:21"}
+{"message":"::1 - - [Fri, 19 Apr 2019 00:36:21 GMT] \"GET /modules HTTP/1.1\" 304 - \"http://localhost:8080/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36\"\n","level":"info","timestamp":"2019-04-18 17:36:21"}
