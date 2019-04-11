@@ -9,16 +9,13 @@ import './styles/icons/style.css';
 import './styles/index.scss';
 // import './registerServiceWorker';
 
+import { DATA_SOCKET_URL } from '@/constants/api.constants';
+
 if (process.env.NODE_ENV === 'production') {
   console.log('location info:', window.location);
 }
 
-Vue.use(
-  new VueSocketIO({ connection: 'http://25.81.56.126:8888/data' }),
-  // new VueSocketIO({ connection: `${window.location.hostname}:8888/data` }),
-);
-
-
+Vue.use(new VueSocketIO({ connection: DATA_SOCKET_URL }));
 Vue.config.productionTip = false;
 
 new Vue({
