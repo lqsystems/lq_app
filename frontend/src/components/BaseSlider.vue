@@ -41,7 +41,6 @@ export default {
     });
 
     slider.noUiSlider.on('slide', (values) => {
-      console.log(values);
       const roundedValues = getRoundedValues(values);
       this.$emit('slider-move', roundedValues);
     });

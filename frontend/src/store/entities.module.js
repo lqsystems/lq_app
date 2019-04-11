@@ -152,9 +152,10 @@ export const actions = {
 
 // Getters
 export const getActiveReactionId = alert => (state) => {
-  const [activeReaction] = Object.keys(state.reactions).filter(
-    reactionId => state.reactions[reactionId].active,
-  );
+  const reactionKeys = state.reactions ? Object.keys(state.reactions) : null;
+  const activeReaction = reactionKeys && reactionKeys.length > 0
+    ? reactionKeys.filter(reactionId => state.reactions[reactionId].active)[0]
+    : null;
 
   const { NODE_ENV } = process.env;
   if (!activeReaction) {
