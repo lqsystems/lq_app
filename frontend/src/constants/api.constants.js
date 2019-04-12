@@ -13,8 +13,6 @@ export const DIM_LAMP_SOCKET_URL = IS_SERVER_RUNNING_ON_PI
   ? `${PI_BASE_URL}/dimLamp`
   : `${DEV_BASE_URL}/dimLamp`;
 
-console.log('lamp dimmer socket url:', DIM_LAMP_SOCKET_URL);
-
 // REST URLS
 export const API_BASE_URL = NODE_ENV === 'production'
   ? ''
