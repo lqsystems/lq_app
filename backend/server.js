@@ -116,6 +116,7 @@ if ( !IamCloud ) {
 
 
 var gooseOptions = {
+    useMongoClient: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000
 };
