@@ -1,12 +1,7 @@
 <template>
-  <div class="user-menu">
-    <div class="user-avatar">
-      H
-    </div>
-    <div class="user-name">
-      H
-    </div>
-  </div>
+  <button class="button">
+    Menu
+  </button>
 </template>
 
 <script>
@@ -20,5 +15,13 @@ export default {
 
 <style lang='scss' scoped>
 @import "../styles/variables";
+
+.button {
+  background-color: $accent-color-high-contrast;
+  font-size: 1.1em;
+  width: 100%;
+  padding: .75em 2em;
+  border-radius: 5px;
+}
 
 </style>
