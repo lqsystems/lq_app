@@ -20,6 +20,7 @@ var express = require('express'),
     mongo = require('mongodb'),
     mongoose = require('mongoose'),
 
+    print = require('./utility/print'),
     //Init App
     app = express();
 
@@ -123,11 +124,15 @@ var gooseOptions = {
 
 //Mongo Connection
 mongoose.Promise = global.Promise;
-// mongoose.connect(`mongodb://localhost:27017/loginark`,gooseOptions);
-mongoose.connect(`mongodb://${cloudServer}/loginark`,gooseOptions);
+
+if (process.env.NODE_ENV === 'local') {
+  console.log('** Using local mongo database **');
+  mongoose.connect(`mongodb://localhost:27017/loginark`, gooseOptions);
+} else {
+  mongoose.connect(`mongodb://${cloudServer}/loginark`, gooseOptions);
+}
+
 var db = mongoose.connection;
-
-
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
