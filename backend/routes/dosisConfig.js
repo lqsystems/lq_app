@@ -3,7 +3,7 @@
 
 module.exports = {
 
-    "modules-A" : [ "Prime1", "MV1", "Prime2", "System" ],
+    "modules-A" : [ "Prime1", "MV1", "Prime2", "MV2" ],
     "def-modules-A" : {
         connector : "serial",
         mcu : "<template-mod-name>",
