@@ -116,6 +116,7 @@ if ( !IamCloud ) {
 
 
 var gooseOptions = {
+    useMongoClient: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000
 };
@@ -185,7 +186,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Logging
-app.use(require('morgan')('default', { 'stream': logger.stream }));
+app.use(require('morgan')('combined', { 'stream': logger.stream }));
 
 const logHttpRequests = (req, res, next) => {
   if (!req.body.password) {
