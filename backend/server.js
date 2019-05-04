@@ -1,3 +1,4 @@
+require('dotenv').config() 
 var express = require('express'),
     cors = require('cors'),
     path = require('path'),
@@ -75,8 +76,8 @@ global.ensureAuthenticated = (req, res, next) => {
     }
 }
 
-var cloudServer = "18.217.16.238";
-global.gInfluxUrl = "18.217.16.238";
+var cloudServer = process.env.TEST_CLOUD_IP;
+global.gInfluxUrl = cloudServer;
 
 
 if ( !IamCloud ) {
