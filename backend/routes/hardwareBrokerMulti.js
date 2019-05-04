@@ -181,12 +181,17 @@ var gMCUPreambles = {}
 
 if (typeof uartsAll !== 'undefined') {  // use Serial Port class. Baud rate in config
     uartsAll.forEach(uarti => {
-        var uartPort = new SerialPort(uarti.port, {
-            baudRate: uarti.baud
-        });
+        var uartPort = new SerialPort(uarti.port, 
+            { baudRate: uarti.baud }, 
+            error => {
+               if(!process.env.OFFSITE_DEV) {
+                 console.log(error)
+               }
+            }
+        );
         uartPorts.push(uartPort);
         gMCUPortMap[uarti.mcu] = uartPort;
-    })
+    });
 }
 
 
