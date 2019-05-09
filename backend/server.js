@@ -87,17 +87,19 @@ if ( !IamCloud ) {
     var gHModuleWS = null;
 
     try {
-        console.log("connecting to " + gWsServer);
-        gHModuleWS = new WebSocket(gWsServer);
-        gHModuleWS.on('open', () => {
-                          console.log("connect made " + gWsServer)
-                      });
-        gHModuleWS.on('message', (data) => {});
-        gHModuleWS.on('error',(e) => {
-                          console.log(e)
-                      })
+      console.log("connecting to " + gWsServer);
+      gHModuleWS = new WebSocket(gWsServer);
+      gHModuleWS.on("open", () => {
+        console.log("connect made " + gWsServer);
+      });
+      gHModuleWS.on("message", data => {});
+      gHModuleWS.on("error", e => {
+        if (!process.env.OFFSITE_DEV) {
+          console.log(e);
+        }
+      });
     } catch (e) {
-        console.log("no ws connection")
+      console.log("no ws connection");
     }
 
     global.forwardHardwareMessage = (mobj) => {
