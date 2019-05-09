@@ -93,38 +93,36 @@ startEmptyRedis();
 var gDBName = "dosisRev1";
 
 
+const { INFLUX_USER, INFLUX_PASSWORD } = process.env;
+
 const dosisInflux = new influx.InfluxDB({
-    hosts: [
-      {
-        host: gInfluxUrl,
-        protocol: 'http',
-        options: {
-           rejectUnauthorized: false
-        }}
-    ],
-    database: gDBName,
-    schema: [
-        {
-            measurement: 'sensorData',
-            fields: {
-                OD: influx.FieldType.FLOAT,
-                Temp: influx.FieldType.FLOAT,
-                ts: influx.FieldType.INTEGER
-            },
-            tags:  ['reaction']
-        },
-        {
-            measurement: 'stateLog',
-            fields: {
-                state: influx.FieldType.BOOLEAN,
-                swtch : influx.FieldType.STRING,
-                level : influx.FieldType.INTEGER,
-                limitLow : influx.FieldType.INTEGER,
-                limitHi : influx.FieldType.INTEGER,
-                ts: influx.FieldType.INTEGER
-            },
-            tags: ['reaction']
-        }]
+  host: gInfluxUrl,
+  username: INFLUX_USER,
+  password: INFLUX_PASSWORD,
+  database: gDBName,
+  schema: [
+    {
+      measurement: "sensorData",
+      fields: {
+        OD: influx.FieldType.FLOAT,
+        Temp: influx.FieldType.FLOAT,
+        ts: influx.FieldType.INTEGER
+      },
+      tags: ["reaction"]
+    },
+    {
+      measurement: "stateLog",
+      fields: {
+        state: influx.FieldType.BOOLEAN,
+        swtch: influx.FieldType.STRING,
+        level: influx.FieldType.INTEGER,
+        limitLow: influx.FieldType.INTEGER,
+        limitHi: influx.FieldType.INTEGER,
+        ts: influx.FieldType.INTEGER
+      },
+      tags: ["reaction"]
+    }
+  ]
 });
 
 
