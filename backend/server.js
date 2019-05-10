@@ -76,7 +76,7 @@ global.ensureAuthenticated = (req, res, next) => {
     }
 }
 
-var cloudServer = process.env.TEST_CLOUD_IP;
+var cloudServer = '18.217.16.238';
 global.gInfluxUrl = cloudServer;
 
 
@@ -128,11 +128,14 @@ var gooseOptions = {
 //Mongo Connection
 mongoose.Promise = global.Promise;
 
-if (process.env.NODE_ENV === 'local') {
+var { MONGO_PASSWORD, MONGO_USER, NODE_ENV } = process.env;
+
+if (NODE_ENV === 'local') {
   console.log('** Using local mongo database **');
   mongoose.connect(`mongodb://localhost:27017/loginark`, gooseOptions);
 } else {
-  mongoose.connect(`mongodb://${cloudServer}/loginark`, gooseOptions);
+  var cloudURI = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${cloudServer}/loginark`;
+  mongoose.connect(cloudURI, gooseOptions);
 }
 
 var db = mongoose.connection;
