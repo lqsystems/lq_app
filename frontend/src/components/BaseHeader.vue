@@ -10,9 +10,21 @@
     />
     <img
       class="header-logo"
-      src="@/assets/logo-small.png"
+      src="@/assets/kapsel-logo.png"
       alt="company logo"
     >
+    <!-- <div class="header-links">
+      <div class="header-link selected">
+        Batches
+      </div>
+      <div class="header-link">
+        Reactors
+      </div>
+      <div class="header-link">
+        History
+      </div>
+    </div> -->
+
     <!-- <BaseSidebarUserMenu class="header-user-menu" /> -->
   </div>
 </template>
@@ -44,6 +56,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '../styles/variables';
+
+.header-links {
+  font-size: .5em;
+  display: flex;
+}
+
+.header-link {
+  margin-right: 30px;
+}
+
+.selected {
+  border-bottom: 2px solid white;
+}
 
 .header {
   align-items: center;
