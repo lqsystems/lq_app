@@ -13,9 +13,14 @@ import { mockProcessData } from '../utils/chart.utils';
 
 export default {
   name: 'BaseChart',
+  props: {
+    data: {
+      type: Array,
+      required: true,
+    },
+  },
   mounted() {
     const { canvas } = this.$refs;
-    const { DOData } = mockProcessData;
     const gridLineColor = 'grey';
 
     Chart.defaults.global.defaultFontColor = 'white';
@@ -27,7 +32,7 @@ export default {
       data: {
         datasets: [
           {
-            data: DOData,
+            data: this.data,
             label: 'Dissolved Oxygen',
             pointRadius: 0,
             borderColor: 'rgb(255, 99, 132)',
