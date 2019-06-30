@@ -3,7 +3,7 @@
     <BaseCard class="login-card">
       <img
         class="login-logo"
-        src="@/assets/logo-small.png"
+        src="@/assets/kapsel-logo.png"
         alt="company logo"
       >
       <form
