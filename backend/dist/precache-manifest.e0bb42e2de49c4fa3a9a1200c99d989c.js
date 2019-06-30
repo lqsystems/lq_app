@@ -1,35 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "b515c2eaacbf968f8c83",
+    "revision": "bcc589b99771af679211",
     "url": "/vue/css/app.c062de00.css"
   },
   {
-    "revision": "b515c2eaacbf968f8c83",
-    "url": "/vue/js/app.a6aceee7.js"
+    "revision": "bcc589b99771af679211",
+    "url": "/vue/js/app.a9e64403.js"
   },
   {
-    "revision": "e6805b0a24935464cf7c",
-    "url": "/vue/css/chunk-26cb3e59.df130c93.css"
+    "revision": "391e232a34396af711c6",
+    "url": "/vue/css/chunk-061848de.44390b60.css"
   },
   {
-    "revision": "e6805b0a24935464cf7c",
-    "url": "/vue/js/chunk-26cb3e59.6b5a4a76.js"
-  },
-  {
-    "revision": "d44765b971f7581049ba",
-    "url": "/vue/css/chunk-2ec7b9de.85098ecd.css"
-  },
-  {
-    "revision": "d44765b971f7581049ba",
-    "url": "/vue/js/chunk-2ec7b9de.dac868c4.js"
-  },
-  {
-    "revision": "221f947a803d92c4ae76",
-    "url": "/vue/css/chunk-5641a7e1.98cb25b2.css"
-  },
-  {
-    "revision": "221f947a803d92c4ae76",
-    "url": "/vue/js/chunk-5641a7e1.968fa004.js"
+    "revision": "391e232a34396af711c6",
+    "url": "/vue/js/chunk-061848de.83576a22.js"
   },
   {
     "revision": "bc6ea703deb77e2c48e2",
@@ -40,12 +24,20 @@ self.__precacheManifest = [
     "url": "/vue/js/chunk-5f443b6e.46008514.js"
   },
   {
-    "revision": "2f173fb192c69bb61ca8",
-    "url": "/vue/css/chunk-6b9210ce.c108949c.css"
+    "revision": "ae2a0657dd4e76a757bf",
+    "url": "/vue/css/chunk-6360553c.960db66f.css"
   },
   {
-    "revision": "2f173fb192c69bb61ca8",
-    "url": "/vue/js/chunk-6b9210ce.a73b90de.js"
+    "revision": "ae2a0657dd4e76a757bf",
+    "url": "/vue/js/chunk-6360553c.02eaa92a.js"
+  },
+  {
+    "revision": "1f36242ca5b519d5a33d",
+    "url": "/vue/css/chunk-76330466.643307e0.css"
+  },
+  {
+    "revision": "1f36242ca5b519d5a33d",
+    "url": "/vue/js/chunk-76330466.3dd8829b.js"
   },
   {
     "revision": "4572f8863c08ff0b11fc",
@@ -56,20 +48,28 @@ self.__precacheManifest = [
     "url": "/vue/js/chunk-77b3c4ba.85acb6ed.js"
   },
   {
-    "revision": "51649ffc79b7aaa56d1b",
+    "revision": "85e485abc0d3ea02c7e1",
     "url": "/vue/css/chunk-78eb4e80.0aef9b35.css"
   },
   {
-    "revision": "51649ffc79b7aaa56d1b",
-    "url": "/vue/js/chunk-78eb4e80.4fd38ca1.js"
+    "revision": "85e485abc0d3ea02c7e1",
+    "url": "/vue/js/chunk-78eb4e80.3358e951.js"
   },
   {
-    "revision": "b8c583bbced619359c40",
+    "revision": "5a127ebe353db90c2593",
+    "url": "/vue/css/chunk-7e75055a.eee4489f.css"
+  },
+  {
+    "revision": "5a127ebe353db90c2593",
+    "url": "/vue/js/chunk-7e75055a.7660000d.js"
+  },
+  {
+    "revision": "1adbd29e385f958ae83a",
     "url": "/vue/css/chunk-vendors.4384cebb.css"
   },
   {
-    "revision": "b8c583bbced619359c40",
-    "url": "/vue/js/chunk-vendors.c69eaf9f.js"
+    "revision": "1adbd29e385f958ae83a",
+    "url": "/vue/js/chunk-vendors.14622935.js"
   },
   {
     "revision": "fd27aec9cd6f7f619a21f5d5bfe3b5ff",
@@ -92,12 +92,12 @@ self.__precacheManifest = [
     "url": "/vue/img/kapsel-logo.c043d58e.png"
   },
   {
-    "revision": "160b9cd7d155ec08bd4427dc87afb3ef",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-300.160b9cd7.eot"
-  },
-  {
     "revision": "4f5f5c645bf1a0cd30d0927f363da4a8",
     "url": "/vue/fonts/roboto-condensed-v17-latin-300.4f5f5c64.woff2"
+  },
+  {
+    "revision": "160b9cd7d155ec08bd4427dc87afb3ef",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-300.160b9cd7.eot"
   },
   {
     "revision": "b8f4e373a619c50643e7dfa36e9474d6",
@@ -108,24 +108,24 @@ self.__precacheManifest = [
     "url": "/vue/fonts/roboto-condensed-v17-latin-300.f8701819.ttf"
   },
   {
-    "revision": "4230f241836bcfeebad3db578e0c944e",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.4230f241.eot"
-  },
-  {
     "revision": "3ada4464a5d4d208c5e3591076c5138a",
     "url": "/vue/fonts/roboto-condensed-v17-latin-regular.3ada4464.woff2"
+  },
+  {
+    "revision": "4230f241836bcfeebad3db578e0c944e",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.4230f241.eot"
   },
   {
     "revision": "5c7a07a5cc1fd3d8196e6f2a2e0f76ff",
     "url": "/vue/fonts/roboto-condensed-v17-latin-regular.5c7a07a5.woff"
   },
   {
-    "revision": "b47c5c18180aeaa8de60282ab7667d6f",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.b47c5c18.ttf"
-  },
-  {
     "revision": "b7acb4253d004d9ec348010d487b559c",
     "url": "/vue/fonts/roboto-condensed-v17-latin-700.b7acb425.eot"
+  },
+  {
+    "revision": "b47c5c18180aeaa8de60282ab7667d6f",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.b47c5c18.ttf"
   },
   {
     "revision": "6b222561afc4a71b9888f2ec060b72de",
@@ -140,12 +140,12 @@ self.__precacheManifest = [
     "url": "/vue/fonts/roboto-condensed-v17-latin-700.8b5d9f3f.ttf"
   },
   {
-    "revision": "f3ae85bcdd2230f15b5127256b5c97c0",
-    "url": "/vue/img/roboto-condensed-v17-latin-300.f3ae85bc.svg"
-  },
-  {
     "revision": "8cb983f9db2dc3cf43e7879513126a5c",
     "url": "/vue/img/roboto-condensed-v17-latin-regular.8cb983f9.svg"
+  },
+  {
+    "revision": "f3ae85bcdd2230f15b5127256b5c97c0",
+    "url": "/vue/img/roboto-condensed-v17-latin-300.f3ae85bc.svg"
   },
   {
     "revision": "587ed44908df84877c5a7f668eb1dfa1",
@@ -172,7 +172,7 @@ self.__precacheManifest = [
     "url": "/vue/fonts/MaterialIcons-Regular.a37b0c01.ttf"
   },
   {
-    "revision": "d5bfff786f9e348c045b077984627663",
+    "revision": "14c621f9c11d87031ff6552362b1a87c",
     "url": "/vue/index.html"
   },
   {
