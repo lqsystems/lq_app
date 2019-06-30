@@ -1,6 +1,6 @@
 <template>
   <div class="reactor-index">
-    <BaseHeader :handle-icon-click="logout" />
+    <BaseHeader :handle-logo-click="logout" />
     <div class="reactor-card-grid">
       <div class="reactor-card-row">
         <ReactorIndexCard

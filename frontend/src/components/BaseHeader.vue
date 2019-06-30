@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="header"
-  >
+  <div class="header">
     <span
       v-if="backIcon"
       v-ripple
@@ -12,6 +10,7 @@
       class="header-logo"
       src="@/assets/kapsel-logo.png"
       alt="company logo"
+      @click="handleLogoClick"
     >
     <button
       v-if="showHistoryButton"
@@ -45,6 +44,10 @@ export default {
       default: false,
     },
     handleIconClick: {
+      type: Function,
+      default: () => { },
+    },
+    handleLogoClick: {
       type: Function,
       default: () => { },
     },
