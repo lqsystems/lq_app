@@ -23,6 +23,16 @@ export default new Router({
       component: () => import('@/views/ReactorIndex'),
     },
     {
+      path: '/runs',
+      name: 'runs',
+      component: () => import('@/views/Runs'),
+    },
+    {
+      path: '/history',
+      name: 'history',
+      component: () => import('@/views/History'),
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('@/views/Test'),

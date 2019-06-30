@@ -2,6 +2,7 @@
   <div class="reactor-controls view">
     <BaseHeader
       back-icon
+      :show-history-button="true"
       :handle-icon-click="routeHome"
     />
     <div class="rc-main">
