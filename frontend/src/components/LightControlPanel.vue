@@ -111,7 +111,7 @@ export default {
 
   .light-control-panel {
     .cp-item {
-      padding: 2em;
+      padding: 1.4em;
     }
   }
 
