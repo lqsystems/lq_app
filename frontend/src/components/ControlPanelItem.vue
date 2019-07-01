@@ -67,6 +67,12 @@ export default {
   text-transform: uppercase;
 }
 
+.cp-item-wrapper {
+  &.light {
+
+  }
+}
+
 .cp-item-col-right {
   display: flex;
   flex-direction: row;

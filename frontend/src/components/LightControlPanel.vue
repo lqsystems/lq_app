@@ -1,14 +1,19 @@
 <template>
   <ControlPanel
     title="Light"
+    class="light-control-panel"
   >
-    <ControlPanelItem label="Power">
+    <ControlPanelItem
+      label="Power"
+    >
       <SwitchControl
         :is-on="lamp.powerOn"
         @toggle="toggleLight"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Level">
+    <ControlPanelItem
+      label="Level"
+    >
       <SliderControl
         :level="lampLevel"
         :level-label-func="getPercentLabel"
@@ -27,7 +32,7 @@
       label="Stop"
       :include-divider="false"
     >
-      <div class="hi time-picker-wrapper">
+      <div class="time-picker-wrapper">
         <BaseTimePicker initial-time="20:00" />
       </div>
     </ControlPanelItem>
@@ -35,6 +40,7 @@
 </template>
 
 <script>
+// remove light classes. replace with something more substantial
 import io from 'socket.io-client';
 import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
@@ -96,10 +102,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
   .time-picker-wrapper {
     width: 65%;
     margin-left: auto;
     padding-right: 0.5em;
   }
+
+  .light-control-panel {
+    .cp-item {
+      padding: 2em;
+    }
+  }
+
 </style>
