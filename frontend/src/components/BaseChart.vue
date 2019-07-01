@@ -9,13 +9,12 @@
 
 <script>
 import Chart from 'chart.js';
-import { mockProcessData } from '../utils/chart.utils';
 
 export default {
   name: 'BaseChart',
   props: {
-    data: {
-      type: Array,
+    config: {
+      type: Object,
       required: true,
     },
   },
@@ -25,15 +24,19 @@ export default {
 
     Chart.defaults.global.defaultFontColor = 'white';
 
+    const {
+      xAxisID, yAxisID, yAxisConfig, title, points,
+    } = this.config;
+
     const chart = new Chart(canvas.getContext('2d'), {
+      xAxisID,
+      yAxisID,
       type: 'line',
-      xAxisID: 'time',
-      yAxisID: 'OD',
       data: {
         datasets: [
           {
-            data: this.data,
-            label: 'Dissolved Oxygen',
+            data: points,
+            label: title,
             pointRadius: 0,
             borderColor: 'rgb(255, 99, 132)',
             borderWidth: 1,
@@ -75,16 +78,12 @@ export default {
             },
           }],
           yAxes: [{
-            id: 'OD',
+            id: yAxisID,
             type: 'linear',
-            ticks: {
-              min: 0,
-              max: 100,
-              stepSize: 20,
-            },
+            ticks: yAxisConfig.ticks,
             scaleLabel: {
               display: true,
-              labelString: 'Percent',
+              labelString: yAxisConfig.label,
             },
             gridLines: {
               color: gridLineColor,

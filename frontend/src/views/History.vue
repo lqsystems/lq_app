@@ -31,7 +31,7 @@
             </ul>
           </div>
           <div class="data-content data-content-right">
-            <BaseChart :data="DOData" />
+            <BaseChart :config="chartConfig" />
           </div>
         </div>
       </BaseCard>
@@ -47,13 +47,10 @@ import BaseCard from '../components/BaseCard';
 import BaseChart from '../components/BaseChart';
 import BaseHeader from '../components/BaseHeader';
 
-import { mockProcessData } from '../utils/chart.utils';
-
-const { DOData } = mockProcessData;
+import { parameterChartConfig } from '../utils/chart.utils';
 
 export default {
   name: 'Test',
-  DOData,
   components: {
     BaseCard,
     BaseChart,
@@ -61,7 +58,7 @@ export default {
   },
   data() {
     return {
-      DOData,
+      chartConfig: parameterChartConfig.TEMP,
     };
   },
   methods: {

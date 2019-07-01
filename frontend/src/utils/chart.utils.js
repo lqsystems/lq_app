@@ -65,9 +65,82 @@ const getStableErrorData = ({
       y,
     });
   }
-  // set y to a random number within range +
-  // if odd, multiply result by -1
+
   return points;
+};
+
+const getRandomizedErrorData = ({
+  start, numPoints, stableVal, spreadUpper, spreadLower, step, kFreq, magUpper,
+}) => {
+  const points = [];
+
+
+  const errorOptions = {
+    frequency: () => getRandomInteger(0, 10000) < (kFreq || 1000),
+    magnitude: () => getRandomNegative() * getRandomNumber(0, magUpper || 0.2),
+  };
+  const { frequency, magnitude } = errorOptions;
+
+  for (let i = start; i < numPoints; i += step) {
+    const bigJump = magnitude();
+    const littleJump = getRandomNumber(-1 * spreadLower, spreadUpper);
+    const linePoint = stableVal;
+
+    // eslint-disable-next-line no-nested-ternary
+    const y = frequency()
+      ? linePoint + bigJump
+      : linePoint + littleJump;
+
+    // y = i === start
+    //   ? stableVal
+    //   : stableVal + getRandomNumber(spreadLower * -1, spreadUpper);
+
+    points.push({
+      x: i,
+      y,
+    });
+  }
+
+  return points;
+};
+
+const getTempData = () => {
+  const pointDensity = 1.2;
+
+  const dataTemp1 = getRandomizedErrorData({
+    start: 0,
+    numPoints: 13,
+    stableVal: 37,
+    spreadUpper: 0.1,
+    spreadLower: 0.1,
+    step: pointDensity * 0.02,
+  });
+
+  const bigJumpOptions = {
+    kFreq: 1000,
+    magUpper: 3,
+  };
+
+  const dataTemp2 = getRandomizedErrorData({
+    start: 13,
+    numPoints: 15,
+    stableVal: 37,
+    spreadUpper: 0.1,
+    spreadLower: 0.1,
+    step: pointDensity * 0.03,
+    ...bigJumpOptions,
+  });
+
+  const dataTemp3 = getRandomizedErrorData({
+    start: 15,
+    numPoints: 17,
+    stableVal: 37,
+    spreadUpper: 0.3,
+    spreadLower: 0.2,
+    step: pointDensity * 0.02,
+  });
+
+  return [...dataTemp1, ...dataTemp2, ...dataTemp3];
 };
 
 const getDOData = () => {
@@ -127,6 +200,34 @@ const getDOData = () => {
   return data;
 };
 
-export const mockProcessData = {
-  DOData: getDOData(),
+
+export const parameterChartConfig = {
+  DO: {
+    title: 'Dissolved Oxygen',
+    points: getDOData(),
+    xAxisID: 'time',
+    yAxisID: 'OD',
+    yAxisConfig: {
+      label: 'Percent',
+      ticks: {
+        min: 0,
+        max: 100,
+        stepSize: 20,
+      },
+    },
+  },
+  TEMP: {
+    title: 'Temperature',
+    points: getTempData(),
+    xAxisID: 'time',
+    yAxisID: 'temp',
+    yAxisConfig: {
+      label: 'Degrees Celcius',
+      ticks: {
+        min: 25,
+        max: 45,
+        stepSize: 5,
+      },
+    },
+  },
 };
