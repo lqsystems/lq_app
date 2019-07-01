@@ -200,6 +200,13 @@ const getDOData = () => {
   return data;
 };
 
+const getOpticalDensityData = () => [
+  { x: 0, y: 0 },
+  { x: 8, y: 30 },
+  { x: 11, y: 85 },
+  { x: 13, y: 110 },
+  { x: 17, y: 145 },
+];
 
 export const parameterChartConfig = {
   DO: {
@@ -227,6 +234,20 @@ export const parameterChartConfig = {
         min: 25,
         max: 45,
         stepSize: 5,
+      },
+    },
+  },
+  OPTICALD: {
+    title: 'Optical Density',
+    points: getOpticalDensityData(),
+    xAxisID: 'time',
+    yAxisID: 'temp',
+    yAxisConfig: {
+      label: 'OD600',
+      ticks: {
+        min: 0,
+        max: 160,
+        stepSize: 20,
       },
     },
   },
