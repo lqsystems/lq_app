@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "bcc589b99771af679211",
+    "revision": "994df67359b2b6572be8",
     "url": "/vue/css/app.c062de00.css"
   },
   {
-    "revision": "bcc589b99771af679211",
-    "url": "/vue/js/app.a9e64403.js"
+    "revision": "994df67359b2b6572be8",
+    "url": "/vue/js/app.addbdfb3.js"
   },
   {
     "revision": "391e232a34396af711c6",
@@ -16,20 +16,20 @@ self.__precacheManifest = [
     "url": "/vue/js/chunk-061848de.83576a22.js"
   },
   {
+    "revision": "29583e7e8d8ae1909075",
+    "url": "/vue/css/chunk-291be31e.f9d4294b.css"
+  },
+  {
+    "revision": "29583e7e8d8ae1909075",
+    "url": "/vue/js/chunk-291be31e.9c76b976.js"
+  },
+  {
     "revision": "bc6ea703deb77e2c48e2",
     "url": "/vue/css/chunk-5f443b6e.f7442519.css"
   },
   {
     "revision": "bc6ea703deb77e2c48e2",
     "url": "/vue/js/chunk-5f443b6e.46008514.js"
-  },
-  {
-    "revision": "ae2a0657dd4e76a757bf",
-    "url": "/vue/css/chunk-6360553c.960db66f.css"
-  },
-  {
-    "revision": "ae2a0657dd4e76a757bf",
-    "url": "/vue/js/chunk-6360553c.02eaa92a.js"
   },
   {
     "revision": "1f36242ca5b519d5a33d",
@@ -92,12 +92,12 @@ self.__precacheManifest = [
     "url": "/vue/img/kapsel-logo.c043d58e.png"
   },
   {
-    "revision": "4f5f5c645bf1a0cd30d0927f363da4a8",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-300.4f5f5c64.woff2"
-  },
-  {
     "revision": "160b9cd7d155ec08bd4427dc87afb3ef",
     "url": "/vue/fonts/roboto-condensed-v17-latin-300.160b9cd7.eot"
+  },
+  {
+    "revision": "4f5f5c645bf1a0cd30d0927f363da4a8",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-300.4f5f5c64.woff2"
   },
   {
     "revision": "b8f4e373a619c50643e7dfa36e9474d6",
@@ -108,24 +108,24 @@ self.__precacheManifest = [
     "url": "/vue/fonts/roboto-condensed-v17-latin-300.f8701819.ttf"
   },
   {
-    "revision": "3ada4464a5d4d208c5e3591076c5138a",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.3ada4464.woff2"
-  },
-  {
     "revision": "4230f241836bcfeebad3db578e0c944e",
     "url": "/vue/fonts/roboto-condensed-v17-latin-regular.4230f241.eot"
+  },
+  {
+    "revision": "3ada4464a5d4d208c5e3591076c5138a",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-regular.3ada4464.woff2"
   },
   {
     "revision": "5c7a07a5cc1fd3d8196e6f2a2e0f76ff",
     "url": "/vue/fonts/roboto-condensed-v17-latin-regular.5c7a07a5.woff"
   },
   {
-    "revision": "b7acb4253d004d9ec348010d487b559c",
-    "url": "/vue/fonts/roboto-condensed-v17-latin-700.b7acb425.eot"
-  },
-  {
     "revision": "b47c5c18180aeaa8de60282ab7667d6f",
     "url": "/vue/fonts/roboto-condensed-v17-latin-regular.b47c5c18.ttf"
+  },
+  {
+    "revision": "b7acb4253d004d9ec348010d487b559c",
+    "url": "/vue/fonts/roboto-condensed-v17-latin-700.b7acb425.eot"
   },
   {
     "revision": "6b222561afc4a71b9888f2ec060b72de",
@@ -144,12 +144,12 @@ self.__precacheManifest = [
     "url": "/vue/img/roboto-condensed-v17-latin-regular.8cb983f9.svg"
   },
   {
-    "revision": "f3ae85bcdd2230f15b5127256b5c97c0",
-    "url": "/vue/img/roboto-condensed-v17-latin-300.f3ae85bc.svg"
-  },
-  {
     "revision": "587ed44908df84877c5a7f668eb1dfa1",
     "url": "/vue/img/roboto-condensed-v17-latin-700.587ed449.svg"
+  },
+  {
+    "revision": "f3ae85bcdd2230f15b5127256b5c97c0",
+    "url": "/vue/img/roboto-condensed-v17-latin-300.f3ae85bc.svg"
   },
   {
     "revision": "d006067c56bce773f2479272b81e8ba6",
@@ -172,7 +172,7 @@ self.__precacheManifest = [
     "url": "/vue/fonts/MaterialIcons-Regular.a37b0c01.ttf"
   },
   {
-    "revision": "14c621f9c11d87031ff6552362b1a87c",
+    "revision": "e9e1d73cef66cbfda4c775708d9ddb60",
     "url": "/vue/index.html"
   },
   {
