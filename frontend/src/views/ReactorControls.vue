@@ -8,34 +8,32 @@
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <BaseSidebarHeader
-            :title="selectedModuleName"
-          />
+          <BaseSidebarHeader :title="selectedModuleName" />
           <v-divider />
           <div class="rc-sidebar-items">
             <BaseSidebarItem
+              title="Sensors"
+              icon-name="icon-water"
+              :active="selectedControlPanel === 'Sensor'"
+              :handle-click="SET_SENSORS_ACTIVE"
+            />
+            <BaseSidebarItem
               title="Air"
               icon-name="icon-air"
-              :active="selectedControlPanel=== 'Air'"
+              :active="selectedControlPanel === 'Air'"
               :handle-click="SET_AIR_ACTIVE"
             />
             <BaseSidebarItem
               title="Light"
               icon-name="icon-sun"
-              :active="selectedControlPanel=== 'Light'"
+              :active="selectedControlPanel === 'Light'"
               :handle-click="SET_LIGHT_ACTIVE"
             />
             <BaseSidebarItem
               title="Heater"
               icon-name="icon-fire"
-              :active="selectedControlPanel=== 'Heater'"
+              :active="selectedControlPanel === 'Heater'"
               :handle-click="SET_HEATER_ACTIVE"
-            />
-            <BaseSidebarItem
-              title="Pump"
-              icon-name="icon-water"
-              :active="selectedControlPanel=== 'Pump'"
-              :handle-click="SET_PUMP_ACTIVE"
             />
           </div>
           <!-- <div class="rc-sidebar-heading">
@@ -76,9 +74,8 @@ import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
   SET_LIGHT_ACTIVE,
-  SET_PUMP_ACTIVE,
+  SET_SENSORS_ACTIVE,
 } from '@/store/mutations.types';
-
 import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
@@ -87,7 +84,7 @@ import BaseSidebarItem from '@/components/BaseSidebarItem';
 import AirControlPanel from '@/components/AirControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 import LightControlPanel from '@/components/LightControlPanel';
-import PumpControlPanel from '@/components/PumpControlPanel';
+import SensorControlPanel from '@/components/SensorControlPanel';
 
 export default {
   components: {
@@ -99,7 +96,7 @@ export default {
     AirControlPanel,
     HeaterControlPanel,
     LightControlPanel,
-    PumpControlPanel,
+    SensorControlPanel,
   },
   computed: {
     // TODO: use map state for these
@@ -113,10 +110,10 @@ export default {
   },
   methods: {
     ...mapMutations([
+      SET_SENSORS_ACTIVE,
       SET_AIR_ACTIVE,
       SET_HEATER_ACTIVE,
       SET_LIGHT_ACTIVE,
-      SET_PUMP_ACTIVE,
     ]),
     routeHome() {
       this.$router.push('/');
