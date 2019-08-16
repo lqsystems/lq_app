@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    title="Sensors"
+    title="Sensor"
   >
     <ControlPanelItem
       label="State"
@@ -8,22 +8,48 @@
     >
       <SwitchControl
         :is-on="isOn"
-        @toggle="sayHi"
+        @toggle="toggleSensorState"
       />
     </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
-/*
 
-*/
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
+
+import callApi from '@/utils/api.utils.js';
+import { UPDATE_STATE_URL } from '@/constants/api.constants';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
 
+const constructSensorToggleRequestBody = ({
+  moduleName, reactionId, isOn, delay,
+}) => {
+  const params = `${moduleName}-SensorOnOff-parameters`;
+  const activeSwitch = `ReactionActive-${reactionId}`;
+
+  return {
+    activeSwitch,
+    mid: moduleName,
+    allStates: { SensorOnOff: isOn },
+    activeId: reactionId,
+    [params]: { ctrlValue: delay.toString() },
+    changes: ['SensorOnOff'],
+  };
+};
+
+const updateSensorState = (options) => {
+  const requestPayload = constructSensorToggleRequestBody(options);
+
+  callApi(UPDATE_STATE_URL, {
+
+    method: 'POST',
+    data: requestPayload,
+  });
+};
 
 export default {
   name: 'SensorControlPanel',
@@ -37,9 +63,27 @@ export default {
       isOn: false,
     };
   },
+  computed: {
+    ...mapGetters(['selectedModuleName', 'activeReactionId']),
+  },
+  mounted() {
+    updateSensorState({
+      moduleName: this.selectedModuleName,
+      reactionId: this.activeReactionId,
+      isOn: this.isOn,
+      delay: 5,
+    });
+  },
   methods: {
-    sayHi() {
-      console.log('hello');
+    toggleSensorState() {
+      this.isOn = !this.isOn;
+
+      updateSensorState({
+        moduleName: this.selectedModuleName,
+        reactionId: this.activeReactionId,
+        isOn: this.isOn,
+        delay: 5,
+      });
     },
   },
 };
