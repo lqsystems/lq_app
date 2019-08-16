@@ -11,23 +11,9 @@
         />
         <ReactorIndexCard
           v-ripple
-          :sensor-data="formatSensorData(sensorData, 'MV1')"
-          :handle-click="handleCardClick"
-          reactor-title="MV1"
-        />
-      </div>
-      <div class="reactor-card-row">
-        <ReactorIndexCard
-          v-ripple
           :sensor-data="formatSensorData(sensorData, 'Prime2')"
           :handle-click="handleCardClick"
           reactor-title="Prime2"
-        />
-        <ReactorIndexCard
-          v-ripple
-          :sensor-data="formatSensorData(sensorData, 'MV1')"
-          :handle-click="handleCardClick"
-          reactor-title="MV2"
         />
       </div>
     </div>
