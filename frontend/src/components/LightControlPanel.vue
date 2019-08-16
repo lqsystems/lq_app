@@ -53,7 +53,7 @@ import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
 
-const socket = io(DIM_LAMP_SOCKET_URL);
+// const socket = io(DIM_LAMP_SOCKET_URL);
 
 export default {
   name: 'LightControlPanel',
@@ -71,7 +71,7 @@ export default {
     },
   },
   mounted() {
-    socket.on('connect', () => { console.log('socket connected!'); });
+    // socket.on('connect', () => { console.log('socket connected!'); });
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
