@@ -3,7 +3,7 @@
     title="Sensor"
   >
     <ControlPanelItem
-      label="State"
+      label="ON / OFF"
       :include-divider="false"
     >
       <SwitchControl
