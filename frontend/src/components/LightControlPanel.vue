@@ -15,6 +15,7 @@
       label="Level"
     >
       <SliderControl
+        :limits="[0,60]"
         :level="lampLevel"
         :level-label-func="getPercentLabel"
         @slider-move="dimLamp"

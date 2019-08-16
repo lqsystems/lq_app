@@ -10,6 +10,7 @@
     </ControlPanelItem>
     <ControlPanelItem label="Level">
       <SliderControl
+        :limits="[0,60]"
         :level="heaterLevel"
         :level-label-func="getPercentLabel"
         @slider-move-end="updateIntensity"
