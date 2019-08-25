@@ -14,7 +14,7 @@
         <slot />
       </div>
     </div>
-    <!-- <BaseDivdier v-if="includeDivider" /> -->
+    <BaseDivdier v-if="includeDivider" />
   </div>
 </template>
 

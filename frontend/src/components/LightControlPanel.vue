@@ -3,17 +3,39 @@
     title="Light"
     class="light-control-panel"
   >
-    <ControlPanelItem
-      label="Power"
-    >
+    <ControlPanelItem label="Turn on now">
       <SwitchControl
         :is-on="lamp.powerOn"
         @toggle="toggleLight"
       />
     </ControlPanelItem>
+    <ControlPanelItem label="Turn on as scheduled">
+      <SwitchControl
+        :is-on="isScheduleActive"
+        @toggle="toggleSchedule"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem label="Start">
+      <div class="time-picker-wrapper">
+        <BaseTimePicker
+          :initial-time="startTime"
+          @update="updateStartTime"
+        />
+      </div>
+    </ControlPanelItem>
     <ControlPanelItem
-      label="Level"
+      label="Stop"
+      :include-divider="false"
     >
+      <div class="time-picker-wrapper">
+        <BaseTimePicker
+          :initial-time="stopTime"
+          @update="updateStopTime"
+        />
+      </div>
+    </ControlPanelItem>
+
+    <ControlPanelItem label="Level">
       <SliderControl
         :limits="[0,60]"
         :level="lampLevel"
@@ -22,29 +44,16 @@
         @slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
-    <ControlPanelItem
-      label="Start"
-    >
-      <div class="time-picker-wrapper">
-        <BaseTimePicker initial-time="8:00" />
-      </div>
-    </ControlPanelItem>
-    <ControlPanelItem
-      label="Stop"
-      :include-divider="false"
-    >
-      <div class="time-picker-wrapper">
-        <BaseTimePicker initial-time="20:00" />
-      </div>
-    </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
 // remove light classes. replace with something more substantial
 import io from 'socket.io-client';
+import axios from 'axios';
 import { mapActions, mapGetters } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
+import callApi from '@/utils/api.utils.js';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
 import { DIM_LAMP_SOCKET_URL } from '@/constants/api.constants';
 
@@ -65,6 +74,13 @@ export default {
     SwitchControl,
     SliderControl,
   },
+  data() {
+    return {
+      startTime: '8:00',
+      stopTime: '22:00',
+      isScheduleActive: false,
+    };
+  },
   computed: {
     ...mapGetters(['lamp', 'activeReactionId', 'selectedModuleName']),
     lampLevel() {
@@ -76,7 +92,38 @@ export default {
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
-    // TODO: this is shared with heater control panel. Extract into util function
+    postScheduleUpdate() {
+      const payload = {
+        isTimerActive: this.isScheduleActive,
+        moduleId: this.selectedModuleName,
+        schedule: {
+          onTime: this.startTime,
+          offTime: this.stopTime,
+        },
+      };
+      const updateUrl = 'http://localhost:3000/timer';
+      axios(updateUrl, {
+        method: 'POST',
+        data: payload,
+        withCredentials: false,
+      }).catch(err => console.log(err));
+    },
+    created() {
+      console.log('fdsa');
+      this.postScheduleUpdate();
+    },
+    updateStartTime(newTime) {
+      this.startTime = newTime;
+      this.postScheduleUpdate();
+    },
+    updateStopTime(newTime) {
+      this.stopTime = newTime;
+      this.postScheduleUpdate();
+    },
+    toggleSchedule() {
+      this.isScheduleActive = !this.isScheduleActive;
+      this.postScheduleUpdate();
+    },
     toggleLight(lightState) {
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Lamp',
@@ -104,16 +151,15 @@ export default {
 </script>
 
 <style lang="scss" >
-  .time-picker-wrapper {
-    width: 65%;
-    margin-left: auto;
-    padding-right: 0.5em;
-  }
+.time-picker-wrapper {
+  width: 65%;
+  margin-left: auto;
+  padding-right: 0.5em;
+}
 
-  .light-control-panel {
-    .cp-item {
-      padding: 1.4em;
-    }
+.light-control-panel {
+  .cp-item {
+    padding: 1.4em;
   }
-
+}
 </style>

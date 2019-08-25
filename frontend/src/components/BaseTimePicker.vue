@@ -33,7 +33,7 @@
       <v-btn
         flat
         color="primary"
-        @click="$refs.dialog.save(time)"
+        @click="updateTime"
       >
         OK
       </v-btn>
@@ -65,11 +65,17 @@ export default {
       },
     },
   },
+  methods: {
+    updateTime() {
+      this.$emit('update', this.time);
+      this.$refs.dialog.save(this.time);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import '../styles/variables';
+@import "../styles/variables";
 
 .v-text-field__slot {
   input {
@@ -78,7 +84,7 @@ export default {
 }
 
 .theme--dark.v-icon {
-    color: $font-color-medium-contrast;
+  color: $font-color-medium-contrast;
 }
 
 .theme--dark.v-input:not(.v-input--is-disabled) {
