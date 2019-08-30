@@ -59,6 +59,11 @@ import SliderControl from './SliderControl';
 
 // const socket = io(DIM_LAMP_SOCKET_URL);
 
+const hhmmToMinutes = (hhmm) => {
+  const a = hhmm.split(':');
+  return Number(a[0]) * 60 + Number(a[1]);
+};
+
 export default {
   name: 'LightControlPanel',
   components: {
@@ -70,8 +75,8 @@ export default {
   },
   data() {
     return {
-      startTime: '8:00',
-      stopTime: '22:00',
+      startTime: '0:00',
+      stopTime: '0:00',
       isScheduleActive: false,
     };
   },
@@ -87,7 +92,6 @@ export default {
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
     ...mapMutations([MUTATE_MODULE_PARAMS]),
-    // remove this funcitons
     updateStartTime(newTime) {
       this.startTime = newTime;
     },
@@ -102,8 +106,18 @@ export default {
         moduleName: this.selectedModuleName,
         actuatorType: 'Lamp',
         newParams: {
-          start: this.startTime,
-          stop: this.startTime,
+          start: hhmmToMinutes(this.startTime),
+          stop: hhmmToMinutes(this.stopTime),
+        },
+      };
+      this.MUTATE_MODULE_PARAMS(payload);
+    },
+    mutateLevel(level) {
+      const payload = {
+        moduleName: this.selectedModuleName,
+        actuatorType: 'Lamp',
+        newParams: {
+          level,
         },
       };
       this.MUTATE_MODULE_PARAMS(payload);
@@ -116,10 +130,7 @@ export default {
       });
     },
     updateIntensity([level]) {
-      this.UPDATE_MODULE_PARAMS({
-        actuatorType: 'Lamp',
-        newParams: { level },
-      });
+      this.mutateLevel(level);
     },
     dimLamp([sliderVal]) {
       const socketMessage = {
