@@ -13,7 +13,7 @@
           <div class="rc-sidebar-items">
             <BaseSidebarItem
               title="Sensors"
-              icon-name="icon-water"
+              icon-name="icon-bar-graph"
               :active="selectedControlPanel === 'Sensor'"
               :handle-click="SET_SENSORS_ACTIVE"
             />
@@ -124,6 +124,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../styles/variables";
+
 
 .reactor-controls {
   height: 100%;
