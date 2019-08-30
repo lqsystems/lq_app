@@ -42,6 +42,7 @@ export const mutations = {
     state.modules[moduleName].moduleState[actuatorType] = newState;
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
+    console.log({ moduleName, actuatorType, newParams });
     const { level } = newParams;
     // the api requires level to be a string. Ensure that that is the case
     newParams = level && typeof level === 'number'

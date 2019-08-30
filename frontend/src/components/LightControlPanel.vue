@@ -9,12 +9,6 @@
         @toggle="toggleLight"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Turn on as scheduled">
-      <SwitchControl
-        :is-on="isScheduleActive"
-        @toggle="toggleSchedule"
-      />
-    </ControlPanelItem>
     <ControlPanelItem label="Start">
       <div class="time-picker-wrapper">
         <BaseTimePicker
@@ -51,12 +45,12 @@
 // remove light classes. replace with something more substantial
 import io from 'socket.io-client';
 import axios from 'axios';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
+import { MUTATE_MODULE_PARAMS } from '@/store/mutations.types';
 import callApi from '@/utils/api.utils.js';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
 import { DIM_LAMP_SOCKET_URL } from '@/constants/api.constants';
-
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -92,39 +86,30 @@ export default {
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
-    postScheduleUpdate() {
-      const payload = {
-        isTimerActive: this.isScheduleActive,
-        moduleId: this.selectedModuleName,
-        schedule: {
-          onTime: this.startTime,
-          offTime: this.stopTime,
-        },
-      };
-      const updateUrl = 'http://localhost:3000/timer';
-      axios(updateUrl, {
-        method: 'POST',
-        data: payload,
-        withCredentials: false,
-      }).catch(err => console.log(err));
-    },
-    created() {
-      console.log('fdsa');
-      this.postScheduleUpdate();
-    },
+    ...mapMutations([MUTATE_MODULE_PARAMS]),
+    // remove this funcitons
     updateStartTime(newTime) {
       this.startTime = newTime;
-      this.postScheduleUpdate();
     },
     updateStopTime(newTime) {
       this.stopTime = newTime;
-      this.postScheduleUpdate();
     },
     toggleSchedule() {
       this.isScheduleActive = !this.isScheduleActive;
-      this.postScheduleUpdate();
+    },
+    mutateStartStop() {
+      const payload = {
+        moduleName: this.selectedModuleName,
+        actuatorType: 'Lamp',
+        newParams: {
+          start: this.startTime,
+          stop: this.startTime,
+        },
+      };
+      this.MUTATE_MODULE_PARAMS(payload);
     },
     toggleLight(lightState) {
+      this.mutateStartStop();
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Lamp',
         newState: lightState,
