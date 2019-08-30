@@ -1,7 +1,5 @@
 <template>
-  <ControlPanel
-    title="Sensor"
-  >
+  <ControlPanel title="Sensor">
     <ControlPanelItem
       label="ON / OFF"
       :include-divider="false"
@@ -10,6 +8,17 @@
         :is-on="isOn"
         @toggle="toggleSensorState"
       />
+    </ControlPanelItem>
+    <ControlPanelItem
+      label="Delay"
+      :include-divider="false"
+    >
+      <input
+        v-model="delay"
+        class="sensor-delay-input"
+        type="text"
+      >
+      <span class="delay-label">sec</span>
     </ControlPanelItem>
   </ControlPanel>
 </template>
@@ -61,6 +70,7 @@ export default {
   data() {
     return {
       isOn: false,
+      delay: 5,
     };
   },
   computed: {
@@ -71,7 +81,7 @@ export default {
       moduleName: this.selectedModuleName,
       reactionId: this.activeReactionId,
       isOn: this.isOn,
-      delay: 5,
+      delay: this.delay,
     });
   },
   methods: {
@@ -82,7 +92,7 @@ export default {
         moduleName: this.selectedModuleName,
         reactionId: this.activeReactionId,
         isOn: this.isOn,
-        delay: 5,
+        delay: this.delay,
       });
     },
   },
@@ -90,4 +100,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
+
+.sensor-delay-input {
+  border-bottom: 1px solid $grey-300;
+  text-align: center;
+  width: 40px;
+  padding-right: .2em;
+  // border: 1px solid #2b3553;
+  // border-radius: 7px;
+
+  &:focus {
+    outline: none;
+  }
+}
+.delay-label {
+  text-transform: lowercase;
+  margin-right: 1.6em;
+}
 </style>
