@@ -81,4 +81,7 @@ $radius: 25px;
   margin: 10px 0;
 }
 
+.icon-bar-graph {
+    font-size: 0.7em;
+}
 </style>
