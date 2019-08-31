@@ -5,7 +5,7 @@
       :include-divider="false"
     >
       <SwitchControl
-        :is-on="isOn"
+        :is-on="sensorOnOff"
         @toggle="toggleSensorState"
       />
     </ControlPanelItem>
@@ -69,20 +69,24 @@ export default {
   },
   data() {
     return {
-      isOn: false,
-      delay: 5,
+      // delay: this.sensors.ctrlValue,
     };
   },
+
   computed: {
-    ...mapGetters(['selectedModuleName', 'activeReactionId']),
+    ...mapGetters(['selectedModuleName', 'activeReactionId', 'sensors', 'sensorOnOff']),
+  },
+  watch: {
+    delay() {
+      updateSensorState({
+        moduleName: this.selectedModuleName,
+        reactionId: this.activeReactionId,
+        isOn: this.isOn,
+        delay: this.delay,
+      });
+    },
   },
   mounted() {
-    updateSensorState({
-      moduleName: this.selectedModuleName,
-      reactionId: this.activeReactionId,
-      isOn: this.isOn,
-      delay: this.delay,
-    });
   },
   methods: {
     toggleSensorState() {
