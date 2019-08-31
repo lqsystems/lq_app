@@ -1,6 +1,6 @@
 
 <template>
-  <v-app>
+  <v-app v-if="!isFetching">
     <transition
       name="router-animation"
       enter-active-class="animated fadeIn"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
+import { mapActions, mapMutations, mapGetters } from 'vuex';
 import { diff } from 'deep-object-diff';
 import { diffStatesOnUpdateMessage, getModuleByReactionId } from '@/utils/entities.utils';
 import { FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE } from '@/store/actions.types';
@@ -20,10 +20,12 @@ import { MUTATE_MODULE_STATE, SOCKET_DATUM } from '@/store/mutations.types';
 
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters(['isFetching']),
+  },
   created() {
     this.FETCH_MODULES();
   },
-
   sockets: {
     module(message) {
       console.log('Limit Crossover Detected');
