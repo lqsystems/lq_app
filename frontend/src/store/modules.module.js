@@ -31,6 +31,7 @@ const mutations = {
 
 export const getters = {
   selectedModuleName: state => state.selectedModuleName,
+  isFetching: state => state.isFetching,
 };
 
 export default {
