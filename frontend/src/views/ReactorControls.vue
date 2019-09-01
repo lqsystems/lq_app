@@ -1,5 +1,8 @@
 <template>
-  <div class="reactor-controls view">
+  <div
+    v-if="!isFetching"
+    class="reactor-controls view"
+  >
     <BaseHeader
       back-icon
       :show-history-button="true"
@@ -100,7 +103,7 @@ export default {
   },
   computed: {
     // TODO: use map state for these
-    ...mapGetters(['selectedControlPanel', 'selectedModuleName']),
+    ...mapGetters(['isFetching', 'selectedControlPanel', 'selectedModuleName']),
     ...mapState({
       sensorData: state => state.sensors[state.modules.selectedModuleName],
     }),
@@ -108,6 +111,7 @@ export default {
       return `${this.selectedControlPanel}ControlPanel`;
     },
   },
+
   methods: {
     ...mapMutations([
       SET_SENSORS_ACTIVE,
