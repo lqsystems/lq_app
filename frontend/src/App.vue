@@ -56,15 +56,16 @@ $font-color: white;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   padding-bottom: 65px;
 }
 
 .application {
-  background-image: url('assets/space-blue.jpg') !important;
+  background-image: url("assets/space-blue.jpg") !important;
   background-size: cover !important;
-  font-family: 'Roboto Condensed' !important;
+  font-family: "Roboto Condensed" !important;
 }
 
 .theme--light {
@@ -80,5 +81,4 @@ html, body {
   position: fixed;
   width: 100%;
 }
-
 </style>
