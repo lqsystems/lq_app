@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 const influx = require('influx');
 
+const { heaterFailSafe } = require('../utility/heaterFailSafe');
 
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -31,6 +32,7 @@ const g_Root = '/';
 //
 //
 const gHWCmd_query = 'query';
+let gUserRAssets;
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
@@ -728,7 +730,15 @@ HWProc.on('message', (message) => {
                   } else {   // SEND SENSOR DATA
                       //
 
-                      //console.log(message)
+                    const dependencies = {
+                      userRAssets: gUserRAssets,
+                      HWProc,
+                      emitModuleUpdate,
+                    };
+
+                    heaterFailSafe(dependencies, message.message, 1);
+
+
                       HWProc.dataEvents.emit('datum', message);
                       var storeData = message.message;
                       if ( storeData && (storeData.OD != undefined)  && (storeData.Temperature != undefined) && storeData.id ) {
@@ -847,7 +857,8 @@ function handleError(err) {
     return(err)
 }
 
-global.loadRootAssets = (userId,renderPage,res) => {
+
+loadRootAssets = (userId,renderPage,res) => {
     //
     //
     if ( gUserAssets[userId] == undefined ) {
@@ -855,6 +866,7 @@ global.loadRootAssets = (userId,renderPage,res) => {
     }
 
     var userRAssets = gUserAssets[userId];
+    gUserRAssets = userRAssets; 
     var moduleList = userRAssets.genModuleList()
     //
 
