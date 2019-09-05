@@ -1,6 +1,8 @@
+// want sockets to run node app localhost while in dev mode
+
 const { NODE_ENV } = process.env;
 
-const PI_HOSTNAME = '25.81.56.126';
+const PI_HOSTNAME = window.location.hostname;
 const SERVER_PORT = '8888';
 const IS_SERVER_RUNNING_ON_PI = NODE_ENV === 'production';
 
@@ -9,6 +11,7 @@ const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
 
 // SOCKET URLS
 export const SENSOR_DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
+
 export const DIM_LAMP_SOCKET_URL = IS_SERVER_RUNNING_ON_PI
   ? `${PI_BASE_URL}/dimLamp`
   : `${DEV_BASE_URL}/dimLamp`;
