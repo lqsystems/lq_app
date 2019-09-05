@@ -28,6 +28,18 @@ export default {
       console.log('Limit Crossover Detected');
       console.log('incoming message', message);
 
+      if (message.failSafe) {
+        const { heaterState, moduleId } = message;
+        console.log({ heaterState, moduleId });
+
+        this.MUTATE_MODULE_STATE({
+          moduleName: moduleId,
+          actuatorType: 'Heater',
+          newState: heaterState,
+        });
+      }
+
+
       this.HANDLE_UPDATE_STATE_MESSAGE({
         message,
         moduleGetter: getModuleByReactionId,
@@ -43,7 +55,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([SOCKET_DATUM]),
+    ...mapMutations([SOCKET_DATUM, MUTATE_MODULE_STATE]),
     ...mapActions([FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE]),
   },
 };
