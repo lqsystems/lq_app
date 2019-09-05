@@ -59,12 +59,14 @@ const heaterFailSafe = (dependencies, message, tolerance) => {
 
     if (temp > highLimit + tolerance) {
         if (isHeaterOn) {
+            console.log(`'${module}' temp reached '${temp}'. Upper limit is '${highLimit}'. Turning heater OFF! ${Date()}`)
             turnHeaterOff(module);
         }
     }
 
     if (temp < lowLimit - tolerance) {
         if (!isHeaterOn) {
+            console.log(`'${module}' temp reached '${temp}'. Lower limit is '${highLimit}'. Turning heater ON! ${Date()}`)
             turnHeaterOn(module);
         }
     }
