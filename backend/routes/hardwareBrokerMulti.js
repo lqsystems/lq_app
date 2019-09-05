@@ -268,6 +268,12 @@ function constructServerMessage (messageBackToServer, rewriteCmd) {
 
 //
 var gWritesOK = false;
+///jjjjj
+const trigger = () => {
+    gMCUPreambles = { Prime1: { "id": 'Prime1', "cmd": 'query', "module": 'Prime1' } }
+    const msg = 'Prime1,OD: 12.343,Temperature: -10.347';
+    lineParserHandler(msg); 
+}
 
 function lineParserHandler (str) {
 
@@ -757,6 +763,8 @@ process.on('message', (message) => {
         messageToHardware(message);
         return;
     }
+
+    trigger();
 
     handleMessages(message);
     //

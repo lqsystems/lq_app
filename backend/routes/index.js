@@ -729,7 +729,6 @@ HWProc.on('message', (message) => {
 
                   } else {   // SEND SENSOR DATA
                       //
-
                     const dependencies = {
                       userRAssets: gUserRAssets,
                       HWProc,
@@ -858,6 +857,18 @@ function handleError(err) {
 }
 
 
+const getAllModulesActive = (userRAssets, moduleId) => userRAssets.allModulesActive[moduleId];
+const getModuleLimits = (userRAssets, moduleId) => getAllModulesActive(userRAssets, moduleId).limits;
+const getModuleState = (userRAssets, moduleId) => getAllModulesActive(userRAssets, moduleId).moduleState;
+const getModuleParams = (userRAssets, moduleId) => getAllModulesActive(userRAssets, moduleId).parameters;
+const getHeaterState = (userRAssets, moduleId) => getModuleState(userRAssets, moduleId).Heater;
+const getHeaterLimits = (userRAssets, moduleId) => getModuleLimits(userRAssets, moduleId).Heater;
+const getHeaterLevel = (userRAssets, moduleId) => getModuleParams(userRAssets, moduleId).Heater.level;
+const setHeaterState = (userRAssets, moduleId, state) => {
+    const stateObj = getModuleState(userRAssets, moduleId);
+    stateObj.Heater = state;
+};
+
 loadRootAssets = (userId,renderPage,res) => {
     //
     //
@@ -869,7 +880,6 @@ loadRootAssets = (userId,renderPage,res) => {
     gUserRAssets = userRAssets; 
     var moduleList = userRAssets.genModuleList()
     //
-
     if ( userRAssets.needsUpdate("reactions") ) {
 
         var reactionFields = [ 'id', 'name', 'module', 'media', 'procedure', 'notes', 'ModuleState', 'active' ]
@@ -885,6 +895,11 @@ loadRootAssets = (userId,renderPage,res) => {
 
             userRAssets.setUpdated("reactions")
             userRAssets.setEdited(false);
+
+//    setHeaterState(userRAssets, 'Prime1', true);
+//    console.log(
+//     getHeaterState(userRAssets, 'Prime1')
+//    )
 
             renderPage
               ? res.render(renderPage, { "modules" : moduleList })
