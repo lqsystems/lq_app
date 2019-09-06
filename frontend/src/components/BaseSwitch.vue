@@ -26,6 +26,12 @@ export default {
       default: false,
     },
   },
+  watch: {
+    isOn(isOn) {
+      const { toggleSwitch } = this.$refs;
+      toggleSwitch.checked = !isOn;
+    },
+  },
   mounted() {
     const { toggleSwitch } = this.$refs;
     // UI for switch is inverted
