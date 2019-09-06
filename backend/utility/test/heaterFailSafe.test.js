@@ -81,9 +81,14 @@ describe('heaterFailSafe feature', () => {
       turnHeaterOff = toggleHeater({ userRAssets, HWProc, emitModuleUpdate }, false);
     });
 
-    test('sends a socket update to client', () => {
+    test('sends a socket update to client to turn heater off', () => {
       turnHeaterOff(module);
       expect(emitModuleUpdate).toHaveBeenCalledWith({ failSafe: true, moduleId: module, heaterState: false })
+    });
+
+    test('sends a socket update to client to turn heater on', () => {
+      turnHeaterOn(module);
+      expect(emitModuleUpdate).toHaveBeenCalledWith({ failSafe: true, moduleId: module, heaterState: true})
     });
 
     test('sends a turn off message to Hardware Broker', () => {

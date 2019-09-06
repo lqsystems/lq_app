@@ -729,13 +729,14 @@ HWProc.on('message', (message) => {
 
                   } else {   // SEND SENSOR DATA
                       //
+
                     const dependencies = {
                       userRAssets: gUserRAssets,
                       HWProc,
                       emitModuleUpdate,
                     };
 
-                    heaterFailSafe(dependencies, message.message, 1);
+                    heaterFailSafe(dependencies, message.message, 0);
 
 
                       HWProc.dataEvents.emit('datum', message);
