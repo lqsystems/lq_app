@@ -268,11 +268,42 @@ function constructServerMessage (messageBackToServer, rewriteCmd) {
 
 //
 var gWritesOK = false;
-///jjjjj
+
+const getMsg = (temp) => {
+  return `Prime1,OD: 12.343,Temperature: ${temp}`
+}
+
+const simulateTemp =  () => {
+  const high = 50;
+  const low = 20;
+  const gradient = 1.483 ;
+  const interval = 300;
+  let increasing = true;
+  let temp = low;
+
+
+  setInterval(() => {
+    increasing ? temp+=gradient: temp-=gradient;
+
+    const msg = getMsg(temp);
+    lineParserHandler(msg); 
+
+    if (temp > high)    {
+      console.log('high!!!!!!!!!!!!!!!!!!!!')
+      increasing = false;
+    }
+
+    if (temp < low) {
+      console.log('low!!!!!!!!!!!!!!!!!!!!')
+      increasing = true;
+    }
+
+  }, interval);
+}
+
 const trigger = () => {
     gMCUPreambles = { Prime1: { "id": 'Prime1', "cmd": 'query', "module": 'Prime1' } }
-    const msg = 'Prime1,OD: 12.343,Temperature: -10.347';
-    lineParserHandler(msg); 
+    simulateTemp();
 }
 
 function lineParserHandler (str) {
@@ -764,7 +795,14 @@ process.on('message', (message) => {
         return;
     }
 
-    trigger();
+    if(message.data) {
+        if (message.data.switch === 'SensorOnOff') {
+            console.log('triggering!')
+
+            trigger();
+        }
+    }
+
 
     handleMessages(message);
     //
