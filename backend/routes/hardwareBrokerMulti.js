@@ -269,43 +269,6 @@ function constructServerMessage (messageBackToServer, rewriteCmd) {
 //
 var gWritesOK = false;
 
-const getMsg = (temp) => {
-  return `Prime1,OD: 12.343,Temperature: ${temp}`
-}
-
-const simulateTemp =  () => {
-  const high = 50;
-  const low = 20;
-  const gradient = 1.483 ;
-  const interval = 300;
-  let increasing = true;
-  let temp = low;
-
-
-  setInterval(() => {
-    increasing ? temp+=gradient: temp-=gradient;
-
-    const msg = getMsg(temp);
-    lineParserHandler(msg); 
-
-    if (temp > high)    {
-      console.log('high!!!!!!!!!!!!!!!!!!!!')
-      increasing = false;
-    }
-
-    if (temp < low) {
-      console.log('low!!!!!!!!!!!!!!!!!!!!')
-      increasing = true;
-    }
-
-  }, interval);
-}
-
-const trigger = () => {
-    gMCUPreambles = { Prime1: { "id": 'Prime1', "cmd": 'query', "module": 'Prime1' } }
-    simulateTemp();
-}
-
 function lineParserHandler (str) {
 
     console.log("lineParserHandler->" + str)
@@ -790,19 +753,10 @@ process.on('message', (message) => {
 
     // for light dimming feature only
     if (message.bypassThrottle) {
-        logger.debug('** Bypassing Throttle With Ligt Dim Message **');
+        logger.debug('** Bypassing Throttle With Light Dim Message **');
         messageToHardware(message);
         return;
     }
-
-    if(message.data) {
-        if (message.data.switch === 'SensorOnOff') {
-            console.log('triggering!')
-
-            trigger();
-        }
-    }
-
 
     handleMessages(message);
     //
