@@ -250,6 +250,7 @@ const getActiveModule = (state, { selectedModuleName }) => {
 };
 
 export const getters = {
+  mv1State: state => state.modules.MV1.moduleState,
   activeReactionId: getActiveReactionId(window.alert),
   activeModule: getActiveModule,
   activeModuleParams: (state, { activeModule }) => activeModule.parameters,

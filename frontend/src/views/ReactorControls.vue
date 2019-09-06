@@ -38,6 +38,16 @@
               :active="selectedControlPanel === 'Heater'"
               :handle-click="SET_HEATER_ACTIVE"
             />
+            <div class="thing">
+              <BaseSidebarItem
+                title="Pump"
+                icon-name="icon-water"
+              />
+              <div class="pump-control-wrapper">
+                <!-- jj -->
+                <SidePumpControl />
+              </div>
+            </div>
           </div>
           <!-- <div class="rc-sidebar-heading">
             Sensors
@@ -79,6 +89,7 @@ import {
   SET_LIGHT_ACTIVE,
   SET_SENSORS_ACTIVE,
 } from '@/store/mutations.types';
+
 import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
@@ -88,6 +99,7 @@ import AirControlPanel from '@/components/AirControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 import LightControlPanel from '@/components/LightControlPanel';
 import SensorControlPanel from '@/components/SensorControlPanel';
+import SidePumpControl from '@/components/SidePumpControl';
 
 export default {
   components: {
@@ -100,6 +112,7 @@ export default {
     HeaterControlPanel,
     LightControlPanel,
     SensorControlPanel,
+    SidePumpControl,
   },
   computed: {
     // TODO: use map state for these
@@ -128,7 +141,13 @@ export default {
 
 <style scoped lang="scss">
 @import "../styles/variables";
-
+// jj
+.thing {
+}
+.pump-control-wrapper {
+  font-size: 1.2em;
+  padding-left: 5em;
+}
 
 .reactor-controls {
   height: 100%;
