@@ -65,6 +65,11 @@ export default {
       },
     },
   },
+  watch: {
+    initialTime(newTime) {
+      this.time = newTime;
+    },
+  },
   methods: {
     updateTime() {
       this.$emit('update', this.time);

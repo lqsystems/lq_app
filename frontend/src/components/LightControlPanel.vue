@@ -64,6 +64,14 @@ const hhmmToMinutes = (hhmm) => {
   return Number(a[0]) * 60 + Number(a[1]);
 };
 
+const secondsToHHMM = (seconds) => {
+  const hours = Math.floor(seconds / 3600);
+  seconds %= 3600;
+  let minutes = Math.floor(seconds / 60);
+  minutes = (`${minutes}`).length < 2 ? `0${minutes}` : minutes;
+  return `${hours}:${minutes}`;
+};
+
 export default {
   name: 'LightControlPanel',
   components: {
@@ -75,8 +83,8 @@ export default {
   },
   data() {
     return {
-      startTime: '0:00',
-      stopTime: '0:00',
+      startTime: this.lamp ? secondsToHHMM(this.lamp.start * 60) : '0:00',
+      stopTime: this.lamp ? secondsToHHMM(this.lamp.stop * 60) : '0:00',
       isScheduleActive: false,
     };
   },
@@ -87,6 +95,8 @@ export default {
     },
   },
   mounted() {
+    this.startTime = secondsToHHMM(this.lamp.start * 60);
+    this.stopTime = secondsToHHMM(this.lamp.stop * 60);
     // socket.on('connect', () => { console.log('socket connected!'); });
   },
   methods: {
