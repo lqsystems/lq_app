@@ -93,7 +93,7 @@ if ( !IamCloud ) {
                       });
         gHModuleWS.on('message', (data) => {});
         gHModuleWS.on('error',(e) => {
-                          console.log(e)
+                          // console.log(e)
                       })
     } catch (e) {
         console.log("no ws connection")
