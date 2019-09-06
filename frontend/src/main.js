@@ -14,7 +14,6 @@ import { SENSOR_DATA_SOCKET_URL } from '@/constants/api.constants';
 if (process.env.NODE_ENV === 'production') {
   console.log('location info:', window.location);
 }
-console.log(SENSOR_DATA_SOCKET_URL);
 Vue.use(new VueSocketIO({ connection: SENSOR_DATA_SOCKET_URL }));
 Vue.config.productionTip = false;
 

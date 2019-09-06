@@ -30,7 +30,6 @@ export default {
 
       if (message.failSafe) {
         const { heaterState, moduleId } = message;
-        console.log({ heaterState, moduleId });
 
         this.MUTATE_MODULE_STATE({
           moduleName: moduleId,
@@ -38,7 +37,6 @@ export default {
           newState: heaterState,
         });
       }
-
 
       this.HANDLE_UPDATE_STATE_MESSAGE({
         message,

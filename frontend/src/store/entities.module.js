@@ -39,10 +39,7 @@ export const mutations = {
     state.reactions = reactions;
   },
   [MUTATE_MODULE_STATE](state, { moduleName, actuatorType, newState }) {
-    console.log({ moduleName, actuatorType, newState });
-
     state.modules[moduleName].moduleState[actuatorType] = newState;
-    console.log({ newsState: state.modules[moduleName].moduleState[actuatorType] });
   },
   [MUTATE_MODULE_PARAMS](state, { moduleName, actuatorType, newParams }) {
     const { level } = newParams;
