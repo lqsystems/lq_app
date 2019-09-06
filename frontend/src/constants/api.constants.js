@@ -1,6 +1,6 @@
 const { NODE_ENV } = process.env;
 
-const PI_HOSTNAME = window.location.hostname;
+const PI_HOSTNAME = '192.168.0.102';
 const SERVER_PORT = '8888';
 const IS_SERVER_RUNNING_ON_PI = NODE_ENV === 'production';
 
