@@ -1,11 +1,14 @@
 const { NODE_ENV } = process.env;
 
-const PI_HOSTNAME = '192.168.0.102';
 const SERVER_PORT = '8888';
 const IS_SERVER_RUNNING_ON_PI = NODE_ENV === 'production';
+const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
+
+export const PI_HOSTNAME = NODE_ENV === 'production'
+  ? '192.168.0.102'
+  : window.location.hostname;
 
 const PI_BASE_URL = `http://${PI_HOSTNAME}:${SERVER_PORT}`;
-const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
 
 // SOCKET URLS
 export const SENSOR_DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
