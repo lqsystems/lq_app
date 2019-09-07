@@ -10,7 +10,7 @@
     </ControlPanelItem>
     <ControlPanelItem label="Level">
       <SliderControl
-        :limits="[0,60]"
+        :limits="[0,100]"
         :level="heaterLevel"
         :level-label-func="getPercentLabel"
         @slider-move-end="updateIntensity"
@@ -70,7 +70,7 @@ export default {
     updateIntensity([level]) {
       this.UPDATE_MODULE_PARAMS({
         actuatorType: 'Heater',
-        newParams: { level },
+        newParams: { level: Math.round(0.6 * level) },
       });
     },
     updateLimits(limits) {

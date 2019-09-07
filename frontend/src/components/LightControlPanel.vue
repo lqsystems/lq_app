@@ -31,7 +31,7 @@
 
     <ControlPanelItem label="Level">
       <SliderControl
-        :limits="[0,60]"
+        :limits="[0,100]"
         :level="lampLevel"
         :level-label-func="getPercentLabel"
         @slider-move="dimLamp"
@@ -126,9 +126,7 @@ export default {
       const payload = {
         moduleName: this.selectedModuleName,
         actuatorType: 'Lamp',
-        newParams: {
-          level,
-        },
+        newParams: { level: Math.round(0.6 * level) },
       };
       this.MUTATE_MODULE_PARAMS(payload);
     },
