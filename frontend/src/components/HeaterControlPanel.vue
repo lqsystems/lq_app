@@ -2,10 +2,16 @@
   <ControlPanel
     title="Temp"
   >
-    <ControlPanelItem label="Power">
+    <ControlPanelItem label="Heater">
       <SwitchControl
         :is-on="heater.powerOn"
         @toggle="toggleHeater"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem label="Temp Sensor">
+      <SwitchControl
+        :is-on="sensorState"
+        @toggle="toggleSensorState"
       />
     </ControlPanelItem>
     <!-- <ControlPanelItem label="Level">
@@ -34,7 +40,9 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS } from '@/store/actions.types';
-import { MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS } from '@/store/mutations.types';
+import { MUTATE_MODULE_STATE, MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS } from '@/store/mutations.types';
+import { UPDATE_STATE_URL } from '@/constants/api.constants';
+import callApi from '@/utils/api.utils.js';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
 
 import ControlPanel from './ControlPanel';
@@ -57,7 +65,7 @@ export default {
   },
   computed: {
     // TODO: refactor to be more explicit about which properties heater has (use mapState)
-    ...mapGetters(['heater', 'selectedModuleName']),
+    ...mapGetters(['heater', 'selectedModuleName', 'sensorState', 'activeReactionId']),
     heaterLevel() {
       return Math.round(Number(this.heater.level / this.maxLevel * 100));
     },
@@ -67,7 +75,7 @@ export default {
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS]),
-    ...mapMutations([MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS]),
+    ...mapMutations([MUTATE_MODULE_STATE, MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS]),
     toggleHeater(heaterState) {
       this.MUTATE_MODULE_PARAMS({
         moduleName: this.selectedModuleName,
@@ -84,6 +92,43 @@ export default {
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Heater',
         newState: heaterState,
+      });
+    },
+    updateSensorState(options) {
+      const constructSensorToggleRequestBody = ({
+        moduleName, reactionId, isOn,
+      }) => {
+        const params = `${moduleName}-SensorOnOff-parameters`;
+        const activeSwitch = `ReactionActive-${reactionId}`;
+
+        return {
+          activeSwitch,
+          mid: moduleName,
+          allStates: { SensorOnOff: isOn },
+          activeId: reactionId,
+          [params]: { ctrlValue: 5 },
+          changes: ['SensorOnOff'],
+        };
+      };
+
+      const requestPayload = constructSensorToggleRequestBody(options);
+
+      callApi(UPDATE_STATE_URL, {
+        method: 'POST',
+        data: requestPayload,
+      });
+    },
+    toggleSensorState(sensorState) {
+      this.MUTATE_MODULE_STATE({
+        moduleName: this.selectedModuleName,
+        actuatorType: 'SensorOnOff',
+        newState: sensorState,
+      });
+
+      this.updateSensorState({
+        moduleName: this.selectedModuleName,
+        reactionId: this.activeReactionId,
+        isOn: sensorState,
       });
     },
     updateIntensity([level]) {
