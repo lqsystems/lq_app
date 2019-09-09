@@ -13,24 +13,19 @@
       @click="handleLogoClick"
     >
     <button
-      v-if="showHistoryButton"
       class="login-button run-button"
-      @click="routeToHistory"
+      @click="logout"
     >
-      <img
-        class="dna-icon"
-        src="@/assets/dna-white.svg"
-        alt=""
-      >
       <div class="run-button-text">
-        Runs
+        Logout
       </div>
     </button>
   </div>
 </template>
 
 <script>
-import router from '@/router';
+import callApi from '@/utils/api.utils.js';
+import { LOGOUT_URL } from '@/constants/api.constants.js';
 
 export default {
   name: 'BaseHeader',
@@ -51,14 +46,11 @@ export default {
       type: Function,
       default: () => { },
     },
-    showHistoryButton: {
-      type: Boolean,
-      default: false,
-    },
   },
   methods: {
-    routeToHistory() {
-      router.push('/runs');
+    async logout() {
+      await callApi(LOGOUT_URL);
+      this.$router.push('/login');
     },
   },
 };

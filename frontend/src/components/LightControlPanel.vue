@@ -3,10 +3,19 @@
     title="Light"
     class="light-control-panel"
   >
-    <ControlPanelItem label="Turn on now">
+    <ControlPanelItem label="Power">
       <SwitchControl
         :is-on="lamp.powerOn"
         @toggle="toggleLight"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem label="Level">
+      <SliderControl
+        :limits="[0,100]"
+        :level="lampLevel"
+        :level-label-func="getPercentLabel"
+        @slider-move="dimLamp"
+        @slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Start">
@@ -28,36 +37,21 @@
         />
       </div>
     </ControlPanelItem>
-
-    <ControlPanelItem label="Level">
-      <SliderControl
-        :limits="[0,100]"
-        :level="lampLevel"
-        :level-label-func="getPercentLabel"
-        @slider-move="dimLamp"
-        @slider-move-end="updateIntensity"
-      />
-    </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
 // remove light classes. replace with something more substantial
-import io from 'socket.io-client';
-import axios from 'axios';
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS } from '@/store/actions.types';
 import { MUTATE_MODULE_PARAMS } from '@/store/mutations.types';
-import callApi from '@/utils/api.utils.js';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
-import { DIM_LAMP_SOCKET_URL } from '@/constants/api.constants';
 import BaseTimePicker from './BaseTimePicker';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
 
-// const socket = io(DIM_LAMP_SOCKET_URL);
 
 const hhmmToMinutes = (hhmm) => {
   const a = hhmm.split(':');
@@ -139,15 +133,6 @@ export default {
     },
     updateIntensity([level]) {
       this.mutateLevel(level);
-    },
-    dimLamp([sliderVal]) {
-      const socketMessage = {
-        level: sliderVal,
-        dest: this.selectedModuleName,
-        id: '5c9a57c3e5e2c205fcd15903',
-      };
-
-      // socket.emit('dim lamp', socketMessage);
     },
     getPercentLabel,
   },

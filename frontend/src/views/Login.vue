@@ -71,7 +71,7 @@ export default {
         return alert(error.message[0]);
       }
 
-      this.FETCH_MODULES('/');
+      this.FETCH_MODULES('/controls');
     },
   },
 };

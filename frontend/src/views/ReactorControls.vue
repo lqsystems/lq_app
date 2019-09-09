@@ -3,15 +3,20 @@
     v-if="!isFetching"
     class="reactor-controls view"
   >
-    <BaseHeader
-      back-icon
-      :show-history-button="true"
-      :handle-icon-click="routeHome"
-    />
+    <BaseHeader />
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <BaseSidebarHeader :title="selectedModuleName" />
+          <BaseSidebarHeader
+            :active-module="selectedModuleName"
+            title="Prime1"
+            @clicked="updateSelectedModule"
+          />
+          <BaseSidebarHeader
+            :active-module="selectedModuleName"
+            title="Prime2"
+            @clicked="updateSelectedModule"
+          />
           <v-divider />
           <div class="rc-sidebar-items">
             <BaseSidebarItem
@@ -32,56 +37,33 @@
               :active="selectedControlPanel === 'Light'"
               :handle-click="SET_LIGHT_ACTIVE"
             />
-            <div class="thing">
+            <div>
               <BaseSidebarItem
                 title="Pump"
                 icon-name="icon-water"
               />
               <div class="pump-control-wrapper">
-                <!-- jj -->
                 <SidePumpControl />
               </div>
             </div>
           </div>
-          <!-- <div class="rc-sidebar-heading">
-            Sensors
-          </div>
-          <v-divider />
-          <div class="rc-sensor-item">
-            <div class="rc-sensor-label">
-              OD
-            </div>
-            <div class="rc-sensor-val">
-              {{ sensorData.OD }}
-            </div>
-          </div>
-          <div class="rc-sensor-item">
-            <div class="rc-sensor-label">
-              Temp °C
-            </div>
-            <div class="rc-sensor-val">
-              {{ sensorData.temperature }}
-            </div>
-          </div> -->
         </BaseSidebar>
       </div>
       <div class="rc-controls">
         <component :is="currentControlPanel" />
       </div>
     </div>
-    <!-- <div class="nav">
-      <BaseNav />
-    </div> -->
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
   SET_LIGHT_ACTIVE,
   SET_SENSORS_ACTIVE,
+  UPDATE_SELECTED_MODULE,
 } from '@/store/mutations.types';
 
 import BaseHeader from '@/components/BaseHeader';
@@ -111,21 +93,21 @@ export default {
   computed: {
     // TODO: use map state for these
     ...mapGetters(['isFetching', 'selectedControlPanel', 'selectedModuleName']),
-    ...mapState({
-      sensorData: state => state.sensors[state.modules.selectedModuleName],
-    }),
     currentControlPanel() {
       return `${this.selectedControlPanel}ControlPanel`;
     },
   },
-
   methods: {
     ...mapMutations([
       SET_SENSORS_ACTIVE,
       SET_AIR_ACTIVE,
       SET_HEATER_ACTIVE,
       SET_LIGHT_ACTIVE,
+      UPDATE_SELECTED_MODULE,
     ]),
+    updateSelectedModule(module) {
+      this.UPDATE_SELECTED_MODULE(module);
+    },
     routeHome() {
       this.$router.push('/');
     },
@@ -136,8 +118,6 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables";
 // jj
-.thing {
-}
 .pump-control-wrapper {
   font-size: 1.2em;
   padding-left: 5em;
