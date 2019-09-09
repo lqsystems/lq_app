@@ -53,6 +53,7 @@ export const mutations = {
     currentParams[actuatorType] = Object.assign({}, currentParamsValues, newParams);
   },
   [MUTATE_MODULE_LIMITS](state, { moduleName, actuatorType, newLimits }) {
+    console.log({ moduleName, actuatorType, newLimits });
     const currentLimits = state.modules[moduleName].limits;
     const currentLimitsValues = currentLimits[actuatorType];
     currentLimits[actuatorType] = Object.assign({}, currentLimitsValues, newLimits);

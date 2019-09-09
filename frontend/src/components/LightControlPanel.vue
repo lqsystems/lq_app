@@ -126,7 +126,7 @@ export default {
       const payload = {
         moduleName: this.selectedModuleName,
         actuatorType: 'Lamp',
-        newParams: { level: Math.round(0.6 * level) },
+        newParams: { level },
       };
       this.MUTATE_MODULE_PARAMS(payload);
     },

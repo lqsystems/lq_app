@@ -32,8 +32,9 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS } from '@/store/actions.types';
+import { MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS } from '@/store/mutations.types';
 import { getPercentLabel } from '@/utils/controlPanel.utils';
 
 import ControlPanel from './ControlPanel';
@@ -49,11 +50,16 @@ export default {
     SwitchControl,
     SliderControl,
   },
+  data() {
+    return {
+      maxLevel: 40,
+    };
+  },
   computed: {
     // TODO: refactor to be more explicit about which properties heater has (use mapState)
-    ...mapGetters(['heater']),
+    ...mapGetters(['heater', 'selectedModuleName']),
     heaterLevel() {
-      return Number(this.heater.level);
+      return Math.round(Number(this.heater.level / this.maxLevel * 100));
     },
     heaterMinMax() {
       return [this.heater.minTemp, this.heater.maxTemp];
@@ -61,7 +67,20 @@ export default {
   },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS]),
+    ...mapMutations([MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS]),
     toggleHeater(heaterState) {
+      this.MUTATE_MODULE_PARAMS({
+        moduleName: this.selectedModuleName,
+        actuatorType: 'Heater',
+        newParams: { level: 40 },
+      });
+
+      this.MUTATE_MODULE_LIMITS({
+        moduleName: this.selectedModuleName,
+        actuatorType: 'Heater',
+        newLimits: { 'LOW-value': 31, 'HIGH-value': 34 },
+      });
+
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Heater',
         newState: heaterState,
@@ -70,7 +89,7 @@ export default {
     updateIntensity([level]) {
       this.UPDATE_MODULE_PARAMS({
         actuatorType: 'Heater',
-        newParams: { level: Math.round(0.6 * level) },
+        newParams: { level: Math.round(level / 100 * this.maxLevel) },
       });
     },
     updateLimits(limits) {
