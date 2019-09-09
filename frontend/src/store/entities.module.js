@@ -198,8 +198,17 @@ export const getApiUpdatePayload = actuatorName => (
 
   // TODO move this logic to a separate function
   const limits = targetLimits
-    ? { 'HIGH-value': targetLimits['HIGH-value'], 'LOW-value': targetLimits['LOW-value'] }
+    ? {
+      'HIGH-value': targetLimits['HIGH-value'],
+      'LOW-value': targetLimits['LOW-value'],
+      Sensor: 'temperature',
+    }
     : {};
+
+
+  if (actuatorName === 'Heater' && !activeModuleState.Heater) {
+    limits.Sensor = 'OFF';
+  }
 
   let apiPayload = {
     mid: selectedModuleName,
