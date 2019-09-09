@@ -21,14 +21,13 @@ export default {
       default: () => [0, 100],
     },
   },
-  // TODO delete the following
-  // watch: {
-  //   sliderPosition(newVal) {
-  //     const { slider } = this.$refs;
+  watch: {
+    sliderPosition(newVal) {
+      const { slider } = this.$refs;
 
-  //     // slider.noUiSlider.set(newVal);
-  //   },
-  // },
+      slider.noUiSlider.set(newVal);
+    },
+  },
   mounted() {
     const { slider } = this.$refs;
     noUiSlider.create(slider, {

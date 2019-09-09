@@ -14,14 +14,13 @@
         :limits="[0,100]"
         :level="lampLevel"
         :level-label-func="getPercentLabel"
-        @slider-move="dimLamp"
         @slider-move-end="updateIntensity"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Start">
       <div class="time-picker-wrapper">
         <BaseTimePicker
-          :initial-time="startTime"
+          :initial-time="startTimeStr"
           @update="updateStartTime"
         />
       </div>
@@ -32,7 +31,7 @@
     >
       <div class="time-picker-wrapper">
         <BaseTimePicker
-          :initial-time="stopTime"
+          :initial-time="stopTimeStr"
           @update="updateStopTime"
         />
       </div>
@@ -75,43 +74,36 @@ export default {
     SwitchControl,
     SliderControl,
   },
-  data() {
-    return {
-      startTime: this.lamp ? secondsToHHMM(this.lamp.start * 60) : '0:00',
-      stopTime: this.lamp ? secondsToHHMM(this.lamp.stop * 60) : '0:00',
-      isScheduleActive: false,
-    };
-  },
   computed: {
     ...mapGetters(['lamp', 'activeReactionId', 'selectedModuleName']),
+    startTimeStr() {
+      return this.lamp ? secondsToHHMM(this.lamp.start * 60) : '0:00';
+    },
+    stopTimeStr() {
+      return this.lamp ? secondsToHHMM(this.lamp.stop * 60) : '0:00';
+    },
     lampLevel() {
       return Number(this.lamp.level);
     },
   },
-  mounted() {
-    this.startTime = secondsToHHMM(this.lamp.start * 60);
-    this.stopTime = secondsToHHMM(this.lamp.stop * 60);
-    // socket.on('connect', () => { console.log('socket connected!'); });
-  },
   methods: {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS]),
     ...mapMutations([MUTATE_MODULE_PARAMS]),
-    updateStartTime(newTime) {
-      this.startTime = newTime;
+    updateStartTime(newStart) {
+      const newTime = { start: newStart, stop: this.stopTimeStr };
+      this.mutateStartStop(newTime);
     },
-    updateStopTime(newTime) {
-      this.stopTime = newTime;
+    updateStopTime(newStop) {
+      const newTime = { start: this.startTimeStr, stop: newStop };
+      this.mutateStartStop(newTime);
     },
-    toggleSchedule() {
-      this.isScheduleActive = !this.isScheduleActive;
-    },
-    mutateStartStop() {
+    mutateStartStop({ start, stop }) {
       const payload = {
         moduleName: this.selectedModuleName,
         actuatorType: 'Lamp',
         newParams: {
-          start: hhmmToMinutes(this.startTime),
-          stop: hhmmToMinutes(this.stopTime),
+          start: hhmmToMinutes(start),
+          stop: hhmmToMinutes(stop),
         },
       };
       this.MUTATE_MODULE_PARAMS(payload);
@@ -125,7 +117,6 @@ export default {
       this.MUTATE_MODULE_PARAMS(payload);
     },
     toggleLight(lightState) {
-      this.mutateStartStop();
       this.UPDATE_MODULE_STATE({
         actuatorType: 'Lamp',
         newState: lightState,
