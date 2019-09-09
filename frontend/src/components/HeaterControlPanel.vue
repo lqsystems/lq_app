@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    title="Heater"
+    title="Temp"
   >
     <ControlPanelItem label="Power">
       <SwitchControl
@@ -8,7 +8,7 @@
         @toggle="toggleHeater"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Level">
+    <!-- <ControlPanelItem label="Level">
       <SliderControl
         :limits="[0,100]"
         :level="heaterLevel"
@@ -20,14 +20,14 @@
       label="Range"
       :include-divider="false"
     >
-      <!-- Returns a slider with two handles since an array is suplied to the level prop -->
+      Returns a slider with two handles since an array is suplied to the level prop
       <SliderControl
         :level="heaterMinMax"
         :limits="[25, 40]"
         :level-label-func="getTempLabel"
         @slider-move-end="updateLimits"
       />
-    </ControlPanelItem>
+    </ControlPanelItem> -->
   </ControlPanel>
 </template>
 

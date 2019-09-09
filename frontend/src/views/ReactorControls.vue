@@ -15,6 +15,12 @@
           <v-divider />
           <div class="rc-sidebar-items">
             <BaseSidebarItem
+              title="Temperature"
+              icon-name="icon-fire"
+              :active="selectedControlPanel === 'Heater'"
+              :handle-click="SET_HEATER_ACTIVE"
+            />
+            <BaseSidebarItem
               title="Sensors"
               icon-name="icon-bar-graph"
               :active="selectedControlPanel === 'Sensor'"
@@ -31,12 +37,6 @@
               icon-name="icon-sun"
               :active="selectedControlPanel === 'Light'"
               :handle-click="SET_LIGHT_ACTIVE"
-            />
-            <BaseSidebarItem
-              title="Heater"
-              icon-name="icon-fire"
-              :active="selectedControlPanel === 'Heater'"
-              :handle-click="SET_HEATER_ACTIVE"
             />
             <div class="thing">
               <BaseSidebarItem
