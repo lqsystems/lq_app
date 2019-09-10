@@ -295,7 +295,6 @@ function lineParserHandler (str) {
         return;
     }
     if (str.indexOf("CRX") == 0) {
-        return;
         // handle sensor cross over response.
         var messageBackToServer = str.substr(3); // use the rest of it
 
