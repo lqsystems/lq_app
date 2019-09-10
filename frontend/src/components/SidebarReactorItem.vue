@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'BaseSidebarHeader',
+  name: 'SidebarReactorItem',
   props: {
     title: {
       type: String,

@@ -7,12 +7,12 @@
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <BaseSidebarHeader
+          <SidebarReactorItem
             :active-module="selectedModuleName"
             title="Prime1"
             @clicked="updateSelectedModule"
           />
-          <BaseSidebarHeader
+          <SidebarReactorItem
             :active-module="selectedModuleName"
             title="Prime2"
             @clicked="updateSelectedModule"
@@ -69,7 +69,7 @@ import {
 import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
-import BaseSidebarHeader from '@/components/BaseSidebarHeader';
+import SidebarReactorItem from '@/components/SidebarReactorItem';
 import BaseSidebarItem from '@/components/BaseSidebarItem';
 import AirControlPanel from '@/components/AirControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
@@ -82,7 +82,7 @@ export default {
     BaseHeader,
     BaseNav,
     BaseSidebar,
-    BaseSidebarHeader,
+    SidebarReactorItem,
     BaseSidebarItem,
     AirControlPanel,
     HeaterControlPanel,
