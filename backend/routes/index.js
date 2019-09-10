@@ -736,8 +736,7 @@ HWProc.on('message', (message) => {
                       emitModuleUpdate,
                     };
 // 
-                    heaterFailSafe(dependencies, message.message, 0);
-
+                    // heaterFailSafe(dependencies, message.message, 0);
 
                       HWProc.dataEvents.emit('datum', message);
                       var storeData = message.message;
@@ -752,7 +751,7 @@ HWProc.on('message', (message) => {
                                   // sensor output ...  really want to cache these and send a batch...
                                   // write to local file and then batch from the file...
                                   // influxWriteSensorDatum(reactionId,module,OD,Temp,ts)
-                                  influxWriteSensorDatum(storeData.id,storeData.mid,storeData.OD,storeData.Temperature)
+                                //   influxWriteSensorDatum(storeData.id,storeData.mid,storeData.OD,storeData.Temperature)
                               }
                           }
                       }

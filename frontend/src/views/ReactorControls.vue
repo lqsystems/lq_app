@@ -41,6 +41,8 @@
               <BaseSidebarItem
                 title="Pump"
                 icon-name="icon-water"
+                :active="selectedControlPanel === 'Pump'"
+                :handle-click="SET_PUMP_ACTIVE"
               />
               <div class="pump-control-wrapper">
                 <SidePumpControl />
@@ -62,7 +64,7 @@ import {
   SET_AIR_ACTIVE,
   SET_HEATER_ACTIVE,
   SET_LIGHT_ACTIVE,
-  SET_SENSORS_ACTIVE,
+  SET_PUMP_ACTIVE,
   UPDATE_SELECTED_MODULE,
 } from '@/store/mutations.types';
 
@@ -99,7 +101,7 @@ export default {
   },
   methods: {
     ...mapMutations([
-      SET_SENSORS_ACTIVE,
+      SET_PUMP_ACTIVE,
       SET_AIR_ACTIVE,
       SET_HEATER_ACTIVE,
       SET_LIGHT_ACTIVE,
