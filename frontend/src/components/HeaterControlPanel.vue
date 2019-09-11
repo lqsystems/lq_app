@@ -87,7 +87,7 @@ export default {
       this.MUTATE_MODULE_PARAMS({
         moduleName: this.selectedModuleName,
         actuatorType: 'Heater',
-        newParams: { level: 40 },
+        newParams: { level: this.maxLevel },
       });
 
       this.MUTATE_MODULE_LIMITS({

@@ -1,19 +1,22 @@
 const { NODE_ENV } = process.env;
 
+const VPN_IP = '25.81.56.126';
+const PI_IP = '192.168.0.102';
 const SERVER_PORT = '8888';
 const IS_SERVER_RUNNING_ON_PI = NODE_ENV === 'production';
 const DEV_BASE_URL = `http://${window.location.hostname}:${SERVER_PORT}`;
 
-export const PI_HOSTNAME = NODE_ENV === 'production'
-  ? '192.168.0.102'
+export const SERVER_HOSTNAME = NODE_ENV === 'production'
+  ? PI_IP
   : window.location.hostname;
 
-const PI_BASE_URL = `http://${PI_HOSTNAME}:${SERVER_PORT}`;
+const SERVER_BASE_URL = `http://${SERVER_HOSTNAME}:${SERVER_PORT}`;
 
 // SOCKET URLS
-export const SENSOR_DATA_SOCKET_URL = `${PI_BASE_URL}/data`;
+export const SENSOR_DATA_SOCKET_URL = `${SERVER_BASE_URL}/data`;
+
 export const DIM_LAMP_SOCKET_URL = IS_SERVER_RUNNING_ON_PI
-  ? `${PI_BASE_URL}/dimLamp`
+  ? `${SERVER_BASE_URL}/dimLamp`
   : `${DEV_BASE_URL}/dimLamp`;
 
 // REST URLS

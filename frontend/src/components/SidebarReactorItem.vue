@@ -65,15 +65,28 @@ export default {
 <style lang='scss' scoped>
 @import "../styles/variables";
 
+$radius: 25px;
+
+
 .sb-header {
   display: flex;
   align-items: center;
   padding: 1em $left-boundary-padding * 1px;
   font-size: 1.3em;
-}
+  cursor: pointer;
+
+    &.is-active {
+      background-color: $sidebar-active-item-color;
+      border-radius: 0 $radius $radius 0;
+      opacity: .8;
+      width: 100%;
+      transition: background-color 500ms ease;
+      transform: scale(1.1);
+    }
+  }
 
 .sb-header-icon {
-  width: 2.4em;
+  width: 1.8em;
   margin-right: 1em;
 }
 

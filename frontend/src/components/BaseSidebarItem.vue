@@ -18,6 +18,10 @@
           {{ title }}
         </v-list-tile-title>
       </v-list-tile-content>
+      <span
+        v-if="title === 'Pump'"
+        class="icon-arrow-right"
+      />
     </v-list-tile>
   </div>
 </template>
@@ -49,6 +53,9 @@ export default {
 
 <style scoped lang="scss">
 @import '../styles/variables';
+.icon-arrow-right {
+  font-size: 1.5em;
+}
 
 $font-size: 1.5;
 

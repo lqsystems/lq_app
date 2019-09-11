@@ -41,12 +41,14 @@
               <BaseSidebarItem
                 title="Pump"
                 icon-name="icon-water"
-                :active="selectedControlPanel === 'Pump'"
-                :handle-click="SET_PUMP_ACTIVE"
+                :handle-click="togglePumpControls"
               />
-              <div class="pump-control-wrapper">
+              <BaseCard
+                v-if="showPumpControls"
+                class="pump-control-wrapper"
+              >
                 <SidePumpControl />
-              </div>
+              </BaseCard>
             </div>
           </div>
         </BaseSidebar>
@@ -68,6 +70,7 @@ import {
   UPDATE_SELECTED_MODULE,
 } from '@/store/mutations.types';
 
+import BaseCard from '@/components/BaseCard';
 import BaseHeader from '@/components/BaseHeader';
 import BaseNav from '@/components/BaseNav';
 import BaseSidebar from '@/components/BaseSidebar';
@@ -81,6 +84,7 @@ import SidePumpControl from '@/components/SidePumpControl';
 
 export default {
   components: {
+    BaseCard,
     BaseHeader,
     BaseNav,
     BaseSidebar,
@@ -91,6 +95,11 @@ export default {
     LightControlPanel,
     SensorControlPanel,
     SidePumpControl,
+  },
+  data() {
+    return {
+      showPumpControls: false,
+    };
   },
   computed: {
     // TODO: use map state for these
@@ -109,6 +118,9 @@ export default {
     ]),
     updateSelectedModule(module) {
       this.UPDATE_SELECTED_MODULE(module);
+    },
+    togglePumpControls() {
+      this.showPumpControls = !this.showPumpControls;
     },
     routeHome() {
       this.$router.push('/');
