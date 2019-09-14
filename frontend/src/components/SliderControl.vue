@@ -5,6 +5,7 @@
     <div class="slider-control-slider">
       <BaseSlider
         v-if="!isFetching"
+        :disabled="disabled"
         :slider-position="level"
         :limits="limits"
         :color="color"
@@ -29,6 +30,10 @@ export default {
     BaseSlider,
   },
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     level: {
       type: [Number, Array],
       required: true,

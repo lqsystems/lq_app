@@ -19,24 +19,25 @@
         <SensorReading />
       </div>
     </ControlPanelItem>
+    <ControlPanelItem
+      label="Range"
+      :include-divider="false"
+    >
+      <!-- Returns a slider with two handles since an array is supplied to the level prop -->
+      <SliderControl
+        disabled
+        :level="heaterMinMax"
+        :limits="[31, 34]"
+        :level-label-func="getTempLabel"
+        @slider-move-end="updateLimits"
+      />
+    </ControlPanelItem>
     <!-- <ControlPanelItem label="Level">
       <SliderControl
         :limits="[0,100]"
         :level="heaterLevel"
         :level-label-func="getPercentLabel"
         @slider-move-end="updateIntensity"
-      />
-    </ControlPanelItem>
-    <ControlPanelItem
-      label="Range"
-      :include-divider="false"
-    >
-      Returns a slider with two handles since an array is suplied to the level prop
-      <SliderControl
-        :level="heaterMinMax"
-        :limits="[25, 40]"
-        :level-label-func="getTempLabel"
-        @slider-move-end="updateLimits"
       />
     </ControlPanelItem> -->
   </ControlPanel>
@@ -77,7 +78,7 @@ export default {
       return Math.round(Number(this.heater.level / this.maxLevel * 100));
     },
     heaterMinMax() {
-      return [this.heater.minTemp, this.heater.maxTemp];
+      return [31, 34];
     },
   },
   methods: {

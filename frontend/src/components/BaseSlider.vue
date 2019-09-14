@@ -12,6 +12,10 @@ const getRoundedValues = values => values.map(val => Math.ceil(Number(val)));
 export default {
   name: 'BaseSlider',
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     sliderPosition: {
       type: [Number, Array],
       required: true,
@@ -48,6 +52,10 @@ export default {
       const roundedValues = getRoundedValues(values);
       this.$emit('slider-move-end', roundedValues);
     });
+
+    if (this.disabled) {
+      slider.setAttribute('disabled', true);
+    }
   },
 };
 </script>
@@ -226,7 +234,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 /* Disabled state */
 
 [disabled] .noUi-connect {
-  background: #b8b8b8;
+  background: $slider-color;
 }
 [disabled].noUi-target,
 [disabled].noUi-handle,

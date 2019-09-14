@@ -13,10 +13,11 @@
       @click="handleLogoClick"
     >
     <button
-      class="login-button run-button"
+      class="login-button logout-button"
       @click="logout"
     >
-      <div class="run-button-text">
+      <div class="icon-logout"></div>  
+      <div class="logout-button-text">
         Logout
       </div>
     </button>
@@ -83,6 +84,7 @@ export default {
   font-size: 3.4em;
 }
 
+
 .icon-back {
   border-radius: 50%;
   padding: 0.2em;
@@ -98,22 +100,25 @@ export default {
   margin-left: auto;
 }
 
-.run-button {
+.logout-button {
   margin-left: auto;
   background-color: $accent-color-high-contrast;
   background-color: $panel-background-color;
   font-size: 0.35em;
   padding: 0.75em 2em;
+  padding-left: 2em;
   border-radius: 5px;
   display: flex;
   align-items: center;
+}
+
+
+.icon-logout {
+  margin-right: 15px;
 }
 
 .dna-icon {
   width: 7px;
 }
 
-.run-button-text {
-  margin-left: 10px;
-}
 </style>
