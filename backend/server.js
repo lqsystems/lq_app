@@ -80,24 +80,24 @@ global.gInfluxUrl = "18.217.16.238";
 
 if ( !IamCloud ) {
     // at the moment this is one way....
-    const WebSocket = require('ws');
-    var gWsServer = `ws://${cloudServer}:8282`
+    // const WebSocket = require('ws');
+    // var gWsServer = `ws://${cloudServer}:8282`
 
     var gHModuleWS = null;
 
-    try {
-        console.log("connecting to " + gWsServer);
-        gHModuleWS = new WebSocket(gWsServer);
-        gHModuleWS.on('open', () => {
-                          console.log("connect made " + gWsServer)
-                      });
-        gHModuleWS.on('message', (data) => {});
-        gHModuleWS.on('error',(e) => {
-                          // console.log(e)
-                      })
-    } catch (e) {
-        console.log("no ws connection")
-    }
+    // try {
+    //     console.log("connecting to " + gWsServer);
+    //     gHModuleWS = new WebSocket(gWsServer);
+    //     gHModuleWS.on('open', () => {
+    //                       console.log("connect made " + gWsServer)
+    //                   });
+    //     gHModuleWS.on('message', (data) => {});
+    //     gHModuleWS.on('error',(e) => {
+    //                       // console.log(e)
+    //                   })
+    // } catch (e) {
+    //     console.log("no ws connection")
+    // }
 
     global.forwardHardwareMessage = (mobj) => {
         var msgStr = JSON.stringify((mobj));
