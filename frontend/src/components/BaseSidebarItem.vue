@@ -71,13 +71,19 @@ $font-size: 1.5;
   font-size: $font-size + em;
 }
 
+
 .v-list__tile__title {
   font-weight: 400;
   font-size: $font-size - .1 + em;
 }
 
 .sidebar-item {
-  padding-left: 1.5em;
+  margin: .7em 0;
+  padding-left: .4em;
+
+  &.v-list__tile {
+    height: 40px;
+  }
 }
 
 $radius: 25px;
@@ -85,8 +91,8 @@ $radius: 25px;
   &.is-active {
     background-color: $sidebar-active-item-color;
     border-radius: 0 $radius $radius 0;
-    opacity: .8;
-    width: 100%;
+    opacity: .7;
+    width: 88%;
     transition: background-color 500ms ease;
     transform: scale(1.1);
   }

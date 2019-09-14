@@ -21,7 +21,9 @@
             :active="selectedModuleName === 'Prime2'"
             :handle-click="setPrime2Active"
           />
-          <v-divider />
+          <div class="sb-divider">
+            CONTROLS
+          </div>
           <div class="rc-sidebar-items">
             <BaseSidebarItem
               title="Temp"
@@ -41,6 +43,8 @@
               :active="selectedControlPanel === 'Light'"
               :handle-click="SET_LIGHT_ACTIVE"
             />
+            <!-- <div class="sb-divider"> LIQUIDS </div> -->
+            <div class="line" />
             <div>
               <BaseSidebarItem
                 title="Pump"
@@ -145,6 +149,20 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables";
 // jj
+.line {
+  margin-bottom: 1em;
+  border-top: 1px solid white;
+  opacity: 0.5;
+  width: 88%;
+}
+
+.sb-divider {
+  font-size: 1.2em;
+  padding: .5em 1em;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  opacity: 0.8;
+}
 
 .pump-control-wrapper {
   font-size: 1.2em;
@@ -178,7 +196,6 @@ export default {
 
 .rc-sidebar {
   grid-area: sidebar;
-  padding-top: 1em;
 }
 
 .rc-sidebar-heading {

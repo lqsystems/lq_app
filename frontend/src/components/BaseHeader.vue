@@ -74,7 +74,9 @@ export default {
 
 .header {
   align-items: center;
-  padding: 0.3em ($left-boundary-padding - 10) * 1px;
+  // padding: 0.3em ($left-boundary-padding - 10) * 1px;
+  padding-top: 0.5em;
+  padding-bottom: 0;
   padding-right: 60px;
   display: flex;
   color: white;
@@ -88,8 +90,8 @@ export default {
 }
 
 .header-logo {
-  margin-left: 0.35em;
-  width: 2.2em;
+  margin-left: 0.25em;
+  width: 2.9em;
 }
 
 .header-user-menu {

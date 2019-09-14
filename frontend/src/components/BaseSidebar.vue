@@ -12,7 +12,6 @@ export default {
 
 <style scoped lang="scss">
 .sidebar {
-  padding-top: 1.5em;
   height: 100%;
 }
 </style>
