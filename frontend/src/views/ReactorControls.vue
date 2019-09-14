@@ -7,15 +7,19 @@
     <div class="rc-main">
       <div class="rc-sidebar">
         <BaseSidebar>
-          <SidebarReactorItem
-            :active-module="selectedModuleName"
+          <BaseSidebarItem
+            img-icon
             title="Prime1"
-            @clicked="updateSelectedModule"
+            icon-name="icon-fire"
+            :active="selectedModuleName === 'Prime1'"
+            :handle-click="setPrime1Active"
           />
-          <SidebarReactorItem
-            :active-module="selectedModuleName"
+          <BaseSidebarItem
+            img-icon
             title="Prime2"
-            @clicked="updateSelectedModule"
+            icon-name="icon-fire"
+            :active="selectedModuleName === 'Prime2'"
+            :handle-click="setPrime2Active"
           />
           <v-divider />
           <div class="rc-sidebar-items">
@@ -41,14 +45,15 @@
               <BaseSidebarItem
                 title="Pump"
                 icon-name="icon-water"
-                :handle-click="togglePumpControls"
+                :active="selectedControlPanel === 'Pump'"
+                :handle-click="SET_PUMP_ACTIVE "
               />
-              <BaseCard
+              <!-- <BaseCard
                 v-if="showPumpControls"
                 class="pump-control-wrapper"
               >
                 <SidePumpControl />
-              </BaseCard>
+              </BaseCard> -->
             </div>
           </div>
         </BaseSidebar>
@@ -79,21 +84,23 @@ import BaseSidebarItem from '@/components/BaseSidebarItem';
 import AirControlPanel from '@/components/AirControlPanel';
 import HeaterControlPanel from '@/components/HeaterControlPanel';
 import LightControlPanel from '@/components/LightControlPanel';
+import PumpControlPanel from '@/components/PumpControlPanel';
 import SensorControlPanel from '@/components/SensorControlPanel';
 import SidePumpControl from '@/components/SidePumpControl';
 
 export default {
   components: {
+    AirControlPanel,
     BaseCard,
     BaseHeader,
     BaseNav,
     BaseSidebar,
-    SidebarReactorItem,
     BaseSidebarItem,
-    AirControlPanel,
     HeaterControlPanel,
     LightControlPanel,
+    PumpControlPanel,
     SensorControlPanel,
+    SidebarReactorItem,
     SidePumpControl,
   },
   data() {
@@ -119,6 +126,12 @@ export default {
     updateSelectedModule(module) {
       this.UPDATE_SELECTED_MODULE(module);
     },
+    setPrime1Active() {
+      this.updateSelectedModule('Prime1');
+    },
+    setPrime2Active() {
+      this.updateSelectedModule('Prime2');
+    },
     togglePumpControls() {
       this.showPumpControls = !this.showPumpControls;
     },
@@ -132,6 +145,7 @@ export default {
 <style scoped lang="scss">
 @import "../styles/variables";
 // jj
+
 .pump-control-wrapper {
   font-size: 1.2em;
   padding-left: 5em;

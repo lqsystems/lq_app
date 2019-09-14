@@ -8,7 +8,14 @@
       @click="handleClick"
     >
       <v-list-tile-action>
+        <img
+          v-if="imgIcon"
+          class="sb-header-icon"
+          src="@/assets/reactor-3d-light.png"
+          alt="reactor icon"
+        >
         <span
+          v-else
           class="sidebar-icon"
           :class="iconName"
         />
@@ -18,10 +25,6 @@
           {{ title }}
         </v-list-tile-title>
       </v-list-tile-content>
-      <span
-        v-if="title === 'Pump'"
-        class="icon-arrow-right"
-      />
     </v-list-tile>
   </div>
 </template>
@@ -33,6 +36,10 @@ export default {
     iconName: {
       type: String,
       default: '',
+    },
+    imgIcon: {
+      type: Boolean,
+      defaults: false,
     },
     title: {
       type: String,
@@ -88,7 +95,8 @@ $radius: 25px;
   margin: 10px 0;
 }
 
-.icon-bar-graph {
-    font-size: 0.7em;
+.sb-header-icon {
+  width: 1.4em;
+  margin-right: 1em;
 }
 </style>
