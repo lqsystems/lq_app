@@ -21,6 +21,7 @@
             :active="selectedModuleName === 'Prime2'"
             :handle-click="setPrime2Active"
           />
+          <div class="line" />
           <div class="sb-divider">
             CONTROLS
           </div>
@@ -157,7 +158,7 @@ export default {
 }
 
 .sb-divider {
-  font-size: 1.2em;
+  font-size: 1em;
   padding: .5em 1em;
   font-weight: 600;
   letter-spacing: 0.3px;

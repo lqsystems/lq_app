@@ -79,7 +79,7 @@ $font-size: 1.5;
 
 .sidebar-item {
   margin: .7em 0;
-  padding-left: .4em;
+  padding-left: .6em;
 
   &.v-list__tile {
     height: 40px;
