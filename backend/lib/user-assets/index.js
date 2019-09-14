@@ -115,8 +115,8 @@ module.exports = class UserReactionsAssets {
                             "HIGH" : false,
                             "LOW"  : true,
                             "Sensor" : "temperature",
-                            "HIGH-value" : 31,
-                            "LOW-value"  : 34,
+                            "HIGH-value" : 45,
+                            "LOW-value"  : 25, 
                             "active" : false
                         }
                     }
