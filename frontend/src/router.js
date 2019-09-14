@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: () => import('@/views/ReactorIndex'),
+      component: () => import('@/views/ReactorControls'),
     },
     {
       path: '/runs',
