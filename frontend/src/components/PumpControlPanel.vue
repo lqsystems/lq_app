@@ -7,8 +7,8 @@
       :include-divider="true"
     >
       <SwitchControl
-        :is-on="activeModuleState.water"
-        :is-disabled="activeModuleState.extraction"
+        :is-on="mv1State.water"
+        :is-disabled="mv1State.extraction"
         @toggle="toggleLoad"
       />
     </ControlPanelItem>
@@ -17,8 +17,8 @@
       :include-divider="false"
     >
       <SwitchControl
-        :is-on="activeModuleState.extraction"
-        :is-disabled="activeModuleState.water"
+        :is-on="mv1State.extraction"
+        :is-disabled="mv1State.water"
         @toggle="toggleExtraction"
       />
     </ControlPanelItem>
@@ -26,8 +26,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 import { UPDATE_MODULE_STATE } from '@/store/actions.types';
+import { UPDATE_SELECTED_MODULE } from '@/store/mutations.types';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
@@ -40,19 +41,23 @@ export default {
     SwitchControl,
   },
   computed: {
-    ...mapGetters(['activeModuleState']),
+    ...mapGetters(['mv1State', 'selectedModuleName']),
   },
   created() {
     this.toggleLoad = this.togglePump('water');
     this.toggleExtraction = this.togglePump('extraction');
   },
   methods: {
+    ...mapMutations([UPDATE_SELECTED_MODULE]),
     ...mapActions([UPDATE_MODULE_STATE]),
     updateState(actuatorType, newState) {
+      const prevSelected = this.selectedModuleName;
+      this.UPDATE_SELECTED_MODULE('MV1');
       this.UPDATE_MODULE_STATE({
         actuatorType,
         newState,
       });
+      this.UPDATE_SELECTED_MODULE(prevSelected);
     },
     togglePump(pumpActionType) {
       return (newState) => {
