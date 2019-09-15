@@ -8,12 +8,12 @@
         @toggle="toggleHeater"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Temp Sensor">
+    <!-- <ControlPanelItem label="Temp Sensor">
       <SwitchControl
         :is-on="sensorState"
         @toggle="toggleSensorState"
       />
-    </ControlPanelItem>
+    </ControlPanelItem> -->
     <ControlPanelItem
       label="Range"
       :include-divider="false"
@@ -78,6 +78,7 @@ export default {
     ...mapActions([UPDATE_MODULE_STATE, UPDATE_MODULE_PARAMS, UPDATE_MODULE_LIMITS]),
     ...mapMutations([MUTATE_MODULE_STATE, MUTATE_MODULE_PARAMS, MUTATE_MODULE_LIMITS]),
     toggleHeater(heaterState) {
+      this.toggleSensorState(heaterState);
       this.MUTATE_MODULE_PARAMS({
         moduleName: this.selectedModuleName,
         actuatorType: 'Heater',

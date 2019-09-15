@@ -2,6 +2,7 @@
   <ControlPanel
     title="Pump"
   >
+    <!-- Load and extract are intentionally inverted -->
     <ControlPanelItem
       label="Load"
       :include-divider="false"
