@@ -52,9 +52,7 @@ const heaterFailSafe = (dependencies, message, tolerance) => {
     const { module, Temperature } = message;
     const temp = Number(Temperature);
     const highLimit = Number(getHeaterLimits(userRAssets, module)['HIGH-value']);
-    const lowLimit = Number(getHeaterLimits(userRAssets, module)['LOW-value']);
     const isHeaterOn = getHeaterState(userRAssets, module) === true;
-    const turnHeaterOn = toggleHeater(dependencies, true);
     const turnHeaterOff = toggleHeater(dependencies, false);
 
     if (temp > highLimit + tolerance) {
@@ -63,15 +61,6 @@ const heaterFailSafe = (dependencies, message, tolerance) => {
             console.log(`'${module}' temp reached '${temp}'. Upper limit is '${highLimit}'. Turning heater OFF! ${Date()}`)
             console.log()
             turnHeaterOff(module);
-        }
-    }
-
-    if (temp < lowLimit - tolerance) {
-        if (!isHeaterOn) {
-            console.log()
-            console.log(`'${module}' temp reached '${temp}'. Lower limit is '${lowLimit}'. Turning heater ON! ${Date()}`)
-            console.log()
-            turnHeaterOn(module);
         }
     }
 }

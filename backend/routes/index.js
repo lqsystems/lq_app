@@ -729,14 +729,18 @@ HWProc.on('message', (message) => {
 
                   } else {   // SEND SENSOR DATA
                       //
+                    const temp = message.message.Temperature;
 
-                    const dependencies = {
-                      userRAssets: gUserRAssets,
-                      HWProc,
-                      emitModuleUpdate,
-                    };
-// 
-                    // heaterFailSafe(dependencies, message.message, 0);
+                    if (Number(temp) > 40) {
+                        const dependencies = {
+                        userRAssets: gUserRAssets,
+                        HWProc,
+                        emitModuleUpdate,
+                        };
+    // 
+                        heaterFailSafe(dependencies, message.message, 6);
+                    }
+                    
 
                       HWProc.dataEvents.emit('datum', message);
                       var storeData = message.message;

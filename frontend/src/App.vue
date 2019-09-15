@@ -29,6 +29,7 @@ export default {
       console.log('incoming message', message);
 
       if (message.failSafe) {
+        alert('Thermoregulation failed! Max temp exceeded! Please turn off heater and restart server ASAP!');
         const { heaterState, moduleId } = message;
 
         this.MUTATE_MODULE_STATE({
