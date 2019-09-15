@@ -4,22 +4,22 @@
   >
     <ControlPanelItem
       label="Load"
-      :include-divider="true"
-    >
-      <SwitchControl
-        :is-on="mv1State.water"
-        :is-disabled="mv1State.extraction"
-        @toggle="toggleLoad"
-      />
-    </ControlPanelItem>
-    <ControlPanelItem
-      label="Extract"
       :include-divider="false"
     >
       <SwitchControl
         :is-on="mv1State.extraction"
         :is-disabled="mv1State.water"
         @toggle="toggleExtraction"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem
+      label="Extract"
+      :include-divider="true"
+    >
+      <SwitchControl
+        :is-on="mv1State.water"
+        :is-disabled="mv1State.extraction"
+        @toggle="toggleLoad"
       />
     </ControlPanelItem>
   </ControlPanel>
