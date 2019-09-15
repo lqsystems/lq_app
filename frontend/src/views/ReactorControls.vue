@@ -9,6 +9,7 @@
         <BaseSidebar>
           <BaseSidebarItem
             img-icon
+            sensor-reading
             title="Prime1"
             icon-name="icon-fire"
             :active="selectedModuleName === 'Prime1'"
@@ -16,6 +17,7 @@
           />
           <BaseSidebarItem
             img-icon
+            sensor-reading
             title="Prime2"
             icon-name="icon-fire"
             :active="selectedModuleName === 'Prime2'"

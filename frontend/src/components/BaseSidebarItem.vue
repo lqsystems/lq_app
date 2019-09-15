@@ -23,6 +23,12 @@
       <v-list-tile-content>
         <v-list-tile-title>
           {{ title }}
+          <span
+            v-if="sensorReading"
+            class="sb-temp"
+          >
+            <SensorReading :module-name="title" />
+          </span>
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -30,14 +36,23 @@
 </template>
 
 <script>
+import SensorReading from './SensorReading';
+
 export default {
-  name: 'BaseCard',
+  name: 'BaseSidebarItem',
+  components: {
+    SensorReading,
+  },
   props: {
     iconName: {
       type: String,
       default: '',
     },
     imgIcon: {
+      type: Boolean,
+      defaults: false,
+    },
+    sensorReading: {
       type: Boolean,
       defaults: false,
     },
@@ -60,6 +75,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../styles/variables';
+
 .icon-arrow-right {
   font-size: 1.5em;
 }
@@ -75,6 +91,10 @@ $font-size: 1.5;
 .v-list__tile__title {
   font-weight: 400;
   font-size: $font-size - .1 + em;
+  .sb-temp {
+    font-size: .7em;
+    margin-left: 1em;
+  }
 }
 
 .sidebar-item {
@@ -92,7 +112,7 @@ $radius: 25px;
     background-color: $sidebar-active-item-color;
     border-radius: 0 $radius $radius 0;
     opacity: .7;
-    width: 88%;
+    width: 95%;
     transition: background-color 500ms ease;
     transform: scale(1.1);
   }

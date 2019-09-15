@@ -14,11 +14,6 @@
         @toggle="toggleSensorState"
       />
     </ControlPanelItem>
-    <ControlPanelItem label="Current Temp">
-      <div :style="{ marginRight: '50px' }">
-        <SensorReading />
-      </div>
-    </ControlPanelItem>
     <ControlPanelItem
       label="Range"
       :include-divider="false"
@@ -27,7 +22,7 @@
       <SliderControl
         disabled
         :level="heaterMinMax"
-        :limits="[31, 34]"
+        :limits="[28, 40]"
         :level-label-func="getTempLabel"
         @slider-move-end="updateLimits"
       />
@@ -55,14 +50,12 @@ import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import SwitchControl from './SwitchControl';
 import SliderControl from './SliderControl';
-import SensorReading from './SensorReading';
 
 export default {
   name: 'HeaterControlPanel',
   components: {
     ControlPanel,
     ControlPanelItem,
-    SensorReading,
     SwitchControl,
     SliderControl,
   },

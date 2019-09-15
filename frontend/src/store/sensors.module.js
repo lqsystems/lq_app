@@ -5,8 +5,8 @@ const initializeModules = (modules) => {
   const initialState = {};
   Object.keys(modules).forEach((key) => {
     initialState[key] = {
-      OD: '-',
-      temperature: '-',
+      OD: '',
+      temperature: '',
     };
   });
   return initialState;

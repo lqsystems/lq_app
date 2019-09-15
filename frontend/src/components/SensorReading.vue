@@ -1,6 +1,12 @@
 <template>
-  <span class="sensor-reading">
-    {{ formatSensorData(sensorData, 'Prime1').temperature }}
+  <span>
+    <span class="sensor-reading">
+      {{ formatSensorData(sensorData, moduleName).temperature }}
+    </span>
+    <span
+      v-if="!isNaN(parseInt(formatSensorData(sensorData, moduleName).temperature))"
+      class="sensor-degrees"
+    >°C</span>
   </span>
 </template>
 
@@ -9,6 +15,12 @@ import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'SensorReading',
+  props: {
+    moduleName: {
+      type: String,
+      required: true,
+    },
+  },
   computed: {
     ...mapGetters(['selectedModuleName']),
     ...mapState({
@@ -16,24 +28,20 @@ export default {
     }),
     formatSensorData() {
       return (sensorData, moduleName) => {
-        const { temperature, OD } = sensorData[moduleName];
-        const numTemp = Number(temperature);
-        const numOD = Number(OD);
+        const { temperature } = sensorData[moduleName];
+        const numTemp = temperature === '' ? '' : Number(temperature);
 
         // eslint-disable-next-line
-        if (isNaN(numTemp) || isNaN(numOD)) {
+        if (isNaN(numTemp) || numTemp === '') {
           return {
             temperature,
-            OD,
           };
         }
 
-        const oneDecimalTemp = numTemp.toFixed(1);
-        const twoDecimalOD = numOD.toFixed(2);
+        const twoDecimalTemp = numTemp.toFixed(2);
 
         return {
-          temperature: oneDecimalTemp,
-          OD: twoDecimalOD,
+          temperature: twoDecimalTemp,
         };
       };
     },
@@ -41,4 +49,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.sensor-degrees {
+  font-size: .8em;
+}
+</style>
