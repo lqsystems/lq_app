@@ -733,9 +733,9 @@ HWProc.on('message', (message) => {
 
                     if (Number(temp) > 40) {
                         const dependencies = {
-                        userRAssets: gUserRAssets,
-                        HWProc,
-                        emitModuleUpdate,
+                            userRAssets: gUserRAssets,
+                            HWProc,
+                            emitModuleUpdate,
                         };
     // 
                         heaterFailSafe(dependencies, message.message, 6);
