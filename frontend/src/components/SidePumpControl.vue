@@ -2,14 +2,14 @@
   <div>
     <div>Load</div>
     <SwitchControl
-      :is-on="mv1State.water"
-      :is-disabled="mv1State.extraction"
+      :is-on="prime2State.water"
+      :is-disabled="prime2State.extraction"
       @toggle="toggleLoad"
     />
     <div>Extract</div>
     <SwitchControl
-      :is-on="mv1State.extraction"
-      :is-disabled="mv1State.water"
+      :is-on="prime2State.extraction"
+      :is-disabled="prime2State.water"
       @toggle="toggleExtraction"
     />
   </div>
@@ -27,7 +27,7 @@ export default {
     SwitchControl,
   },
   computed: {
-    ...mapGetters(['mv1State', 'selectedModuleName']),
+    ...mapGetters(['prime2State', 'selectedModuleName']),
   },
   created() {
     this.toggleLoad = this.togglePump('water');

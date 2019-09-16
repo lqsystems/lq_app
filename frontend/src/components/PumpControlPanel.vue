@@ -8,8 +8,8 @@
       :include-divider="false"
     >
       <SwitchControl
-        :is-on="mv1State.extraction"
-        :is-disabled="mv1State.water"
+        :is-on="prime2State.extraction"
+        :is-disabled="prime2State.water"
         @toggle="toggleExtraction"
       />
     </ControlPanelItem>
@@ -18,8 +18,8 @@
       :include-divider="true"
     >
       <SwitchControl
-        :is-on="mv1State.water"
-        :is-disabled="mv1State.extraction"
+        :is-on="prime2State.water"
+        :is-disabled="prime2State.extraction"
         @toggle="toggleLoad"
       />
     </ControlPanelItem>
@@ -42,7 +42,7 @@ export default {
     SwitchControl,
   },
   computed: {
-    ...mapGetters(['mv1State', 'selectedModuleName']),
+    ...mapGetters(['prime2State', 'selectedModuleName']),
   },
   created() {
     this.toggleLoad = this.togglePump('water');
@@ -53,7 +53,7 @@ export default {
     ...mapActions([UPDATE_MODULE_STATE]),
     updateState(actuatorType, newState) {
       const prevSelected = this.selectedModuleName;
-      this.UPDATE_SELECTED_MODULE('MV1');
+      this.UPDATE_SELECTED_MODULE('Prime2');
       this.UPDATE_MODULE_STATE({
         actuatorType,
         newState,
