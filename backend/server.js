@@ -32,7 +32,8 @@ var gPortNum = 8888;
 // --------------------------------------------------------------------
 // not much more than these!!!
 
-var dosisMods = JSON.parse(fs.readFileSync("./models/dosisMods.json").toString());
+var dosisModsPath = path.resolve(__dirname, 'models', 'dosisMods.json');
+var dosisMods = JSON.parse(fs.readFileSync(dosisModsPath).toString());
 global.dosisMods = dosisMods;
 
 global.IamCloud = false

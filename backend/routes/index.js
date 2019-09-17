@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var path = require('path');
+
 const influx = require('influx');
 
 const { heaterFailSafe } = require('../utility/heaterFailSafe');
@@ -534,7 +536,9 @@ function mongoPersistActiveState(id,data,isActive) {
 // --------------------------------------------------------------------
 
 
-var gHardwareInterfaceProcess = './routes/hardwareBrokerMulti.js'
+var hardwareBrokerPath = path.resolve(__dirname, 'hardwareBrokerMulti.js');
+console.log(hardwareBrokerPath)
+var gHardwareInterfaceProcess = hardwareBrokerPath;
 // '--inspect=9222',
 var hwProcParams = [ '--inspect=9222', gHardwareInterfaceProcess ];
 if ( IamCloud ) {
