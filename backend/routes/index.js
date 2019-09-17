@@ -537,7 +537,6 @@ function mongoPersistActiveState(id,data,isActive) {
 
 
 var hardwareBrokerPath = path.resolve(__dirname, 'hardwareBrokerMulti.js');
-console.log(hardwareBrokerPath)
 var gHardwareInterfaceProcess = hardwareBrokerPath;
 // '--inspect=9222',
 var hwProcParams = [ '--inspect=9222', gHardwareInterfaceProcess ];
