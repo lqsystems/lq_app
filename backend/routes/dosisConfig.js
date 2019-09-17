@@ -114,11 +114,12 @@ module.exports = {
             baud : 9600,
             mcu : "Prime2"
         },
-        {
-            port : "/dev/ttyUSB3",
-            baud : 9600,
-            mcu : "MV2"
-        }]
+        // {
+        //     port : "/dev/ttyUSB3",
+        //     baud : 9600,
+        //     mcu : "MV2"
+        // }
+      ]
 
     }
 
