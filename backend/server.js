@@ -154,7 +154,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'layout', layoutsDir: __dirname 
 
 //Set Public folder
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/vue', express.static('dist'));
+app.use('/vue', express.static(path.join(__dirname, 'dist')));
 
 app.use(cors({
   origin: [
