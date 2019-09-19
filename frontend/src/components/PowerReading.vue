@@ -8,7 +8,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'PowerSensor',
+  name: 'PowerReading',
   computed: {
     ...mapState({
       sensorData: state => state.sensors,

@@ -14,7 +14,7 @@
     >
     <div class="header-items-left">
       <div class="header-power-reading">
-        <PowerSensor />
+        <PowerReading />
       </div>
       <button
         class="login-button logout-button"
@@ -32,12 +32,12 @@
 <script>
 import callApi from '@/utils/api.utils.js';
 import { LOGOUT_URL } from '@/constants/api.constants.js';
-import PowerSensor from './PowerSensor';
+import PowerReading from './PowerReading';
 
 export default {
   name: 'BaseHeader',
   components: {
-    PowerSensor,
+    PowerReading,
   },
   props: {
     title: {
