@@ -29,7 +29,7 @@
           </div>
           <div class="rc-sidebar-items">
             <BaseSidebarItem
-              title="Temp"
+              title="Heat"
               icon-name="icon-fire"
               :active="selectedControlPanel === 'Heater'"
               :handle-click="SET_HEATER_ACTIVE"
@@ -50,7 +50,7 @@
             <div class="line" />
             <div>
               <BaseSidebarItem
-                title="Pump"
+                title="Liquid"
                 icon-name="icon-water"
                 :active="selectedControlPanel === 'Pump'"
                 :handle-click="SET_PUMP_ACTIVE "

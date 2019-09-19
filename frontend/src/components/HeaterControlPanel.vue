@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    title="Temp"
+    title="Heat"
   >
     <ControlPanelItem label="Heater">
       <SwitchControl

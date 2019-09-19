@@ -1,6 +1,6 @@
 <template>
   <ControlPanel
-    title="Pump"
+    title="Liquid"
   >
     <!-- Load and extract are intentionally inverted -->
     <ControlPanelItem
