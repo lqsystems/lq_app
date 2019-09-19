@@ -21,3 +21,4 @@ export const SET_HEATER_ACTIVE = 'SET_HEATER_ACTIVE';
 
 // Sensors types
 export const SOCKET_DATUM = 'SOCKET_DATUM';
+export const SET_POWER = 'SET_POWER';

@@ -16,7 +16,7 @@ import { mapActions, mapMutations } from 'vuex';
 import { diff } from 'deep-object-diff';
 import { diffStatesOnUpdateMessage, getModuleByReactionId } from '@/utils/entities.utils';
 import { FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE } from '@/store/actions.types';
-import { MUTATE_MODULE_STATE, SOCKET_DATUM } from '@/store/mutations.types';
+import { MUTATE_MODULE_STATE, SOCKET_DATUM, SET_POWER } from '@/store/mutations.types';
 
 export default {
   name: 'App',
@@ -50,11 +50,16 @@ export default {
 
     // receives sensor data for OD and Temp
     datum(message) {
+      if (message.message.Power) {
+        this.SET_POWER(message);
+        return;
+      }
+
       this.SOCKET_DATUM(message);
     },
   },
   methods: {
-    ...mapMutations([SOCKET_DATUM, MUTATE_MODULE_STATE]),
+    ...mapMutations([SOCKET_DATUM, MUTATE_MODULE_STATE, SET_POWER]),
     ...mapActions([FETCH_MODULES, HANDLE_UPDATE_STATE_MESSAGE]),
   },
 };

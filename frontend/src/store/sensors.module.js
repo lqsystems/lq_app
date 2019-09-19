@@ -1,8 +1,12 @@
-import { SOCKET_DATUM } from './mutations.types';
+import { SOCKET_DATUM, SET_POWER } from './mutations.types';
 import { dosisMods } from '@/shared_config/dosisMods';
 
+const isNumber = n => !isNaN(parseFloat(n)) && isFinite(n);
+
 const initializeModules = (modules) => {
-  const initialState = {};
+  const initialState = {
+    Power: { power: '' },
+  };
   Object.keys(modules).forEach((key) => {
     initialState[key] = {
       OD: '',
@@ -15,6 +19,13 @@ const initializeModules = (modules) => {
 const initialState = initializeModules(dosisMods);
 
 export const mutations = {
+  [SET_POWER](state, { message }) {
+    const { Power } = message;
+
+    if (isNumber(Power)) {
+      state.Power = { power: Power };
+    }
+  },
   [SOCKET_DATUM](state, { message }) {
     let { module, OD, Temperature } = message;
 
@@ -30,15 +41,7 @@ export const mutations = {
   },
 };
 
-const actions = {
-};
-
-const getters = {
-};
-
 export default {
   state: initialState,
   mutations,
-  actions,
-  getters,
 };

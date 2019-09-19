@@ -12,24 +12,33 @@
       alt="company logo"
       @click="handleLogoClick"
     >
-    <button
-      class="login-button logout-button"
-      @click="logout"
-    >
-      <div class="icon-logout"></div>  
-      <div class="logout-button-text">
-        Logout
+    <div class="header-items-left">
+      <div class="header-power-reading">
+        <PowerSensor />
       </div>
-    </button>
+      <button
+        class="login-button logout-button"
+        @click="logout"
+      >
+        <div class="icon-logout" />
+        <div class="logout-button-text">
+          Logout
+        </div>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import callApi from '@/utils/api.utils.js';
 import { LOGOUT_URL } from '@/constants/api.constants.js';
+import PowerSensor from './PowerSensor';
 
 export default {
   name: 'BaseHeader',
+  components: {
+    PowerSensor,
+  },
   props: {
     title: {
       type: String,
@@ -59,6 +68,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/variables";
+.header-items-left {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-power-reading {
+  font-size: 0.38em;
+  margin: 0 2em;
+}
 
 .header-links {
   font-size: 0.5em;
