@@ -85,7 +85,6 @@ function initializationSequence (uPort) {
     //
 }
 
-
 function initializationNext (str) {
     //
     console.log(str);
@@ -237,6 +236,13 @@ function stateFromString (value, heldHigh) {
 
 //------------ ------------ ------------ ------------ ------------ ----------
 
+const constructPowerMsg = (powerReading) => ({
+    message: {
+        module: "Power",
+        // strip the 'W' at the end of the power reading but leave as a string
+        Power: parseFloat(powerReading.split(" ")[1]) + "",
+    }
+});
 
 function constructServerMessage (messageBackToServer, rewriteCmd) {
     //
@@ -328,6 +334,16 @@ function lineParserHandler (str) {
     if (str.indexOf("ACK") == 0) {
         var mid = str.substr(3).trim();
         dequeueMessageOnACK(mid);
+        return;
+    }
+
+    if (str.indexOf("Power") == 0) {
+        const srvMsg = constructPowerMsg(str);
+        console.log()
+        console.log('********* POWER SOCKET DEBUG *********')
+        console.log({srvMsg});
+        console.log()
+        process.send(srvMsg);
         return;
     }
 
