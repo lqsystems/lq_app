@@ -339,10 +339,6 @@ function lineParserHandler (str) {
 
     if (str.indexOf("Power") == 0) {
         const srvMsg = constructPowerMsg(str);
-        console.log()
-        console.log('********* POWER SOCKET DEBUG *********')
-        console.log({srvMsg});
-        console.log()
         process.send(srvMsg);
         return;
     }

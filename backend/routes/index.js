@@ -732,13 +732,6 @@ HWProc.on('message', (message) => {
 
                   } else {   // SEND SENSOR DATA
                       //
-                    if (message.message.Power) {
-                        console.log()
-                        console.log('********* POWER SOCKET DEBUG *********')
-                        console.log('Emitting Power Event to Client')
-                        console.log(message)
-                    }
-
 
                     const temp = message.message.Temperature;
 
