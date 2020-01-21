@@ -220,6 +220,7 @@ export default {
 }
 
 .rc-controls {
+  width: 79vw;
   padding: 34px 60px;
   grid-area: controls;
 }
